@@ -53,8 +53,9 @@ Unshuffling Permutations}%
   St\'ephane Vialette\inst{1}
 }% end author
 \institute{%
-  Universit\'e Paris-Est, LIGM (UMR 8049), CNRS, UPEM, ESIEE Paris, ENPC, 
+  Universit\'e Paris-Est, LIGM (UMR 8049), CNRS, UPEM, ESIEE Paris, ENPC,
   F-77454, Marne-la-Vallée, France\\
+  \email{samuele.giraudo@univ-mlv.fr} \\
   \email{vialette@univ-mlv.fr}
 }% end institute
 \date{\today}
@@ -110,12 +111,18 @@ $\mathcal{M}$ of $G_\pi$ such that
     scale=.95,
     >=stealth',
     shorten >=1pt,
+<<<<<<< HEAD
     main node/.style={align=center},
     cell/.style={draw,ultra thick,fill=black!5},
     structure link/.style={line width=1.5pt},
     pattern link/.style={line width=1.5pt,black!20},
     monotone/.style={->,thick}
     ]  
+=======
+    main node/.style={align=center}
+    %cell node/.style={fill=black!5}
+    ]
+>>>>>>> 54e8da9004ca248af780e8ed46f134d9b1443103
     % edges
     % pi 1 - pi 2
     \draw [pattern link] (8.5,6) .. controls +(0,1) and +(0,2) .. (10.5,5);
@@ -162,14 +169,24 @@ $\mathcal{M}$ of $G_\pi$ such that
     \draw [cell] (4,6) -- (5,6) -- (5,7) -- (4,7) -- cycle;
     \node [main node] (sigma1) at (4.5,6.5) {$\sigma'$};
     % pi 1
+<<<<<<< HEAD
     \draw [cell] (8,5) -- (9,5) -- (9,6) -- (8,6) -- cycle;
     \node [main node] (pi1) at (8.5,5.5) {$\pi'$};    
+=======
+    \draw [draw,ultra thick,fill=black!5] (8,5) -- (9,5) -- (9,6) -- (8,6) -- cycle;
+    \node [main node] (pi1) at (8.5,5.5) {$\pi'$};
+>>>>>>> 54e8da9004ca248af780e8ed46f134d9b1443103
     % pi 2
     \draw [cell] (10,4) -- (11,4) -- (11,5) -- (10,5) -- cycle;
     \node [main node] (sigma2) at (10.5,4.5) {$\pi''$};
     % sigma 2
+<<<<<<< HEAD
     \draw [cell] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
     \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};  
+=======
+    \draw [draw,ultra thick,fill=black!5] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
+    \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};
+>>>>>>> 54e8da9004ca248af780e8ed46f134d9b1443103
     % grid
     \draw[step=1cm,black!30,ultra thin,fill=black!10] (0,0) grid (12,12);
     % row size
@@ -193,10 +210,10 @@ $\mathcal{M}$ of $G_\pi$ such that
 \section{Conclusion}
 \label{section:Conclusion}
 
-bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla 
-bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla 
-bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla 
-bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla 
+bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
+bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
+bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
+bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
 bla bla blabla bla bla blabla bla bla blabla bla bla blabla .
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
