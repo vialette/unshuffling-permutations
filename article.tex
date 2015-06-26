@@ -108,41 +108,12 @@ bla bla bla \ldots
     shorten >=1pt,
     main node/.style={align=center}
     %cell node/.style={fill=black!5}
-    ]
-    % nodes
-    % 1
-    \draw [draw,ultra thick,fill=black!5] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
-    \node [main node] (1a) at (0.5,10.5) {$\nu_1$};
-    \draw [draw,ultra thick,fill=black!5] (2,11) -- (3,11) -- (3,12) -- (2,12) -- cycle;
-    \node [main node] (1b) at (2.5,11.5) {$\nu'_1$};
-    % 2
-    \draw [draw,ultra thick,fill=black!5] (1,1) -- (2,1) -- (2,2) -- (1,2) -- cycle;
-    \node [main node] (2a) at (1.5,1.5) {$\nu_2$};
-    \draw [draw,ultra thick,fill=black!5] (6,0) -- (7,0) -- (7,1) -- (6,1) -- cycle;
-    \node [main node] (2b) at (6.5,0.5) {$\nu'_2$};
-    % 3
-    \draw [draw,ultra thick,fill=black!5] (3,8) -- (4,8) -- (4,9) -- (3,9) -- cycle;
-    \node [main node] (3a) at (3.5,8.5) {$\nu_3$};
-    \draw [draw,ultra thick,fill=black!5] (7,9) -- (8,9) -- (8,10) -- (7,10) -- cycle;
-    \node [main node] (3b) at (7.5,9.5) {$\nu'_3$};
-    % 4
-    \draw [draw,ultra thick,fill=black!5] (5,7) -- (6,7) -- (6,8) -- (5,8) -- cycle;
-    \node [main node] (3a) at (5.5,7.5) {$\nu_4$};
-    \draw [draw,ultra thick,fill=black!5] (9,2) -- (10,2) -- (10,3) -- (9,3) -- cycle;
-    \node [main node] (3b) at (9.5,2.5) {$\nu'_4$};
-    % sigma 1
-    \draw [draw,ultra thick,fill=black!5] (4,6) -- (5,6) -- (5,7) -- (4,7) -- cycle;
-    \node [main node] (sigma1) at (4.5,6.5) {$\sigma'$};
-    % pi 1
-    \draw [draw,ultra thick,fill=black!5] (8,5) -- (9,5) -- (9,6) -- (8,6) -- cycle;
-    \node [main node] (pi1) at (8.5,5.5) {$\pi'$};    
-    % pi 2
-    \draw [draw,ultra thick,fill=black!5] (10,4) -- (11,4) -- (11,5) -- (10,5) -- cycle;
-    \node [main node] (sigma2) at (10.5,4.5) {$\pi''$};
-    % sigma 2
-    \draw [draw,ultra thick,fill=black!5] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
-    \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};    
+    ]  
     % edges
+    % pi 1 - pi 2
+    \draw[line width=1.5pt,black!20] (8.5,6) .. controls +(0,1) and +(0,2) .. (10.5,5);
+    % pi 2 - sigma 2
+    \draw[line width=1.5pt,black!20] (10.5,5) .. controls +(0,1) and +(0,3) .. (11.5,4);
     % 1
     \draw[line width=1.5pt] (0.5,11) .. controls +(0,2) and +(0,1) .. (2.5,12);
     \node (claim edge 1) at (1.5,13) {Claim\ref{}};
@@ -158,12 +129,42 @@ bla bla bla \ldots
     % sigma 1 - pi 1
     \draw[line width=1.5pt] (4.5,6) .. controls +(0,-2) and +(0,-1) .. (8.5,5);
     \node (claim edge 1) at (6.5,4) {Claim\ref{}};
-    % pi 1 - pi 2
-    \draw[line width=1.5pt,black!20] (8.5,6) .. controls +(0,1) and +(0,2) .. (10.5,5);
-    % pi 2 - sigma 2
-    \draw[line width=1.5pt,black!20] (10.5,5) .. controls +(0,1) and +(0,3) .. (11.5,4);
+    % nodes
+    % 1
+    \draw [draw,ultra thick,fill=black!5] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
+    \draw [->,ultra thick] (0,10) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu_1$};
+    %\draw [draw,ultra thick,fill=black!5] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
+    \draw [draw,ultra thick,fill=black!5] (2,11) -- (3,11) -- (3,12) -- (2,12) -- cycle;
+    \draw [->,ultra thick] (2,11) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu'_1$};
+    % 2
+    \draw [draw,ultra thick,fill=black!5] (1,1) -- (2,1) -- (2,2) -- (1,2) -- cycle;
+    \draw [->,ultra thick] (1,2) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu_2$};
+    \draw [draw,ultra thick,fill=black!5] (6,0) -- (7,0) -- (7,1) -- (6,1) -- cycle;
+    \draw [->,ultra thick] (6,1) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu'_2$};
+    % 3
+    \draw [draw,ultra thick,fill=black!5] (3,8) -- (4,8) -- (4,9) -- (3,9) -- cycle;
+    \draw [->,ultra thick] (3,8) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu_3$};
+    \draw [draw,ultra thick,fill=black!5] (7,9) -- (8,9) -- (8,10) -- (7,10) -- cycle;
+    \draw [->,ultra thick] (7,9) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu'_3$};
+    % 4
+    \draw [draw,ultra thick,fill=black!5] (5,7) -- (6,7) -- (6,8) -- (5,8) -- cycle;
+    \draw [->,ultra thick] (5,8) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu_4$};
+    \draw [draw,ultra thick,fill=black!5] (9,2) -- (10,2) -- (10,3) -- (9,3) -- cycle;
+    \draw [->,ultra thick] (9,3) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu'_4$};
+    % sigma 1
+    \draw [draw,ultra thick,fill=black!5] (4,6) -- (5,6) -- (5,7) -- (4,7) -- cycle;
+    \node [main node] (sigma1) at (4.5,6.5) {$\sigma'$};
+    % pi 1
+    \draw [draw,ultra thick,fill=black!5] (8,5) -- (9,5) -- (9,6) -- (8,6) -- cycle;
+    \node [main node] (pi1) at (8.5,5.5) {$\pi'$};    
+    % pi 2
+    \draw [draw,ultra thick,fill=black!5] (10,4) -- (11,4) -- (11,5) -- (10,5) -- cycle;
+    \node [main node] (sigma2) at (10.5,4.5) {$\pi''$};
+    % sigma 2
+    \draw [draw,ultra thick,fill=black!5] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
+    \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};  
     % grid
-    \draw[step=1cm,gray,ultra thin] (0,0) grid (12,12);
+    \draw[step=1cm,black!30,ultra thin] (0,0) grid (12,12);
   \end{tikzpicture}
 \end{figure}
 
