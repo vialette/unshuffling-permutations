@@ -94,77 +94,93 @@ bla bla bla \ldots
 \section{Algorithmic issues}
 \label{section:Algorithmic issues}
 
-\newcommand\INCREASING[1]{%
-  \begin{tikzpicture}[>=latex]
-  \draw [->] (0,0) -- node[midway,below] {$#1$} -- ++ (1,1);
-  \end{tikzpicture}
-}
 
-\newpage
+\begin{proposition}
+Let $\pi \in S_{2n}$.
+Then,
+$\pi$ is the union of two order-isomorphic pattern 
+if and only if
+there exists a perfect containment-free mathing
+$\mathcal{M}$ of $G_\pi$ such that
+\end{proposition}
+
 \begin{figure}[t!]
   \centering
   \begin{tikzpicture}[
+    scale=.95,
     >=stealth',
     shorten >=1pt,
-    main node/.style={align=center}
-    %cell node/.style={fill=black!5}
+    main node/.style={align=center},
+    cell/.style={draw,ultra thick,fill=black!5},
+    structure link/.style={line width=1.5pt},
+    pattern link/.style={line width=1.5pt,black!20},
+    monotone/.style={->,thick}
     ]  
     % edges
     % pi 1 - pi 2
-    \draw[line width=1.5pt,black!20] (8.5,6) .. controls +(0,1) and +(0,2) .. (10.5,5);
+    \draw [pattern link] (8.5,6) .. controls +(0,1) and +(0,2) .. (10.5,5);
     % pi 2 - sigma 2
-    \draw[line width=1.5pt,black!20] (10.5,5) .. controls +(0,1) and +(0,3) .. (11.5,4);
+    \draw [pattern link] (10.5,5) .. controls +(0,1) and +(0,3) .. (11.5,4);
     % 1
-    \draw[line width=1.5pt] (0.5,11) .. controls +(0,2) and +(0,1) .. (2.5,12);
+    \draw [structure link] (0.5,11) .. controls +(0,2) and +(0,1) .. (2.5,12);
     \node (claim edge 1) at (1.5,13) {Claim\ref{}};
     % 2
-    \draw[line width=1.5pt] (1.5,2) .. controls +(0,1) and +(0,3) .. (6.5,1);
+    \draw [structure link] (1.5,2) .. controls +(0,1) and +(0,3) .. (6.5,1);
     \node (claim edge 1) at (4,3.5) {Claim\ref{}};
     % 3
-    \draw[line width=1.5pt] (3.5,9) .. controls +(0,3) and +(0,1.5) .. (7.5,10);
+    \draw [structure link] (3.5,9) .. controls +(0,3) and +(0,1.5) .. (7.5,10);
     \node (claim edge 1) at (5.5,11.5) {Claim\ref{}};
     % 4
-    \draw[line width=1.5pt] (5.5,8) .. controls +(0,1) and +(0,7) .. (9.5,3);
+    \draw [structure link] (5.5,8) .. controls +(0,1) and +(0,7) .. (9.5,3);
     \node (claim edge 1) at (8.5,8.5) {Claim\ref{}};
     % sigma 1 - pi 1
-    \draw[line width=1.5pt] (4.5,6) .. controls +(0,-2) and +(0,-1) .. (8.5,5);
+    \draw [structure link] (4.5,6) .. controls +(0,-2) and +(0,-1) .. (8.5,5);
     \node (claim edge 1) at (6.5,4) {Claim\ref{}};
     % nodes
     % 1
-    \draw [draw,ultra thick,fill=black!5] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
-    \draw [->,ultra thick] (0,10) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu_1$};
+    \draw [cell] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
+    \draw [monotone] (0,10) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu_1$};
     %\draw [draw,ultra thick,fill=black!5] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
-    \draw [draw,ultra thick,fill=black!5] (2,11) -- (3,11) -- (3,12) -- (2,12) -- cycle;
-    \draw [->,ultra thick] (2,11) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu'_1$};
+    \draw [cell] (2,11) -- (3,11) -- (3,12) -- (2,12) -- cycle;
+    \draw [monotone] (2,11) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu'_1$};
     % 2
-    \draw [draw,ultra thick,fill=black!5] (1,1) -- (2,1) -- (2,2) -- (1,2) -- cycle;
-    \draw [->,ultra thick] (1,2) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu_2$};
-    \draw [draw,ultra thick,fill=black!5] (6,0) -- (7,0) -- (7,1) -- (6,1) -- cycle;
-    \draw [->,ultra thick] (6,1) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu'_2$};
+    \draw [cell] (1,1) -- (2,1) -- (2,2) -- (1,2) -- cycle;
+    \draw [monotone] (1,2) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu_2$};
+    \draw [cell] (6,0) -- (7,0) -- (7,1) -- (6,1) -- cycle;
+    \draw [monotone] (6,1) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu'_2$};
     % 3
-    \draw [draw,ultra thick,fill=black!5] (3,8) -- (4,8) -- (4,9) -- (3,9) -- cycle;
-    \draw [->,ultra thick] (3,8) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu_3$};
-    \draw [draw,ultra thick,fill=black!5] (7,9) -- (8,9) -- (8,10) -- (7,10) -- cycle;
-    \draw [->,ultra thick] (7,9) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu'_3$};
+    \draw [cell] (3,8) -- (4,8) -- (4,9) -- (3,9) -- cycle;
+    \draw [monotone] (3,8) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu_3$};
+    \draw [cell] (7,9) -- (8,9) -- (8,10) -- (7,10) -- cycle;
+    \draw [monotone] (7,9) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu'_3$};
     % 4
-    \draw [draw,ultra thick,fill=black!5] (5,7) -- (6,7) -- (6,8) -- (5,8) -- cycle;
-    \draw [->,ultra thick] (5,8) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu_4$};
-    \draw [draw,ultra thick,fill=black!5] (9,2) -- (10,2) -- (10,3) -- (9,3) -- cycle;
-    \draw [->,ultra thick] (9,3) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu'_4$};
+    \draw [cell] (5,7) -- (6,7) -- (6,8) -- (5,8) -- cycle;
+    \draw [monotone] (5,8) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu_4$};
+    \draw [cell] (9,2) -- (10,2) -- (10,3) -- (9,3) -- cycle;
+    \draw [monotone] (9,3) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu'_4$};
     % sigma 1
-    \draw [draw,ultra thick,fill=black!5] (4,6) -- (5,6) -- (5,7) -- (4,7) -- cycle;
+    \draw [cell] (4,6) -- (5,6) -- (5,7) -- (4,7) -- cycle;
     \node [main node] (sigma1) at (4.5,6.5) {$\sigma'$};
     % pi 1
-    \draw [draw,ultra thick,fill=black!5] (8,5) -- (9,5) -- (9,6) -- (8,6) -- cycle;
+    \draw [cell] (8,5) -- (9,5) -- (9,6) -- (8,6) -- cycle;
     \node [main node] (pi1) at (8.5,5.5) {$\pi'$};    
     % pi 2
-    \draw [draw,ultra thick,fill=black!5] (10,4) -- (11,4) -- (11,5) -- (10,5) -- cycle;
+    \draw [cell] (10,4) -- (11,4) -- (11,5) -- (10,5) -- cycle;
     \node [main node] (sigma2) at (10.5,4.5) {$\pi''$};
     % sigma 2
-    \draw [draw,ultra thick,fill=black!5] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
+    \draw [cell] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
     \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};  
     % grid
-    \draw[step=1cm,black!30,ultra thin] (0,0) grid (12,12);
+    \draw[step=1cm,black!30,ultra thin,fill=black!10] (0,0) grid (12,12);
+    % row size
+    \foreach \y/\N in {0.5/N_2,1.5/N_2}
+        \node at (-0.5,\y) (R\y) {$\N$};
+    % }
+    % column size
+    \foreach \x/\N in 
+    {0.5/N_1,1.5/N_2,2.5/N_1,3.5/N_3,4.5/k+2,5.5/N_4,6.5/N_2,7.5/N_3,8.5/n+2,9.5/N_4,10.5/n,11.5/k} {
+        \node at (\x,-0.5) (C\x) {$\N$};
+    }
   \end{tikzpicture}
 \end{figure}
 
