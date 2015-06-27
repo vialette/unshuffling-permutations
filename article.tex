@@ -31,6 +31,8 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\DeclareMathOperator{\LEFT}{\ell}
+\DeclareMathOperator{\RIGHT}{r}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -103,7 +105,60 @@ $\pi$ is the union of two order-isomorphic pattern
 if and only if
 there exists a perfect containment-free mathing
 $\mathcal{M}$ of $G_\pi$ such that
+$\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
 \end{proposition}
+
+\begin{proposition}
+Deciding whether a permutation is the union of two
+order-isomorphic pattern is \NPC.
+\end{proposition}
+
+
+\begin{align*}
+N_4 &= 2(2n + k + 2) + 1  = 4n + 2k + 5 \\
+N_3 &= 2(2N_4 + 2n + 2k + 4) + 1 = 20n + 12k + 9 \\
+N_2 &= 2(2N_3 + 2n + 2k + 4) + 1 \\
+N_1 &= 2(2N_2 + 2n + 2k + 4) + 1\text{.}
+\end{align*}
+
+\begin{align*}
+\sigma'  &= ((k+1) \; \sigma \; (k+2)) \; [2N_2 + N_4 + 2n + k + 2] \\
+\pi'     &= ((n+1) \; \pi \; (n+2)) \; [2N_2 + N_4 + n + k + 2] \\
+\sigma'' &= \sigma \; [2N_2 + N_4] \\
+\pi''    &= \pi \; [2N_2 + N_4 + k] \\
+\nu_1    &= \nearrow_{N_1} \; [2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4] \\
+\nu'_1   &= \nearrow_{N_1} \; [N_1 + 2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4] \\
+\nu_2    &= \nearrow_{N_2} \; [N_2] \\
+\nu'_2   &= \searrow_{N_2} \\
+\nu_3    &= \nearrow_{N_3} \; [2N_2 + 2N_4 + 2n + 2k + 4] \\
+\nu'_3   &= \nearrow_{N_3} \; [2N_2 + N_3 + 2N_4 + 2n + 2k + 4] \\
+\nu_4    &= \searrow_{N_4} \; [2N_2 + N_4 + 2n + 2k + 4] \\
+\nu'_4   &= \searrow_{N_4} \; [2N_2]
+\end{align*}
+
+$$
+\mu
+=
+\nu_1 \; \nu_2 \; \nu'_1 \; \nu_3 \; \sigma' \; \nu_4 \; \nu'_3 \; \pi' \; \nu'_4 \; \pi'' \; \sigma''
+$$
+
+\begin{claim}
+  \label{claim:no nu_1 - nu_1 edge}
+  There is no $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no nu_1 - nu_1 edge}]
+Suppose, aiming at a contradiction that there exists
+a $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
+\begin{tikzpicture}
+
+\end{tikzpicture}
+\qed
+\end{proof}
+
+\begin{claim}
+There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
+\end{claim}
 
 \begin{figure}[t!]
   \centering
@@ -111,18 +166,12 @@ $\mathcal{M}$ of $G_\pi$ such that
     scale=.95,
     >=stealth',
     shorten >=1pt,
-<<<<<<< HEAD
     main node/.style={align=center},
     cell/.style={draw,ultra thick,fill=black!5},
     structure link/.style={line width=1.5pt},
     pattern link/.style={line width=1.5pt,black!20},
     monotone/.style={->,thick}
     ]  
-=======
-    main node/.style={align=center}
-    %cell node/.style={fill=black!5}
-    ]
->>>>>>> 54e8da9004ca248af780e8ed46f134d9b1443103
     % edges
     % pi 1 - pi 2
     \draw [pattern link] (8.5,6) .. controls +(0,1) and +(0,2) .. (10.5,5);
@@ -169,24 +218,14 @@ $\mathcal{M}$ of $G_\pi$ such that
     \draw [cell] (4,6) -- (5,6) -- (5,7) -- (4,7) -- cycle;
     \node [main node] (sigma1) at (4.5,6.5) {$\sigma'$};
     % pi 1
-<<<<<<< HEAD
     \draw [cell] (8,5) -- (9,5) -- (9,6) -- (8,6) -- cycle;
     \node [main node] (pi1) at (8.5,5.5) {$\pi'$};    
-=======
-    \draw [draw,ultra thick,fill=black!5] (8,5) -- (9,5) -- (9,6) -- (8,6) -- cycle;
-    \node [main node] (pi1) at (8.5,5.5) {$\pi'$};
->>>>>>> 54e8da9004ca248af780e8ed46f134d9b1443103
     % pi 2
     \draw [cell] (10,4) -- (11,4) -- (11,5) -- (10,5) -- cycle;
     \node [main node] (sigma2) at (10.5,4.5) {$\pi''$};
     % sigma 2
-<<<<<<< HEAD
     \draw [cell] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
     \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};  
-=======
-    \draw [draw,ultra thick,fill=black!5] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
-    \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};
->>>>>>> 54e8da9004ca248af780e8ed46f134d9b1443103
     % grid
     \draw[step=1cm,black!30,ultra thin,fill=black!10] (0,0) grid (12,12);
     % row size
