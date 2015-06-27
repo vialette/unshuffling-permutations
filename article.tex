@@ -150,8 +150,52 @@ $$
 \begin{proof}[of Claim~\ref{claim:no nu_1 - nu_1 edge}]
 Suppose, aiming at a contradiction that there exists
 a $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
-\begin{tikzpicture}
 
+\begin{tikzpicture}
+  [scale=0.25]
+  % nu_1
+  \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
+  \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
+      \draw [fill=black] (\x,\y) circle (0.1);
+  }
+  % nu_4
+  \draw[step=1cm,black!30,ultra thin,fill=black!10] (4.8,-0.2) grid (10.2,5.2);
+  \foreach \x/\y in {5/5,6/4,7/3,8/2,9/1,10/0} {
+      \draw [fill=black] (\x,\y) circle (0.1);
+  }
+  % nu'_1
+  \draw[step=1cm,black!30,ultra thin,fill=black!10] (9.8,14.8) grid (15.2,20.2);
+  \foreach \x/\y in {10/15,11/16,12/17,13/18,14/19,15/20} {
+      \draw [fill=black] (\x,\y) circle (0.1);
+  }
+  % edges
+  \draw [line width=1pt]
+  (1,11) .. controls +(0,2) and +(0,1) .. (2,12);
+  \draw [line width=1pt]
+  (3,13) .. controls +(0,6) and +(0,16) .. (8,2);
+\end{tikzpicture}
+\begin{tikzpicture}
+  [scale=0.25]
+  % nu_1
+  \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
+  \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
+      \draw [fill=black] (\x,\y) circle (0.1);
+  }
+  % nu_4
+  \draw[step=1cm,black!30,ultra thin,fill=black!10] (4.8,-0.2) grid (10.2,5.2);
+  \foreach \x/\y in {5/5,6/4,7/3,8/2,9/1,10/0} {
+      \draw [fill=black] (\x,\y) circle (0.1);
+  }
+  % nu'_1
+  \draw[step=1cm,black!30,ultra thin,fill=black!10] (9.8,14.8) grid (15.2,20.2);
+  \foreach \x/\y in {10/15,11/16,12/17,13/18,14/19,15/20} {
+      \draw [fill=black] (\x,\y) circle (0.1);
+  }
+  % edges
+  \draw [line width=1pt]
+  (1,11) .. controls +(0,2) and +(0,1) .. (2,12);
+  \draw [line width=1pt]
+  (3,13) .. controls +(0,6) and +(0,16) .. (8,2);
 \end{tikzpicture}
 \qed
 \end{proof}
@@ -229,9 +273,9 @@ There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
     % grid
     \draw[step=1cm,black!30,ultra thin,fill=black!10] (0,0) grid (12,12);
     % row size
-    \foreach \y/\N in {0.5/N_2,1.5/N_2}
+    \foreach \y/\N in {0.5/N_2,1.5/N_2} {
         \node at (-0.5,\y) (R\y) {$\N$};
-    % }
+    }
     % column size
     \foreach \x/\N in 
     {0.5/N_1,1.5/N_2,2.5/N_1,3.5/N_3,4.5/k+2,5.5/N_4,6.5/N_2,7.5/N_3,8.5/n+2,9.5/N_4,10.5/n,11.5/k} {
