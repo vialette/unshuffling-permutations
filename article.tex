@@ -16,6 +16,7 @@
 \usepackage{float}
 \usepackage{todonotes}
 \usepackage{subfigure}
+\usepackage{enumitem}
 
 \usepackage{tikz}
 \usetikzlibrary{matrix, calc, arrows}
@@ -237,19 +238,43 @@ tensor $\sigma \otimes \sigma$ with a nonzero coefficient.
 \end{proof}
 \medskip
 
-\begin{proposition}
+\begin{proposition} \label{prop:square_stability}
     Let $\pi$ be a square permutation and $\rho$ a square root of $\pi$.
     Then,
-    \begin{enumerate}
-        \item the permutation $\pi^\sim$ is a square and $\rho^\sim$
+    \begin{enumerate}[label={\it (\roman*)},fullwidth]
+        \item \label{item:square_stability_1}
+        the permutation $\pi^\sim$ is a square and $\rho^\sim$
         is one of its square roots;
-        \item the permutation $\bar \pi$ is a square and $\bar \rho$
+        \item \label{item:square_stability_2}
+        the permutation $\bar \pi$ is a square and $\bar \rho$
         is one of its square roots;
-        \item the permutation $\pi^{-1}$ is a square and $\rho^{-1}$
+        \item \label{item:square_stability_3}
+        the permutation $\pi^{-1}$ is a square and $\rho^{-1}$
         is one of its square roots.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
+    First of all, since $\pi$ is a square permutation and $\rho$ is a
+    square root of $\pi$, $\pi$ appears in $\rho \bullet \rho$. In
+    an equivalent way, this amounts to say that $\rho \otimes \rho$ has
+    a nonzero coefficient in the expansion of $\Delta(\pi)$. This
+    implies that there are two disjoint sets of indexes $P_1$ and $P_2$
+    such that $P_1 \uplus P_2 = [|\pi|]$ and
+    \begin{equation} \label{equ:square_stability_same_std}
+        \STD\left(\pi_{|P_1}\right) = \rho = \STD\left(\pi_{|P_2}\right).
+    \end{equation}
+    \smallskip
+
+    To prove~\ref{item:square_stability_1}, set
+    $P_1^\sim := \{|\pi| - i  + 1 : i \in P_1\}$ and
+    $P_2^\sim := \{|\pi| - i  + 1 : i \in P_2\}$.
+    Since~\eqref{equ:square_stability_same_std} holds, one has
+    \begin{equation}
+        \STD\left(\pi^\sim_{|P_1^\sim}\right) = \rho^\sim =
+        \STD\left(\pi^\sim_{|P_2^\sim}\right).
+    \end{equation}
+
+    TO CONTINUE
 
 \end{proof}
 \medskip
