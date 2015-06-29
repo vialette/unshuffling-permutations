@@ -141,10 +141,10 @@ by duality in the following way. From~\eqref{equ:unshuffling_coproduct},
 for any permutation $\pi$, we have
 \begin{equation}
     \Delta(\pi) =
-    \sum_{\sigma, \nu \in S} \lambda_{\sigma, \nu}^{(\pi)} \;
+    \sum_{\sigma, \nu \in S} \lambda_{\sigma, \nu}^\pi \;
     \sigma \otimes \nu,
 \end{equation}
-where the $\lambda_{\sigma, \nu}^{(\pi)}$ are nonnegative integers. Now,
+where the $\lambda_{\sigma, \nu}^\pi$ are nonnegative integers. Now,
 by definition of duality, the dual product of $\Delta$ denoted by
 $\SHUFFLE$ is a linear binary product on $\QQ[S]$. It satisfies, for any
 permutations
@@ -152,7 +152,7 @@ $\sigma$ and $\nu$,
 \begin{equation}
     \sigma \SHUFFLE \nu =
     \sum_{\pi \in S}
-    \lambda_{\sigma, \nu}^{(\pi)} \; \pi.
+    \lambda_{\sigma, \nu}^\pi \; \pi.
 \end{equation}
 We call $\SHUFFLE$ the {\em shuffle product of permutations}. For
 instance,
@@ -170,11 +170,12 @@ in~\eqref{equ:example_unshuffling_coproduct}.
 
 We say that a permutation $\pi$ {\em appears} in the shuffle
 $\sigma \SHUFFLE \nu$ of two permutations $\sigma$ and $\nu$ if the
-coefficient $\lambda_{\sigma, \nu}^{(\pi)}$ is different from zero.
+coefficient $\lambda_{\sigma, \nu}^\pi$ is different from zero.
 Besides, a permutation $\pi$ is a {\em square} if there is a permutation
-$\sigma$ such that $\pi$ appears in $\sigma \SHUFFLE \sigma$.
-Equivalently, $\pi$ is a square if in the expansion of $\Delta(\pi)$,
-there is a tensor $\sigma \otimes \sigma$ with a nonzero coefficient.
+$\sigma$ such that $\pi$ appears in $\sigma \SHUFFLE \sigma$. In this
+case, we say that $\sigma$ is a {\em square root} of $\pi$. Equivalently,
+$\pi$ is a square if in the expansion of $\Delta(\pi)$, there is a
+tensor $\sigma \otimes \sigma$ with a nonzero coefficient.
 \medskip
 
 \begin{proposition} \label{prop:shuffle_associative_commutative}
@@ -237,8 +238,16 @@ there is a tensor $\sigma \otimes \sigma$ with a nonzero coefficient.
 \medskip
 
 \begin{proposition}
-    Let $\pi$ be a square permutation. Then, $\pi^\sim$, $\bar \pi$,
-    and $\pi^{-1}$ are square permutations.
+    Let $\pi$ be a square permutation and $\rho$ a square root of $\pi$.
+    Then,
+    \begin{enumerate}
+        \item the permutation $\pi^\sim$ is a square and $\rho^\sim$
+        is one of its square roots;
+        \item the permutation $\bar \pi$ is a square and $\bar \rho$
+        is one of its square roots;
+        \item the permutation $\pi^{-1}$ is a square and $\rho^{-1}$
+        is one of its square roots.
+    \end{enumerate}
 \end{proposition}
 \begin{proof}
 
