@@ -175,8 +175,9 @@ coefficient $\lambda_{\sigma, \nu}^\pi$ is different from zero.
 Besides, a permutation $\pi$ is a {\em square} if there is a permutation
 $\sigma$ such that $\pi$ appears in $\sigma \SHUFFLE \sigma$. In this
 case, we say that $\sigma$ is a {\em square root} of $\pi$. Equivalently,
-$\pi$ is a square if in the expansion of $\Delta(\pi)$, there is a
-tensor $\sigma \otimes \sigma$ with a nonzero coefficient.
+$\pi$ is a square with $\sigma$ as square root if and only if in the
+expansion of $\Delta(\pi)$, there is a tensor $\sigma \otimes \sigma$
+with a nonzero coefficient.
 \medskip
 
 \begin{proposition} \label{prop:shuffle_associative_commutative}
@@ -255,24 +256,40 @@ tensor $\sigma \otimes \sigma$ with a nonzero coefficient.
 \end{proposition}
 \begin{proof}
     First of all, since $\pi$ is a square permutation and $\rho$ is a
-    square root of $\pi$, $\pi$ appears in $\rho \bullet \rho$. In
-    an equivalent way, this amounts to say that $\rho \otimes \rho$ has
-    a nonzero coefficient in the expansion of $\Delta(\pi)$. This
-    implies that there are two disjoint sets of indexes $P_1$ and $P_2$
-    such that $P_1 \uplus P_2 = [|\pi|]$ and
+    square root of $\pi$, $\rho \otimes \rho$ has a nonzero coefficient
+    in the expansion of $\Delta(\pi)$. This implies that there are two
+    disjoint sets of indexes $P_1$ and $P_2$ such that
+    $P_1 \uplus P_2 = [|\pi|]$ and, by denoting $\pi_{|P_1}$ by $u$ and
+    $\pi_{|P_2}$ by $v$,
     \begin{equation} \label{equ:square_stability_same_std}
-        \STD\left(\pi_{|P_1}\right) = \rho = \STD\left(\pi_{|P_2}\right).
+        \STD(u) = \rho = \STD(v).
     \end{equation}
     \smallskip
 
     To prove~\ref{item:square_stability_1}, set
-    $P_1^\sim := \{|\pi| - i  + 1 : i \in P_1\}$ and
-    $P_2^\sim := \{|\pi| - i  + 1 : i \in P_2\}$.
-    Since~\eqref{equ:square_stability_same_std} holds, one has
-    \begin{equation}
-        \STD\left(\pi^\sim_{|P_1^\sim}\right) = \rho^\sim =
-        \STD\left(\pi^\sim_{|P_2^\sim}\right).
-    \end{equation}
+    $P_1^\sim := \{|\pi| - i  + 1 : i \in P_1\}$,
+    $P_2^\sim := \{|\pi| - i  + 1 : i \in P_2\}$,
+    $u' := \pi^\sim_{|P_1^\sim}$, and $v' := \pi^\sim_{|P_2^\sim}$.
+    Now, by construction, ${u'}^\sim = u$ and ${v'}^\sim = v$. Then,
+    by~\eqref{equ:square_stability_same_std},
+    $\STD(u') = \rho^\sim = \STD(v')$, so that $\rho^\sim$ is a square
+    root of $\pi$.
+    \smallskip
+
+    Let us establish~\ref{item:square_stability_2}. Set
+    $u' := \bar \pi_{|P_1}$ and $v' := \bar \pi_{|P_2}$. By definition
+    of the operation $\bar\,$, for all indexes $i$ and $j$, we have
+    $u_i < u_j$ if and only if $\bar u'_i > \bar u'_j$, the same
+    property holding for $v$ and $v'$. Then,
+    by~\eqref{equ:square_stability_same_std},
+    $\STD(u') = \bar \rho = \STD(v')$, showing that $\bar \rho$ is a
+    square root of $\bar \pi$.
+    \smallskip
+
+    Finally, let us show~\ref{item:square_stability_3}. Set
+    $P^{-1}_1 := \{u_i : i \in [|u|]\}$,
+    $P^{-1}_2 := \{v_i : i \in [|v|]\}$, $u' := \pi^{-1}_{|P^{-1}_1}$,
+    and $v' := \pi^{-1}_{|P^{-1}_2}$.
 
     TO CONTINUE
 
