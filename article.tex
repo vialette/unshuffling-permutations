@@ -92,6 +92,7 @@ bla bla bla \ldots
 \label{section:Notations}
 
 % Définir :
+% - notation $[n]$
 % - ensemble $S$
 % - standardisation $\STD$
 % - notation $\pi_{|P}$ et $\pi_{|\bar P}$
@@ -112,8 +113,8 @@ first define a linear coproduct $\Delta$ on $\QQ[S]$ satisfying for
 any permutation $\pi$,
 \begin{equation} \label{equ:unshuffling_coproduct}
     \Delta(\pi) =
-    \sum_{P \subseteq [|\pi|]}
-    \STD\left(\pi_{|P}\right) \otimes \STD\left(\pi_{|\bar P}\right).
+    \sum_{P_1 \uplus P_2 = [|\pi|]}
+    \STD\left(\pi_{|P_1}\right) \otimes \STD\left(\pi_{|P_2}\right).
 \end{equation}
 We call $\Delta$ the {\em unshuffling coproduct of permutations}. For
 instance,
@@ -176,18 +177,68 @@ Equivalently, $\pi$ is a square if in the expansion of $\Delta(\pi)$,
 there is a tensor $\sigma \otimes \sigma$ with a nonzero coefficient.
 \medskip
 
-\begin{proposition}
+\begin{proposition} \label{prop:shuffle_associative_commutative}
     The shuffle product $\SHUFFLE$ of permutations is associative and
     commutative.
 \end{proposition}
 \begin{proof}
+    To prove the associativity of $\SHUFFLE$, it is convenient to show
+    that its dual coproduct $\Delta$ is coassociative, that is
+    \begin{equation}
+        (\Delta \otimes I) \Delta = (I \otimes \Delta) \Delta,
+    \end{equation}
+    where $I$ denote the identity map. This strategy relies on the fact
+    that a product is associative if and only if its dual coproduct is
+    coassociative. For any permutation $\pi$, we have
+    \begin{equation} \begin{split}
+    \label{equ:shuffle_associative_commutative}
+        (\Delta \otimes I) \Delta(\pi) & =
+        (\Delta \otimes I)
+        \sum_{P_1 \uplus P_2 = [|\pi|]}
+        \STD\left(\pi_{|P_1}\right) \otimes \STD\left(\pi_{|P_2}\right) \\
+        & =
+        \sum_{P_1 \uplus P_2 = [|\pi|]}
+        \Delta\left(\STD\left(\pi_{|P_1}\right)\right)
+        \otimes I\left(\STD\left(\pi_{|P_2}\right)\right) \\
+        & =
+        \sum_{P_1 \uplus P_2 = [|\pi|]}
+        \sum_{Q_1 \uplus Q_2 = [|P_1|]}
+        \STD\left(\STD\left(\pi_{|P_1}\right)_{|Q_1}\right)
+        \otimes
+        \STD\left(\STD\left(\pi_{|P_1}\right)_{|Q_2}\right)
+        \otimes \STD\left(\pi_{|P_2}\right) \\
+        & =
+        \sum_{P_1 \uplus P_2 \uplus P_3 = [|\pi|]}
+        \STD\left(\pi_{|P_1}\right) \otimes
+        \STD\left(\pi_{|P_2}\right) \otimes
+        \STD\left(\pi_{|P_3}\right).
+    \end{split} \end{equation}
+    An analogous computation shows that $(I \otimes \Delta) \Delta(\pi)$
+    is equal to the last member of~\eqref{equ:shuffle_associative_commutative},
+    whence the associativity of $\SHUFFLE$.
+    \smallskip
 
+    Finally, to prove the commutativity of $\SHUFFLE$, we shall show
+    that $\Delta$ is cocommutative, that is for any permutation $\pi$,
+    if in the expansion of $\Delta(\pi)$ there is a tensor
+    $\sigma \otimes \nu$ with a coefficient $\lambda$, there is in the
+    same expansion the tensor $\nu \otimes \sigma$ with the same
+    coefficient $\lambda$. Clearly, a product is associative if and only
+    if its dual coproduct is coassociative. Now, from the
+    definition~\eqref{equ:unshuffling_coproduct} of $\Delta$, one
+    observes that if the pair $(P_1, P_2)$ of subsets of $[|\pi|]$
+    contributes to the coefficient of
+    $\STD\left(\pi_{|P_1}\right) \otimes \STD\left(\pi_{|P_2}\right)$,
+    the pair $(P_2, P_1)$ contributes to the coefficient of
+    $\STD\left(\pi_{|P_2}\right) \otimes \STD\left(\pi_{|P_1}\right)$.
+    This shows that $\Delta$ is cocommutative and hence, that $\SHUFFLE$
+    is commutative.
 \end{proof}
 \medskip
 
 \begin{proposition}
-    If $\pi$ is a square permutation, then $\pi^\sim$, $\bar \pi$,
-    and $\pi^{-1}$ are square.
+    Let $\pi$ be a square permutation. Then, $\pi^\sim$, $\bar \pi$,
+    and $\pi^{-1}$ are square permutations.
 \end{proposition}
 \begin{proof}
 
