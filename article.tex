@@ -33,6 +33,9 @@
 
 \DeclareMathOperator{\LEFT}{\ell}
 \DeclareMathOperator{\RIGHT}{r}
+\DeclareMathOperator{\QQ}{\mathbb{Q}}
+\DeclareMathOperator{\STD}{\mathrm{std}}
+\DeclareMathOperator{\SHUFFLE}{\bullet}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -88,6 +91,108 @@ bla bla bla \ldots
 \section{Notations}
 \label{section:Notations}
 
+% Définir :
+% - ensemble $S$
+% - standardisation $\STD$
+% - notation $\pi_{|P}$ et $\pi_{|\bar P}$
+% - notation $\pi^\sim$ (miroir)
+% - notation $\bar \pi$ (complémentaire)
+% - notation $\bar ^{-1}$ (inverse)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% ---- Algebraic issues ----
+%%
+\section{Algebraic issues}
+\label{section:Algebraic issues}
+Let use denote by $\QQ[S]$ the linear span of all permutations. We shall
+define on this space a kind of shuffle product. For this purpose, we
+first define a linear coproduct $\Delta$ on $\QQ[S]$ satisfying for
+any permutation $\pi$,
+\begin{equation} \label{equ:unshuffling_coproduct}
+    \Delta(\pi) =
+    \sum_{P \subseteq [|\pi|]}
+    \STD\left(\pi_{|P}\right) \otimes \STD\left(\pi_{|\bar P}\right).
+\end{equation}
+We call $\Delta$ the {\em unshuffling coproduct of permutations}. For
+instance,
+\begin{equation}
+    \Delta(213) =
+    \epsilon \otimes 213 + 2. 1 \otimes 12 +
+    1 \otimes 21 + 2. 12 \otimes 1 + 21 \otimes 1 + 213 \otimes \epsilon,
+\end{equation}
+\begin{equation}
+    \Delta(1234) =
+    \epsilon \otimes 1234 + 4. 1 \otimes 123 + 6. 12 \otimes 12 +
+    4. 123 \otimes 1 + 1234 \otimes \epsilon,
+\end{equation}
+\begin{equation}\begin{split} \label{equ:example_unshuffling_coproduct}
+    \Delta(1432) & =
+    \epsilon \otimes 1432 + 3. 1 \otimes 132 + 1 \otimes 321 +
+    3. 12 \otimes 21 \\ & + 3. 21 \otimes 12 + 3. 132 \otimes 1 +
+    321 \otimes 1 + 1432 \otimes \epsilon.
+\end{split}\end{equation}
+\medskip
+
+As any coproduct, $\Delta$ leads to the definition of a product obtained
+by duality in the following way. From~\eqref{equ:unshuffling_coproduct},
+for any permutation $\pi$, we have
+\begin{equation}
+    \Delta(\pi) =
+    \sum_{\sigma, \nu \in S} \lambda_{\sigma, \nu}^{(\pi)} \;
+    \sigma \otimes \nu,
+\end{equation}
+where the $\lambda_{\sigma, \nu}^{(\pi)}$ are nonnegative integers. Now,
+by definition of duality, the dual product of $\Delta$ denoted by
+$\SHUFFLE$ is a linear binary product on $\QQ[S]$. It satisfies, for any
+permutations
+$\sigma$ and $\nu$,
+\begin{equation}
+    \sigma \SHUFFLE \nu =
+    \sum_{\pi \in S}
+    \lambda_{\sigma, \nu}^{(\pi)} \; \pi.
+\end{equation}
+We call $\SHUFFLE$ the {\em shuffle product of permutations}. For
+instance,
+\begin{equation}\begin{split} \label{equ:example_shuffle_product}
+    12 \SHUFFLE 21 & =
+    1243 + 1324 + 2.1342 + 2.1423 + 3.1432 + 2134 + 2.2314 \\
+    & + 3.2341 + 2413 + 2.2431 + 2.3124 + 3142 + 3.3214 + 2.3241 \\
+    & + 3421 + 3.4123 + 2.4132 + 2.4213 + 4231 + 4312.
+\end{split}\end{equation}
+Observe that the coefficient $3$ of the permutation $1432$
+in~\eqref{equ:example_shuffle_product} comes from the fact that the
+coefficient of the tensor $12 \otimes 21$ is $3$
+in~\eqref{equ:example_unshuffling_coproduct}.
+\medskip
+
+We say that a permutation $\pi$ {\em appears} in the shuffle
+$\sigma \SHUFFLE \nu$ of two permutations $\sigma$ and $\nu$ if the
+coefficient $\lambda_{\sigma, \nu}^{(\pi)}$ is different from zero.
+Besides, a permutation $\pi$ is a {\em square} if there is a permutation
+$\sigma$ such that $\pi$ appears in $\sigma \SHUFFLE \sigma$.
+Equivalently, $\pi$ is a square if in the expansion of $\Delta(\pi)$,
+there is a tensor $\sigma \otimes \sigma$ with a nonzero coefficient.
+\medskip
+
+\begin{proposition}
+    The shuffle product $\SHUFFLE$ of permutations is associative and
+    commutative.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+\medskip
+
+\begin{proposition}
+    If $\pi$ is a square permutation, then $\pi^\sim$, $\bar \pi$,
+    and $\pi^{-1}$ are square.
+\end{proposition}
+\begin{proof}
+
+\end{proof}
+\medskip
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -101,7 +206,7 @@ bla bla bla \ldots
 \begin{proposition}
 Let $\pi \in S_{2n}$.
 Then,
-$\pi$ is the union of two order-isomorphic pattern 
+$\pi$ is the union of two order-isomorphic pattern
 if and only if
 there exists a perfect containment-free mathing
 $\mathcal{M}$ of $G_\pi$ such that
@@ -215,7 +320,7 @@ There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
     structure link/.style={line width=1.5pt},
     pattern link/.style={line width=1.5pt,black!20},
     monotone/.style={->,thick}
-    ]  
+    ]
     % edges
     % pi 1 - pi 2
     \draw [pattern link] (8.5,6) .. controls +(0,1) and +(0,2) .. (10.5,5);
@@ -263,13 +368,13 @@ There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
     \node [main node] (sigma1) at (4.5,6.5) {$\sigma'$};
     % pi 1
     \draw [cell] (8,5) -- (9,5) -- (9,6) -- (8,6) -- cycle;
-    \node [main node] (pi1) at (8.5,5.5) {$\pi'$};    
+    \node [main node] (pi1) at (8.5,5.5) {$\pi'$};
     % pi 2
     \draw [cell] (10,4) -- (11,4) -- (11,5) -- (10,5) -- cycle;
     \node [main node] (sigma2) at (10.5,4.5) {$\pi''$};
     % sigma 2
     \draw [cell] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
-    \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};  
+    \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};
     % grid
     \draw[step=1cm,black!30,ultra thin,fill=black!10] (0,0) grid (12,12);
     % row size
@@ -277,7 +382,7 @@ There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
         \node at (-0.5,\y) (R\y) {$\N$};
     }
     % column size
-    \foreach \x/\N in 
+    \foreach \x/\N in
     {0.5/N_1,1.5/N_2,2.5/N_1,3.5/N_3,4.5/k+2,5.5/N_4,6.5/N_2,7.5/N_3,8.5/n+2,9.5/N_4,10.5/n,11.5/k} {
         \node at (\x,-0.5) (C\x) {$\N$};
     }
