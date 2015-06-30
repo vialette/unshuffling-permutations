@@ -35,7 +35,7 @@
 \DeclareMathOperator{\LEFT}{\ell}
 \DeclareMathOperator{\RIGHT}{r}
 \DeclareMathOperator{\QQ}{\mathbb{Q}}
-\DeclareMathOperator{\STD}{\mathrm{std}}
+\DeclareMathOperator{\STD}{\mathrm{s}}
 \DeclareMathOperator{\SHUFFLE}{\bullet}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -97,7 +97,7 @@ bla bla bla \ldots
 % - ensemble $S$
 % - standardisation $\STD$
 % - notation $\pi_{|P}$ et $\pi_{|\bar P}$
-% - notation $\pi^\sim$ (miroir)
+% - notation $\widetitle{\pi} (miroir)
 % - notation $\bar \pi$ (complémentaire)
 % - notation $\bar ^{-1}$ (inverse)
 
@@ -239,22 +239,26 @@ with a nonzero coefficient.
 \end{proof}
 \medskip
 
-\begin{proposition} \label{prop:square_stability}
-    Let $\pi$ be a square permutation and $\rho$ a square root of $\pi$.
-    Then,
-    \begin{enumerate}[label={\it (\roman*)},fullwidth]
-        \item \label{item:square_stability_1}
-        the permutation $\pi^\sim$ is a square and $\rho^\sim$
-        is one of its square roots;
-        \item \label{item:square_stability_2}
-        the permutation $\bar \pi$ is a square and $\bar \rho$
-        is one of its square roots;
-        \item \label{item:square_stability_3}
-        the permutation $\pi^{-1}$ is a square and $\rho^{-1}$
-        is one of its square roots.
-    \end{enumerate}
+Proposition~\ref{prop:shuffle_associative_commutative} implies that
+$\QQ[S]$ endowed with the unshuffling coproduct $\Delta$ is a
+coassociative cocommutative coalgebra, or in an equivalent way, that
+$\QQ[S]$ endowed with the shuffle product $\SHUFFLE$ is an associative
+commutative algebra.
+\medskip
+
+\begin{proposition} \label{prop:endomorphisms}
+    The three linear maps
+    \begin{equation}
+        \phi_{\widetilde{\,}}, \: \phi_{\bar \,}, \: \phi_{-1}
+        : \QQ[S] \to \QQ[S]
+    \end{equation}
+    linearly sending a permutation $\pi$ to, respectively,
+    $\widetilde{\pi}$, $\bar \pi$, or $\pi^{-1}$ are endomorphims of associative
+    algebras.
 \end{proposition}
 \begin{proof}
+    ADAPT NEXT ARGUMENTS AND FINISH.
+
     First of all, since $\pi$ is a square permutation and $\rho$ is a
     square root of $\pi$, $\rho \otimes \rho$ has a nonzero coefficient
     in the expansion of $\Delta(\pi)$. This implies that there are two
@@ -267,13 +271,14 @@ with a nonzero coefficient.
     \smallskip
 
     To prove~\ref{item:square_stability_1}, set
-    $P_1^\sim := \{|\pi| - i  + 1 : i \in P_1\}$,
-    $P_2^\sim := \{|\pi| - i  + 1 : i \in P_2\}$,
-    $u' := \pi^\sim_{|P_1^\sim}$, and $v' := \pi^\sim_{|P_2^\sim}$.
-    Now, by construction, ${u'}^\sim = u$ and ${v'}^\sim = v$. Then,
-    by~\eqref{equ:square_stability_same_std},
-    $\STD(u') = \rho^\sim = \STD(v')$, so that $\rho^\sim$ is a square
-    root of $\pi$.
+    $\widetilde{P_1} := \{|\pi| - i  + 1 : i \in P_1\}$,
+    $\widetilde{P_2} := \{|\pi| - i  + 1 : i \in P_2\}$,
+    $u' := \widetilde{\pi}_{|\widetilde{P_1}}$, and
+    $v' := \widetilde{\pi}_{|\widetilde{P_2}}$.
+    Now, by construction, $\widetilde{u'} = u$ and $\widetilde{v'} = v$.
+    Then, by~\eqref{equ:square_stability_same_std},
+    $\STD(u') = \widetilde{\rho} = \STD(v')$, so that $\widetilde{\rho}$
+    is a square root of $\pi$.
     \smallskip
 
     Let us establish~\ref{item:square_stability_2}. Set
@@ -292,7 +297,43 @@ with a nonzero coefficient.
     and $v' := \pi^{-1}_{|P^{-1}_2}$.
 
     TO CONTINUE
+\end{proof}
+\medskip
 
+\begin{proposition} \label{prop:square_stability}
+    Let $\pi$ be a square permutation and $\rho$ be a square root of
+    $\pi$. Then,
+    \begin{enumerate}[label={\it (\roman*)},fullwidth]
+        \item \label{item:square_stability_1}
+        the permutation $\widetilde{\pi}$ is a square and
+        $\widetilde{\rho}$ is one of its square roots;
+        \item \label{item:square_stability_2}
+        the permutation $\bar \pi$ is a square and $\bar \rho$
+        is one of its square roots;
+        \item \label{item:square_stability_3}
+        the permutation $\pi^{-1}$ is a square and $\rho^{-1}$
+        is one of its square roots.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Since $\pi$ is a square permutation and $\rho$ is a square root
+    of $\pi$, by definition $\pi$ appears in the product
+    $\rho \SHUFFLE \rho$. Now, by Proposition~\ref{prop:endomorphisms},
+    since $\phi_{\widetilde{\,}}$ is a morphism of associative algebras
+    from $\QQ[S]$ to $\QQ[S]$, $\phi_{\widetilde{\,}}$ commutes with
+    the shuffle product of permutations $\SHUFFLE$. Hence, in particular,
+    one has
+    \begin{equation}
+        \phi_{\widetilde{\,}}(\rho \SHUFFLE \rho) =
+        \phi_{\widetilde{\,}}(\rho) \SHUFFLE \phi_{\widetilde{\,}}(\rho).
+    \end{equation}
+    Then, since $\pi$ appears in $\rho \SHUFFLE \rho$,
+    $\widetilde{\pi}$ appears in $\widetilde{\rho} \SHUFFLE \widetilde{\rho}$.
+    This implies~\ref{item:square_stability_1}.
+    \smallskip
+
+    The proofs of~\ref{item:square_stability_2}
+    and~\ref{item:square_stability_3} are analogous.
 \end{proof}
 \medskip
 
