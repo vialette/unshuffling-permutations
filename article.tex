@@ -249,14 +249,53 @@ commutative algebra.
 \begin{proposition} \label{prop:endomorphisms}
     The three linear maps
     \begin{equation}
-        \phi_{\widetilde{\,}}, \: \phi_{\bar \,}, \: \phi_{-1}
-        : \QQ[S] \to \QQ[S]
+        \phi_1, \phi_2, \phi_3 : \QQ[S] \to \QQ[S]
     \end{equation}
     linearly sending a permutation $\pi$ to, respectively,
-    $\widetilde{\pi}$, $\bar \pi$, or $\pi^{-1}$ are endomorphims of associative
-    algebras.
+    $\widetilde{\pi}$, $\bar \pi$, or $\pi^{-1}$ are endomorphims of
+    associative algebras.
 \end{proposition}
 \begin{proof}
+    To prove that, for $j = 1, 2, 3$, $\phi_j$ is a morphism of
+    associative algebras, we have to prove that for all permutations
+    $\sigma$ and $\nu$,
+    \begin{equation}
+        \phi_j(\sigma \SHUFFLE \nu) =
+        \phi_j(\sigma) \SHUFFLE \phi_j(\nu).
+    \end{equation}
+    We shall proceed here as we have done during the proof of
+    Proposition~\ref{prop:shuffle_associative_commutative} by showing
+    that $\phi_j$ is a morphism of coalgebras, that is
+    \begin{equation}
+        \Delta \phi_j = (\phi_j \otimes \phi_j) \Delta.
+    \end{equation}
+    \smallskip
+
+    Let $\pi$ be a permutation. If $P$ is a set of indexes of letters of
+    $\pi$, we denote by $\widetilde{\pi}$ the set
+    $\{|\pi| - i  + 1 : i \in P_1\}$. Now since this operation
+    $\widetilde{\,}$ define a bijection on the set of the subsets of
+    $[|\pi|]$ and the standardisation operation commutes with the
+    mirror operation on words, we have
+    \begin{equation} \begin{split}
+        \Delta(\phi_1(\pi))
+        & = \sum_{P_1 \uplus P_2 = [|\pi|]} \STD\left(\phi_1(\pi)_{|P_1}\right)
+        \otimes \STD\left(\phi_1(\pi)_{|P_2}\right) \\
+        & = \sum_{P_1 \uplus P_2 =
+        [|\pi|]} \STD\left(\widetilde{\pi}_{|\widetilde{P_1}}\right)
+        \otimes \STD\left(\widetilde{\pi}_{|\widetilde{P_2}}\right) \\
+        & = \sum_{P_1 \uplus P_2 =
+        [|\pi|]} \STD\left(\widetilde{\pi}_{|P_1}\right)
+        \otimes \STD\left(\widetilde{\pi}_{|P_2}\right) \\
+        & = \sum_{P_1 \uplus P_2 =
+        [|\pi|]} \phi_1\left(\STD\left(\pi_{|P_1}\right)\right)
+        \otimes \phi_1\left(\STD\left(\pi_{|P_2}\right)\right) \\
+        & = (\phi_1 \otimes \phi_1) \Delta(\pi).
+    \end{split} \end{equation}
+    This shows that $\phi_1$ is a morphism of coalgebras and hence, that
+    $\phi_1$ is a morphism of associative algebras.
+    \smallskip
+
     ADAPT NEXT ARGUMENTS AND FINISH.
 
     First of all, since $\pi$ is a square permutation and $\rho$ is a
@@ -308,32 +347,32 @@ commutative algebra.
         the permutation $\widetilde{\pi}$ is a square and
         $\widetilde{\rho}$ is one of its square roots;
         \item \label{item:square_stability_2}
-        the permutation $\bar \pi$ is a square and $\bar \rho$
-        is one of its square roots;
+        the permutation $\bar \pi$ is a square and $\bar \rho$ is one of
+        its square roots;
         \item \label{item:square_stability_3}
-        the permutation $\pi^{-1}$ is a square and $\rho^{-1}$
-        is one of its square roots.
+        the permutation $\pi^{-1}$ is a square and $\rho^{-1}$ is one of
+        its square roots.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
-    Since $\pi$ is a square permutation and $\rho$ is a square root
-    of $\pi$, by definition $\pi$ appears in the product
+    All statements~\ref{item:square_stability_1},
+    \ref{item:square_stability_2}, and~\ref{item:square_stability_3} are
+    direct consequences of Proposition~\ref{prop:endomorphisms}. Indeed,
+    since $\pi$ is a square permutation and $\rho$ is a square root of
+    $\pi$, by definition $\pi$ appears in the product
     $\rho \SHUFFLE \rho$. Now, by Proposition~\ref{prop:endomorphisms},
-    since $\phi_{\widetilde{\,}}$ is a morphism of associative algebras
-    from $\QQ[S]$ to $\QQ[S]$, $\phi_{\widetilde{\,}}$ commutes with
-    the shuffle product of permutations $\SHUFFLE$. Hence, in particular,
+    for all $j = 1, 2, 3$, since $\phi_j$ is a morphism of associative
+    algebras from $\QQ[S]$ to $\QQ[S]$, $\phi_j$ commutes with the
+    shuffle product of permutations $\SHUFFLE$. Hence, in particular,
     one has
     \begin{equation}
-        \phi_{\widetilde{\,}}(\rho \SHUFFLE \rho) =
-        \phi_{\widetilde{\,}}(\rho) \SHUFFLE \phi_{\widetilde{\,}}(\rho).
+        \phi_j(\rho \SHUFFLE \rho) =
+        \phi_j(\rho) \SHUFFLE \phi_j(\rho).
     \end{equation}
-    Then, since $\pi$ appears in $\rho \SHUFFLE \rho$,
-    $\widetilde{\pi}$ appears in $\widetilde{\rho} \SHUFFLE \widetilde{\rho}$.
-    This implies~\ref{item:square_stability_1}.
-    \smallskip
-
-    The proofs of~\ref{item:square_stability_2}
-    and~\ref{item:square_stability_3} are analogous.
+    Then, since $\pi$ appears in $\rho \SHUFFLE \rho$, $\phi_j(\pi)$
+    appears in $\phi_j(\rho) \SHUFFLE \phi_j(\rho)$. This
+    implies~\ref{item:square_stability_1}, \ref{item:square_stability_2},
+    and~\ref{item:square_stability_3}.
 \end{proof}
 \medskip
 
