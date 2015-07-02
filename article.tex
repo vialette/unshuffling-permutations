@@ -138,6 +138,11 @@ instance,
     3. 12 \otimes 21 \\ & + 3. 21 \otimes 12 + 3. 132 \otimes 1 +
     321 \otimes 1 + 1432 \otimes \epsilon.
 \end{split}\end{equation}
+Observe that the coefficient of the tensor $1 \otimes 132$ is $3$
+in~\eqref{equ:example_unshuffling_coproduct} because there are exactly
+three ways to extract two disjoint subwords of the permutation $1432$
+so that the letters of these two subwords have the same relative order
+as the letters of the permutations $1$ and $132$.
 \medskip
 
 As any coproduct, $\Delta$ leads to the definition of a product obtained
@@ -158,8 +163,7 @@ $\sigma$ and $\nu$,
     \sum_{\pi \in S}
     \lambda_{\sigma, \nu}^\pi \; \pi.
 \end{equation}
-We call $\SHUFFLE$ the {\em shuffle product of permutations}. For
-instance,
+We call $\SHUFFLE$ the {\em shuffle product of permutations}. For instance,
 \begin{equation}\begin{split} \label{equ:example_shuffle_product}
     12 \SHUFFLE 21 & =
     1243 + 1324 + 2.1342 + 2.1423 + 3.1432 + 2134 + 2.2314 \\
@@ -170,6 +174,13 @@ Observe that the coefficient $3$ of the permutation $1432$
 in~\eqref{equ:example_shuffle_product} comes from the fact that the
 coefficient of the tensor $12 \otimes 21$ is $3$
 in~\eqref{equ:example_unshuffling_coproduct}.
+\medskip
+
+Intuitively, this product shuffles the values and the positions of the
+letters of the permutations. There are other shuffle products on
+permutations~\cite{DHT:IJAC:2002}: the {\em shifted shuffle} and the
+{\em convolution product}. Our shuffle product is different from these
+last two.
 \medskip
 
 We say that a permutation $\pi$ {\em appears} in the shuffle
