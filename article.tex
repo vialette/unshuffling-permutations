@@ -94,9 +94,10 @@ bla bla bla \ldots
 
 We denote by $S_n$ the set of permutations of size $n$ and by $S$ the
 set of all permutations. If $\pi$ is a permutation, we denote by $|\pi|$
-its size. If $P$ is a subset of $[|\pi|]$, $\pi_{|P}$ is the subword of
-$\pi$ consisting in the letters of $\pi$ at the positions specified by
-the elements of $P$. Besides, we denote by $\widetilde{\pi}$ (resp.
+its size. The unique permutation of size $0$ is denoted by $\epsilon$.
+If $P$ is a subset of $[|\pi|]$, $\pi_{|P}$ is the subword of $\pi$
+consisting in the letters of $\pi$ at the positions specified by the
+elements of $P$. Besides, we denote by $\widetilde{\pi}$ (resp.
 $\bar \pi$, $\pi^{-1}$) the mirror image (resp. complementary, inverse)
 of $\pi$. If $u$ is a word of integers without multiple occurrences of a
 same letter, $\STD(u)$ denotes the unique permutation of same size as
@@ -111,10 +112,18 @@ $\STD(u)_i < \STD(u)_j$.
 %%
 \section{Algebraic issues}
 \label{section:Algebraic issues}
-Let use denote by $\QQ[S]$ the linear span of all permutations. We shall
-define on this space a kind of shuffle product. For this purpose, we
-first define a linear coproduct $\Delta$ on $\QQ[S]$ satisfying for
-any permutation $\pi$,
+The purpose of this section is to define a shuffle product $\SHUFFLE$
+on permutations and establish some of its properties. To define this
+shuffle product, we shall first define a coproduct~\cite{Joni:Rota:1979}
+denoted by $\Delta$. By duality, $\Delta$ implies the definition of
+$\SHUFFLE$. It is worth to note that, as we will see, algebraic
+properties of $\Delta$ imply combinatorial properties of $\SHUFFLE$.
+\medskip
+
+Let use denote by $\QQ[S]$ the linear span of all permutations. As
+announced, we shall define on this space a kind of shuffle product and
+this purpose, we first define a linear coproduct $\Delta$ on $\QQ[S]$.
+For any permutation $\pi$, we set
 \begin{equation} \label{equ:unshuffling_coproduct}
     \Delta(\pi) =
     \sum_{P_1 \uplus P_2 = [|\pi|]}
@@ -185,13 +194,13 @@ last two.
 
 We say that a permutation $\pi$ {\em appears} in the shuffle
 $\sigma \SHUFFLE \nu$ of two permutations $\sigma$ and $\nu$ if the
-coefficient $\lambda_{\sigma, \nu}^\pi$ is different from zero.
-Besides, a permutation $\pi$ is a {\em square} if there is a permutation
-$\sigma$ such that $\pi$ appears in $\sigma \SHUFFLE \sigma$. In this
-case, we say that $\sigma$ is a {\em square root} of $\pi$. Equivalently,
-$\pi$ is a square with $\sigma$ as square root if and only if in the
-expansion of $\Delta(\pi)$, there is a tensor $\sigma \otimes \sigma$
-with a nonzero coefficient.
+coefficient $\lambda_{\sigma, \nu}^\pi$ is different from zero. Besides,
+a permutation $\pi$ is a {\em square} if there is a permutation $\sigma$
+such that $\pi$ appears in $\sigma \SHUFFLE \sigma$. In this case, we
+say that $\sigma$ is a {\em square root} of $\pi$. Equivalently, $\pi$
+is a square with $\sigma$ as square root if and only if in the expansion
+of $\Delta(\pi)$, there is a tensor $\sigma \otimes \sigma$ with a
+nonzero coefficient.
 \medskip
 
 \begin{proposition} \label{prop:shuffle_associative_commutative}
@@ -231,8 +240,9 @@ with a nonzero coefficient.
         \STD\left(\pi_{|P_3}\right).
     \end{split} \end{equation}
     An analogous computation shows that $(I \otimes \Delta) \Delta(\pi)$
-    is equal to the last member of~\eqref{equ:shuffle_associative_commutative},
-    whence the associativity of $\SHUFFLE$.
+    is equal to the last member
+    of~\eqref{equ:shuffle_associative_commutative}, whence the
+    associativity of $\SHUFFLE$.
     \smallskip
 
     Finally, to prove the commutativity of $\SHUFFLE$, we shall show
@@ -287,10 +297,10 @@ commutative algebra.
     \smallskip
 
     If $P$ is a set of indexes of letters of $\pi$, we denote by
-    $\widetilde{\pi}$ the set $\{|\pi| - i  + 1 : i \in P\}$. Now since
+    $\widetilde{\pi}$ the set $\{|\pi| - i  + 1 : i \in P\}$. Now, since
     this operation $\widetilde{\,}$ define a bijection on the set of the
-    subsets of $[|\pi|]$ and the standardisation operation commutes with
-    the mirror operation on words, we have
+    subsets of $[|\pi|]$, and since the standardization operation
+    commutes with the mirror operation on words, we have
     \begin{equation} \begin{split}
         \Delta(\phi_1(\pi))
         & = \sum_{P_1 \uplus P_2 = [|\pi|]}
@@ -338,7 +348,7 @@ commutative algebra.
     Finally, for any permutation $\tau$, if $P$ is a set of indexes of
     letters of $\tau$, we denote by $P_\tau^{-1}$ the set
     $\{\tau_i : i \in P\}$. Since the map sending a subset $P$ of
-    $[|\pi|]$ to $P_\pi^{-1}$ is a bijection and
+    $[|\pi|]$ to $P_\pi^{-1}$ is a bijection, and since
     $\STD\left(\pi_{|P}\right)^{-1} = \STD\left(\pi^{-1}_{|P_\pi^{-1}}\right)$,
     we have
     \begin{equation} \begin{split}
@@ -363,6 +373,11 @@ commutative algebra.
     This shows that $\phi_3$ is a morphism of coalgebras and hence, that
     $\phi_3$ is a morphism of associative algebras.
 \end{proof}
+\medskip
+
+We now use the algebraic properties of $\SHUFFLE$ exhibited by
+Proposition~\ref{prop:endomorphisms} to obtain combinatorial properties
+of square permutations.
 \medskip
 
 \begin{proposition} \label{prop:square_stability}
