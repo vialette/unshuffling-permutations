@@ -36,6 +36,10 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newtheorem{fact}{Fact}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \makeatletter
 \newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
 \newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
@@ -51,8 +55,8 @@
 Unshuffling Permutations}%
 
 \author{%
-  Samuele Giraudo\inst{1} \and
-  St\'ephane Vialette\inst{1}
+  Samuele Giraudo \and
+  St\'ephane Vialette
 }% end author
 \institute{%
   Universit\'e Paris-Est, LIGM (UMR 8049), CNRS, UPEM, ESIEE Paris, ENPC,
@@ -99,110 +103,21 @@ bla bla bla \ldots
 
 
 \begin{proposition}
-Let $\pi \in S_{2n}$.
-Then,
-$\pi$ is the union of two order-isomorphic pattern 
-if and only if
-there exists a perfect containment-free mathing
-$\mathcal{M}$ of $G_\pi$ such that
-$\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
+  \label{proposition:matching}
+  Let $\pi \in S_{2n}$.
+  Then,
+  $\pi$ is the union of two order-isomorphic patterns
+  if and only if
+  there exists a perfect containment-free mathing
+  $\mathcal{M}$ of $G_\pi$ such that
+  $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
 \end{proposition}
 
 \begin{proposition}
-Deciding whether a permutation is the union of two
-order-isomorphic pattern is \NPC.
+  \label{proposition:hardness}
+  Deciding whether a permutation is the union of two
+  order-isomorphic patterns is \NPC.
 \end{proposition}
-
-
-\begin{align*}
-N_4 &= 2(2n + k + 2) + 1  = 4n + 2k + 5 \\
-N_3 &= 2(2N_4 + 2n + 2k + 4) + 1 = 20n + 12k + 9 \\
-N_2 &= 2(2N_3 + 2n + 2k + 4) + 1 \\
-N_1 &= 2(2N_2 + 2n + 2k + 4) + 1\text{.}
-\end{align*}
-
-\begin{align*}
-\sigma'  &= ((k+1) \; \sigma \; (k+2)) \; [2N_2 + N_4 + 2n + k + 2] \\
-\pi'     &= ((n+1) \; \pi \; (n+2)) \; [2N_2 + N_4 + n + k + 2] \\
-\sigma'' &= \sigma \; [2N_2 + N_4] \\
-\pi''    &= \pi \; [2N_2 + N_4 + k] \\
-\nu_1    &= \nearrow_{N_1} \; [2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4] \\
-\nu'_1   &= \nearrow_{N_1} \; [N_1 + 2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4] \\
-\nu_2    &= \nearrow_{N_2} \; [N_2] \\
-\nu'_2   &= \searrow_{N_2} \\
-\nu_3    &= \nearrow_{N_3} \; [2N_2 + 2N_4 + 2n + 2k + 4] \\
-\nu'_3   &= \nearrow_{N_3} \; [2N_2 + N_3 + 2N_4 + 2n + 2k + 4] \\
-\nu_4    &= \searrow_{N_4} \; [2N_2 + N_4 + 2n + 2k + 4] \\
-\nu'_4   &= \searrow_{N_4} \; [2N_2]
-\end{align*}
-
-$$
-\mu
-=
-\nu_1 \; \nu_2 \; \nu'_1 \; \nu_3 \; \sigma' \; \nu_4 \; \nu'_3 \; \pi' \; \nu'_4 \; \pi'' \; \sigma''
-$$
-
-\begin{claim}
-  \label{claim:no nu_1 - nu_1 edge}
-  There is no $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no nu_1 - nu_1 edge}]
-Suppose, aiming at a contradiction that there exists
-a $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
-
-\begin{tikzpicture}
-  [scale=0.25]
-  % nu_1
-  \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
-  \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
-      \draw [fill=black] (\x,\y) circle (0.1);
-  }
-  % nu_4
-  \draw[step=1cm,black!30,ultra thin,fill=black!10] (4.8,-0.2) grid (10.2,5.2);
-  \foreach \x/\y in {5/5,6/4,7/3,8/2,9/1,10/0} {
-      \draw [fill=black] (\x,\y) circle (0.1);
-  }
-  % nu'_1
-  \draw[step=1cm,black!30,ultra thin,fill=black!10] (9.8,14.8) grid (15.2,20.2);
-  \foreach \x/\y in {10/15,11/16,12/17,13/18,14/19,15/20} {
-      \draw [fill=black] (\x,\y) circle (0.1);
-  }
-  % edges
-  \draw [line width=1pt]
-  (1,11) .. controls +(0,2) and +(0,1) .. (2,12);
-  \draw [line width=1pt]
-  (3,13) .. controls +(0,6) and +(0,16) .. (8,2);
-\end{tikzpicture}
-\begin{tikzpicture}
-  [scale=0.25]
-  % nu_1
-  \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
-  \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
-      \draw [fill=black] (\x,\y) circle (0.1);
-  }
-  % nu_4
-  \draw[step=1cm,black!30,ultra thin,fill=black!10] (4.8,-0.2) grid (10.2,5.2);
-  \foreach \x/\y in {5/5,6/4,7/3,8/2,9/1,10/0} {
-      \draw [fill=black] (\x,\y) circle (0.1);
-  }
-  % nu'_1
-  \draw[step=1cm,black!30,ultra thin,fill=black!10] (9.8,14.8) grid (15.2,20.2);
-  \foreach \x/\y in {10/15,11/16,12/17,13/18,14/19,15/20} {
-      \draw [fill=black] (\x,\y) circle (0.1);
-  }
-  % edges
-  \draw [line width=1pt]
-  (1,11) .. controls +(0,2) and +(0,1) .. (2,12);
-  \draw [line width=1pt]
-  (3,13) .. controls +(0,6) and +(0,16) .. (8,2);
-\end{tikzpicture}
-\qed
-\end{proof}
-
-\begin{claim}
-There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
-\end{claim}
 
 \begin{figure}[t!]
   \centering
@@ -282,8 +197,246 @@ There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
         \node at (\x,-0.5) (C\x) {$\N$};
     }
   \end{tikzpicture}
+  \caption{\label{fig:reduction}}
 \end{figure}
 
+
+\begin{align*}
+N_4 &= 2(2n + k + 2) + 1  = 4n + 2k + 5 \\
+N_3 &= 2(2N_4 + 2n + 2k + 4) + 1 = 20n + 12k + 9 \\
+N_2 &= 2(2N_3 + 2n + 2k + 4) + 1 \\
+N_1 &= 2(2N_2 + 2n + 2k + 4) + 1\text{.}
+\end{align*}
+
+\begin{align*}
+\sigma'  &= ((k+1) \; \sigma \; (k+2)) \; [2N_2 + N_4 + 2n + k + 2] \\
+\pi'     &= ((n+1) \; \pi \; (n+2)) \; [2N_2 + N_4 + n + k + 2] \\
+\sigma'' &= \sigma \; [2N_2 + N_4] \\
+\pi''    &= \pi \; [2N_2 + N_4 + k] \\
+\nu_1    &= \nearrow_{N_1} \; [2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4] \\
+\nu'_1   &= \nearrow_{N_1} \; [N_1 + 2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4] \\
+\nu_2    &= \nearrow_{N_2} \; [N_2] \\
+\nu'_2   &= \searrow_{N_2} \\
+\nu_3    &= \nearrow_{N_3} \; [2N_2 + 2N_4 + 2n + 2k + 4] \\
+\nu'_3   &= \nearrow_{N_3} \; [2N_2 + N_3 + 2N_4 + 2n + 2k + 4] \\
+\nu_4    &= \searrow_{N_4} \; [2N_2 + N_4 + 2n + 2k + 4] \\
+\nu'_4   &= \searrow_{N_4} \; [2N_2]
+\end{align*}
+
+$$
+\mu
+=
+\nu_1 \; \nu_2 \; \nu'_1 \; \nu_3 \; \sigma' \; \nu_4 \; \nu'_3 \; \pi' \; \nu'_4 \; \pi'' \; \sigma''
+$$
+
+\begin{figure}[t!]
+  \centering
+  \subfigure[A nested $(\nu_1,\nu'_1)$-edge.]{%
+    \begin{tikzpicture}
+      [
+        scale=0.3,
+        label/.style={anchor=base}
+      ]
+      % nu_1
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
+      \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % nu_4
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
+      \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % nu'_1
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (11.8,15.8) grid (17.2,21.2);
+      \foreach \x/\y in {12/16,13/17,14/18,15/19,16/20,17/21} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % labels
+      \node [label] (x) at (17,14.5) {$x$};
+      % \node [label] (y) at (14,14.5) {$y$};
+      \node [label] (a) at (0,8.5) {$a$};
+      \node [label] (b) at (8,-1.5) {$b$};
+      \node (nu1) at (2.5,7.7) {$\nu_1$};
+      \node (nu2) at (8.5,-2.5) {$\nu_2$};
+      \node (nu1') at (14.5,13.5) {$\nu'_1$};
+      % edges
+      \draw [line width=1pt]
+      (1,11) .. controls +(0,12) and +(0,4) .. (12,16);
+      \draw [line width=1pt]
+      (2,12) .. controls +(0,12) and +(0,4) .. (13,17);
+      \draw [line width=1pt]
+      (3,13) .. controls +(0,12) and +(0,4) .. (14,18);
+      \draw [line width=1pt]
+      (4,14) .. controls +(0,12) and +(0,4) .. (15,19);
+      \draw [line width=1pt]
+      (5,15) .. controls +(0,12) and +(0,4) .. (16,20);
+      \draw [line width=1pt]
+      (0,10) .. controls +(0,8) and +(0,20) .. (8,3);
+    \end{tikzpicture}
+    \label{subfig:no (nu_1, nu_2)-edge - 2}}
+  \qquad
+  \subfigure[A nested $(\nu_1,\nu'_1)$-edge.]{%
+    \begin{tikzpicture}
+      [
+        scale=0.3,
+        label/.style={anchor=base}
+      ]
+      % nu_1
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
+      \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % nu_4
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
+      \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % nu'_1
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (11.8,15.8) grid (17.2,21.2);
+      \foreach \x/\y in {12/16,13/17,14/18,15/19,16/20,17/21} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % labels
+      \node [label] (x) at (3,8.5) {$x$};
+      \node [label] (y) at (14,14.5) {$y$};
+      \node [label] (a) at (1,8.5) {$a$};
+      \node [label] (b) at (8,-1.5) {$b$};
+      \node (nu1) at (2.5,7.7) {$\nu_1$};
+      \node (nu2) at (8.5,-2.5) {$\nu_2$};
+      \node (nu1') at (14.5,13.5) {$\nu'_1$};
+      % edges
+      \draw [line width=1pt]
+      (3,13) .. controls +(0,9) and +(0,4) .. (14,18);
+      \draw [line width=1pt]
+      (1,11) .. controls +(0,6) and +(0,16) .. (8,3);
+    \end{tikzpicture}
+    \label{subfig:no (nu_1, nu_2)-edge - 2}}
+    \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
+            Claim~\ref{claim:no (nu_1, nu_2)-edge}.%
+            }
+  \end{figure}
+
+\begin{claim}
+  \label{claim:no (nu_1, nu_2)-edge}
+  There is no $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (nu_1, nu_2)-edge}]
+  Suppose, aiming at a contradiction that there exists
+  a $(\nu_1, \nu_2)$-edge $e = (a, b)$ in $\mathcal{M}$.
+  Without loss of generality, assume $(a, b)$ is the leftmost
+  $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
+  \begin{itemize}
+  \item $a=1$. 
+  Since $\mathcal{M}$ is containment-free, it does
+  not contain any $(\nu_1, \nu_1)$-edge.
+  Frthermore,
+  since $N_1 > 2(2N_2 + 2n + 2k + 4) > 
+  |\nu_2| + |\nu'_2| + |\nu_3| + |\nu'_3| + |\nu_4| + |\nu'_4|
+  + |\sigma'| + |\pi'| + |\pi''| + |\sigma''|$, there exists 
+  a $(\nu_1, \nu'_1)$-edge $e' = (x, y)$ in $\mathcal{M}$.
+  We have 
+  $\LEFT(e) = \mu(a) < \LEFT(e') = \mu(x)$
+  and
+  $\RIGHT(e') = \mu(b) < \RIGHT(e') = \mu(y)$
+  (see Fig.~\ref{fig:reduction}).
+  Therefore, since $\mathcal{M}$ is containment-free, it does
+  not contain any $(\nu_2, \nu_2)$-edge.
+  According to Proposition~\ref{proposition:matching}, this is 
+  a contradiciton.
+  \end{itemize}
+  \qed
+\end{proof}
+
+\begin{fact}
+  \label{fact:no (nu_2, nu_2)-edge}
+  There is no $(\nu_2, \nu_2)$-edge in $\mathcal{M}$.
+\end{fact}
+
+\begin{claim}
+  \label{fact:one (nu_1, nu'_1)-edge}
+  There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{claim}
+  \label{fact:no (nu_2, nu'_1)-edge}
+  There is no $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{claim}
+  \label{fact:one (nu_2, nu'_2)-edge}
+  There is at least one $(\nu_2, \nu'_2)$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{fact}
+  \label{fact:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge}
+  There is 
+  no $(\nu'_1, \nu'_1)$-edge, 
+  no $(\nu_3, \nu_3)$-edge,
+  no $(\sigma', \sigma')$-edge and
+  no $(\nu_4, \nu_4)$-edge
+  in $\mathcal{M}$.
+\end{fact}
+
+\begin{claim}
+  \label{fact:no (nu_3, nu'_2)-edge}
+  There is no $(\nu_3, \nu'_2)$-edge in $\mathcal{M}$.
+\end{claim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% ---- Patterns ----
+%%
+\section{Patterns}
+\label{section:Patterns}
+
+\begin{proposition}
+  \label{proposition:patterns:lower bound}
+  Let $\pi \in S_{n}$.
+  Then $\pi$ contains a pattern of size at least 
+  $\left\lfloor\sqrt{n-1}/2\right\rfloor$ that
+  is the union of two order-isomorphic patterns.
+\end{proposition}
+
+\begin{proof}[of Proposition~\ref{proposition:patterns:lower bound}]
+  The Erdös-Szekeres theorem \cite{Erdos:Szekeres:1935} 
+  states that every permutation of 
+  length at least $pq+1$ must contain either the pattern
+  $\nearrow_{p+1}$ or the pattern $\searrow_{q+1}$.
+  The result now follows from the fact that
+  the pattern $\nearrow_{p+1}$ (resp. $\searrow_{q+1}$)
+\qed
+\end{proof}
+
+\begin{proposition}
+  \label{proposition:patterns:upper bound}
+  If $2^{\binom{k}{2}} > \binom{n}{2k}\;\binom{2k}{k}$, then there exists
+  a permutation of $S_{n}$ 
+  that does not contains a pattern
+  of length $2k$ that is the union of two
+  order-isomorphic patterns.
+\end{proposition}
+
+\begin{proof}[of Proposition~\ref{proposition:patterns:upper bound}]
+The proof is by the probabilistic method \cite{Alon:Spencer:1992}.
+Let $\pi \in S_n$ be chosen randomly and uniformly.
+For any pattern $\sigma$ of length $2k$ ($k$ to be precisely defined latter)
+of $\pi$,
+let $X_\sigma$ be the indicator variable that 
+$\sigma$ is the union of two order-ismorphic patterns.
+According to Boole's inequality, we have
+$P\left(X_\sigma\right) \leq \binom{2k}{k}\;2^{-k}$.
+Since there are $\binom{n}{2k}$ patterns of length $2k$ in $\pi$,
+the probability that $\pi$ contains a pattern of length $2k$ 
+is the union of two order-ismorphic patterns is at most
+$\binom{n}{2k}\;\binom{2k}{k}\;2^{-k} < 1$.
+Thus, with positive probability, no event $X_\sigma$ occurs and 
+there is a permutation of $S_n$ that does not contain a pattern
+of length $2k$ that is the union of two order-isomorphic patterns.
+\qed
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -297,7 +450,7 @@ bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
 bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
 bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
 bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
-bla bla blabla bla bla blabla bla bla blabla bla bla blabla .
+bla bla blabla bla bla blabla bla bla blabla bla bla blabla.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -313,6 +466,11 @@ bla bla blabla bla bla blabla bla bla blabla bla bla blabla .
 \newpage
 \section*{Appendix (Reviewers' version only)}
 
+bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
+bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
+bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
+bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
+bla bla blabla bla bla blabla bla bla blabla bla bla blabla.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
