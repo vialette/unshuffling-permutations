@@ -854,6 +854,52 @@ a contradiction.
 \end{proof}
 
 \begin{claim}
+  \label{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge}
+  There is neither $(\nu_1, \nu'_3)$-edge nor $(\nu'_1, \nu_3)$-edge
+  in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge}]
+  Suppose, aiming at a contradiction, that there exists a
+  $(\nu_1, \nu'_3)$-edge $(a, b)$ in $\mathcal{M}$.
+  According to Claim~\ref{claim:one (nu_1, nu'_1)-edge} there exists
+  $(\nu_1, \nu'_1)$-edge $(x, y)$ in $\mathcal{M}$.
+  Since these two edges have to be crossing
+  (Proposition~\ref{proposition:matching}), we have $x < a$.
+  Therefore, we have
+  $\mu(x) < \mu(a)$ (since $\nu_1$ is increasing)
+  and
+  $\mu(y) > \mu(b)$ (by construction).
+  According to Proposition~\ref{proposition:matching}, this is
+  a contradiction.
+
+  A similar argument shows that there is no
+  $(\nu'_1, \nu_3)$-edge in $\mathcal{M}$.
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:at most one (nu_2, nu_3)-edge}
+  There is at most one $(\nu_2, \nu_3)$-edge
+  in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:at most one (nu_2, nu_3)-edge}]
+  Suppose, aiming at a contradiction, that there exist two
+  $(\nu_2, \nu_3)$-edges $(a, b)$ and $(a', b')$ in $\mathcal{M}$.
+  Since these two edges have to be crossing
+  (Proposition~\ref{proposition:matching}), we may assume that
+  $a < a'$ and $b < b'$.
+  Therefore, we have
+  $\mu(a) > \mu(a')$ (since $\nu_2$ is decreasing)
+  and
+  $\mu(b) < \mu(b')$ (since $\nu_3$ is increasing).
+  According to Proposition~\ref{proposition:matching}, this is
+  a contradiction.
+  \qed
+\end{proof}
+
+\begin{claim}
   \label{claim:one (nu_3, nu'_3)-edge}
   There is at least one $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
 \end{claim}
@@ -861,6 +907,89 @@ a contradiction.
 \begin{proof}[of Claim~\ref{claim:one (nu_3, nu'_3)-edge}]
   Suppose, aiming at a contradiction, that there is no
   $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:one (nu_4, nu'_4)-edge}
+  There is at least one $(\nu_4, \nu'_4)$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:one (nu_4, nu'_4)-edge}]
+  Suppose, aiming at a contradiction, that there is no
+  $(\nu_4, \nu'_4)$-edge in $\mathcal{M}$.
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:no (nu_4, nu'_3)-edge}
+  There is no $(\nu_4, \nu'_3)$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (nu_4, nu'_3)-edge}]
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:no (nu_4, pi')-edge}
+  There is no $(\nu_4, \pi')$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (nu_4, pi')-edge}]
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:one (nu_4, nu'_4)-edge}
+  There is at least $(\nu_4, \nu'_4)$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:one (nu_4, nu'_4)-edge}]
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:no (pi', pi'')-edge}
+  There is no $(\pi', \pi'')$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (pi', pi'')-edge}]
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:no (nu'_2, pi')-edge}
+  There is no $(\nu'_2, \pi')$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (nu'_2, pi')-edge}]
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:no (nu'_3, pi')-edge}
+  There is no $(\nu'_3, \pi')$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (nu'_3, pi')-edge}]
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:no (nu_2, nu'_2)-edge}
+  There is no $(\nu_2, \nu'_2)$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (nu_2, nu'_2)-edge}]
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:no (nu_3, nu'_3)-edge}
+  There is no $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (nu_3, nu'_3)-edge}]
   \qed
 \end{proof}
 
