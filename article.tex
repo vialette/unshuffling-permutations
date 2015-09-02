@@ -753,29 +753,116 @@ a contradiction.
 \end{proof}
 
 \begin{claim}
-  \label{fact:no (nu_2, nu'_1)-edge}
+  \label{claim:no (nu_2, nu'_1)-edge}
   There is no $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
 \end{claim}
 
+\begin{proof}[of Claim~\ref{claim:no (nu_2, nu'_1)-edge}]
+  We first prove that there exists at most one
+  $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
+  Indeed, suppose, aiming at a contradiction, that there exist
+  two $(\nu_2, \nu'_1)$-edges $e = (a, b)$ and $e' = (a', b')$ in $\mathcal{M}$.
+  Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
+  we may assume that $a < a'$ and $b < b'$.
+  Then it follows that $\mu(a) > \mu(a')$
+  (since $\nu_2$ is decreasing) and $\mu(b) < \mu(b')$
+  (since $\nu'_1$ is increasing).
+  According to Proposition~\ref{proposition:matching}, this is
+  a contradiction, and hence
+  there exists at most one
+  $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
+
+  Suppose now, still aiming at a contradiction, that there exists
+  exactly one $(\nu_2, \nu'_1)$-edge $e = (a, b)$ in $\mathcal{M}$.
+  According to Claim~\ref{claim:one (nu_1, nu'_1)-edge}, there exists at least
+  one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$
+  (see Proposition~\ref{proposition:matching}).
+  Furtheremore, since there exists a $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$
+  and
+  there is no $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge}),
+  every position in $\nu_1$ is involved either in a
+  $(\nu_1, \nu_1)$-edge or in a $(\nu_1, \nu'_1)$-edge.
+  Then it follows that that there are an odd number of $(\nu_1, \nu'_1)$-edges
+  in $\mathcal{M}$ since $\mathcal{M}$ is perfect and $|\nu_1| = N_1$ is odd.
+  Combining this with the fact that there exists exactly one $(\nu_2, \nu'_1)$-edge
+  in $\mathcal{M}$ and $|\nu'_1| = N_1$ is odd,
+  we conclude that there exists a position, say $x$, in $\nu'_1$
+  that is not involved in a $(\nu_1, \nu'_1)$-edge nor a $(\nu_1, \nu'_1)$-edge
+  nor a $(\nu'_1, \nu'_1)$-edge.
+  Write $(x, y)$, $N_1+N_2 < x \leq 2N_1 + N_2$ and $y > 2N_1 + N_2$, this edge.
+  By construction,
+  we have$\mu(a) < \mu(x)$ and $\mu(b) > \mu(y)$.
+  According to Proposition~\ref{proposition:matching}, this is
+  a contradiction.
+  \qed
+\end{proof}
+
 \begin{claim}
-  \label{fact:one (nu_2, nu'_2)-edge}
+  \label{claim:one (nu_2, nu'_2)-edge}
   There is at least one $(\nu_2, \nu'_2)$-edge in $\mathcal{M}$.
 \end{claim}
 
-\begin{fact}
-  \label{fact:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge}
+\begin{proof}[of Claim~\ref{claim:one (nu_2, nu'_2)-edge}]
+  Suppose, aiming at a contradiction there there is no
+  $(\nu_2, \nu'_2)$-edge in $\mathcal{M}$.
+  Notice that there is no
+  $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
+  nor $(\nu_2, \nu_2)$-edge (Claim~\ref{claim:no (nu_2, nu_2)-edge})
+  nor $(\nu_2, \nu'_1)$-edge (Claim~\ref{claim:no (nu_2, nu'_1)-edge})
+  in $\mathcal{M}$.
+  But $|\nu_2| = N_2 > 2N_3 + 2N_4 + 2n + 2k$ and hence $\mathcal{M}$ is not
+  a perfect matching.
+  According to Proposition~\ref{proposition:matching}, this is
+  a contradiction.
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge}
   There is
   no $(\nu'_1, \nu'_1)$-edge,
   no $(\nu_3, \nu_3)$-edge,
   no $(\sigma', \sigma')$-edge and
   no $(\nu_4, \nu_4)$-edge
   in $\mathcal{M}$.
-\end{fact}
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge}]
+  Combine Claim~\ref{claim:one (nu_2, nu'_2)-edge} with the fact that
+  $\mathcal{M}$ is containment-free (Proposition~\ref{proposition:matching}).
+  \qed
+\end{proof}
 
 \begin{claim}
-  \label{fact:no (nu_3, nu'_2)-edge}
+  \label{claim:no (nu_3, nu'_2)-edge}
   There is no $(\nu_3, \nu'_2)$-edge in $\mathcal{M}$.
 \end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (nu_3, nu'_2)-edge}]
+  Suppose, aiming at a contradiction, that there exists
+  $(\nu_3, \nu'_2)$-edge $(a, b)$ in $\mathcal{M}$.
+  According to Claim~\ref{claim:one (nu_2, nu'_2)-edge}, there
+  exists at least one $(\nu_2, \nu'_2)$-edge $(x, y)$ in $\mathcal{M}$.
+  Since $\mathcal{M}$ is containment-free (Proposition~\ref{proposition:matching}),
+  we have $y < b$.
+  Therefore,
+  we have $\mu(x) < \mu(a)$ (by construction) and
+  $\mu(y) > \mu(b)$ (since $\nu'_2$ is decreasing).
+  According to Proposition~\ref{proposition:matching}, this is
+  a contradiction.
+  \qed
+\end{proof}
+
+\begin{claim}
+  \label{claim:one (nu_3, nu'_3)-edge}
+  There is at least one $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:one (nu_3, nu'_3)-edge}]
+  Suppose, aiming at a contradiction, that there is no
+  $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
+  \qed
+\end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
