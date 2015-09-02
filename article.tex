@@ -661,41 +661,96 @@ $$
 \end{claim}
 
 \begin{proof}[of Claim~\ref{claim:no (nu_1, nu_2)-edge}]
-  Suppose, aiming at a contradiction that there exists
-  a $(\nu_1, \nu_2)$-edge $e = (a, b)$ in $\mathcal{M}$.
-  Without loss of generality, assume $(a, b)$ is the leftmost
+  We first prove that there exists at most one
   $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
+  Indeed, suppose, aiming at a contradiction, that there exist
+  two $(\nu_1, \nu_2)$-edges $e = (a, b)$ and $e' = (a', b')$ in $\mathcal{M}$.
+  Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
+  we may assume that $a < a'$ and $b < b'$.
+  Then it follows that $\mu(a) < \mu(a')$
+  (since $\nu_1$ is increasing) and $\mu(b) > \mu(b')$
+  (since $\nu_2$ is decreasing).
+  According to Proposition~\ref{proposition:matching}, this is
+  a contradiction, and hence
+  there exists at most one
+  $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
+
+  Suppose now, still aiming at a contradiction, that there exists
+  exactly one $(\nu_1, \nu_2)$-edge $e = (a, b)$ in $\mathcal{M}$.
+  We show that $\mathcal{M}$ does not contain any $(\nu_1, \nu_1)$-edge.
+  Indeed, suppose, aiming at a contradiction,
+  that there exists a $(\nu_1, \nu_1)$-edge $(x, y)$ in $\mathcal{M}$.
+  Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
+  we must have $x < a$.
+  Then it follows that $\mu(x) < \mu(a)$ and $\mu(y) > \mu(b)$
+  (since $\nu_1$ is increasing).
+  According to Proposition~\ref{proposition:matching}, this is
+  a contradiction, and hence $\mathcal{M}$ does not contain any
+  $(\nu_1, \nu_1)$-edge.
+  Furthermore, since there is no other $(\nu_1, \nu_2)$-edge in $\mathcal{M}$ and
+  $\nu_1$ is increasing there are $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges
+  in $\mathcal{M}$.
+  Then it follows that there exists a position, say $y$, in $\nu'_1$ that is
+  not involved in a $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
+  We rule out this configuration by considering two cases:
   \begin{itemize}
-  \item $a=1$. 
-  Since $\mathcal{M}$ is containment-free, it does
-  not contain any $(\nu_1, \nu_1)$-edge.
-  Frthermore,
-  since $N_1 > 2(2N_2 + 2n + 2k + 4) > 
-  |\nu_2| + |\nu'_2| + |\nu_3| + |\nu'_3| + |\nu_4| + |\nu'_4|
-  + |\sigma'| + |\pi'| + |\pi''| + |\sigma''|$, there exists 
-  a $(\nu_1, \nu'_1)$-edge $e' = (x, y)$ in $\mathcal{M}$.
-  We have 
-  $\LEFT(e) = \mu(a) < \LEFT(e') = \mu(x)$
-  and
-  $\RIGHT(e') = \mu(b) < \RIGHT(e') = \mu(y)$
-  (see Fig.~\ref{fig:reduction}).
-  Therefore, since $\mathcal{M}$ is containment-free, it does
-  not contain any $(\nu_2, \nu_2)$-edge.
-  According to Proposition~\ref{proposition:matching}, this is 
-  a contradiciton.
+    \item Position $y$ is involved in a $(\nu_2, \nu'_1)$-edge,
+    say $(x, y)$. Then, we have $\mu(a) < \mu(x)$ and $\mu(b) < \mu(y)$.
+    According to Proposition~\ref{proposition:matching}, this is
+    a contradiction.
+    \item Position $y$ is not involved in a $(\nu_2, \nu'_1)$-edge.
+    Since there are $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges
+    in $\mathcal{M}$ and $|\nu'_1| = N_1$ there exists an edge $(y, z)$ in $\mathcal{M}$
+    that is neither a $(\nu_1, \nu'_1)$-edge nor a $(\nu_2, \nu'_1)$-edge
+    nor a $(\nu'_1, \nu'_1)$-edge.
+    Now, for any $(\nu_1, \nu'_1)$-edge $(x', y')$ in $\mathcal{M}$, we
+    have $\mu(x') < \mu(y)$ and $\mu(y') > \mu(z)$ (by construction).
+    According to Proposition~\ref{proposition:matching}, this is
+    a contradiction.
   \end{itemize}
   \qed
 \end{proof}
 
-\begin{fact}
-  \label{fact:no (nu_2, nu_2)-edge}
+\begin{claim}
+  \label{claim:no (nu_2, nu_2)-edge}
   There is no $(\nu_2, \nu_2)$-edge in $\mathcal{M}$.
-\end{fact}
+\end{claim}
+
+\begin{proof}[of Claim~\ref{claim:no (nu_2, nu_2)-edge}]
+Since $N_1$ is odd, there exists an edge $(x, y)$ in $\mathcal{M}$,
+$1 \leq x \leq N_1$, that is neither a $(\nu_1, \nu_1)$-edge nor a
+$(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge}).
+Suppose now, aiming at a contradiction,
+that there exists a $(\nu_2, \nu_2)$-edge $e = (a, b)$ in $\mathcal{M}$.
+We have $x < a < b < y$ (by construction), and hence $\mathcal{M}$ is not
+containment-free.
+According to Proposition~\ref{proposition:matching}, this is
+a contradiction.
+\qed
+\end{proof}
 
 \begin{claim}
-  \label{fact:one (nu_1, nu'_1)-edge}
+  \label{claim:one (nu_1, nu'_1)-edge}
   There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
 \end{claim}
+
+\begin{proof}[of Claim~\ref{claim:one (nu_1, nu'_1)-edge}]
+  Suppose, aiming at a contradiction, that there is no
+  $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
+  Since $N_1$ is odd, there exists an edge $(x, y)$ in $\mathcal{M}$,
+  $1 \leq x \leq N_1$, that is neither a
+  $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
+  nor a $(\nu_1, \nu'_1)$.
+  (In other words, $x \leq N_1$ and $y > 2N_1 + N_2$.)
+  Therefore, since $\mathcal{M}$ is containment-free (Proposition~\ref{proposition:matching}),
+  there is no $(\nu_2, \nu_2)$-edge in $\mathcal{M}$.
+  But $|\nu'_1| = N_1 > 2(2N_2 + 2n +2k +4)$ and hence at least one
+  position in $\nu'_1$ can not be involved in an edge in $\mathcal{M}$.
+  Then it follows that $\mathcal{M}$ is not a perfect matching.
+  According to Proposition~\ref{proposition:matching}, this is
+  a contradiction.
+  \qed
+\end{proof}
 
 \begin{claim}
   \label{fact:no (nu_2, nu'_1)-edge}
@@ -709,8 +764,8 @@ $$
 
 \begin{fact}
   \label{fact:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge}
-  There is 
-  no $(\nu'_1, \nu'_1)$-edge, 
+  There is
+  no $(\nu'_1, \nu'_1)$-edge,
   no $(\nu_3, \nu_3)$-edge,
   no $(\sigma', \sigma')$-edge and
   no $(\nu_4, \nu_4)$-edge
@@ -733,14 +788,14 @@ $$
 \begin{proposition}
   \label{proposition:patterns:lower bound}
   Let $\pi \in S_{n}$.
-  Then $\pi$ contains a pattern of size at least 
+  Then $\pi$ contains a pattern of size at least
   $\left\lfloor\sqrt{n-1}/2\right\rfloor$ that
   is the union of two order-isomorphic patterns.
 \end{proposition}
 
 \begin{proof}[of Proposition~\ref{proposition:patterns:lower bound}]
-  The Erdös-Szekeres theorem \cite{Erdos:Szekeres:1935} 
-  states that every permutation of 
+  The Erdös-Szekeres theorem \cite{Erdos:Szekeres:1935}
+  states that every permutation of
   length at least $pq+1$ must contain either the pattern
   $\nearrow_{p+1}$ or the pattern $\searrow_{q+1}$.
   The result now follows from the fact that
@@ -751,7 +806,7 @@ $$
 \begin{proposition}
   \label{proposition:patterns:upper bound}
   If $2^{\binom{k}{2}} > \binom{n}{2k}\;\binom{2k}{k}$, then there exists
-  a permutation of $S_{n}$ 
+  a permutation of $S_{n}$
   that does not contains a pattern
   of length $2k$ that is the union of two
   order-isomorphic patterns.
@@ -762,15 +817,15 @@ The proof is by the probabilistic method \cite{Alon:Spencer:1992}.
 Let $\pi \in S_n$ be chosen randomly and uniformly.
 For any pattern $\sigma$ of length $2k$ ($k$ to be precisely defined latter)
 of $\pi$,
-let $X_\sigma$ be the indicator variable that 
+let $X_\sigma$ be the indicator variable that
 $\sigma$ is the union of two order-ismorphic patterns.
 According to Boole's inequality, we have
 $P\left(X_\sigma\right) \leq \binom{2k}{k}\;2^{-k}$.
 Since there are $\binom{n}{2k}$ patterns of length $2k$ in $\pi$,
-the probability that $\pi$ contains a pattern of length $2k$ 
+the probability that $\pi$ contains a pattern of length $2k$
 is the union of two order-ismorphic patterns is at most
 $\binom{n}{2k}\;\binom{2k}{k}\;2^{-k} < 1$.
-Thus, with positive probability, no event $X_\sigma$ occurs and 
+Thus, with positive probability, no event $X_\sigma$ occurs and
 there is a permutation of $S_n$ that does not contain a pattern
 of length $2k$ that is the union of two order-isomorphic patterns.
 \qed
@@ -815,4 +870,3 @@ bla bla blabla bla bla blabla bla bla blabla bla bla blabla.
 \end{document}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
