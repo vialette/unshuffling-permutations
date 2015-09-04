@@ -19,7 +19,7 @@
 \usepackage{enumitem}
 
 \usepackage{tikz}
-\usetikzlibrary{matrix, calc, arrows}
+\usetikzlibrary{matrix, calc, arrows, shapes.callouts}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -550,10 +550,18 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
   \begin{align*}
   N_4 &= 2(2n + k + 2) + 1  = 4n + 2k + 5 \\
   N_3 &= 2(2N_4 + 2n + 2k + 4) + 1 = 20n + 12k + 9 \\
-  N_2 &= 2(2N_3 + 2n + 2k + 4) + 1 \\
-  N_1 &= 2(2N_2 + 2n + 2k + 4) + 1\text{.}
+  N_2 &= 2(2N_3 + 2N_4 + 2n + 2k + 4) + 1 \\
+  N_1 &= 2(2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4) + 1\text{.}
   \end{align*}
+  Notice that $N_1, N_2, N_3$ and $N_4$ are polynomial in $n$.
+  The crucial properties are that
+  (i) $N_1, N_2, N_3$ and $N_4$ are odd integers
+  and
+  (ii) $N_i > \left(\sum_{i < j \leq 4} 2N_j\right) + 2n + 2k + k$
+  for every $1 \leq i \leq 4$.
 
+  We now turn to defining various gadgets (sequences of integers)
+  that act as building blocks in our construction:
   \begin{align*}
   \sigma'  &= ((k+1) \; \sigma \; (k+2)) \; [2N_2 + N_4 + 2n + k + 2] \\
   \pi'     &= ((n+1) \; \pi \; (n+2)) \; [2N_2 + N_4 + n + k + 2] \\
@@ -566,13 +574,14 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
   \nu_3    &= \nearrow_{N_3} \; [2N_2 + 2N_4 + 2n + 2k + 4] \\
   \nu'_3   &= \nearrow_{N_3} \; [2N_2 + N_3 + 2N_4 + 2n + 2k + 4] \\
   \nu_4    &= \searrow_{N_4} \; [2N_2 + N_4 + 2n + 2k + 4] \\
-  \nu'_4   &= \searrow_{N_4} \; [2N_2]
+  \nu'_4   &= \searrow_{N_4} \; [2N_2]\text{.}
   \end{align*}
-
+  We are now in position to define our target permutation $\mu$:
   $$
   \mu
   =
   \nu_1 \; \nu_2 \; \nu'_1 \; \nu_3 \; \sigma' \; \nu_4 \; \nu'_3 \; \pi' \; \nu'_4 \; \pi'' \; \sigma''
+  \text{.}
   $$
 
   \begin{figure}[t!]
@@ -663,10 +672,164 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
               }
     \end{figure}
 
+  Suppose first that $\sigma$ occurs in $\pi$ as a pattern.
+  We show how to construct a containment-free perfect matching
+  $\mathcal{M}$ in $G_\mu$ such that
+  for any two disctinct edges
+  $(a, b)$ and $(a', b')$ in $\mathcal{M}$
+  we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
+  \begin{itemize}
+    \item $\mathcal{M}$ contains $N_1$ pairwise crossing
+    $(\nu_1, \nu'_1)$-edges.
+    \item $\mathcal{M}$ contains $N_2$ pairwise crossing
+    $(\nu_2, \nu'_2)$-edges.
+    \item $\mathcal{M}$ contains $N_3$ pairwise crossing
+    $(\nu_3, \nu'_3)$-edges.
+    \item $\mathcal{M}$ contains $N_4$ pairwise crossing
+    $(\nu_4, \nu'_4)$-edges.
+    \item $\mathcal{M}$ contains $k+2$ pairwise crossing
+    $(\sigma', \pi')$-edges as depicted in Figure~\ref{}.
+    (Notice that we use here the fact that $\sigma$ occurs as a pattern in $\pi$).
+    \item $\mathcal{M}$ contains $n-k$ pairwise crossing
+    $(\pi', \pi'')$-edges as depicted in Figure~\ref{}.
+    \item $\mathcal{M}$ contains $k$ pairwise crossing
+    $(\pi'', \sigma'')$-edges as depicted in Figure~\ref{}.
+    (Notice that we use here again the fact that $\sigma$ occurs as a pattern in $\pi$).
+  \end{itemize}
+  It can be easily checked (probably referring to Figure~\ref{}) that
+  $\mathcal{M}$ is perfect and that
+  for any two disctinct edges
+  $(a, b)$ and $(a', b')$ in $\mathcal{M}$
+  we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
+
+
+    \begin{figure}[t!]
+      \centering
+        \begin{tikzpicture}
+          [
+            scale=0.425,
+            label/.style={anchor=base},
+            cell/.style={draw,thick,fill=black!5}
+          ]
+          % sigma'
+          \draw [cell,rounded corners] (1.5,16.5) -- (4.5,16.5) -- (4.5,19.5) -- (1.5,19.5) -- cycle;
+          \draw[step=1cm,black!30,ultra thin,fill=black!10] (0.8,16.8) grid (5.2,21.2);
+          \foreach \x/\y in {1/20,2/19,3/17,4/18,5/21} {
+              \draw [fill=black] (\x,\y) circle (0.1);
+          }
+          \node (pip) at (2.5,16) {$\sigma'$};
+          % pi'
+          \draw [cell,rounded corners] (6.5,8.5) -- (12.5,8.5) -- (12.5,14.5) -- (6.5,14.5) -- cycle;
+          \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,8.8) grid (13.2,16.2);
+          \foreach \x/\y in {6/15,7/12,8/13,9/10,10/9,11/11,12/14,13/16} {
+              \draw [fill=black] (\x,\y) circle (0.1);
+          }
+          \node (pip) at (9.5,8) {$\pi'$};
+          % pi''
+          \draw [cell,rounded corners] (13.5,2.5) -- (19.5,2.5) -- (19.5,8.5) -- (13.5,8.5) -- cycle;
+          \draw[step=1cm,black!30,ultra thin,fill=black!10] (13.8,2.8) grid (19.2,8.2);
+          \foreach \x/\y in {14/6,15/7,16/4,17/3,18/5,19/8} {
+              \draw [fill=black] (\x,\y) circle (0.1);
+          }
+          \node (pipp) at (16.75,2) {$\pi''$};
+          % sigma''
+          \draw [cell,rounded corners] (19.5,-0.5) -- (22.5,-.5) -- (22.5,2.5) -- (19.5,2.5) -- cycle;
+          \draw[step=1cm,black!30,ultra thin,fill=black!10] (19.8,-0.2) grid (22.2,2.2);
+          \foreach \x/\y in {20/2,21/0,22/1} {
+              \draw [fill=black] (\x,\y) circle (0.1);
+          }
+          \node (sigmapp) at (20.5,-1) {$\sigma''$};
+          % edges sigma' - pi'
+          \draw [line width=1pt]
+          (1,20) .. controls +(0,9) and +(0,4) .. (6,15);
+          \draw [line width=1pt]
+          (5,21) .. controls +(0,9) and +(0,4) .. (13,16);
+          \draw [line width=1pt]
+          (2,19) .. controls +(0,-17) and +(0,-7) .. (8,13);
+          \draw [line width=1pt]
+          (3,17) .. controls +(0,-17) and +(0,-7) .. (9,10);
+          \draw [line width=1pt]
+          (4,18) .. controls +(0,-17) and +(0,-7) .. (11,11);
+          % edges pi' - pi''
+          \draw [line width=1pt]
+          (7,12) .. controls +(0,9) and +(0,4) .. (14,6);
+          \draw [line width=1pt]
+          (10,9) .. controls +(0,9) and +(0,4) .. (17,3);
+          \draw [line width=1pt]
+          (12,14) .. controls +(0,9) and +(0,4) .. (19,8);
+          % edges pi'' - sigma''
+          \draw [line width=1pt]
+          (15,7) .. controls +(0,-9) and +(0,-4) .. (20,2);
+          \draw [line width=1pt]
+          (16,4) .. controls +(0,-9) and +(0,-4) .. (21,0);
+          \draw [line width=1pt]
+          (18,5) .. controls +(0,-9) and +(0,-4) .. (22,1);
+          % text
+          \node[%
+            draw,
+            text width=5.5cm,text justified,color=black!50,
+            rectangle callout,callout relative pointer={(0cm,-.75cm)}
+          ] at (1,28)
+          {%
+          $2$ pairwise crossing $(\sigma',\pi')$-edges that
+          link the guards
+          };%
+          \node[%
+            draw,
+            text width=5.5cm,text justified,color=black!50,
+            rectangle callout,callout relative pointer={(-0.75cm,-0.5cm)}
+          ] at (17,24)
+          {%
+          $n-k=|\pi|-|\sigma|$ pairwise crossing $(\sigma',\pi')$-edges that
+          denote positions that do not correspond to
+          a specific occurence of $\sigma$ in $\pi$
+          (at positions $2$, $3$ and $5$).
+          };%
+          \node[%
+            draw,
+            text width=5.5cm,text justified,color=black!50,
+            rectangle callout,callout relative pointer={(0.75cm,1.5cm)}
+          ] at (2.5,4,5)
+          {%
+          $k=|\sigma|$ pairwise crossing $(\sigma',\pi')$-edges that
+          denote a specific occurence of $\sigma$ in $\pi$
+          (at positions $2$, $3$ and $5$).
+          };%
+          \node[%
+            draw,
+            text width=5.5cm,text justified,color=black!50,
+            rectangle callout,callout relative pointer={(2cm,.75cm)}
+          ] at (7,-3)
+          {%
+          $k=|\sigma|$ pairwise crossing $(\pi''; \sigma'')$-edges that
+          denote a specific occurence of $\sigma$ in $\pi$
+          (at positions $2$, $3$ and $5$).
+          };%
+        \end{tikzpicture}
+        \caption{\label{fig:subfig:sigma' - pi' - pi'' - sigma''}%
+        $\sigma = 312$ and $\pi = 4\mathbf{5}\mathbf{2}1\mathbf{3}6$
+        (where a specific occurrence of $\sigma$ in $\pi$ is depicted in bold).
+        }
+      \end{figure}
+
+  More precisely,
+  (i) the first integer of $\sigma'$
+  (\emph{i.e.}, $(k+1) + (2N_2 + N_4 + 2n + k + 2)$) is linked
+  to the first integer of $\pi'$
+  ((\emph{i.e.}, $(n+1) + (2N_2 + N_4 + n + k + 2)$)),
+  (ii)
+
+  (this is possible since ).
   Conversely, suppose that there exists a containment-free perfect matching
   $\mathcal{M}$ in $G_\mu$ such that for any two disctinct edges
   $(a, b)$ and $(a', b')$ in $\mathcal{M}$
   we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
+  We show that $\sigma$ occurs as a pattern in $\pi$.
+  Whereas the matching $\mathcal{M}$ may not be as regular as in the forward
+  direction, the main idea is to prove that $\mathcal{M}$ contains enough structure
+  (more precisely, enough $(\sigma', \pi')$-edges) so that we can conclude.
+  We have divided the reverse direction into a serie of basic claims that
+  progressively defines the overall structure of $\mathcal{M}$.
 
   \begin{claim}
     \label{claim:no (nu_1, nu_2)-edge}
@@ -678,48 +841,47 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
     $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
     Indeed, suppose, aiming at a contradiction, that there exist
     two $(\nu_1, \nu_2)$-edges $e = (a, b)$ and $e' = (a', b')$ in $\mathcal{M}$.
-    Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
+    Since $\mathcal{M}$ is containment-free,
     we may assume that $a < a'$ and $b < b'$.
     Then it follows that $\mu(a) < \mu(a')$
     (since $\nu_1$ is increasing) and $\mu(b) > \mu(b')$
-    (since $\nu_2$ is decreasing).
-    According to Proposition~\ref{proposition:matching}, this is
-    a contradiction.
+    (since $\nu_2$ is decreasing),
+    which contradicts our hypothesis.
 
     Suppose now, still aiming at a contradiction, that there exists
     exactly one $(\nu_1, \nu_2)$-edge $e = (a, b)$ in $\mathcal{M}$.
     We show that $\mathcal{M}$ does not contain any $(\nu_1, \nu_1)$-edge.
     Indeed, suppose, aiming at a contradiction,
     that there exists a $(\nu_1, \nu_1)$-edge $(x, y)$ in $\mathcal{M}$.
-    Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
+    Since $\mathcal{M}$ is containment-free,
     we must have $x < a$.
     Then it follows that $\mu(x) < \mu(a)$ (since $\nu_1$ is increasing) and
-    $\mu(y) > \mu(b)$ (since $\nu_1$ is above $\nu_2$).
-    According to Proposition~\ref{proposition:matching}, this is
-    a contradiction, and hence $\mathcal{M}$ does not contain any
-    $(\nu_1, \nu_1)$-edge.
-    Furthermore, since there is no other $(\nu_1, \nu_2)$-edge in $\mathcal{M}$ and
-    $\nu_1$ is increasing,
+    $\mu(y) > \mu(b)$ (since $\nu_1$ is above $\nu_2$),
+    which contradicts our hypothesis.
+    Hence $\mathcal{M}$ does not contain any $(\nu_1, \nu_1)$-edge.
+    Furthermore, since $\nu_1$ is increasing and
+    there exists only one $(\nu_1, \nu_2)$-edge in $\mathcal{M}$,
+    we conclude that
     $\mathcal{M}$ contains $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges.
-    But $|\nu_1| = |\nu'_1|$, and hence there exists a position, say $y$, in $\nu'_1$ that is
+    But $|\nu_1| = |\nu'_1| = N_1$ and $\mathcal{M}$ is perfect,
+    and hence there exists a position, say $y$, in $\nu'_1$ that is
     not involved in a $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
     We rule out this configuration by considering two cases:
     \begin{itemize}
       \item Position $y$ is involved in a $(\nu_2, \nu'_1)$-edge,
       say $(x, y)$. Then, we have $\mu(a) > \mu(x)$ (since $\nu_1$ is above $\nu_2$)
-      and $\mu(b) < \mu(y)$ (since $\nu_2$ is below $\nu'_1$).
-      According to Proposition~\ref{proposition:matching}, this is
-      a contradiction.
+      and $\mu(b) < \mu(y)$ (since $\nu_2$ is below $\nu'_1$),
+      which contradicts our hypothesis.
       \item Position $y$ is not involved in a $(\nu_2, \nu'_1)$-edge.
       Since $\mathcal{M}$ contains $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges
       in $\mathcal{M}$ and $|\nu'_1| = N_1$, there exists an edge $(y, z)$ in $\mathcal{M}$
       that is neither a $(\nu_1, \nu'_1)$-edge nor a $(\nu_2, \nu'_1)$-edge
       nor a $(\nu'_1, \nu'_1)$-edge.
+      In other words, $z > 2N_1 + N_2$.
       Now, for any $(\nu_1, \nu'_1)$-edge $(x', y')$ in $\mathcal{M}$, we
-      have $\mu(x) > \mu(y)$ (since $\nu_1$ is below $\nu'_1$)
-      and $\mu(y') > \mu(z)$ (since $\nu'_1$ is above any other gadget).
-      According to Proposition~\ref{proposition:matching}, this is
-      a contradiction.
+      have $\mu(x') < \mu(y)$ (since $\nu_1$ is below $\nu'_1$)
+      and $\mu(y') > \mu(z)$ (since $\nu'_1$ is above any other gadget),
+      which contradicts our hypothesis.
     \end{itemize}
     \qed
   \end{proof}
@@ -741,11 +903,11 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
     (In other words, $x \leq N_1$ and $y > 2N_1 + N_2$.)
     Therefore, since $\mathcal{M}$ is containment-free,
     there is no $(\nu_2, \nu_2)$-edge in $\mathcal{M}$.
-    But $|\nu'_1| = N_1 > 2(2N_2 + 2n +2k +4)$ and hence at least one
+    But $|\nu'_1| = N_1 = 2(2N_2 + 2n_3 + 2N_4 + 2n + 2k + 4) + 1
+    > 2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4)$, and hence at least one
     position in $\nu'_1$ can not be involved in an edge in $\mathcal{M}$.
-    Then it follows that $\mathcal{M}$ is not a perfect matching.
-    According to Proposition~\ref{proposition:matching}, this is
-    a contradiction.
+    Then it follows that $\mathcal{M}$ is not a perfect matching,
+    which contradicts our hypothesis.
     \qed
   \end{proof}
 
@@ -770,38 +932,34 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
     $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
     Indeed, suppose, aiming at a contradiction, that there exist
     two $(\nu_2, \nu'_1)$-edges $e = (a, b)$ and $e' = (a', b')$ in $\mathcal{M}$.
-    Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
+    Since $\mathcal{M}$ is containment-free,
     we may assume that $a < a'$ and $b < b'$.
     Then it follows that $\mu(a) > \mu(a')$
     (since $\nu_2$ is decreasing) and $\mu(b) < \mu(b')$
-    (since $\nu'_1$ is increasing).
-    According to Proposition~\ref{proposition:matching}, this is
-    a contradiction, and hence
-    there exists at most one
-    $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
+    (since $\nu'_1$ is increasing),
+    which contradicts our hypothesis.
 
     Suppose now, still aiming at a contradiction, that there exists
     exactly one $(\nu_2, \nu'_1)$-edge $e = (a, b)$ in $\mathcal{M}$.
     According to Claim~\ref{claim:one (nu_1, nu'_1)-edge}, there exists at least
-    one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$
-    (see Proposition~\ref{proposition:matching}).
+    one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
     Furtheremore, since there exists a $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$
     and
     there is no $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge}),
     every position in $\nu_1$ is involved either in a
-    $(\nu_1, \nu_1)$-edge or in a $(\nu_1, \nu'_1)$-edge.
-    Then it follows that that there are an odd number of $(\nu_1, \nu'_1)$-edges
+    $(\nu_1, \nu_1)$-edge or in a $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$
+    (otherwise $\mathcal{M}$ would not be containment-free).
+    Then it follows that that there is an odd number of $(\nu_1, \nu'_1)$-edges
     in $\mathcal{M}$ since $\mathcal{M}$ is perfect and $|\nu_1| = N_1$ is odd.
     Combining this with the fact that there exists exactly one $(\nu_2, \nu'_1)$-edge
     in $\mathcal{M}$ and $|\nu'_1| = N_1$ is odd,
     we conclude that there exists a position, say $x$, in $\nu'_1$
-    that is not involved in a $(\nu_1, \nu'_1)$-edge nor a $(\nu_1, \nu'_1)$-edge
+    that is neither involved in a $(\nu_1, \nu'_1)$-edge nor a $(\nu_1, \nu'_1)$-edge
     nor a $(\nu'_1, \nu'_1)$-edge.
     Write $(x, y)$, $N_1+N_2 < x \leq 2N_1 + N_2$ and $y > 2N_1 + N_2$, this edge.
-    By construction,
-    we have$\mu(a) < \mu(x)$ and $\mu(b) > \mu(y)$.
-    According to Proposition~\ref{proposition:matching}, this is
-    a contradiction.
+    We have $\mu(a) < \mu(x)$ (since $\nu_2$ is below $\nu'_1$)
+    and $\mu(b) > \mu(y)$ since $\nu'_1$ is above any other gadget),
+    which contradicts our hypothesis.
     \qed
   \end{proof}
 
