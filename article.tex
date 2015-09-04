@@ -457,545 +457,550 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
   order-isomorphic patterns is \NPC.
 \end{proposition}
 
-\begin{figure}[t!]
-  \centering
-  \begin{tikzpicture}[
-    scale=.95,
-    >=stealth',
-    shorten >=1pt,
-    main node/.style={align=center},
-    cell/.style={draw,ultra thick,fill=black!5},
-    structure link/.style={line width=1.5pt},
-    pattern link/.style={line width=1.5pt,black!20},
-    monotone/.style={->,thick}
-    ]
-    % edges
-    % pi 1 - pi 2
-    \draw [pattern link] (8.5,6) .. controls +(0,1) and +(0,2) .. (10.5,5);
-    % pi 2 - sigma 2
-    \draw [pattern link] (10.5,5) .. controls +(0,1) and +(0,3) .. (11.5,4);
-    % 1
-    \draw [structure link] (0.5,11) .. controls +(0,2) and +(0,1) .. (2.5,12);
-    \node (claim edge 1) at (1.5,13) {Claim\ref{}};
-    % 2
-    \draw [structure link] (1.5,2) .. controls +(0,1) and +(0,3) .. (6.5,1);
-    \node (claim edge 1) at (4,3.5) {Claim\ref{}};
-    % 3
-    \draw [structure link] (3.5,9) .. controls +(0,3) and +(0,1.5) .. (7.5,10);
-    \node (claim edge 1) at (5.5,11.5) {Claim\ref{}};
-    % 4
-    \draw [structure link] (5.5,8) .. controls +(0,1) and +(0,7) .. (9.5,3);
-    \node (claim edge 1) at (8.5,8.5) {Claim\ref{}};
-    % sigma 1 - pi 1
-    \draw [structure link] (4.5,6) .. controls +(0,-2) and +(0,-1) .. (8.5,5);
-    \node (claim edge 1) at (6.5,4) {Claim\ref{}};
-    % nodes
-    % 1
-    \draw [cell] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
-    \draw [monotone] (0,10) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu_1$};
-    %\draw [draw,ultra thick,fill=black!5] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
-    \draw [cell] (2,11) -- (3,11) -- (3,12) -- (2,12) -- cycle;
-    \draw [monotone] (2,11) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu'_1$};
-    % 2
-    \draw [cell] (1,1) -- (2,1) -- (2,2) -- (1,2) -- cycle;
-    \draw [monotone] (1,2) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu_2$};
-    \draw [cell] (6,0) -- (7,0) -- (7,1) -- (6,1) -- cycle;
-    \draw [monotone] (6,1) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu'_2$};
-    % 3
-    \draw [cell] (3,8) -- (4,8) -- (4,9) -- (3,9) -- cycle;
-    \draw [monotone] (3,8) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu_3$};
-    \draw [cell] (7,9) -- (8,9) -- (8,10) -- (7,10) -- cycle;
-    \draw [monotone] (7,9) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu'_3$};
-    % 4
-    \draw [cell] (5,7) -- (6,7) -- (6,8) -- (5,8) -- cycle;
-    \draw [monotone] (5,8) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu_4$};
-    \draw [cell] (9,2) -- (10,2) -- (10,3) -- (9,3) -- cycle;
-    \draw [monotone] (9,3) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu'_4$};
-    % sigma 1
-    \draw [cell] (4,6) -- (5,6) -- (5,7) -- (4,7) -- cycle;
-    \node [main node] (sigma1) at (4.5,6.5) {$\sigma'$};
-    % pi 1
-    \draw [cell] (8,5) -- (9,5) -- (9,6) -- (8,6) -- cycle;
-    \node [main node] (pi1) at (8.5,5.5) {$\pi'$};
-    % pi 2
-    \draw [cell] (10,4) -- (11,4) -- (11,5) -- (10,5) -- cycle;
-    \node [main node] (sigma2) at (10.5,4.5) {$\pi''$};
-    % sigma 2
-    \draw [cell] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
-    \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};
-    % grid
-    \draw[step=1cm,black!30,ultra thin,fill=black!10] (0,0) grid (12,12);
-    % row size
-    \foreach \y/\N in {0.5/N_2,1.5/N_2} {
-        \node at (-0.5,\y) (R\y) {$\N$};
-    }
-    % column size
-    \foreach \x/\N in
-    {0.5/N_1,1.5/N_2,2.5/N_1,3.5/N_3,4.5/k+2,5.5/N_4,6.5/N_2,7.5/N_3,8.5/n+2,9.5/N_4,10.5/n,11.5/k} {
-        \node at (\x,-0.5) (C\x) {$\N$};
-    }
-  \end{tikzpicture}
-  \caption{\label{fig:reduction}}
-\end{figure}
+\begin{proof}
+  For the sake of clarity, we will that a bunch of positions $P$
+  is \emph{above} (resp. \emph{below}) above another bunch of positions $P'$
+  in permutation $\mu$
+  if $\mu(x) > \mu(y)$ (resp. $\mu(x) < \mu(y)$) for every $x \in P$
+  and every $y \in P'$.
+  For exemple, $\nu_1$ is above $\nu_2$ but below $\nu'_1$ in permutation $\mu$.
 
-
-\begin{align*}
-N_4 &= 2(2n + k + 2) + 1  = 4n + 2k + 5 \\
-N_3 &= 2(2N_4 + 2n + 2k + 4) + 1 = 20n + 12k + 9 \\
-N_2 &= 2(2N_3 + 2n + 2k + 4) + 1 \\
-N_1 &= 2(2N_2 + 2n + 2k + 4) + 1\text{.}
-\end{align*}
-
-\begin{align*}
-\sigma'  &= ((k+1) \; \sigma \; (k+2)) \; [2N_2 + N_4 + 2n + k + 2] \\
-\pi'     &= ((n+1) \; \pi \; (n+2)) \; [2N_2 + N_4 + n + k + 2] \\
-\sigma'' &= \sigma \; [2N_2 + N_4] \\
-\pi''    &= \pi \; [2N_2 + N_4 + k] \\
-\nu_1    &= \nearrow_{N_1} \; [2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4] \\
-\nu'_1   &= \nearrow_{N_1} \; [N_1 + 2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4] \\
-\nu_2    &= \nearrow_{N_2} \; [N_2] \\
-\nu'_2   &= \searrow_{N_2} \\
-\nu_3    &= \nearrow_{N_3} \; [2N_2 + 2N_4 + 2n + 2k + 4] \\
-\nu'_3   &= \nearrow_{N_3} \; [2N_2 + N_3 + 2N_4 + 2n + 2k + 4] \\
-\nu_4    &= \searrow_{N_4} \; [2N_2 + N_4 + 2n + 2k + 4] \\
-\nu'_4   &= \searrow_{N_4} \; [2N_2]
-\end{align*}
-
-$$
-\mu
-=
-\nu_1 \; \nu_2 \; \nu'_1 \; \nu_3 \; \sigma' \; \nu_4 \; \nu'_3 \; \pi' \; \nu'_4 \; \pi'' \; \sigma''
-$$
-
-\begin{figure}[t!]
-  \centering
-  \subfigure[A nested $(\nu_1,\nu'_1)$-edge.]{%
-    \begin{tikzpicture}
-      [
-        scale=0.3,
-        label/.style={anchor=base}
+  \begin{figure}[t!]
+    \centering
+    \begin{tikzpicture}[
+      scale=.95,
+      >=stealth',
+      shorten >=1pt,
+      main node/.style={align=center},
+      cell/.style={draw,ultra thick,fill=black!5},
+      structure link/.style={line width=1.5pt},
+      pattern link/.style={line width=1.5pt,black!20},
+      monotone/.style={->,thick}
       ]
-      % nu_1
-      \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
-      \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
-          \draw [fill=black] (\x,\y) circle (0.1);
-      }
-      % nu_4
-      \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
-      \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
-          \draw [fill=black] (\x,\y) circle (0.1);
-      }
-      % nu'_1
-      \draw[step=1cm,black!30,ultra thin,fill=black!10] (11.8,15.8) grid (17.2,21.2);
-      \foreach \x/\y in {12/16,13/17,14/18,15/19,16/20,17/21} {
-          \draw [fill=black] (\x,\y) circle (0.1);
-      }
-      % labels
-      \node [label] (x) at (17,14.5) {$x$};
-      % \node [label] (y) at (14,14.5) {$y$};
-      \node [label] (a) at (0,8.5) {$a$};
-      \node [label] (b) at (8,-1.5) {$b$};
-      \node (nu1) at (2.5,7.7) {$\nu_1$};
-      \node (nu2) at (8.5,-2.5) {$\nu_2$};
-      \node (nu1') at (14.5,13.5) {$\nu'_1$};
       % edges
-      \draw [line width=1pt]
-      (1,11) .. controls +(0,12) and +(0,4) .. (12,16);
-      \draw [line width=1pt]
-      (2,12) .. controls +(0,12) and +(0,4) .. (13,17);
-      \draw [line width=1pt]
-      (3,13) .. controls +(0,12) and +(0,4) .. (14,18);
-      \draw [line width=1pt]
-      (4,14) .. controls +(0,12) and +(0,4) .. (15,19);
-      \draw [line width=1pt]
-      (5,15) .. controls +(0,12) and +(0,4) .. (16,20);
-      \draw [line width=1pt]
-      (0,10) .. controls +(0,8) and +(0,20) .. (8,3);
+      % pi 1 - pi 2
+      \draw [pattern link] (8.5,6) .. controls +(0,1) and +(0,2) .. (10.5,5);
+      % pi 2 - sigma 2
+      \draw [pattern link] (10.5,5) .. controls +(0,1) and +(0,3) .. (11.5,4);
+      % 1
+      \draw [structure link] (0.5,11) .. controls +(0,2) and +(0,1) .. (2.5,12);
+      \node (claim edge 1) at (1.5,13) {Claim\ref{}};
+      % 2
+      \draw [structure link] (1.5,2) .. controls +(0,1) and +(0,3) .. (6.5,1);
+      \node (claim edge 1) at (4,3.5) {Claim\ref{}};
+      % 3
+      \draw [structure link] (3.5,9) .. controls +(0,3) and +(0,1.5) .. (7.5,10);
+      \node (claim edge 1) at (5.5,11.5) {Claim\ref{}};
+      % 4
+      \draw [structure link] (5.5,8) .. controls +(0,1) and +(0,7) .. (9.5,3);
+      \node (claim edge 1) at (8.5,8.5) {Claim\ref{}};
+      % sigma 1 - pi 1
+      \draw [structure link] (4.5,6) .. controls +(0,-2) and +(0,-1) .. (8.5,5);
+      \node (claim edge 1) at (6.5,4) {Claim\ref{}};
+      % nodes
+      % 1
+      \draw [cell] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
+      \draw [monotone] (0,10) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu_1$};
+      %\draw [draw,ultra thick,fill=black!5] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
+      \draw [cell] (2,11) -- (3,11) -- (3,12) -- (2,12) -- cycle;
+      \draw [monotone] (2,11) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu'_1$};
+      % 2
+      \draw [cell] (1,1) -- (2,1) -- (2,2) -- (1,2) -- cycle;
+      \draw [monotone] (1,2) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu_2$};
+      \draw [cell] (6,0) -- (7,0) -- (7,1) -- (6,1) -- cycle;
+      \draw [monotone] (6,1) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu'_2$};
+      % 3
+      \draw [cell] (3,8) -- (4,8) -- (4,9) -- (3,9) -- cycle;
+      \draw [monotone] (3,8) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu_3$};
+      \draw [cell] (7,9) -- (8,9) -- (8,10) -- (7,10) -- cycle;
+      \draw [monotone] (7,9) -- ++(1,1) node [midway,fill=white,fill=black!5] {$\nu'_3$};
+      % 4
+      \draw [cell] (5,7) -- (6,7) -- (6,8) -- (5,8) -- cycle;
+      \draw [monotone] (5,8) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu_4$};
+      \draw [cell] (9,2) -- (10,2) -- (10,3) -- (9,3) -- cycle;
+      \draw [monotone] (9,3) -- ++(1,-1) node [midway,fill=white,fill=black!5] {$\nu'_4$};
+      % sigma 1
+      \draw [cell] (4,6) -- (5,6) -- (5,7) -- (4,7) -- cycle;
+      \node [main node] (sigma1) at (4.5,6.5) {$\sigma'$};
+      % pi 1
+      \draw [cell] (8,5) -- (9,5) -- (9,6) -- (8,6) -- cycle;
+      \node [main node] (pi1) at (8.5,5.5) {$\pi'$};
+      % pi 2
+      \draw [cell] (10,4) -- (11,4) -- (11,5) -- (10,5) -- cycle;
+      \node [main node] (sigma2) at (10.5,4.5) {$\pi''$};
+      % sigma 2
+      \draw [cell] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
+      \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};
+      % grid
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (0,0) grid (12,12);
+      % row size
+      \foreach \y/\N in {0.5/N_2,1.5/N_2} {
+          \node at (-0.5,\y) (R\y) {$\N$};
+      }
+      % column size
+      \foreach \x/\N in
+      {0.5/N_1,1.5/N_2,2.5/N_1,3.5/N_3,4.5/k+2,5.5/N_4,6.5/N_2,7.5/N_3,8.5/n+2,9.5/N_4,10.5/n,11.5/k} {
+          \node at (\x,-0.5) (C\x) {$\N$};
+      }
     \end{tikzpicture}
-    \label{subfig:no (nu_1, nu_2)-edge - 2}}
-  \qquad
-  \subfigure[A nested $(\nu_1,\nu'_1)$-edge.]{%
-    \begin{tikzpicture}
-      [
-        scale=0.3,
-        label/.style={anchor=base}
-      ]
-      % nu_1
-      \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
-      \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
-          \draw [fill=black] (\x,\y) circle (0.1);
-      }
-      % nu_4
-      \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
-      \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
-          \draw [fill=black] (\x,\y) circle (0.1);
-      }
-      % nu'_1
-      \draw[step=1cm,black!30,ultra thin,fill=black!10] (11.8,15.8) grid (17.2,21.2);
-      \foreach \x/\y in {12/16,13/17,14/18,15/19,16/20,17/21} {
-          \draw [fill=black] (\x,\y) circle (0.1);
-      }
-      % labels
-      \node [label] (x) at (3,8.5) {$x$};
-      \node [label] (y) at (14,14.5) {$y$};
-      \node [label] (a) at (1,8.5) {$a$};
-      \node [label] (b) at (8,-1.5) {$b$};
-      \node (nu1) at (2.5,7.7) {$\nu_1$};
-      \node (nu2) at (8.5,-2.5) {$\nu_2$};
-      \node (nu1') at (14.5,13.5) {$\nu'_1$};
-      % edges
-      \draw [line width=1pt]
-      (3,13) .. controls +(0,9) and +(0,4) .. (14,18);
-      \draw [line width=1pt]
-      (1,11) .. controls +(0,6) and +(0,16) .. (8,3);
-    \end{tikzpicture}
-    \label{subfig:no (nu_1, nu_2)-edge - 2}}
-    \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
-            Claim~\ref{claim:no (nu_1, nu_2)-edge}.%
-            }
+    \caption{\label{fig:reduction}}
   \end{figure}
 
-Conversely, suppose that there exists a containment-free perfect matching
-$\mathcal{M}$ such that got any two disctinct edges $(a, b)$ and $(a', b')$
-in $\mathcal{M}$ we have $\mu(a) < \mu(a')$ if and only if
-$\mu(b) < \mu(b')$.
 
-\begin{claim}
-  \label{claim:no (nu_1, nu_2)-edge}
-  There is no $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
-\end{claim}
+  \begin{align*}
+  N_4 &= 2(2n + k + 2) + 1  = 4n + 2k + 5 \\
+  N_3 &= 2(2N_4 + 2n + 2k + 4) + 1 = 20n + 12k + 9 \\
+  N_2 &= 2(2N_3 + 2n + 2k + 4) + 1 \\
+  N_1 &= 2(2N_2 + 2n + 2k + 4) + 1\text{.}
+  \end{align*}
 
-\begin{proof}[of Claim~\ref{claim:no (nu_1, nu_2)-edge}]
-  We first prove that there exists at most one
-  $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
-  Indeed, suppose, aiming at a contradiction, that there exist
-  two $(\nu_1, \nu_2)$-edges $e = (a, b)$ and $e' = (a', b')$ in $\mathcal{M}$.
-  Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
-  we may assume that $a < a'$ and $b < b'$.
-  Then it follows that $\mu(a) < \mu(a')$
-  (since $\nu_1$ is increasing) and $\mu(b) > \mu(b')$
-  (since $\nu_2$ is decreasing).
-  According to Proposition~\ref{proposition:matching}, this is
-  a contradiction, and hence
-  there exists at most one
-  $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
+  \begin{align*}
+  \sigma'  &= ((k+1) \; \sigma \; (k+2)) \; [2N_2 + N_4 + 2n + k + 2] \\
+  \pi'     &= ((n+1) \; \pi \; (n+2)) \; [2N_2 + N_4 + n + k + 2] \\
+  \sigma'' &= \sigma \; [2N_2 + N_4] \\
+  \pi''    &= \pi \; [2N_2 + N_4 + k] \\
+  \nu_1    &= \nearrow_{N_1} \; [2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4] \\
+  \nu'_1   &= \nearrow_{N_1} \; [N_1 + 2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4] \\
+  \nu_2    &= \nearrow_{N_2} \; [N_2] \\
+  \nu'_2   &= \searrow_{N_2} \\
+  \nu_3    &= \nearrow_{N_3} \; [2N_2 + 2N_4 + 2n + 2k + 4] \\
+  \nu'_3   &= \nearrow_{N_3} \; [2N_2 + N_3 + 2N_4 + 2n + 2k + 4] \\
+  \nu_4    &= \searrow_{N_4} \; [2N_2 + N_4 + 2n + 2k + 4] \\
+  \nu'_4   &= \searrow_{N_4} \; [2N_2]
+  \end{align*}
 
-  Suppose now, still aiming at a contradiction, that there exists
-  exactly one $(\nu_1, \nu_2)$-edge $e = (a, b)$ in $\mathcal{M}$.
-  We show that $\mathcal{M}$ does not contain any $(\nu_1, \nu_1)$-edge.
-  Indeed, suppose, aiming at a contradiction,
-  that there exists a $(\nu_1, \nu_1)$-edge $(x, y)$ in $\mathcal{M}$.
-  Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
-  we must have $x < a$.
-  Then it follows that $\mu(x) < \mu(a)$ and $\mu(y) > \mu(b)$
-  (since $\nu_1$ is increasing).
-  According to Proposition~\ref{proposition:matching}, this is
-  a contradiction, and hence $\mathcal{M}$ does not contain any
-  $(\nu_1, \nu_1)$-edge.
-  Furthermore, since there is no other $(\nu_1, \nu_2)$-edge in $\mathcal{M}$ and
-  $\nu_1$ is increasing there are $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges
-  in $\mathcal{M}$.
-  Then it follows that there exists a position, say $y$, in $\nu'_1$ that is
-  not involved in a $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
-  We rule out this configuration by considering two cases:
-  \begin{itemize}
-    \item Position $y$ is involved in a $(\nu_2, \nu'_1)$-edge,
-    say $(x, y)$. Then, we have $\mu(a) < \mu(x)$ and $\mu(b) < \mu(y)$.
+  $$
+  \mu
+  =
+  \nu_1 \; \nu_2 \; \nu'_1 \; \nu_3 \; \sigma' \; \nu_4 \; \nu'_3 \; \pi' \; \nu'_4 \; \pi'' \; \sigma''
+  $$
+
+  \begin{figure}[t!]
+    \centering
+    \subfigure[A nested $(\nu_1,\nu'_1)$-edge.]{%
+      \begin{tikzpicture}
+        [
+          scale=0.3,
+          label/.style={anchor=base}
+        ]
+        % nu_1
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
+        \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % nu_4
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
+        \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % nu'_1
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (11.8,15.8) grid (17.2,21.2);
+        \foreach \x/\y in {12/16,13/17,14/18,15/19,16/20,17/21} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % labels
+        \node [label] (x) at (17,14.5) {$x$};
+        % \node [label] (y) at (14,14.5) {$y$};
+        \node [label] (a) at (0,8.5) {$a$};
+        \node [label] (b) at (8,-1.5) {$b$};
+        \node (nu1) at (2.5,7.7) {$\nu_1$};
+        \node (nu2) at (8.5,-2.5) {$\nu_2$};
+        \node (nu1') at (14.5,13.5) {$\nu'_1$};
+        % edges
+        \draw [line width=1pt]
+        (1,11) .. controls +(0,12) and +(0,4) .. (12,16);
+        \draw [line width=1pt]
+        (2,12) .. controls +(0,12) and +(0,4) .. (13,17);
+        \draw [line width=1pt]
+        (3,13) .. controls +(0,12) and +(0,4) .. (14,18);
+        \draw [line width=1pt]
+        (4,14) .. controls +(0,12) and +(0,4) .. (15,19);
+        \draw [line width=1pt]
+        (5,15) .. controls +(0,12) and +(0,4) .. (16,20);
+        \draw [line width=1pt]
+        (0,10) .. controls +(0,8) and +(0,20) .. (8,3);
+      \end{tikzpicture}
+      \label{subfig:no (nu_1, nu_2)-edge - 2}}
+    \qquad
+    \subfigure[A nested $(\nu_1,\nu'_1)$-edge.]{%
+      \begin{tikzpicture}
+        [
+          scale=0.3,
+          label/.style={anchor=base}
+        ]
+        % nu_1
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
+        \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % nu_4
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
+        \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % nu'_1
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (11.8,15.8) grid (17.2,21.2);
+        \foreach \x/\y in {12/16,13/17,14/18,15/19,16/20,17/21} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % labels
+        \node [label] (x) at (3,8.5) {$x$};
+        \node [label] (y) at (14,14.5) {$y$};
+        \node [label] (a) at (1,8.5) {$a$};
+        \node [label] (b) at (8,-1.5) {$b$};
+        \node (nu1) at (2.5,7.7) {$\nu_1$};
+        \node (nu2) at (8.5,-2.5) {$\nu_2$};
+        \node (nu1') at (14.5,13.5) {$\nu'_1$};
+        % edges
+        \draw [line width=1pt]
+        (3,13) .. controls +(0,9) and +(0,4) .. (14,18);
+        \draw [line width=1pt]
+        (1,11) .. controls +(0,6) and +(0,16) .. (8,3);
+      \end{tikzpicture}
+      \label{subfig:no (nu_1, nu_2)-edge - 2}}
+      \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
+              Claim~\ref{claim:no (nu_1, nu_2)-edge}.%
+              }
+    \end{figure}
+
+  Conversely, suppose that there exists a containment-free perfect matching
+  $\mathcal{M}$ in $G_\mu$ such that for any two disctinct edges
+  $(a, b)$ and $(a', b')$ in $\mathcal{M}$
+  we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
+
+  \begin{claim}
+    \label{claim:no (nu_1, nu_2)-edge}
+    There is no $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu_1, nu_2)-edge}]
+    We first prove that there exists at most one
+    $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
+    Indeed, suppose, aiming at a contradiction, that there exist
+    two $(\nu_1, \nu_2)$-edges $e = (a, b)$ and $e' = (a', b')$ in $\mathcal{M}$.
+    Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
+    we may assume that $a < a'$ and $b < b'$.
+    Then it follows that $\mu(a) < \mu(a')$
+    (since $\nu_1$ is increasing) and $\mu(b) > \mu(b')$
+    (since $\nu_2$ is decreasing).
     According to Proposition~\ref{proposition:matching}, this is
     a contradiction.
-    \item Position $y$ is not involved in a $(\nu_2, \nu'_1)$-edge.
-    Since there are $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges
-    in $\mathcal{M}$ and $|\nu'_1| = N_1$ there exists an edge $(y, z)$ in $\mathcal{M}$
-    that is neither a $(\nu_1, \nu'_1)$-edge nor a $(\nu_2, \nu'_1)$-edge
+
+    Suppose now, still aiming at a contradiction, that there exists
+    exactly one $(\nu_1, \nu_2)$-edge $e = (a, b)$ in $\mathcal{M}$.
+    We show that $\mathcal{M}$ does not contain any $(\nu_1, \nu_1)$-edge.
+    Indeed, suppose, aiming at a contradiction,
+    that there exists a $(\nu_1, \nu_1)$-edge $(x, y)$ in $\mathcal{M}$.
+    Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
+    we must have $x < a$.
+    Then it follows that $\mu(x) < \mu(a)$ (since $\nu_1$ is increasing) and
+    $\mu(y) > \mu(b)$ (since $\nu_1$ is above $\nu_2$).
+    According to Proposition~\ref{proposition:matching}, this is
+    a contradiction, and hence $\mathcal{M}$ does not contain any
+    $(\nu_1, \nu_1)$-edge.
+    Furthermore, since there is no other $(\nu_1, \nu_2)$-edge in $\mathcal{M}$ and
+    $\nu_1$ is increasing,
+    $\mathcal{M}$ contains $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges.
+    But $|\nu_1| = |\nu'_1|$, and hence there exists a position, say $y$, in $\nu'_1$ that is
+    not involved in a $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
+    We rule out this configuration by considering two cases:
+    \begin{itemize}
+      \item Position $y$ is involved in a $(\nu_2, \nu'_1)$-edge,
+      say $(x, y)$. Then, we have $\mu(a) > \mu(x)$ (since $\nu_1$ is above $\nu_2$)
+      and $\mu(b) < \mu(y)$ (since $\nu_2$ is below $\nu'_1$).
+      According to Proposition~\ref{proposition:matching}, this is
+      a contradiction.
+      \item Position $y$ is not involved in a $(\nu_2, \nu'_1)$-edge.
+      Since $\mathcal{M}$ contains $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges
+      in $\mathcal{M}$ and $|\nu'_1| = N_1$, there exists an edge $(y, z)$ in $\mathcal{M}$
+      that is neither a $(\nu_1, \nu'_1)$-edge nor a $(\nu_2, \nu'_1)$-edge
+      nor a $(\nu'_1, \nu'_1)$-edge.
+      Now, for any $(\nu_1, \nu'_1)$-edge $(x', y')$ in $\mathcal{M}$, we
+      have $\mu(x) > \mu(y)$ (since $\nu_1$ is below $\nu'_1$)
+      and $\mu(y') > \mu(z)$ (since $\nu'_1$ is above any other gadget).
+      According to Proposition~\ref{proposition:matching}, this is
+      a contradiction.
+    \end{itemize}
+    \qed
+  \end{proof}
+
+
+
+  \begin{claim}
+    \label{claim:one (nu_1, nu'_1)-edge}
+    There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:one (nu_1, nu'_1)-edge}]
+    Suppose, aiming at a contradiction, that there is no
+    $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
+    Since $N_1$ is odd, there exists an edge $(x, y)$ in $\mathcal{M}$,
+    $1 \leq x \leq N_1$, that is neither a
+    $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
+    nor a $(\nu_1, \nu'_1)$.
+    (In other words, $x \leq N_1$ and $y > 2N_1 + N_2$.)
+    Therefore, since $\mathcal{M}$ is containment-free,
+    there is no $(\nu_2, \nu_2)$-edge in $\mathcal{M}$.
+    But $|\nu'_1| = N_1 > 2(2N_2 + 2n +2k +4)$ and hence at least one
+    position in $\nu'_1$ can not be involved in an edge in $\mathcal{M}$.
+    Then it follows that $\mathcal{M}$ is not a perfect matching.
+    According to Proposition~\ref{proposition:matching}, this is
+    a contradiction.
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu_2, nu_2)-edge}
+    There is no $(\nu_2, \nu_2)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu_2, nu_2)-edge}]
+  Combine the fact that $\mathcal{M}$ is containment-free with
+  Claim~\ref{claim:one (nu_1, nu'_1)-edge}.
+  \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu_2, nu'_1)-edge}
+    There is no $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu_2, nu'_1)-edge}]
+    We first prove that there exists at most one
+    $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
+    Indeed, suppose, aiming at a contradiction, that there exist
+    two $(\nu_2, \nu'_1)$-edges $e = (a, b)$ and $e' = (a', b')$ in $\mathcal{M}$.
+    Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
+    we may assume that $a < a'$ and $b < b'$.
+    Then it follows that $\mu(a) > \mu(a')$
+    (since $\nu_2$ is decreasing) and $\mu(b) < \mu(b')$
+    (since $\nu'_1$ is increasing).
+    According to Proposition~\ref{proposition:matching}, this is
+    a contradiction, and hence
+    there exists at most one
+    $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
+
+    Suppose now, still aiming at a contradiction, that there exists
+    exactly one $(\nu_2, \nu'_1)$-edge $e = (a, b)$ in $\mathcal{M}$.
+    According to Claim~\ref{claim:one (nu_1, nu'_1)-edge}, there exists at least
+    one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$
+    (see Proposition~\ref{proposition:matching}).
+    Furtheremore, since there exists a $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$
+    and
+    there is no $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge}),
+    every position in $\nu_1$ is involved either in a
+    $(\nu_1, \nu_1)$-edge or in a $(\nu_1, \nu'_1)$-edge.
+    Then it follows that that there are an odd number of $(\nu_1, \nu'_1)$-edges
+    in $\mathcal{M}$ since $\mathcal{M}$ is perfect and $|\nu_1| = N_1$ is odd.
+    Combining this with the fact that there exists exactly one $(\nu_2, \nu'_1)$-edge
+    in $\mathcal{M}$ and $|\nu'_1| = N_1$ is odd,
+    we conclude that there exists a position, say $x$, in $\nu'_1$
+    that is not involved in a $(\nu_1, \nu'_1)$-edge nor a $(\nu_1, \nu'_1)$-edge
     nor a $(\nu'_1, \nu'_1)$-edge.
-    Now, for any $(\nu_1, \nu'_1)$-edge $(x', y')$ in $\mathcal{M}$, we
-    have $\mu(x') < \mu(y)$ and $\mu(y') > \mu(z)$ (by construction).
+    Write $(x, y)$, $N_1+N_2 < x \leq 2N_1 + N_2$ and $y > 2N_1 + N_2$, this edge.
+    By construction,
+    we have$\mu(a) < \mu(x)$ and $\mu(b) > \mu(y)$.
     According to Proposition~\ref{proposition:matching}, this is
     a contradiction.
-  \end{itemize}
-  \qed
-\end{proof}
+    \qed
+  \end{proof}
 
-\begin{claim}
-  \label{claim:no (nu_2, nu_2)-edge}
-  There is no $(\nu_2, \nu_2)$-edge in $\mathcal{M}$.
-\end{claim}
+  \begin{claim}
+    \label{claim:one (nu_2, nu'_2)-edge}
+    There is at least one $(\nu_2, \nu'_2)$-edge in $\mathcal{M}$.
+  \end{claim}
 
-\begin{proof}[of Claim~\ref{claim:no (nu_2, nu_2)-edge}]
-Since $N_1$ is odd, there exists an edge $(x, y)$ in $\mathcal{M}$,
-$1 \leq x \leq N_1$, that is neither a $(\nu_1, \nu_1)$-edge nor a
-$(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge}).
-Suppose now, aiming at a contradiction,
-that there exists a $(\nu_2, \nu_2)$-edge $e = (a, b)$ in $\mathcal{M}$.
-We have $x < a < b < y$ (by construction), and hence $\mathcal{M}$ is not
-containment-free.
-According to Proposition~\ref{proposition:matching}, this is
-a contradiction.
+  \begin{proof}[of Claim~\ref{claim:one (nu_2, nu'_2)-edge}]
+    Suppose, aiming at a contradiction there there is no
+    $(\nu_2, \nu'_2)$-edge in $\mathcal{M}$.
+    Notice that there is no
+    $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
+    nor $(\nu_2, \nu_2)$-edge (Claim~\ref{claim:no (nu_2, nu_2)-edge})
+    nor $(\nu_2, \nu'_1)$-edge (Claim~\ref{claim:no (nu_2, nu'_1)-edge})
+    in $\mathcal{M}$.
+    But $|\nu_2| = N_2 > 2N_3 + 2N_4 + 2n + 2k$ and hence $\mathcal{M}$ is not
+    a perfect matching.
+    According to Proposition~\ref{proposition:matching}, this is
+    a contradiction.
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge}
+    There is
+    no $(\nu'_1, \nu'_1)$-edge,
+    no $(\nu_3, \nu_3)$-edge,
+    no $(\sigma', \sigma')$-edge and
+    no $(\nu_4, \nu_4)$-edge
+    in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge}]
+    Combine Claim~\ref{claim:one (nu_2, nu'_2)-edge} with the fact that
+    $\mathcal{M}$ is containment-free (Proposition~\ref{proposition:matching}).
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu_3, nu'_2)-edge}
+    There is no $(\nu_3, \nu'_2)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu_3, nu'_2)-edge}]
+    Suppose, aiming at a contradiction, that there exists
+    $(\nu_3, \nu'_2)$-edge $(a, b)$ in $\mathcal{M}$.
+    According to Claim~\ref{claim:one (nu_2, nu'_2)-edge}, there
+    exists at least one $(\nu_2, \nu'_2)$-edge $(x, y)$ in $\mathcal{M}$.
+    Since $\mathcal{M}$ is containment-free (Proposition~\ref{proposition:matching}),
+    we have $y < b$.
+    Therefore,
+    we have $\mu(x) < \mu(a)$ (by construction) and
+    $\mu(y) > \mu(b)$ (since $\nu'_2$ is decreasing).
+    According to Proposition~\ref{proposition:matching}, this is
+    a contradiction.
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge}
+    There is neither $(\nu_1, \nu'_3)$-edge nor $(\nu'_1, \nu_3)$-edge
+    in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge}]
+    Suppose, aiming at a contradiction, that there exists a
+    $(\nu_1, \nu'_3)$-edge $(a, b)$ in $\mathcal{M}$.
+    According to Claim~\ref{claim:one (nu_1, nu'_1)-edge} there exists
+    $(\nu_1, \nu'_1)$-edge $(x, y)$ in $\mathcal{M}$.
+    Since these two edges have to be crossing
+    (Proposition~\ref{proposition:matching}), we have $x < a$.
+    Therefore, we have
+    $\mu(x) < \mu(a)$ (since $\nu_1$ is increasing)
+    and
+    $\mu(y) > \mu(b)$ (by construction).
+    According to Proposition~\ref{proposition:matching}, this is
+    a contradiction.
+
+    A similar argument shows that there is no
+    $(\nu'_1, \nu_3)$-edge in $\mathcal{M}$.
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:at most one (nu_2, nu_3)-edge}
+    There is at most one $(\nu_2, \nu_3)$-edge
+    in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:at most one (nu_2, nu_3)-edge}]
+    Suppose, aiming at a contradiction, that there exist two
+    $(\nu_2, \nu_3)$-edges $(a, b)$ and $(a', b')$ in $\mathcal{M}$.
+    Since these two edges have to be crossing
+    (Proposition~\ref{proposition:matching}), we may assume that
+    $a < a'$ and $b < b'$.
+    Therefore, we have
+    $\mu(a) > \mu(a')$ (since $\nu_2$ is decreasing)
+    and
+    $\mu(b) < \mu(b')$ (since $\nu_3$ is increasing).
+    According to Proposition~\ref{proposition:matching}, this is
+    a contradiction.
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:one (nu_3, nu'_3)-edge}
+    There is at least one $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:one (nu_3, nu'_3)-edge}]
+    Suppose, aiming at a contradiction, that there is no
+    $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:one (nu_4, nu'_4)-edge}
+    There is at least one $(\nu_4, \nu'_4)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:one (nu_4, nu'_4)-edge}]
+    Suppose, aiming at a contradiction, that there is no
+    $(\nu_4, \nu'_4)$-edge in $\mathcal{M}$.
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu_4, nu'_3)-edge}
+    There is no $(\nu_4, \nu'_3)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu_4, nu'_3)-edge}]
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu_4, pi')-edge}
+    There is no $(\nu_4, \pi')$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu_4, pi')-edge}]
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:one (nu_4, nu'_4)-edge}
+    There is at least $(\nu_4, \nu'_4)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:one (nu_4, nu'_4)-edge}]
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (pi', pi'')-edge}
+    There is no $(\pi', \pi'')$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (pi', pi'')-edge}]
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu'_2, pi')-edge}
+    There is no $(\nu'_2, \pi')$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu'_2, pi')-edge}]
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu'_3, pi')-edge}
+    There is no $(\nu'_3, \pi')$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu'_3, pi')-edge}]
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu_2, nu'_2)-edge}
+    There is no $(\nu_2, \nu'_2)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu_2, nu'_2)-edge}]
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu_3, nu'_3)-edge}
+    There is no $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu_3, nu'_3)-edge}]
+    \qed
+  \end{proof}
 \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:one (nu_1, nu'_1)-edge}
-  There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:one (nu_1, nu'_1)-edge}]
-  Suppose, aiming at a contradiction, that there is no
-  $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
-  Since $N_1$ is odd, there exists an edge $(x, y)$ in $\mathcal{M}$,
-  $1 \leq x \leq N_1$, that is neither a
-  $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
-  nor a $(\nu_1, \nu'_1)$.
-  (In other words, $x \leq N_1$ and $y > 2N_1 + N_2$.)
-  Therefore, since $\mathcal{M}$ is containment-free (Proposition~\ref{proposition:matching}),
-  there is no $(\nu_2, \nu_2)$-edge in $\mathcal{M}$.
-  But $|\nu'_1| = N_1 > 2(2N_2 + 2n +2k +4)$ and hence at least one
-  position in $\nu'_1$ can not be involved in an edge in $\mathcal{M}$.
-  Then it follows that $\mathcal{M}$ is not a perfect matching.
-  According to Proposition~\ref{proposition:matching}, this is
-  a contradiction.
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:no (nu_2, nu'_1)-edge}
-  There is no $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no (nu_2, nu'_1)-edge}]
-  We first prove that there exists at most one
-  $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
-  Indeed, suppose, aiming at a contradiction, that there exist
-  two $(\nu_2, \nu'_1)$-edges $e = (a, b)$ and $e' = (a', b')$ in $\mathcal{M}$.
-  Since $\mathcal{M}$ is containment-free (see Proposition~\ref{proposition:matching}),
-  we may assume that $a < a'$ and $b < b'$.
-  Then it follows that $\mu(a) > \mu(a')$
-  (since $\nu_2$ is decreasing) and $\mu(b) < \mu(b')$
-  (since $\nu'_1$ is increasing).
-  According to Proposition~\ref{proposition:matching}, this is
-  a contradiction, and hence
-  there exists at most one
-  $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
-
-  Suppose now, still aiming at a contradiction, that there exists
-  exactly one $(\nu_2, \nu'_1)$-edge $e = (a, b)$ in $\mathcal{M}$.
-  According to Claim~\ref{claim:one (nu_1, nu'_1)-edge}, there exists at least
-  one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$
-  (see Proposition~\ref{proposition:matching}).
-  Furtheremore, since there exists a $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$
-  and
-  there is no $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge}),
-  every position in $\nu_1$ is involved either in a
-  $(\nu_1, \nu_1)$-edge or in a $(\nu_1, \nu'_1)$-edge.
-  Then it follows that that there are an odd number of $(\nu_1, \nu'_1)$-edges
-  in $\mathcal{M}$ since $\mathcal{M}$ is perfect and $|\nu_1| = N_1$ is odd.
-  Combining this with the fact that there exists exactly one $(\nu_2, \nu'_1)$-edge
-  in $\mathcal{M}$ and $|\nu'_1| = N_1$ is odd,
-  we conclude that there exists a position, say $x$, in $\nu'_1$
-  that is not involved in a $(\nu_1, \nu'_1)$-edge nor a $(\nu_1, \nu'_1)$-edge
-  nor a $(\nu'_1, \nu'_1)$-edge.
-  Write $(x, y)$, $N_1+N_2 < x \leq 2N_1 + N_2$ and $y > 2N_1 + N_2$, this edge.
-  By construction,
-  we have$\mu(a) < \mu(x)$ and $\mu(b) > \mu(y)$.
-  According to Proposition~\ref{proposition:matching}, this is
-  a contradiction.
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:one (nu_2, nu'_2)-edge}
-  There is at least one $(\nu_2, \nu'_2)$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:one (nu_2, nu'_2)-edge}]
-  Suppose, aiming at a contradiction there there is no
-  $(\nu_2, \nu'_2)$-edge in $\mathcal{M}$.
-  Notice that there is no
-  $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
-  nor $(\nu_2, \nu_2)$-edge (Claim~\ref{claim:no (nu_2, nu_2)-edge})
-  nor $(\nu_2, \nu'_1)$-edge (Claim~\ref{claim:no (nu_2, nu'_1)-edge})
-  in $\mathcal{M}$.
-  But $|\nu_2| = N_2 > 2N_3 + 2N_4 + 2n + 2k$ and hence $\mathcal{M}$ is not
-  a perfect matching.
-  According to Proposition~\ref{proposition:matching}, this is
-  a contradiction.
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge}
-  There is
-  no $(\nu'_1, \nu'_1)$-edge,
-  no $(\nu_3, \nu_3)$-edge,
-  no $(\sigma', \sigma')$-edge and
-  no $(\nu_4, \nu_4)$-edge
-  in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge}]
-  Combine Claim~\ref{claim:one (nu_2, nu'_2)-edge} with the fact that
-  $\mathcal{M}$ is containment-free (Proposition~\ref{proposition:matching}).
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:no (nu_3, nu'_2)-edge}
-  There is no $(\nu_3, \nu'_2)$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no (nu_3, nu'_2)-edge}]
-  Suppose, aiming at a contradiction, that there exists
-  $(\nu_3, \nu'_2)$-edge $(a, b)$ in $\mathcal{M}$.
-  According to Claim~\ref{claim:one (nu_2, nu'_2)-edge}, there
-  exists at least one $(\nu_2, \nu'_2)$-edge $(x, y)$ in $\mathcal{M}$.
-  Since $\mathcal{M}$ is containment-free (Proposition~\ref{proposition:matching}),
-  we have $y < b$.
-  Therefore,
-  we have $\mu(x) < \mu(a)$ (by construction) and
-  $\mu(y) > \mu(b)$ (since $\nu'_2$ is decreasing).
-  According to Proposition~\ref{proposition:matching}, this is
-  a contradiction.
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge}
-  There is neither $(\nu_1, \nu'_3)$-edge nor $(\nu'_1, \nu_3)$-edge
-  in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge}]
-  Suppose, aiming at a contradiction, that there exists a
-  $(\nu_1, \nu'_3)$-edge $(a, b)$ in $\mathcal{M}$.
-  According to Claim~\ref{claim:one (nu_1, nu'_1)-edge} there exists
-  $(\nu_1, \nu'_1)$-edge $(x, y)$ in $\mathcal{M}$.
-  Since these two edges have to be crossing
-  (Proposition~\ref{proposition:matching}), we have $x < a$.
-  Therefore, we have
-  $\mu(x) < \mu(a)$ (since $\nu_1$ is increasing)
-  and
-  $\mu(y) > \mu(b)$ (by construction).
-  According to Proposition~\ref{proposition:matching}, this is
-  a contradiction.
-
-  A similar argument shows that there is no
-  $(\nu'_1, \nu_3)$-edge in $\mathcal{M}$.
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:at most one (nu_2, nu_3)-edge}
-  There is at most one $(\nu_2, \nu_3)$-edge
-  in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:at most one (nu_2, nu_3)-edge}]
-  Suppose, aiming at a contradiction, that there exist two
-  $(\nu_2, \nu_3)$-edges $(a, b)$ and $(a', b')$ in $\mathcal{M}$.
-  Since these two edges have to be crossing
-  (Proposition~\ref{proposition:matching}), we may assume that
-  $a < a'$ and $b < b'$.
-  Therefore, we have
-  $\mu(a) > \mu(a')$ (since $\nu_2$ is decreasing)
-  and
-  $\mu(b) < \mu(b')$ (since $\nu_3$ is increasing).
-  According to Proposition~\ref{proposition:matching}, this is
-  a contradiction.
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:one (nu_3, nu'_3)-edge}
-  There is at least one $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:one (nu_3, nu'_3)-edge}]
-  Suppose, aiming at a contradiction, that there is no
-  $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:one (nu_4, nu'_4)-edge}
-  There is at least one $(\nu_4, \nu'_4)$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:one (nu_4, nu'_4)-edge}]
-  Suppose, aiming at a contradiction, that there is no
-  $(\nu_4, \nu'_4)$-edge in $\mathcal{M}$.
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:no (nu_4, nu'_3)-edge}
-  There is no $(\nu_4, \nu'_3)$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no (nu_4, nu'_3)-edge}]
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:no (nu_4, pi')-edge}
-  There is no $(\nu_4, \pi')$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no (nu_4, pi')-edge}]
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:one (nu_4, nu'_4)-edge}
-  There is at least $(\nu_4, \nu'_4)$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:one (nu_4, nu'_4)-edge}]
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:no (pi', pi'')-edge}
-  There is no $(\pi', \pi'')$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no (pi', pi'')-edge}]
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:no (nu'_2, pi')-edge}
-  There is no $(\nu'_2, \pi')$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no (nu'_2, pi')-edge}]
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:no (nu'_3, pi')-edge}
-  There is no $(\nu'_3, \pi')$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no (nu'_3, pi')-edge}]
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:no (nu_2, nu'_2)-edge}
-  There is no $(\nu_2, \nu'_2)$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no (nu_2, nu'_2)-edge}]
-  \qed
-\end{proof}
-
-\begin{claim}
-  \label{claim:no (nu_3, nu'_3)-edge}
-  There is no $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
-\end{claim}
-
-\begin{proof}[of Claim~\ref{claim:no (nu_3, nu'_3)-edge}]
-  \qed
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
