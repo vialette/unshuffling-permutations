@@ -707,38 +707,78 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
       \centering
         \begin{tikzpicture}
           [
-            scale=0.425,
+            scale=0.45,
             label/.style={anchor=base},
             cell/.style={draw,thick,fill=black!5}
           ]
           % sigma'
           \draw [cell,rounded corners] (1.5,16.5) -- (4.5,16.5) -- (4.5,19.5) -- (1.5,19.5) -- cycle;
-          \draw[step=1cm,black!30,ultra thin,fill=black!10] (0.8,16.8) grid (5.2,21.2);
+          \draw[step=1cm,black!60,ultra thin,fill=black!10] (0.8,16.8) grid (5.2,21.2);
           \foreach \x/\y in {1/20,2/19,3/17,4/18,5/21} {
               \draw [fill=black] (\x,\y) circle (0.1);
           }
-          \node (pip) at (2.5,16) {$\sigma'$};
+          \node (pip) at (3,22) {$\sigma'$};
+          \node[%
+            draw,
+            text width=5.5cm,text justified,color=black!50,rounded corners,
+            rectangle callout,callout relative pointer={(0.0cm,-1.5cm)}
+          ] at (3,26)
+          {%
+            $((k+1) \; \sigma \; (k+2)) \; [2N_2 + N_4 + 2n + k + 2]$
+          };%
+          %\node at (3,-0.5) {$((k+1) \; \sigma \; (k+2)) \; [2N_2 + N_4 + 2n + k + 2]$};
+          \node at (-0.5,20) {$k+1$};
+          \node at (-0.5,21) {$k+2$};
           % pi'
           \draw [cell,rounded corners] (6.5,8.5) -- (12.5,8.5) -- (12.5,14.5) -- (6.5,14.5) -- cycle;
-          \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,8.8) grid (13.2,16.2);
+          \draw[step=1cm,black!60,ultra thin,fill=black!10] (5.8,8.8) grid (13.2,16.2);
           \foreach \x/\y in {6/15,7/12,8/13,9/10,10/9,11/11,12/14,13/16} {
               \draw [fill=black] (\x,\y) circle (0.1);
           }
-          \node (pip) at (9.5,8) {$\pi'$};
+          \node (pip) at (9.5,17) {$\pi'$};
+          \node[%
+            draw,
+            text width=5.5cm,text justified,color=black!50,rounded corners,
+            rectangle callout,callout relative pointer={(0.0cm,3cm)}
+          ] at (9.5,0)
+          {%
+            $((n+1) \; \pi \; (n+2)) \; [2N_2 + N_4 + n + k + 2]$
+          };%
+          %\node at (9.5,-2) {$((n+1) \; \pi \; (n+2)) \; [2N_2 + N_4 + n + k + 2]$};
+          \node at (-0.5,15) {$n+1$};
+          \node at (-0.5,16) {$n+2$};
           % pi''
           \draw [cell,rounded corners] (13.5,2.5) -- (19.5,2.5) -- (19.5,8.5) -- (13.5,8.5) -- cycle;
-          \draw[step=1cm,black!30,ultra thin,fill=black!10] (13.8,2.8) grid (19.2,8.2);
+          \draw[step=1cm,black!60,ultra thin,fill=black!10] (13.8,2.8) grid (19.2,8.2);
           \foreach \x/\y in {14/6,15/7,16/4,17/3,18/5,19/8} {
               \draw [fill=black] (\x,\y) circle (0.1);
           }
-          \node (pipp) at (16.75,2) {$\pi''$};
+          \node (pipp) at (16.75,9) {$\pi''$};
+          \node[%
+            draw,
+            text width=2.25cm,text justified,color=black!50,rounded corners,
+            rectangle callout,callout relative pointer={(0.0cm,-4cm)}
+          ] at (16.5,19)
+          {%
+            $\pi [2N_2 + N_4 + k]$
+          };%
+          %\node at (16.5,-3.5) {$\pi [2N_2 + N_4 + k]$};
           % sigma''
           \draw [cell,rounded corners] (19.5,-0.5) -- (22.5,-.5) -- (22.5,2.5) -- (19.5,2.5) -- cycle;
-          \draw[step=1cm,black!30,ultra thin,fill=black!10] (19.8,-0.2) grid (22.2,2.2);
+          \draw[step=1cm,black!60,ultra thin,fill=black!10] (19.8,-0.2) grid (22.2,2.2);
           \foreach \x/\y in {20/2,21/0,22/1} {
               \draw [fill=black] (\x,\y) circle (0.1);
           }
-          \node (sigmapp) at (20.5,-1) {$\sigma''$};
+          \node (sigmapp) at (21,3) {$\sigma''$};
+          \node[%
+            draw,
+            text width=1.75cm,text justified,color=black!50,rounded corners,
+            rectangle callout,callout relative pointer={(0.0cm,1.25cm)}
+          ] at (21,-4.5)
+          {%
+            $\sigma [2N_2 + N_4]$
+          };%
+          %\node at (21,-5) {$\sigma [2N_2 + N_4]$};
           % edges sigma' - pi'
           \draw [line width=1pt]
           (1,20) .. controls +(0,9) and +(0,4) .. (6,15);
@@ -765,46 +805,46 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
           \draw [line width=1pt]
           (18,5) .. controls +(0,-9) and +(0,-4) .. (22,1);
           % text
-          \node[%
-            draw,
-            text width=5.5cm,text justified,color=black!50,
-            rectangle callout,callout relative pointer={(0cm,-.75cm)}
-          ] at (1,28)
-          {%
-          $2$ pairwise crossing $(\sigma',\pi')$-edges that
-          link the guards
-          };%
-          \node[%
-            draw,
-            text width=5.5cm,text justified,color=black!50,
-            rectangle callout,callout relative pointer={(-0.75cm,-0.5cm)}
-          ] at (17,24)
-          {%
-          $n-k=|\pi|-|\sigma|$ pairwise crossing $(\sigma',\pi')$-edges that
-          denote positions that do not correspond to
-          a specific occurence of $\sigma$ in $\pi$
-          (at positions $2$, $3$ and $5$).
-          };%
-          \node[%
-            draw,
-            text width=5.5cm,text justified,color=black!50,
-            rectangle callout,callout relative pointer={(0.75cm,1.5cm)}
-          ] at (2.5,4,5)
-          {%
-          $k=|\sigma|$ pairwise crossing $(\sigma',\pi')$-edges that
-          denote a specific occurence of $\sigma$ in $\pi$
-          (at positions $2$, $3$ and $5$).
-          };%
-          \node[%
-            draw,
-            text width=5.5cm,text justified,color=black!50,
-            rectangle callout,callout relative pointer={(2cm,.75cm)}
-          ] at (7,-3)
-          {%
-          $k=|\sigma|$ pairwise crossing $(\pi''; \sigma'')$-edges that
-          denote a specific occurence of $\sigma$ in $\pi$
-          (at positions $2$, $3$ and $5$).
-          };%
+          % \node[%
+          %   draw,
+          %   text width=5.5cm,text justified,color=black!50,
+          %   rectangle callout,callout relative pointer={(0.5cm,-.75cm)}
+          % ] at (1,27)
+          % {%
+          % $2$ pairwise crossing $(\sigma',\pi')$-edges that
+          % link the guards
+          % };%
+          % \node[%
+          %   draw,
+          %   text width=5.5cm,text justified,color=black!50,
+          %   rectangle callout,callout relative pointer={(-0.1cm,-2.5cm)}
+          % ] at (17,24)
+          % {%
+          % $n-k$ pairwise crossing $(\sigma',\pi')$-edges that
+          % denote positions that do not correspond to
+          % a specific occurence of $\sigma$ in $\pi$
+          % (at positions $2$, $3$ and $5$).
+          % };%
+          % \node[%
+          %   draw,
+          %   text width=5.5cm,text justified,color=black!50,
+          %   rectangle callout,callout relative pointer={(0.75cm,1.5cm)}
+          % ] at (2.5,4,5)
+          % {%
+          % $k$ pairwise crossing $(\sigma',\pi')$-edges that
+          % denote a specific occurence of $\sigma$ in $\pi$
+          % (at positions $2$, $3$ and $5$).
+          % };%
+          % \node[%
+          %   draw,
+          %   text width=5.5cm,text justified,color=black!50,
+          %   rectangle callout,callout relative pointer={(2cm,.75cm)}
+          % ] at (7,-3)
+          % {%
+          % $k$ pairwise crossing $(\pi''; \sigma'')$-edges that
+          % denote a specific occurence of $\sigma$ in $\pi$
+          % (at positions $2$, $3$ and $5$).
+          % };%
         \end{tikzpicture}
         \caption{\label{fig:subfig:sigma' - pi' - pi'' - sigma''}%
         $\sigma = 312$ and $\pi = 4\mathbf{5}\mathbf{2}1\mathbf{3}6$
