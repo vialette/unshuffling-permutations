@@ -534,7 +534,7 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
       % grid
       \draw[step=1cm,black!30,ultra thin,fill=black!10] (0,0) grid (12,12);
       % row size
-      \foreach \y/\N in {0.5/N_2,1.5/N_2} {
+      \foreach \y/\N in {0.5/N_2,1.5/N_2,2.5/N_4,3.5/k,4.5/n,5.5/n+2,6.5/k+2,7.5/N_4,8.5/N_3,9.5/N_3,10.5/N_1,11.4/N_1} {
           \node at (-0.5,\y) (R\y) {$\N$};
       }
       % column size
@@ -583,94 +583,6 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
   \nu_1 \; \nu_2 \; \nu'_1 \; \nu_3 \; \sigma' \; \nu_4 \; \nu'_3 \; \pi' \; \nu'_4 \; \pi'' \; \sigma''
   \text{.}
   $$
-
-  \begin{figure}[t!]
-    \centering
-    \subfigure[A nested $(\nu_1,\nu'_1)$-edge.]{%
-      \begin{tikzpicture}
-        [
-          scale=0.3,
-          label/.style={anchor=base}
-        ]
-        % nu_1
-        \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
-        \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
-            \draw [fill=black] (\x,\y) circle (0.1);
-        }
-        % nu_4
-        \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
-        \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
-            \draw [fill=black] (\x,\y) circle (0.1);
-        }
-        % nu'_1
-        \draw[step=1cm,black!30,ultra thin,fill=black!10] (11.8,15.8) grid (17.2,21.2);
-        \foreach \x/\y in {12/16,13/17,14/18,15/19,16/20,17/21} {
-            \draw [fill=black] (\x,\y) circle (0.1);
-        }
-        % labels
-        \node [label] (x) at (17,14.5) {$x$};
-        % \node [label] (y) at (14,14.5) {$y$};
-        \node [label] (a) at (0,8.5) {$a$};
-        \node [label] (b) at (8,-1.5) {$b$};
-        \node (nu1) at (2.5,7.7) {$\nu_1$};
-        \node (nu2) at (8.5,-2.5) {$\nu_2$};
-        \node (nu1') at (14.5,13.5) {$\nu'_1$};
-        % edges
-        \draw [line width=1pt]
-        (1,11) .. controls +(0,12) and +(0,4) .. (12,16);
-        \draw [line width=1pt]
-        (2,12) .. controls +(0,12) and +(0,4) .. (13,17);
-        \draw [line width=1pt]
-        (3,13) .. controls +(0,12) and +(0,4) .. (14,18);
-        \draw [line width=1pt]
-        (4,14) .. controls +(0,12) and +(0,4) .. (15,19);
-        \draw [line width=1pt]
-        (5,15) .. controls +(0,12) and +(0,4) .. (16,20);
-        \draw [line width=1pt]
-        (0,10) .. controls +(0,8) and +(0,20) .. (8,3);
-      \end{tikzpicture}
-      \label{subfig:no (nu_1, nu_2)-edge - 2}}
-    \qquad
-    \subfigure[A nested $(\nu_1,\nu'_1)$-edge.]{%
-      \begin{tikzpicture}
-        [
-          scale=0.3,
-          label/.style={anchor=base}
-        ]
-        % nu_1
-        \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
-        \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
-            \draw [fill=black] (\x,\y) circle (0.1);
-        }
-        % nu_4
-        \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
-        \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
-            \draw [fill=black] (\x,\y) circle (0.1);
-        }
-        % nu'_1
-        \draw[step=1cm,black!30,ultra thin,fill=black!10] (11.8,15.8) grid (17.2,21.2);
-        \foreach \x/\y in {12/16,13/17,14/18,15/19,16/20,17/21} {
-            \draw [fill=black] (\x,\y) circle (0.1);
-        }
-        % labels
-        \node [label] (x) at (3,8.5) {$x$};
-        \node [label] (y) at (14,14.5) {$y$};
-        \node [label] (a) at (1,8.5) {$a$};
-        \node [label] (b) at (8,-1.5) {$b$};
-        \node (nu1) at (2.5,7.7) {$\nu_1$};
-        \node (nu2) at (8.5,-2.5) {$\nu_2$};
-        \node (nu1') at (14.5,13.5) {$\nu'_1$};
-        % edges
-        \draw [line width=1pt]
-        (3,13) .. controls +(0,9) and +(0,4) .. (14,18);
-        \draw [line width=1pt]
-        (1,11) .. controls +(0,6) and +(0,16) .. (8,3);
-      \end{tikzpicture}
-      \label{subfig:no (nu_1, nu_2)-edge - 2}}
-      \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
-              Claim~\ref{claim:no (nu_1, nu_2)-edge}.%
-              }
-    \end{figure}
 
   Suppose first that $\sigma$ occurs in $\pi$ as a pattern.
   We show how to construct a containment-free perfect matching
@@ -871,6 +783,128 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
   We have divided the reverse direction into a serie of basic claims that
   progressively defines the overall structure of $\mathcal{M}$.
 
+
+    \begin{figure}[t!]
+      \centering
+      \subfigure[%
+        A $(\nu_1, \nu_2)$-edge $(a, b)$ together with a
+        $(\nu_2, \nu'_1)$-edge $(x, y)$.
+        Notice that we may have $x<b$
+        (as long as $N_1 < x \leq N_1+N_2$ and $N_1 < b \leq N_1+N_2$
+        do hold).
+      ]{%
+        \begin{tikzpicture}
+          [
+            scale=0.25,
+            label/.style={anchor=base}
+          ]
+          % nu_1
+          \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
+          \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
+              \draw [fill=black] (\x,\y) circle (0.1);
+          }
+          % nu_4
+          \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
+          \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
+              \draw [fill=black] (\x,\y) circle (0.1);
+          }
+          % nu'_1
+          \draw[step=1cm,black!30,ultra thin,fill=black!10] (11.8,15.8) grid (17.2,21.2);
+          \foreach \x/\y in {12/16,13/17,14/18,15/19,16/20,17/21} {
+              \draw [fill=black] (\x,\y) circle (0.1);
+          }
+          % labels
+          \node [label] (x) at (17,14.5) {$y$};
+          \node [label] (x) at (10,-1.5) {$x$};
+          \node [label] (a) at (0,8.5) {$a$};
+          \node [label] (b) at (8,-1.5) {$b$};
+          \node (nu1) at (2.5,7.7) {$\nu_1$};
+          \node (nu2) at (8.5,-2.5) {$\nu_2$};
+          \node (nu1') at (14.5,13.5) {$\nu'_1$};
+          % crossings edges
+          \draw [line width=1pt]
+          (1,11) .. controls +(0,12) and +(0,4) .. (12,16);
+          \draw [line width=1pt]
+          (2,12) .. controls +(0,12) and +(0,4) .. (13,17);
+          \draw [line width=1pt]
+          (3,13) .. controls +(0,12) and +(0,4) .. (14,18);
+          \draw [line width=1pt]
+          (4,14) .. controls +(0,12) and +(0,4) .. (15,19);
+          \draw [line width=1pt]
+          (5,15) .. controls +(0,12) and +(0,4) .. (16,20);
+          % data edges
+          \draw [line width=1pt]
+          (0,10) .. controls +(0,8) and +(0,20) .. (8,3);
+          \draw [line width=1pt]
+          (10,1) .. controls +(0,32) and +(0,10) .. (17,21);
+        \end{tikzpicture}
+        \label{subfig:no (nu_1, nu_2)-edge - 1}
+      }% end subfigure
+      \qquad
+      \subfigure[%
+        A $(\nu_1, \nu'_1)$-edge $(x', y')$ together with an
+        edge $(y, z)$ which is neither
+        a $(\nu_1, \nu'_1)$-edge,
+        nor a $(\nu_2, \nu'_1)$-edge,
+        nor a $(\nu'_1, \nu'_1)$-edge.
+        Notice that $y$ may be any position satisfying
+        $N_1+N_2 < y \leq 2N_1+N_2$.
+      ]{%
+      \begin{tikzpicture}
+        [
+          scale=0.25,
+          label/.style={anchor=base}
+        ]
+        % nu_1
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,9.8) grid (5.2,15.2);
+        \foreach \x/\y in {0/10,1/11,2/12,3/13,4/14,5/15} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % nu_4
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
+        \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % nu'_1
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (11.8,15.8) grid (17.2,21.2);
+        \foreach \x/\y in {12/16,13/17,14/18,15/19,16/20,17/21} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % labels
+        \node [label] (x) at (17,14.5) {$y$};
+        \node [label] (x) at (23,-4.5) {$z$};
+        \node [label] (a) at (0,8.5) {$a$};
+        \node [label] (a) at (2,8.5) {$x'$};
+        \node [label] (a) at (14,14.5) {$y'$};
+        \node [label] (b) at (8,-1.5) {$b$};
+        \node (nu1) at (2.5,7.7) {$\nu_1$};
+        \node (nu2) at (8.5,-2.5) {$\nu_2$};
+        \node (nu1') at (14.5,13.5) {$\nu'_1$};
+        % crossings edges
+        \draw [line width=1pt]
+        (1,11) .. controls +(0,12) and +(0,4) .. (12,16);
+        \draw [line width=1pt]
+        (2,12) .. controls +(0,12) and +(0,4) .. (13,17);
+        \draw [line width=1pt]
+        (3,13) .. controls +(0,12) and +(0,4) .. (14,18);
+        \draw [line width=1pt]
+        (4,14) .. controls +(0,12) and +(0,4) .. (15,19);
+        \draw [line width=1pt]
+        (5,15) .. controls +(0,12) and +(0,4) .. (16,20);
+        % data edges
+        \draw [line width=1pt]
+        (0,10) .. controls +(0,8) and +(0,20) .. (8,3);
+        \draw [line width=1pt]
+        (17,21) .. controls +(0,10) and +(0,35) .. (23,-3);
+        \end{tikzpicture}
+        \label{subfig:no (nu_1, nu_2)-edge - 2}
+      }% end subfigure
+      \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
+        Claim~\ref{claim:no (nu_1, nu_2)-edge}:
+        Assuming a $(\nu_1,\nu_2)$-edge $(a, b)$ in $\mathcal{M}$.
+      }
+    \end{figure}
+
   \begin{claim}
     \label{claim:no (nu_1, nu_2)-edge}
     There is no $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
@@ -912,6 +946,7 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
       say $(x, y)$. Then, we have $\mu(a) > \mu(x)$ (since $\nu_1$ is above $\nu_2$)
       and $\mu(b) < \mu(y)$ (since $\nu_2$ is below $\nu'_1$),
       which contradicts our hypothesis.
+      See Fig.~\ref{subfig:no (nu_1, nu_2)-edge - 1}.
       \item Position $y$ is not involved in a $(\nu_2, \nu'_1)$-edge.
       Since $\mathcal{M}$ contains $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges
       in $\mathcal{M}$ and $|\nu'_1| = N_1$, there exists an edge $(y, z)$ in $\mathcal{M}$
@@ -922,6 +957,7 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
       have $\mu(x') < \mu(y)$ (since $\nu_1$ is below $\nu'_1$)
       and $\mu(y') > \mu(z)$ (since $\nu'_1$ is above any other gadget),
       which contradicts our hypothesis.
+      See Fig.~\ref{subfig:no (nu_1, nu_2)-edge - 2}.
     \end{itemize}
     \qed
   \end{proof}
@@ -936,15 +972,20 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
   \begin{proof}[of Claim~\ref{claim:one (nu_1, nu'_1)-edge}]
     Suppose, aiming at a contradiction, that there is no
     $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
-    Since $N_1$ is odd, there exists an edge $(x, y)$ in $\mathcal{M}$,
+    Then it follows that there exists an edge $(x, y)$ in $\mathcal{M}$,
     $1 \leq x \leq N_1$, that is neither a
-    $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
-    nor a $(\nu_1, \nu'_1)$.
+    $(\nu_1, \nu_1)$-edge (since $N_1$ is odd)
+    nor a $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
+    nor a $(\nu_1, \nu'_1)$ (by our contradiction hypothesis).
     (In other words, $x \leq N_1$ and $y > 2N_1 + N_2$.)
     Therefore, since $\mathcal{M}$ is containment-free,
-    there is no $(\nu_2, \nu_2)$-edge in $\mathcal{M}$.
+    there is neither a $(\nu_2, \nu_2)$-edge nor a $(\nu'_1, \nu'_1)$-edge
+    in $\mathcal{M}$.
+    Then it follows that every position $x$ of $\nu'_1$
+    (\emph{i.e.}, $N_1+N_2 < x \leq 2N_1+N_2$)
+    is involved in an edge $(x, y)$ of $\mathcal{M}$ with $y \geq 2N_1+N_2$.
     But $|\nu'_1| = N_1 = 2(2N_2 + 2n_3 + 2N_4 + 2n + 2k + 4) + 1
-    > 2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4)$, and hence at least one
+    > 2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4$, and hence at least one
     position in $\nu'_1$ can not be involved in an edge in $\mathcal{M}$.
     Then it follows that $\mathcal{M}$ is not a perfect matching,
     which contradicts our hypothesis.
@@ -983,8 +1024,7 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
     exactly one $(\nu_2, \nu'_1)$-edge $e = (a, b)$ in $\mathcal{M}$.
     According to Claim~\ref{claim:one (nu_1, nu'_1)-edge}, there exists at least
     one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
-    Furtheremore, since there exists a $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$
-    and
+    Furtheremore, since
     there is no $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge}),
     every position in $\nu_1$ is involved either in a
     $(\nu_1, \nu_1)$-edge or in a $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$
@@ -998,7 +1038,7 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
     nor a $(\nu'_1, \nu'_1)$-edge.
     Write $(x, y)$, $N_1+N_2 < x \leq 2N_1 + N_2$ and $y > 2N_1 + N_2$, this edge.
     We have $\mu(a) < \mu(x)$ (since $\nu_2$ is below $\nu'_1$)
-    and $\mu(b) > \mu(y)$ since $\nu'_1$ is above any other gadget),
+    and $\mu(b) > \mu(y)$ (since $\nu'_1$ is above any other gadget),
     which contradicts our hypothesis.
     \qed
   \end{proof}
