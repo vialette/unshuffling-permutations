@@ -118,15 +118,17 @@ $\STD(u)_i < \STD(u)_j$.
 \label{section:Algebraic issues}
 The purpose of this section is to define a shuffle product $\SHUFFLE$
 on permutations and establish some of its properties. To define this
-shuffle product, we shall first define a coproduct~\cite{Joni:Rota:1979}
-denoted by $\Delta$. By duality, $\Delta$ implies the definition of
-$\SHUFFLE$. It is worth to note that, as we will see, algebraic
-properties of $\Delta$ imply combinatorial properties of $\SHUFFLE$.
+shuffle product, we shall first define a coproduct denoted by $\Delta$.
+By duality, $\Delta$ implies the definition of $\SHUFFLE$. It is worth
+to note that, as we will see, algebraic properties of $\Delta$ imply
+combinatorial properties of $\SHUFFLE$. We invite the reader unfamiliar
+with the concepts of coproduct and duality to consult~\cite{Joni:Rota:1979}
+or~\cite{Grinberg:Reiner:2014}.
 \medskip
 
 Let use denote by $\QQ[S]$ the linear span of all permutations. As
 announced, we shall define on this space a kind of shuffle product and
-this purpose, we first define a linear coproduct $\Delta$ on $\QQ[S]$.
+for this purpose, we first define a linear coproduct $\Delta$ on $\QQ[S]$.
 For any permutation $\pi$, we set
 \begin{equation} \label{equ:unshuffling_coproduct}
     \Delta(\pi) =
@@ -147,21 +149,21 @@ instance,
 \end{equation}
 \begin{equation}\begin{split} \label{equ:example_unshuffling_coproduct}
     \Delta(1432) & =
-    \epsilon \otimes 1432 + 3. 1 \otimes 132 + 1 \otimes 321 +
+    \epsilon \otimes 1432 + 3. {\bf 1 \otimes 132} + 1 \otimes 321 +
     3. 12 \otimes 21 \\ & + 3. 21 \otimes 12 + 3. 132 \otimes 1 +
     321 \otimes 1 + 1432 \otimes \epsilon.
 \end{split}\end{equation}
 Observe that the coefficient of the tensor $1 \otimes 132$ is $3$
 in~\eqref{equ:example_unshuffling_coproduct} because there are exactly
 three ways to extract two disjoint subwords of the permutation $1432$
-so that the letters of these two subwords have the same relative order
-as the letters of the permutations $1$ and $132$.
+so that the letters of these two subwords have respectively the same
+relative order as the letters of the permutations $1$ and $132$.
 \medskip
 
 As any coproduct, $\Delta$ leads to the definition of a product obtained
 by duality in the following way. From~\eqref{equ:unshuffling_coproduct},
 for any permutation $\pi$, we have
-\begin{equation}
+\begin{equation} \label{equ:schematic_coproduct}
     \Delta(\pi) =
     \sum_{\sigma, \nu \in S} \lambda_{\sigma, \nu}^\pi \;
     \sigma \otimes \nu,
@@ -174,12 +176,14 @@ $\sigma$ and $\nu$,
 \begin{equation}
     \sigma \SHUFFLE \nu =
     \sum_{\pi \in S}
-    \lambda_{\sigma, \nu}^\pi \; \pi.
+    \lambda_{\sigma, \nu}^\pi \; \pi,
 \end{equation}
-We call $\SHUFFLE$ the {\em shuffle product of permutations}. For instance,
+where the coefficients $\lambda_{\sigma, \nu}^\pi$ are the ones
+of~\eqref{equ:schematic_coproduct}. We call $\SHUFFLE$ the
+{\em shuffle product of permutations}. For instance,
 \begin{equation}\begin{split} \label{equ:example_shuffle_product}
     12 \SHUFFLE 21 & =
-    1243 + 1324 + 2.1342 + 2.1423 + 3.1432 + 2134 + 2.2314 \\
+    1243 + 1324 + 2.1342 + 2.1423 + 3. {\bf 1432} + 2134 + 2.2314 \\
     & + 3.2341 + 2413 + 2.2431 + 2.3124 + 3142 + 3.3214 + 2.3241 \\
     & + 3421 + 3.4123 + 2.4132 + 2.4213 + 4231 + 4312.
 \end{split}\end{equation}
@@ -198,13 +202,13 @@ last two.
 
 We say that a permutation $\pi$ {\em appears} in the shuffle
 $\sigma \SHUFFLE \nu$ of two permutations $\sigma$ and $\nu$ if the
-coefficient $\lambda_{\sigma, \nu}^\pi$ is different from zero. Besides,
-a permutation $\pi$ is a {\em square} if there is a permutation $\sigma$
-such that $\pi$ appears in $\sigma \SHUFFLE \sigma$. In this case, we
-say that $\sigma$ is a {\em square root} of $\pi$. Equivalently, $\pi$
-is a square with $\sigma$ as square root if and only if in the expansion
-of $\Delta(\pi)$, there is a tensor $\sigma \otimes \sigma$ with a
-nonzero coefficient.
+coefficient $\lambda_{\sigma, \nu}^\pi$ defined aboev is different from
+zero. Besides, a permutation $\pi$ is a {\em square} if there is a
+permutation $\sigma$ such that $\pi$ appears in $\sigma \SHUFFLE \sigma$.
+In this case, we say that $\sigma$ is a {\em square root} of $\pi$.
+Equivalently, $\pi$ is a square with $\sigma$ as square root if and only
+if in the expansion of $\Delta(\pi)$, there is a tensor
+$\sigma \otimes \sigma$ with a nonzero coefficient.
 \medskip
 
 \begin{proposition} \label{prop:shuffle_associative_commutative}
@@ -231,7 +235,7 @@ nonzero coefficient.
         \Delta\left(\STD\left(\pi_{|P_1}\right)\right)
         \otimes I\left(\STD\left(\pi_{|P_2}\right)\right) \\
         & =
-        \sum_{P_1 \uplus P_2 = [|\pi|]}
+        \sum_{P_1 \uplus P_2 = [|\pi|]} \;
         \sum_{Q_1 \uplus Q_2 = [|P_1|]}
         \STD\left(\STD\left(\pi_{|P_1}\right)_{|Q_1}\right)
         \otimes
@@ -254,8 +258,8 @@ nonzero coefficient.
     if in the expansion of $\Delta(\pi)$ there is a tensor
     $\sigma \otimes \nu$ with a coefficient $\lambda$, there is in the
     same expansion the tensor $\nu \otimes \sigma$ with the same
-    coefficient $\lambda$. Clearly, a product is associative if and only
-    if its dual coproduct is coassociative. Now, from the
+    coefficient $\lambda$. Clearly, a product is commutative if and only
+    if its dual coproduct is cocommutative. Now, from the
     definition~\eqref{equ:unshuffling_coproduct} of $\Delta$, one
     observes that if the pair $(P_1, P_2)$ of subsets of $[|\pi|]$
     contributes to the coefficient of
@@ -264,6 +268,7 @@ nonzero coefficient.
     $\STD\left(\pi_{|P_2}\right) \otimes \STD\left(\pi_{|P_1}\right)$.
     This shows that $\Delta$ is cocommutative and hence, that $\SHUFFLE$
     is commutative.
+    \qed
 \end{proof}
 \medskip
 
@@ -284,7 +289,7 @@ commutative algebra.
     associative algebras.
 \end{proposition}
 \begin{proof}
-    To prove that, for $j = 1, 2, 3$, $\phi_j$ is a morphism of
+    To prove, for $j = 1, 2, 3$, that $\phi_j$ is a morphism of
     associative algebras, we have to prove that for all permutations
     $\sigma$ and $\nu$,
     \begin{equation}
@@ -301,8 +306,8 @@ commutative algebra.
     \smallskip
 
     If $P$ is a set of indexes of letters of $\pi$, we denote by
-    $\widetilde{\pi}$ the set $\{|\pi| - i  + 1 : i \in P\}$. Now, since
-    this operation $\widetilde{\,}$ define a bijection on the set of the
+    $\widetilde{P}$ the set $\{|\pi| - i  + 1 : i \in P\}$. Now, since
+    the operation $\widetilde{\,}$ define a bijection on the set of the
     subsets of $[|\pi|]$, and since the standardization operation
     commutes with the mirror operation on words, we have
     \begin{equation} \begin{split}
@@ -330,7 +335,7 @@ commutative algebra.
 
     Next, since by definition of the complementation operation on
     permutations, for any permutation $\tau$ and any indexes $i$ and $k$,
-    we have $\tau_i < \tau_j$ if and only if $\bar \tau_i > \bar \tau_j$,
+    we have $\tau_i < \tau_k$ if and only if $\bar \tau_i > \bar \tau_k$,
     we have
     \begin{equation} \begin{split}
         \Delta(\phi_2(\pi))
@@ -376,6 +381,7 @@ commutative algebra.
     \end{split} \end{equation}
     This shows that $\phi_3$ is a morphism of coalgebras and hence, that
     $\phi_3$ is a morphism of associative algebras.
+    \qed
 \end{proof}
 \medskip
 
@@ -404,9 +410,9 @@ of square permutations.
     \ref{item:square_stability_2}, and~\ref{item:square_stability_3} are
     direct consequences of Proposition~\ref{prop:endomorphisms}. Indeed,
     since $\pi$ is a square permutation and $\rho$ is a square root of
-    $\pi$, by definition $\pi$ appears in the product
+    $\pi$, by definition, $\pi$ appears in the product
     $\rho \SHUFFLE \rho$. Now, by Proposition~\ref{prop:endomorphisms},
-    for all $j = 1, 2, 3$, since $\phi_j$ is a morphism of associative
+    for any $j = 1, 2, 3$, since $\phi_j$ is a morphism of associative
     algebras from $\QQ[S]$ to $\QQ[S]$, $\phi_j$ commutes with the
     shuffle product of permutations $\SHUFFLE$. Hence, in particular,
     one has
@@ -415,9 +421,12 @@ of square permutations.
         \phi_j(\rho) \SHUFFLE \phi_j(\rho).
     \end{equation}
     Then, since $\pi$ appears in $\rho \SHUFFLE \rho$, $\phi_j(\pi)$
-    appears in $\phi_j(\rho) \SHUFFLE \phi_j(\rho)$. This
+    appears in $\phi_j(\rho \SHUFFLE \rho)$ and also in
+    $\phi_j(\rho) \SHUFFLE \phi_j(\rho)$. This shows that
+    $\phi_j(\rho)$ is a square root of $\phi_j(\pi)$ and
     implies~\ref{item:square_stability_1}, \ref{item:square_stability_2},
     and~\ref{item:square_stability_3}.
+    \qed
 \end{proof}
 \medskip
 
