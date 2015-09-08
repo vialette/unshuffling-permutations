@@ -115,18 +115,20 @@ $\STD(u)_i < \STD(u)_j$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%
-%% ---- Algebraic issues ----
+%% ---- Shuffle product on permutations ----
 %%
-\section{Algebraic issues}
-\label{section:Algebraic issues}
+\section{Shuffle product on permutations}
+\label{section:Shuffle product on permutations}
+
 The purpose of this section is to define a shuffle product $\SHUFFLE$
-on permutations and establish some of its properties. To define this
-shuffle product, we shall first define a coproduct denoted by $\Delta$.
-By duality, $\Delta$ implies the definition of $\SHUFFLE$. It is worth
-to note that, as we will see, algebraic properties of $\Delta$ imply
-combinatorial properties of $\SHUFFLE$. We invite the reader unfamiliar
-with the concepts of coproduct and duality to consult~\cite{Joni:Rota:1979}
-or~\cite{Grinberg:Reiner:2014}.
+on permutations. To define this shuffle product, we shall first define
+a coproduct denoted by $\Delta$. By duality, $\Delta$ implies the
+definition of $\SHUFFLE$. The reason why we need to pass by the
+definition of $\Delta$ to define $\SHUFFLE$ is justified by the fact
+that a lot of properties of $\SHUFFLE$ depend of properties of $\Delta$
+and that this strategy allows to write concise and clear proofs of them.
+We invite the reader unfamiliar with the concepts of coproduct and
+duality to consult~\cite{Joni:Rota:1979} or~\cite{Grinberg:Reiner:2014}.
 \medskip
 
 Let use denote by $\QQ[S]$ the linear span of all permutations. As
@@ -205,13 +207,160 @@ last two.
 
 We say that a permutation $\pi$ {\em appears} in the shuffle
 $\sigma \SHUFFLE \nu$ of two permutations $\sigma$ and $\nu$ if the
-coefficient $\lambda_{\sigma, \nu}^\pi$ defined aboev is different from
-zero. Besides, a permutation $\pi$ is a {\em square} if there is a
+coefficient $\lambda_{\sigma, \nu}^\pi$ defined above is different from
+zero. In a more combinatorial way, this is equivalent to say that there
+are two sets $P_1$ and $P_2$ of disjoints indexes of letters of $\pi$
+such that $P_1 \sqcup P_2 = [|\pi|]$, the subword $\pi_{|P_1}$ is
+order isomorphic to $\sigma$ and the subword $\pi_{|P_2}$ is order
+isomorphic to $\nu$.
+\medskip
+
+Besides, a permutation $\pi$ is a {\em square} if there is a
 permutation $\sigma$ such that $\pi$ appears in $\sigma \SHUFFLE \sigma$.
 In this case, we say that $\sigma$ is a {\em square root} of $\pi$.
 Equivalently, $\pi$ is a square with $\sigma$ as square root if and only
 if in the expansion of $\Delta(\pi)$, there is a tensor
-$\sigma \otimes \sigma$ with a nonzero coefficient.
+$\sigma \otimes \sigma$ with a nonzero coefficient. In a more
+combinatorial way, this is equivalent to say that there
+are two sets $P_1$ and $P_2$ of disjoints indexes of letters of $\pi$
+such that $P_1 \sqcup P_2 = [|\pi|]$, and the subword $\pi_{|P_1}$ and
+$\pi_{|P_2}$ are order isomorphic.
+\medskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% ---- Binary square words and permutations ----
+%%
+\section{Binary square words and permutations}
+\label{section:Binary square words and permutations}
+In this section, we show that the square binary words are in one-to-one
+correspondence with some square permutations. This property allows to
+obtain a new description of binary square words.
+\medskip
+
+Let $u$ be a binary word of length $n$ with $k$ occurrences of $0$.
+We denote by $\BINTOPERM$ be the map sending any such word $u$ to the
+permutation obtained by replacing from left to right each occurrence of
+$0$ in $u$ by $1$, $2$, \dots, $k$, and from right to left each
+occurrence of $1$ in $u$ by $k + 1$, $k + 2$, \dots, $n$. For instance,
+\begin{equation}
+    \BINTOPERM({\bf 1}00{\bf 1}0{\bf 1}{\bf 1}0{\bf 1}000) =
+    {\bf C} 12 {\bf B} 3 {\bf A} {\bf 9} 4 {\bf 8} 567.
+\end{equation}
+Observe that for any permutation $\pi$ in the image of $\BINTOPERM$,
+there is exactly one binary word $u$ such that
+$\BINTOPERM(u0) = \BINTOPERM(u1) = \pi$. In support of this observation,
+when $\pi$ has an even size, we denote by $\PERMTOBIN(\pi)$ the word $ua$
+such that $|ua|_0$ and $|ua|_1$ are both even, where $a \in \{0, 1\}$.
+\medskip
+
+\begin{lemma} \label{lem:binary_to_permutation_avoiding}
+    The image of the map $\BINTOPERM$ is the set of all permutations
+    avoiding the patterns $213$ and $231$.
+\end{lemma}
+\begin{proof}
+    Let us first show that the image of $\BINTOPERM$ contains only
+    permutation avoiding $213$ and $231$. Let $u$ be a binary word,
+    $\pi = \BINTOPERM(u)$, and $P_0$ (resp. $P_1$) be the set of the
+    positions of the occurrences of $0$ (resp. $1$) in $u$. By definition
+    of $\BINTOPERM$, from left to right, the subword $v = \pi_{|P_0}$ is
+    increasing and the subword $w = \pi_{|P_1}$ is decreasing, and all
+    letters of $w$ are greater than those of $v$.
+    \smallskip
+
+    Now, assume first that $\pi$ admits an occurrence of $213$. Then,
+    since $v$ is increasing and $w$ is decreasing, there is an occurrence
+    of $3$ in $v$ and a relative occurrence of $21$ in $w$, or an
+    occurrence of $23$ in $v$ and a relative occurrence of $1$ in $w$.
+    Both cases contradict the fact that all letters of $w$ are greater
+    than those of $v$.
+    \smallskip
+
+    Finally, assume that $\pi$ admits an occurrence of $231$. Then,
+    for the same reason as in the previous case, there is an occurrence
+    of $2$ in $v$ and a relative occurrence of $31$ in $w$, or an
+    occurrence of $23$ in $v$ and a relative occurrence of $1$ in $w$.
+    Both cases lead to the same previous contradiction.
+    \smallskip
+
+    The statement of the lemma follows from the well-known
+    fact~\cite{Simion:Schmidt:EJC:1985} that the set of permutations of
+    size $n$ avoiding $213$  and $231$ is in one-to-one correspondence
+    with the set of binary words of size $n - 1$, and in particular,
+    that there is no more such permutations of size $n$ than binary
+    words of size $n$.
+    \qed
+\end{proof}
+\medskip
+
+\begin{lemma} \label{lem:square_binary_to_square_permutation}
+    If $u$ is a square binary word, then $\BINTOPERM(u)$ is a square
+    permutation.
+\end{lemma}
+\begin{proof}
+    Since $u$ is a square binary word, there is a binary word $v$ such
+    that $u \in v \shuffle v$. Then, there are two disjoint sets $P$ and
+    $Q$ of positions of letters of $u$ such that $u_{|P} = v = u_{|Q}$.
+    Now, by definition of $\BINTOPERM$, the words $\BINTOPERM(u)_{|P}$
+    and $\BINTOPERM(u)_{|Q}$ have the same standarized $\rho$. Hence,
+    and by definition of the shuffle product of permutations,
+    $\BINTOPERM(u)$ appears in $\rho \SHUFFLE \rho$, showing that
+    $\BINTOPERM(u)$ is a square permutation.
+    \qed
+\end{proof}
+\medskip
+
+\begin{lemma} \label{lem:square_permutation_to_square_binary}
+    If $\pi$ is a square permutation avoiding the patterns $213$ and
+    $231$, then $\PERMTOBIN(\pi)$ is a square binary word.
+\end{lemma}
+\begin{proof}
+    Let $\pi$ be a square permutation avoiding $213$ and $231$. By
+    Lemma~\ref{lem:binary_to_permutation_avoiding}, $\pi$ is in the
+    image of $\BINTOPERM$ and hence, $u = \PERMTOBIN(\pi)$ is a
+    well-defined binary word. Since $\pi$ is a square permutation,
+    there are two disjoint sets of indexes $P_1$ and $P_2$ of letters of
+    $\pi$ such that $\STD(\pi_{|P_1}) = \STD(\pi_{|P_2})$.
+    This implies, by the definitions of $\BINTOPERM$ and $\PERMTOBIN$,
+    that $u_{|P_1} = u_{|P_2}$, showing that $u$ is a square binary
+    word.
+    \qed
+\end{proof}
+\medskip
+
+\begin{proposition} \label{prop:bijection_binary_to_permutations_squares}
+    For any $n \geq 0$, the map $\BINTOPERM$ restricted to the set of
+    square binary words of length $2n$ is a bijection between this last
+    set and the set of square permutations of size $2n$ avoiding the
+    patterns $213$ and $231$.
+\end{proposition}
+\begin{proof}
+    Lemmas~\ref{lem:binary_to_permutation_avoiding}
+    and~\ref{lem:square_binary_to_square_permutation} show that
+    $\BINTOPERM$ is a well-defined mapping associating a square
+    permutation avoiding $213$ and $231$ with any square binary word.
+    Besides, Lemma~\ref{lem:square_permutation_to_square_binary}
+    implies that $\PERMTOBIN$ is the inverse map of $\BINTOPERM$
+    with domain the set of square binary word of length $2n$ and image
+    the set of square permutations of size $2n$ avoiding $213$ and $231$.
+    \qed
+\end{proof}
+\medskip
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%
+%% ---- Algebraic issues ----
+%%
+\section{Algebraic issues}
+\label{section:Algebraic issues}
+The aim of this section is to establish some of properties of the
+shuffle product of permutations $\SHUFFLE$. It is worth to note that, as
+we will see, algebraic properties of the unshuffling coproduct $\Delta$
+of permutation defined in
+Section~\ref{section:Shuffle product on permutations} imply combinatorial
+properties of $\SHUFFLE$.
 \medskip
 
 \begin{proposition} \label{prop:shuffle_associative_commutative}
@@ -1315,115 +1464,6 @@ of length $2k$ that is the union of two order-isomorphic patterns.
 
 \bigskip
 \bigskip
-
-
-Let $u$ be a binary word of length $n$ with $k$ occurrences of $0$.
-We denote by $\BINTOPERM$ be the map sending any such word $u$ to the
-permutation obtained by replacing from left to right each occurrence of
-$0$ in $u$ by $1$, $2$, \dots, $k$, and from right to left each
-occurrence of $1$ in $u$ by $k + 1$, $k + 2$, \dots, $n$. For instance,
-\begin{equation}
-    \BINTOPERM({\bf 1}00{\bf 1}0{\bf 1}{\bf 1}0{\bf 1}000) =
-    {\bf C} 12 {\bf B} 3 {\bf A} {\bf 9} 4 {\bf 8} 567.
-\end{equation}
-Observe that for any permutation $\pi$ in the image of $\BINTOPERM$,
-there is exactly one binary word $u$ such that
-$\BINTOPERM(u0) = \BINTOPERM(u1) = \pi$. In support of this observation,
-when $\pi$ has an even size, we denote by $\PERMTOBIN(\pi)$ the word $ua$
-such that $|ua|_0$ and $|ua|_1$ are both even, where $a \in \{0, 1\}$.
-\medskip
-
-\begin{lemma} \label{lem:binary_to_permutation_avoiding}
-    The image of the map $\BINTOPERM$ is the set of all permutations
-    avoiding the patterns $213$ and $231$.
-\end{lemma}
-\begin{proof}
-    Let us first show that the image of $\BINTOPERM$ contains only
-    permutation avoiding $213$ and $231$. Let $u$ be a binary word,
-    $\pi = \BINTOPERM(u)$, and $P_0$ (resp. $P_1$) be the set of the
-    positions of the occurrences of $0$ (resp. $1$) in $u$. By definition
-    of $\BINTOPERM$, from left to right, the subword $v = \pi_{|P_0}$ is
-    increasing and the subword $w = \pi_{|P_1}$ is decreasing, and all
-    letters of $w$ are greater than those of $v$.
-    \smallskip
-
-    Now, assume first that $\pi$ admits an occurrence of $213$. Then,
-    since $v$ is increasing and $w$ is decreasing, there is an occurrence
-    of $3$ in $v$ and a relative occurrence of $21$ in $w$, or an
-    occurrence of $23$ in $v$ and a relative occurrence of $1$ in $w$.
-    Both cases contradict the fact that all letters of $w$ are greater
-    than those of $v$.
-    \smallskip
-
-    Finally, assume that $\pi$ admits an occurrence of $231$. Then,
-    for the same reason as in the previous case, there is an occurrence
-    of $2$ in $v$ and a relative occurrence of $31$ in $w$, or an
-    occurrence of $23$ in $v$ and a relative occurrence of $1$ in $w$.
-    Both cases lead to the same previous contradiction.
-    \smallskip
-
-    The statement of the lemma follows from the well-known fact that
-    the set of permutations of size $n$ avoiding $213$  and $231$ is in
-    one-to-one correspondence with the set of binary words of size
-    $n - 1$, and in particular, that there is no more such permutations
-    of size $n$ than binary words of size $n$.
-    \qed
-\end{proof}
-\medskip
-
-\begin{lemma} \label{lem:square_binary_to_square_permutation}
-    If $u$ is a square binary word, then $\BINTOPERM(u)$ is a square
-    permutation.
-\end{lemma}
-\begin{proof}
-    Since $u$ is a square binary word, there is a binary word $v$ such
-    that $u \in v \shuffle v$. Then, there are two disjoint sets $P$ and
-    $Q$ of positions of letters of $u$ such that $u_{|P} = v = u_{|Q}$.
-    Now, by definition of $\BINTOPERM$, the words $\BINTOPERM(u)_{|P}$
-    and $\BINTOPERM(u)_{|Q}$ have the same standarized $\rho$. Hence,
-    and by definition of the shuffle product of permutations,
-    $\BINTOPERM(u)$ appears in $\rho \SHUFFLE \rho$, showing that
-    $\BINTOPERM(u)$ is a square permutation.
-    \qed
-\end{proof}
-\medskip
-
-\begin{lemma} \label{lem:square_permutation_to_square_binary}
-    If $\pi$ is a square permutation avoiding the patterns $213$ and
-    $231$, then $\PERMTOBIN(\pi)$ is a square binary word.
-\end{lemma}
-\begin{proof}
-    Let $\pi$ be a square permutation avoiding $213$ and $231$. By
-    Lemma~\ref{lem:binary_to_permutation_avoiding}, $\pi$ is in the
-    image of $\BINTOPERM$ and hence, $u = \PERMTOBIN(\pi)$ is a
-    well-defined binary word. Since $\pi$ is a square permutation,
-    there are two disjoint sets of indexes $P_1$ and $P_2$ of letters of
-    $\pi$ such that $\STD(\pi_{|P_1}) = \STD(\pi_{|P_2})$.
-    This implies, by the definitions of $\BINTOPERM$ and $\PERMTOBIN$,
-    that $u_{|P_1} = u_{|P_2}$, showing that $u$ is a square binary
-    word.
-    \qed
-\end{proof}
-\medskip
-
-\begin{proposition} \label{prop:bijection_binary_to_permutations_squares}
-    For any $n \geq 0$, the map $\BINTOPERM$ restricted to the set of
-    square binary words of length $2n$ is a bijection between this last
-    set and the set of square permutations of size $2n$ avoiding the
-    patterns $213$ and $231$.
-\end{proposition}
-\begin{proof}
-    Lemmas~\ref{lem:binary_to_permutation_avoiding}
-    and~\ref{lem:square_binary_to_square_permutation} show that
-    $\BINTOPERM$ is a well-defined mapping associating a square
-    permutation avoiding $213$ and $231$ with any square binary word.
-    Besides, Lemma~\ref{lem:square_permutation_to_square_binary}
-    implies that $\PERMTOBIN$ is the inverse map of $\BINTOPERM$
-    with domain the set of square binary word of length $2n$ and image
-    the set of square permutations of size $2n$ avoiding $213$ and $231$.
-    \qed
-\end{proof}
-\medskip
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
