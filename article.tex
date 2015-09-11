@@ -1004,8 +1004,8 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
   \end{claim}
 
   \begin{proof}[of Claim~\ref{claim:no (nu_2, nu_2)-edge}]
-  Combine the fact that $\mathcal{M}$ is containment-free with
-  Claim~\ref{claim:one (nu_1, nu'_1)-edge}.
+  Combine Claim~\ref{claim:one (nu_1, nu'_1)-edge} together with
+  the fact that $\mathcal{M}$ is containment-free.
   \qed
   \end{proof}
 
@@ -1057,25 +1057,24 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
   \begin{proof}[of Claim~\ref{claim:one (nu_2, nu'_2)-edge}]
     Suppose, aiming at a contradiction there there is no
     $(\nu_2, \nu'_2)$-edge in $\mathcal{M}$.
-    Notice that there is no
-    $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
-    nor $(\nu_2, \nu_2)$-edge (Claim~\ref{claim:no (nu_2, nu_2)-edge})
-    nor $(\nu_2, \nu'_1)$-edge (Claim~\ref{claim:no (nu_2, nu'_1)-edge})
+    Notice that there is neither
+    a $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
+    nor a $(\nu_2, \nu_2)$-edge (Claim~\ref{claim:no (nu_2, nu_2)-edge})
+    nor a $(\nu_2, \nu'_1)$-edge (Claim~\ref{claim:no (nu_2, nu'_1)-edge})
     in $\mathcal{M}$.
-    But $|\nu_2| = N_2 > 2N_3 + 2N_4 + 2n + 2k$ and hence $\mathcal{M}$ is not
-    a perfect matching.
-    According to Proposition~\ref{proposition:matching}, this is
-    a contradiction.
+    But $|\nu_2| = N_2 > 2N_3 + 2N_4 + 2n + 2k$.
+    Hence $\mathcal{M}$ is not a perfect matching,
+    which contradicts our hypothesis.
     \qed
   \end{proof}
 
   \begin{claim}
     \label{claim:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge}
     There is
-    no $(\nu'_1, \nu'_1)$-edge,
-    no $(\nu_3, \nu_3)$-edge,
-    no $(\sigma', \sigma')$-edge and
-    no $(\nu_4, \nu_4)$-edge
+    neither a $(\nu'_1, \nu'_1)$-edge,
+    nor a $(\nu_3, \nu_3)$-edge,
+    nor a $(\sigma', \sigma')$-edge,
+    nor a $(\nu_4, \nu_4)$-edge
     in $\mathcal{M}$.
   \end{claim}
 
@@ -1084,6 +1083,49 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
     $\mathcal{M}$ is containment-free (Proposition~\ref{proposition:matching}).
     \qed
   \end{proof}
+
+  \begin{figure}[t!]
+    \centering
+      \begin{tikzpicture}
+        [
+          scale=0.25,
+          label/.style={anchor=base}
+        ]
+        % nu_2
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,5.8) grid (5.2,11.2);
+        \foreach \x/\y in {0/11,1/10,2/9,3/8,4/7,5/6} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % nu_3
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,15.8) grid (11.2,21.2);
+        \foreach \x/\y in {6/16,7/17,8/18,9/19,10/20,11/21} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % nu'_2
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (11.8,-0.2) grid (17.2,5.2);
+
+        \foreach \x/\y in {12/5,13/4,14/3,15/2,16/1,17/0} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % labels
+        \node [label] (x) at (2,4.5) {$x$};
+        \node [label] (a) at (8,14.5) {$a$};
+        \node [label] (y) at (14,-1.5) {$y$};
+        \node [label] (b) at (16,-1.5) {$b$};
+        \node (nu1) at (2.5,2.5) {$\nu_2$};
+        \node (nu2) at (8.5,12.5) {$\nu_3$};
+        \node (nu1') at (14.5,-3.5) {$\nu'_2$};
+        % crossings edges
+        \draw [line width=1pt]
+        (2,9) .. controls +(0,25) and +(0,30) .. (14,3);
+        \draw [line width=1pt]
+        (8,18) .. controls +(0,15) and +(0,20) .. (16,1);
+      \end{tikzpicture}
+    \caption{\label{fig:subfig:no (nu_3, nu'_2)-edge}%
+      Claim~\ref{claim:no (nu_3, nu'_2)-edge}:
+      Assuming a $(\nu_3, \nu'_2)$-edge $(a, b)$ in $\mathcal{M}$.
+    }
+  \end{figure}
 
   \begin{claim}
     \label{claim:no (nu_3, nu'_2)-edge}
@@ -1099,15 +1141,15 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
     we have $y < b$.
     Therefore,
     we have $\mu(x) < \mu(a)$ (by construction) and
-    $\mu(y) > \mu(b)$ (since $\nu'_2$ is decreasing).
-    According to Proposition~\ref{proposition:matching}, this is
-    a contradiction.
+    $\mu(y) > \mu(b)$ (since $\nu'_2$ is decreasing),
+    which contradicts our hypothesis.
+    See Fig.~\ref{fig:subfig:no (nu_3, nu'_2)-edge}.
     \qed
   \end{proof}
 
   \begin{claim}
     \label{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge}
-    There is neither $(\nu_1, \nu'_3)$-edge nor $(\nu'_1, \nu_3)$-edge
+    There is neither a $(\nu_1, \nu'_3)$-edge nor a $(\nu'_1, \nu_3)$-edge
     in $\mathcal{M}$.
   \end{claim}
 
@@ -1115,15 +1157,14 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
     Suppose, aiming at a contradiction, that there exists a
     $(\nu_1, \nu'_3)$-edge $(a, b)$ in $\mathcal{M}$.
     According to Claim~\ref{claim:one (nu_1, nu'_1)-edge} there exists
-    $(\nu_1, \nu'_1)$-edge $(x, y)$ in $\mathcal{M}$.
-    Since these two edges have to be crossing
-    (Proposition~\ref{proposition:matching}), we have $x < a$.
+    $(\nu_1, \nu'_1)$-edge $(x, y)$ in $\mathcal{M}$,
+    and ince $\mathcal{M}$ is containment-free we have $x < a$.
     Therefore, we have
     $\mu(x) < \mu(a)$ (since $\nu_1$ is increasing)
     and
-    $\mu(y) > \mu(b)$ (by construction).
-    According to Proposition~\ref{proposition:matching}, this is
-    a contradiction.
+    $\mu(y) > \mu(b)$ (by construction),
+    which contradicts our hypothesis.
+    See Fig.~\ref{fig:subfig:no (nu_3, nu'_2)-edge}.
 
     A similar argument shows that there is no
     $(\nu'_1, \nu_3)$-edge in $\mathcal{M}$.
@@ -1252,54 +1293,72 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
 %%
 %% ---- Patterns ----
 %%
-\section{Patterns}
-\label{section:Patterns}
+\section{From square permutations to binary squares}
+\label{section:From square permutations to binary squares}
+
+It is conjectured in \cite{Henshall:Rampersad:Shallit:2011} that the number of binary strings
+of length $2n$ is given asymptoticaly by
+$\frac{\binom{2n}{n}}{n+1} 2^n - \binom{2n-1}{n+1} 2^{n-1} + O(2^{n-2})$.
 
 \begin{proposition}
-  \label{proposition:patterns:lower bound}
-  Let $\pi \in S_{n}$.
-  Then $\pi$ contains a pattern of size at least
-  $\left\lfloor\sqrt{n-1}/2\right\rfloor$ that
-  is the union of two order-isomorphic patterns.
+  \label{proposition:bijection binary - (213,231)-avoiding}
+  There exists a bijection between square binary strings of length $2n$ and
+  square $(213,231)$-avoiding permutations of length $2n$.
 \end{proposition}
 
-\begin{proof}[of Proposition~\ref{proposition:patterns:lower bound}]
-  The Erdös-Szekeres theorem \cite{Erdos:Szekeres:1935}
-  states that every permutation of
-  length at least $pq+1$ must contain either the pattern
-  $\nearrow_{p+1}$ or the pattern $\searrow_{q+1}$.
-  The result now follows from the fact that
-  the pattern $\nearrow_{p+1}$ (resp. $\searrow_{q+1}$)
-\qed
-\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{proposition}
-  \label{proposition:patterns:upper bound}
-  If $2^{\binom{k}{2}} > \binom{n}{2k}\;\binom{2k}{k}$, then there exists
-  a permutation of $S_{n}$
-  that does not contains a pattern
-  of length $2k$ that is the union of two
-  order-isomorphic patterns.
-\end{proposition}
-
-\begin{proof}[of Proposition~\ref{proposition:patterns:upper bound}]
-The proof is by the probabilistic method \cite{Alon:Spencer:1992}.
-Let $\pi \in S_n$ be chosen randomly and uniformly.
-For any pattern $\sigma$ of length $2k$ ($k$ to be precisely defined latter)
-of $\pi$,
-let $X_\sigma$ be the indicator variable that
-$\sigma$ is the union of two order-ismorphic patterns.
-According to Boole's inequality, we have
-$P\left(X_\sigma\right) \leq \binom{2k}{k}\;2^{-k}$.
-Since there are $\binom{n}{2k}$ patterns of length $2k$ in $\pi$,
-the probability that $\pi$ contains a pattern of length $2k$
-is the union of two order-ismorphic patterns is at most
-$\binom{n}{2k}\;\binom{2k}{k}\;2^{-k} < 1$.
-Thus, with positive probability, no event $X_\sigma$ occurs and
-there is a permutation of $S_n$ that does not contain a pattern
-of length $2k$ that is the union of two order-isomorphic patterns.
-\qed
-\end{proof}
+% %%
+% %% ---- Patterns ----
+% %%
+% \section{Patterns}
+% \label{section:Patterns}
+%
+% \begin{proposition}
+%   \label{proposition:patterns:lower bound}
+%   Let $\pi \in S_{n}$.
+%   Then $\pi$ contains a pattern of size at least
+%   $\left\lfloor\sqrt{n-1}/2\right\rfloor$ that
+%   is the union of two order-isomorphic patterns.
+% \end{proposition}
+%
+% \begin{proof}[of Proposition~\ref{proposition:patterns:lower bound}]
+%   The Erdös-Szekeres theorem \cite{Erdos:Szekeres:1935}
+%   states that every permutation of
+%   length at least $pq+1$ must contain either the pattern
+%   $\nearrow_{p+1}$ or the pattern $\searrow_{q+1}$.
+%   The result now follows from the fact that
+%   the pattern $\nearrow_{p+1}$ (resp. $\searrow_{q+1}$)
+% \qed
+% \end{proof}
+%
+% \begin{proposition}
+%   \label{proposition:patterns:upper bound}
+%   If $2^{\binom{k}{2}} > \binom{n}{2k}\;\binom{2k}{k}$, then there exists
+%   a permutation of $S_{n}$
+%   that does not contains a pattern
+%   of length $2k$ that is the union of two
+%   order-isomorphic patterns.
+% \end{proposition}
+%
+% \begin{proof}[of Proposition~\ref{proposition:patterns:upper bound}]
+% The proof is by the probabilistic method \cite{Alon:Spencer:1992}.
+% Let $\pi \in S_n$ be chosen randomly and uniformly.
+% For any pattern $\sigma$ of length $2k$ ($k$ to be precisely defined latter)
+% of $\pi$,
+% let $X_\sigma$ be the indicator variable that
+% $\sigma$ is the union of two order-ismorphic patterns.
+% According to Boole's inequality, we have
+% $P\left(X_\sigma\right) \leq \binom{2k}{k}\;2^{-k}$.
+% Since there are $\binom{n}{2k}$ patterns of length $2k$ in $\pi$,
+% the probability that $\pi$ contains a pattern of length $2k$
+% is the union of two order-ismorphic patterns is at most
+% $\binom{n}{2k}\;\binom{2k}{k}\;2^{-k} < 1$.
+% Thus, with positive probability, no event $X_\sigma$ occurs and
+% there is a permutation of $S_n$ that does not contain a pattern
+% of length $2k$ that is the union of two order-isomorphic patterns.
+% \qed
+% \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1329,11 +1388,6 @@ bla bla blabla bla bla blabla bla bla blabla bla bla blabla.
 \newpage
 \section*{Appendix (Reviewers' version only)}
 
-bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
-bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
-bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
-bla bla blabla bla bla blabla bla bla blabla bla bla blabla bla bla blabla
-bla bla blabla bla bla blabla bla bla blabla bla bla blabla.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
