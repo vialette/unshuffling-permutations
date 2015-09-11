@@ -1270,8 +1270,6 @@ Proposition~\ref{proposition:hardness}.
     \qed
   \end{proof}
 
-
-
   \begin{claim}
     \label{claim:one (nu_1, nu'_1)-edge}
     There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
@@ -1280,18 +1278,19 @@ Proposition~\ref{proposition:hardness}.
   \begin{proof}[of Claim~\ref{claim:one (nu_1, nu'_1)-edge}]
     Suppose, aiming at a contradiction, that there is no
     $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
-    Then it follows that there exists an edge $(x, y)$ in $\mathcal{M}$,
+    Then it follows that there exists an edge $(x, x')$ in $\mathcal{M}$,
     $1 \leq x \leq N_1$, that is neither a
     $(\nu_1, \nu_1)$-edge (since $N_1$ is odd)
     nor a $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
     nor a $(\nu_1, \nu'_1)$ (by our contradiction hypothesis).
-    (In other words, $x \leq N_1$ and $y > 2N_1 + N_2$.)
+    (In other words, $x \leq N_1$ and $x' > 2N_1 + N_2$.)
     Therefore, since $\mathcal{M}$ is containment-free,
     there is neither a $(\nu_2, \nu_2)$-edge nor a $(\nu'_1, \nu'_1)$-edge
     in $\mathcal{M}$.
-    Then it follows that every position $x$ of $\nu'_1$
-    (\emph{i.e.}, $N_1+N_2 < x \leq 2N_1+N_2$)
-    is involved in an edge $(x, y)$ of $\mathcal{M}$ with $y \geq 2N_1+N_2$.
+    Then it follows that every position $y$ of $\nu'_1$
+    (\emph{i.e.}, $N_1+N_2 < y \leq 2N_1+N_2$)
+    is involved in an edge $(y, y'$ of $\mathcal{M}$ with $y' \geq 2N_1+N_2$
+    (otherwise $\mathcal{M}$ would not be containment-free).
     But $|\nu'_1| = N_1 = 2(2N_2 + 2n_3 + 2N_4 + 2n + 2k + 4) + 1
     > 2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4$, and hence at least one
     position in $\nu'_1$ can not be involved in an edge in $\mathcal{M}$.
@@ -1317,19 +1316,10 @@ Proposition~\ref{proposition:hardness}.
   \end{claim}
 
   \begin{proof}[of Claim~\ref{claim:no (nu_2, nu'_1)-edge}]
-    We first prove that there exists at most one
-    $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
-    Indeed, suppose, aiming at a contradiction, that there exist
-    two $(\nu_2, \nu'_1)$-edges $e = (a, b)$ and $e' = (a', b')$ in $\mathcal{M}$.
-    Since $\mathcal{M}$ is containment-free,
-    we may assume that $a < a'$ and $b < b'$.
-    Then it follows that $\mu(a) > \mu(a')$
-    (since $\nu_2$ is decreasing) and $\mu(b) < \mu(b')$
-    (since $\nu'_1$ is increasing),
-    which contradicts our hypothesis.
-
-    Suppose now, still aiming at a contradiction, that there exists
-    exactly one $(\nu_2, \nu'_1)$-edge $e = (a, b)$ in $\mathcal{M}$.
+    First, according to Lemma~\ref{lemma:at most one edge monotone},
+    there exists at most one $(\nu_2, \nu'_1)$-edge in $\mathcal{M}$.
+    Suppose now, aiming at a contradiction, that there exists
+    exactly one $(\nu_2, \nu'_1)$-edge $e = (a, a')$ in $\mathcal{M}$.
     According to Claim~\ref{claim:one (nu_1, nu'_1)-edge}, there exists at least
     one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
     Furtheremore, since
@@ -1344,9 +1334,9 @@ Proposition~\ref{proposition:hardness}.
     we conclude that there exists a position, say $x$, in $\nu'_1$
     that is neither involved in a $(\nu_1, \nu'_1)$-edge nor a $(\nu_1, \nu'_1)$-edge
     nor a $(\nu'_1, \nu'_1)$-edge.
-    Write $(x, y)$, $N_1+N_2 < x \leq 2N_1 + N_2$ and $y > 2N_1 + N_2$, this edge.
+    Write $(x, x')$, $N_1+N_2 < x \leq 2N_1 + N_2$ and $x' > 2N_1 + N_2$, this edge.
     We have $\mu(a) < \mu(x)$ (since $\nu_2$ is below $\nu'_1$)
-    and $\mu(b) > \mu(y)$ (since $\nu'_1$ is above any other gadget),
+    and $\mu(a') > \mu(x')$ (since $\nu'_1$ is above any other gadget),
     which contradicts our hypothesis.
     \qed
   \end{proof}
@@ -1364,7 +1354,7 @@ Proposition~\ref{proposition:hardness}.
     nor a $(\nu_2, \nu_2)$-edge (Claim~\ref{claim:no (nu_2, nu_2)-edge})
     nor a $(\nu_2, \nu'_1)$-edge (Claim~\ref{claim:no (nu_2, nu'_1)-edge})
     in $\mathcal{M}$.
-    But $|\nu_2| = N_2 > 2N_3 + 2N_4 + 2n + 2k$.
+    But $|\nu_2| = N_2 > 2N_3 + 2N_4 + 2n + 2k +4$.
     Hence $\mathcal{M}$ is not a perfect matching,
     which contradicts our hypothesis.
     \qed
@@ -1382,7 +1372,7 @@ Proposition~\ref{proposition:hardness}.
 
   \begin{proof}[of Claim~\ref{claim:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge}]
     Combine Claim~\ref{claim:one (nu_2, nu'_2)-edge} with the fact that
-    $\mathcal{M}$ is containment-free (Proposition~\ref{proposition:matching}).
+    $\mathcal{M}$ is containment-free.
     \qed
   \end{proof}
 
@@ -1390,7 +1380,7 @@ Proposition~\ref{proposition:hardness}.
     \centering
       \begin{tikzpicture}
         [
-          scale=0.25,
+          scale=0.35,
           label/.style={anchor=base}
         ]
         % nu_2
@@ -1412,8 +1402,8 @@ Proposition~\ref{proposition:hardness}.
         % labels
         \node [label] (x) at (2,4.5) {$x$};
         \node [label] (a) at (8,14.5) {$a$};
-        \node [label] (y) at (14,-1.5) {$y$};
-        \node [label] (b) at (16,-1.5) {$b$};
+        \node [label] (xp) at (14,-1.5) {$x'$};
+        \node [label] (ap) at (16,-1.5) {$a'$};
         \node (nu1) at (2.5,2.5) {$\nu_2$};
         \node (nu2) at (8.5,12.5) {$\nu_3$};
         \node (nu1') at (14.5,-3.5) {$\nu'_2$};
@@ -1436,14 +1426,14 @@ Proposition~\ref{proposition:hardness}.
 
   \begin{proof}[of Claim~\ref{claim:no (nu_3, nu'_2)-edge}]
     Suppose, aiming at a contradiction, that there exists
-    $(\nu_3, \nu'_2)$-edge $(a, b)$ in $\mathcal{M}$.
+    $(\nu_3, \nu'_2)$-edge $(a, a')$ in $\mathcal{M}$.
     According to Claim~\ref{claim:one (nu_2, nu'_2)-edge}, there
-    exists at least one $(\nu_2, \nu'_2)$-edge $(x, y)$ in $\mathcal{M}$.
+    exists at least one $(\nu_2, \nu'_2)$-edge $(x, x')$ in $\mathcal{M}$.
     Since $\mathcal{M}$ is containment-free (Proposition~\ref{proposition:matching}),
-    we have $y < b$.
+    we have $x' < a'$.
     Therefore,
-    we have $\mu(x) < \mu(a)$ (by construction) and
-    $\mu(y) > \mu(b)$ (since $\nu'_2$ is decreasing),
+    we have $\mu(x) < \mu(a)$ (since $\nu_2$ is below $\nu_3$) and
+    $\mu(x') > \mu(a')$ (since $\nu'_2$ is decreasing),
     which contradicts our hypothesis.
     See Fig.~\ref{fig:subfig:no (nu_3, nu'_2)-edge}.
     \qed
@@ -1451,24 +1441,24 @@ Proposition~\ref{proposition:hardness}.
 
   \begin{claim}
     \label{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge}
-    There is neither a $(\nu_1, \nu'_3)$-edge nor a $(\nu'_1, \nu_3)$-edge
+    There is neither a $(\nu_1, \nu_3)$-edge nor a $(\nu'_1, \nu_3)$-edge
     in $\mathcal{M}$.
   \end{claim}
 
   \begin{proof}[of Claim~\ref{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge}]
     Suppose, aiming at a contradiction, that there exists a
-    $(\nu_1, \nu'_3)$-edge $(a, b)$ in $\mathcal{M}$.
+    $(\nu_1, \nu_3)$-edge $(a, a')$ in $\mathcal{M}$.
     According to Claim~\ref{claim:one (nu_1, nu'_1)-edge} there exists
-    $(\nu_1, \nu'_1)$-edge $(x, y)$ in $\mathcal{M}$,
-    and ince $\mathcal{M}$ is containment-free we have $x < a$.
+    $(\nu_1, \nu'_1)$-edge $(x, x')$ in $\mathcal{M}$,
+    and since $\mathcal{M}$ is containment-free we have $x < a$.
     Therefore, we have
     $\mu(x) < \mu(a)$ (since $\nu_1$ is increasing)
     and
-    $\mu(y) > \mu(b)$ (by construction),
+    $\mu(x') > \mu(a')$ (since $\nu'_1$ is above $\nu_3$),
     which contradicts our hypothesis.
     See Fig.~\ref{fig:subfig:no (nu_3, nu'_2)-edge}.
 
-    A similar argument shows that there is no
+    The same argument shows that there is no
     $(\nu'_1, \nu_3)$-edge in $\mathcal{M}$.
     \qed
   \end{proof}
@@ -1480,17 +1470,7 @@ Proposition~\ref{proposition:hardness}.
   \end{claim}
 
   \begin{proof}[of Claim~\ref{claim:at most one (nu_2, nu_3)-edge}]
-    Suppose, aiming at a contradiction, that there exist two
-    $(\nu_2, \nu_3)$-edges $(a, b)$ and $(a', b')$ in $\mathcal{M}$.
-    Since these two edges have to be crossing
-    (Proposition~\ref{proposition:matching}), we may assume that
-    $a < a'$ and $b < b'$.
-    Therefore, we have
-    $\mu(a) > \mu(a')$ (since $\nu_2$ is decreasing)
-    and
-    $\mu(b) < \mu(b')$ (since $\nu_3$ is increasing).
-    According to Proposition~\ref{proposition:matching}, this is
-    a contradiction.
+    Apply Lemma~\ref{lemma:at most one edge monotone}.
     \qed
   \end{proof}
 
@@ -1502,6 +1482,59 @@ Proposition~\ref{proposition:hardness}.
   \begin{proof}[of Claim~\ref{claim:one (nu_3, nu'_3)-edge}]
     Suppose, aiming at a contradiction, that there is no
     $(\nu_3, \nu'_3)$-edge in $\mathcal{M}$.
+    Combining Claim~\ref{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge},
+    Claim~\ref{claim:no (nu'_1, nu'_1),(nu_3, nu_3),(sigma' ,sigma'),(nu_4, nu_4)-edge},
+    Claim~\ref{claim:at most one (nu_2, nu_3)-edge},
+    and Claim~\ref{claim:no (nu_3, nu'_2)-edge},
+    we conclude that $N_3-1$ positions in $\nu_3$ are involved
+    in edges of $\mathcal{M}$ that are
+    neither ($\nu_1, \nu_3)$-edges,
+    nor $(\nu_2, \nu_3)$-edges
+    nor $(\nu'_1, \nu_3)$-edges
+    nor $(\nu_3, \nu_3)$-edges.
+    But $N_3 - 1 > 2N_4 + 2n + 2k + 4$ (the positions left) and hence
+    $\mathcal{M}$ is not a perfect matching,
+    which contradicts our hypothesis.
+    \qed
+  \end{proof}
+  \begin{claim}
+    \label{claim:no (sigma', nu_4)-edge}
+    There is no $(\sigma', \nu_4)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (sigma', nu_4)-edge}]
+    Combine Claim~\ref{claim:one (nu_3, nu'_3)-edge} with the fact that
+    $\mathcal{M}$ is containment-free.
+    \qed
+  \end{proof}
+
+  \begin{claim}
+    \label{claim:no (nu_4, nu'_3)-edge}
+    There is no $(\nu_4, \nu'_3)$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu_4, nu'_3)-edge}]
+    Suppose, aiming at a contradiction, that there exists
+    a $(\nu_4, \nu'_3)$-edge $(a, a')$ in $\mathcal{M}$.
+    According to Claim~\ref{claim:one (nu_3, nu'_3)-edge},
+    there exists a $(\nu_3, \nu'_3)$-edge $(x, x')$
+    in $\mathcal{M}$.
+    Since $\mathcal{M}$ is containment-free, we must have
+    $x' < a'$.
+    Therefore,
+    we have $\mu(x) > \mu(a)$ (since $\nu_3$ is above $\nu_4$) and
+    $\mu(x') < \nu(a')$ (since $\nu'_3$ is increasing),
+    which contradicts our hypothesis.
+    \qed
+  \end{proof}
+
+
+  \begin{claim}
+    \label{claim:no (nu_4, pi')-edge}
+    There is no $(\nu_4, \pi')$-edge in $\mathcal{M}$.
+  \end{claim}
+
+  \begin{proof}[of Claim~\ref{claim:no (nu_4, pi')-edge}]
     \qed
   \end{proof}
 
@@ -1516,23 +1549,8 @@ Proposition~\ref{proposition:hardness}.
     \qed
   \end{proof}
 
-  \begin{claim}
-    \label{claim:no (nu_4, nu'_3)-edge}
-    There is no $(\nu_4, \nu'_3)$-edge in $\mathcal{M}$.
-  \end{claim}
 
-  \begin{proof}[of Claim~\ref{claim:no (nu_4, nu'_3)-edge}]
-    \qed
-  \end{proof}
 
-  \begin{claim}
-    \label{claim:no (nu_4, pi')-edge}
-    There is no $(\nu_4, \pi')$-edge in $\mathcal{M}$.
-  \end{claim}
-
-  \begin{proof}[of Claim~\ref{claim:no (nu_4, pi')-edge}]
-    \qed
-  \end{proof}
 
   \begin{claim}
     \label{claim:one (nu_4, nu'_4)-edge}
