@@ -635,7 +635,6 @@ inverse. The sequence enumerating these sets begins by
 
 
 \begin{proposition}
-<<<<<<< HEAD
   \label{proposition:matching}
   Let $\pi \in S_{2n}$.
   Then,
@@ -644,16 +643,125 @@ inverse. The sequence enumerating these sets begins by
   there exists a perfect containment-free mathing
   $\mathcal{M}$ of $G_\pi$ such that
   $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
-=======
-Let $\pi \in S_{2n}$.
-Then,
-$\pi$ is the union of two order-isomorphic pattern
-if and only if
-there exists a perfect containment-free mathing
-$\mathcal{M}$ of $G_\pi$ such that
-$\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
->>>>>>> 52a537603cf201d0e9be15f2ee3234f7c21d0df7
 \end{proposition}
+
+The following easy lemma will prove extremely useful for simplifying the proof of
+Proposition~\ref{proposition:hardness}.
+
+\begin{lemma}
+  \label{lemma:at most one edge monotone}
+  Let $\pi = \pi_1 \, \sigma_1 \, \pi_2 \, \sigma_2 \, \pi_3$
+  be a permutation with $n_1 = |\sigma_1| \geq 2$ and $n_2 = |\sigma_2| \geq 2$,
+  and $\mathcal{M}$ be a containment-free perfect matching of $G_\pi$.
+  The following assertions hold.
+  \begin{enumerate}
+    \item
+    If $\sigma_1$ is increasing, $\sigma_2$ is decreasing and
+    $\sigma_1$ is above $\sigma_2$
+    (see Fig.~\ref{subfig:increasing before and aboce decreasing}),
+    then $\mathcal{M}$ sontains at most one $(\sigma_1, \sigma_2)$-edge.
+    \item
+    If $\sigma_1$ is decreasing, $\sigma_2$ is increasing and
+    $\sigma_1$ is below $\sigma_2$
+    (see Fig.~\ref{subfig:decresing before and below increasing}),
+    then $\mathcal{M}$ sontains at most one $(\sigma_1, \sigma_2)$-edge.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}[of Lemma~\ref{lemma:at most one edge monotone}]
+  \begin{figure}[t!]
+    \centering
+    \subfigure[%
+      An increasing pattern before and above a decreasing pattern.
+    ]{%
+      \begin{tikzpicture}
+        [
+          scale=0.45,
+          label/.style={anchor=base}
+        ]
+        % increasing pattern
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,5.8) grid (5.2,11.2);
+        \foreach \x/\y in {0/6,1/7,2/8,3/9,4/10,5/11} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % decreasing pattern
+        \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
+        \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
+            \draw [fill=black] (\x,\y) circle (0.1);
+        }
+        % labels
+        \node [label] (a) at (1,5) {$a$};
+        \node [label] (b) at (4,5) {$b$};
+        \node [label] (ap) at (7,-1) {$a'$};
+        \node [label] (bp) at (10,-1) {$b'$};
+        \node (nu1) at (2.5,4) {$\sigma_1$};
+        \node (nu2) at (8.5,-2) {$\sigma_2$};
+        % crossings edges
+        \draw [line width=1pt]
+        (1,7) .. controls +(0,12) and +(0,10) .. (7,4);
+        \draw [line width=1pt]
+        (4,10) .. controls +(0,12) and +(0,10) .. (10,1);
+      \end{tikzpicture}
+      \label{subfig:increasing before and aboce decreasing}
+    }% end subfigure
+    \qquad
+    \subfigure[%
+      A decreasing pattern before and below an increasing pattern.
+    ]{%
+    \begin{tikzpicture}
+      [
+        scale=0.45,
+        label/.style={anchor=base}
+      ]
+      % decreasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,-0.2) grid (5.2,5.2);
+      \foreach \x/\y in {0/5,1/4,2/3,3/2,4/1,5/0} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % decreasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,5.8) grid (11.2,11.2);
+      \foreach \x/\y in {6/6,7/7,8/8,9/9,10/10,11/11} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % labels
+      \node [label] (a) at (1,-1) {$a$};
+      \node [label] (b) at (4,-1) {$b$};
+      \node [label] (ap) at (7,5) {$a'$};
+      \node [label] (bp) at (10,5) {$b'$};
+      \node (nu1) at (2.5,-2) {$\sigma_1$};
+      \node (nu2) at (8.5,4) {$\sigma_2$};
+      % crossings edges
+      \draw [line width=1pt]
+      (1,4) .. controls +(0,10) and +(0,12) .. (7,7);
+      \draw [line width=1pt]
+      (4,1) .. controls +(0,10) and +(0,12) .. (10,10);
+      \end{tikzpicture}
+      \label{subfig:decresing before and below increasing}
+    }% end subfigure
+    \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
+      Lemma~\ref{lemma:at most one edge monotone}:
+      Assuming a $(\nu_1,\nu_2)$-edge $(a, b)$ in $\mathcal{M}$.
+    }
+  \end{figure}
+  We first prove \emph{1}.
+  Suppose, aiming at a contradiction, that there exist two
+  $(\sigma_1, \sigma_2)$-edges $(a, a')$ and $(b, b')$ in $\mathcal{M}$.
+  Since $\mathcal{M}$ is containment-free, we may assume $a < b$ and $a' < b'$.
+  Therefore, we have
+  $\pi(a) < \pi(b)$ (since $\sigma_1$ is increasing) and
+  $\pi(a') > \pi(b')$ (since $\sigma_2$ is decreasing),
+  which contradicts our hypothesis.
+
+  As for \emph{2}, suppose, still aiming at a contradiction,
+  that there exist two
+  $(\sigma_1, \sigma_2)$-edges $(a, a')$ and $(b, b')$ in $\mathcal{M}$.
+  Since $\mathcal{M}$ is containment-free, we may assume $a < b$ and $a' < b'$.
+  Therefore, we have
+  $\pi(a) > \pi(b)$ (since $\sigma_1$ is decreasing) and
+  $\pi(a') < \pi(b')$ (since $\sigma_2$ is increasing),
+  which contradicts our hypothesis.
+  \qed
+\end{proof}
 
 \begin{proposition}
   \label{proposition:hardness}
@@ -981,7 +1089,6 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
   ((\emph{i.e.}, $(n+1) + (2N_2 + N_4 + n + k + 2)$)),
   (ii)
 
-  (this is possible since ).
   Conversely, suppose that there exists a containment-free perfect matching
   $\mathcal{M}$ in $G_\mu$ such that for any two disctinct edges
   $(a, b)$ and $(a', b')$ in $\mathcal{M}$
@@ -1024,10 +1131,10 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
               \draw [fill=black] (\x,\y) circle (0.1);
           }
           % labels
-          \node [label] (x) at (17,14.5) {$y$};
-          \node [label] (x) at (10,-1.5) {$x$};
+          \node [label] (y) at (17,14.5) {$y$};
+          \node [label] (yp) at (10,-1.5) {$y'$};
           \node [label] (a) at (0,8.5) {$a$};
-          \node [label] (b) at (8,-1.5) {$b$};
+          \node [label] (ap) at (8,-1.5) {$a'$};
           \node (nu1) at (2.5,7.7) {$\nu_1$};
           \node (nu2) at (8.5,-2.5) {$\nu_2$};
           \node (nu1') at (14.5,13.5) {$\nu'_1$};
@@ -1081,12 +1188,12 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
             \draw [fill=black] (\x,\y) circle (0.1);
         }
         % labels
-        \node [label] (x) at (17,14.5) {$y$};
-        \node [label] (x) at (23,-4.5) {$z$};
+        \node [label] (y) at (17,14.5) {$y$};
+        \node [label] (ypp) at (23,-4.5) {$y''$};
         \node [label] (a) at (0,8.5) {$a$};
         \node [label] (a) at (2,8.5) {$x'$};
         \node [label] (a) at (14,14.5) {$y'$};
-        \node [label] (b) at (8,-1.5) {$b$};
+        \node [label] (ap) at (8,-1.5) {$a'$};
         \node (nu1) at (2.5,7.7) {$\nu_1$};
         \node (nu2) at (8.5,-2.5) {$\nu_2$};
         \node (nu1') at (14.5,13.5) {$\nu'_1$};
@@ -1121,30 +1228,21 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
   \end{claim}
 
   \begin{proof}[of Claim~\ref{claim:no (nu_1, nu_2)-edge}]
-    We first prove that there exists at most one
-    $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
-    Indeed, suppose, aiming at a contradiction, that there exist
-    two $(\nu_1, \nu_2)$-edges $e = (a, b)$ and $e' = (a', b')$ in $\mathcal{M}$.
-    Since $\mathcal{M}$ is containment-free,
-    we may assume that $a < a'$ and $b < b'$.
-    Then it follows that $\mu(a) < \mu(a')$
-    (since $\nu_1$ is increasing) and $\mu(b) > \mu(b')$
-    (since $\nu_2$ is decreasing),
-    which contradicts our hypothesis.
-
-    Suppose now, still aiming at a contradiction, that there exists
-    exactly one $(\nu_1, \nu_2)$-edge $e = (a, b)$ in $\mathcal{M}$.
-    We show that $\mathcal{M}$ does not contain any $(\nu_1, \nu_1)$-edge.
+    First, according to Lemma~\ref{lemma:at most one edge monotone},
+    there exists at most one $(\nu_1, \nu_2)$-edge in $\mathcal{M}$.
+    Suppose now, aiming at a contradiction, that there exists
+    exactly one $(\nu_1, \nu_2)$-edge $e = (a, a')$ in $\mathcal{M}$.
+    Under this assumption, we show that $\mathcal{M}$ does not contain any $(\nu_1, \nu_1)$-edge.
     Indeed, suppose, aiming at a contradiction,
-    that there exists a $(\nu_1, \nu_1)$-edge $(x, y)$ in $\mathcal{M}$.
+    that there exists a $(\nu_1, \nu_1)$-edge $(x, x')$ in $\mathcal{M}$.
     Since $\mathcal{M}$ is containment-free,
     we must have $x < a$.
     Then it follows that $\mu(x) < \mu(a)$ (since $\nu_1$ is increasing) and
-    $\mu(y) > \mu(b)$ (since $\nu_1$ is above $\nu_2$),
+    $\mu(x') > \mu(a')$ (since $\nu_1$ is above $\nu_2$),
     which contradicts our hypothesis.
     Hence $\mathcal{M}$ does not contain any $(\nu_1, \nu_1)$-edge.
     Furthermore, since $\nu_1$ is increasing and
-    there exists only one $(\nu_1, \nu_2)$-edge in $\mathcal{M}$,
+    there exists only one $(\nu_1, \nu_2)$-edge $(a, a')$ in $\mathcal{M}$,
     we conclude that
     $\mathcal{M}$ contains $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges.
     But $|\nu_1| = |\nu'_1| = N_1$ and $\mathcal{M}$ is perfect,
@@ -1153,19 +1251,19 @@ $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
     We rule out this configuration by considering two cases:
     \begin{itemize}
       \item Position $y$ is involved in a $(\nu_2, \nu'_1)$-edge,
-      say $(x, y)$. Then, we have $\mu(a) > \mu(x)$ (since $\nu_1$ is above $\nu_2$)
-      and $\mu(b) < \mu(y)$ (since $\nu_2$ is below $\nu'_1$),
+      say $(y', y)$. Then, we have $\mu(a) > \mu(y')$ (since $\nu_1$ is above $\nu_2$)
+      and $\mu(a') < \mu(y)$ (since $\nu_2$ is below $\nu'_1$),
       which contradicts our hypothesis.
       See Fig.~\ref{subfig:no (nu_1, nu_2)-edge - 1}.
       \item Position $y$ is not involved in a $(\nu_2, \nu'_1)$-edge.
       Since $\mathcal{M}$ contains $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges
-      in $\mathcal{M}$ and $|\nu'_1| = N_1$, there exists an edge $(y, z)$ in $\mathcal{M}$
+      in $\mathcal{M}$ and $|\nu'_1| = N_1$, there exists an edge $(y, y'')$ in $\mathcal{M}$
       that is neither a $(\nu_1, \nu'_1)$-edge nor a $(\nu_2, \nu'_1)$-edge
       nor a $(\nu'_1, \nu'_1)$-edge.
-      In other words, $z > 2N_1 + N_2$.
-      Now, for any $(\nu_1, \nu'_1)$-edge $(x', y')$ in $\mathcal{M}$, we
-      have $\mu(x') < \mu(y)$ (since $\nu_1$ is below $\nu'_1$)
-      and $\mu(y') > \mu(z)$ (since $\nu'_1$ is above any other gadget),
+      In other words, $y'' > 2N_1 + N_2$.
+      Now, for any $(\nu_1, \nu'_1)$-edge $(x, x')$ in $\mathcal{M}$, we
+      have $\mu(x) < \mu(y)$ (since $\nu_1$ is below $\nu'_1$)
+      and $\mu(x') > \mu(y'')$ (since $\nu'_1$ is above any other gadget),
       which contradicts our hypothesis.
       See Fig.~\ref{subfig:no (nu_1, nu_2)-edge - 2}.
     \end{itemize}
