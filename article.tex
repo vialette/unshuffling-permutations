@@ -1418,12 +1418,40 @@ Proposition~\ref{proposition:hardness}.
   \begin{proof}[of Claim~\ref{claim: all (nu_2, nu'_2)-edges}]
     Suppose, aiming at a contradiction, that
     $\mathcal{M}$ does not contain $N_2$ $(\nu_2, \nu'_2)$-edge.
-    Combing Claim~\ref{claim:no (nu_1, nu_2)-edge} and
+    According to Claim~\ref{claim:one (nu_2, nu'_2)-edge},
+    there exists a $(\nu_2; \nu'_2)$-edge $(a, a')$ in $\mathcal{M}$.
+    Combing Claim~\ref{claim:no (nu_1, nu_2)-edge},
+    Claim~\ref{claim:no (nu_2, nu'_1)-edge}  and
     Claim~\ref{claim:one (nu_2, nu'_2)-edge},
-    we conclude that there exists a position $a$ in $\nu_2$ that is
-    involded in an edge $(a, a')$ in $\mathcal{M}$ that is
+    we conclude that there exists a position $x$ in $\nu_2$ that is
+    involded in an edge $(x, x')$ in $\mathcal{M}$ that is
     neither a $\nu_1, \nu_2)$-edge,
-    nor a $(\nu_2, \nu_2)$-edge.
+    nor a $(\nu_2, \nu_2)$-edge,
+    nor a $(\nu_2, \nu'_1)$-edge
+    nor a $(\nu_2, \nu'_2)$-edge (our hypothesis).
+    We need to consider two cases.
+    \begin{itemize}
+      \item
+      $(x, x')$ is
+      either a $(\nu_2, \nu'_3)$-edge
+      or a $(\nu_2, \pi')$-edge
+      or a $(\nu_2, \nu'_4)$-edge
+      or a $(\nu_2, \pi'')$-edge
+      or a $(\nu_2, \sigma'')$-edge.
+      Since $\mathcal{M}$ is containment-free,
+      we must have $a < x$.
+      Then it follows that
+      $\mu(a) > \mu(x)$ (since $\nu_2$ is decreasing) and
+      $\mu(a') < \mu(x')$
+      (since $\nu'_3$, $\pi'$, $\nu'_4$, $\pi''$ and $\sigma''$ are all above
+      $\nu'_2$),
+      which contradicts our hypothesis.
+      \item
+      $(x, x')$ is
+      either a $(\nu_2, \nu_3)$-edge
+      or a $(\nu_2, \sigma')$-edge
+      or a $(\nu_2, \nu_4)$-edge.
+    \end{itemize}
     Furthermore, according to Claim~\ref{claim:one (nu_2, nu'_2)-edge},
     there exists a $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
     Then, we have
