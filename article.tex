@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[a4paper,10pt]{llncs}
+\documentclass[a4paper]{llncs}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -25,6 +25,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \input{complexity}
+\input{graph}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -110,7 +111,6 @@ $u \shuffle \epsilon = u = \epsilon \shuffle u$ and
 $ua \shuffle vb = (u \shuffle vb)a \cup (ua \shuffle v)b$, were $a$ and
 $b$ are letters. A word $u$ is a {\em square} if there exists a word $v$
 such that $u$ belongs to $v \shuffle v$.
-\medskip
 
 We denote by $S_n$ the set of permutations of size $n$ and by $S$ the
 set of all permutations. In this paper, permutations are specified by
@@ -128,7 +128,26 @@ there is an {\em occurrence} of (the {\em pattern}) $\sigma$ in $\pi$ if
 there is a set $P$ of indexes of letters of $\pi$ such that $\sigma$ and
 $\pi_{|P}$ are order isomorphic. When $\pi$ does not admit any occurrence
 of $\sigma$, $\pi$ {\em avoids} $\sigma$.
-\medskip
+
+For a graph $G$, we denote $\VS{G}$ as the set of vertices and
+$\ES{G}$ as the set of edges.
+Let $u = u_1 \, u_2 \,\ldots\, u_n$ be a word.
+The \emph{clique graph associated to $u$}, denoted $K_u$,
+is the complete graph on $\VS{K_u} = \{u_1, u_2, \ldots, u_n\}$.
+The structure of this underlying graph is linear,
+\emph{i.e.}, the set of vertices is equipped with a natural total order
+$<$ defined by $u_i < u_j$ if and only if $i < j$.
+(For a linear graph, we write $(u_i, u_j)$ instead of $\{u_i, u_j\}$
+for an edge if it is clear from the context that $i < j$.)
+Recall that two edges of a graph are \emph{independent} if they do not share
+a common vertex, and that a \emph{matching} $\mathcal{M}$ in $G$ is a set of
+pairwise independent edges.
+A matching is \emph{perfect} if it covers all the vertices of the graph.
+In case the set of vertices is equipped with a total order,
+a matching $\mathcal{M}$ is said to be \emph{containment-free}
+if there do not exist (independent) edges $(u_i, u_j)$ and
+$(u_k, u_\ell)$ in $\mathcal{M}$ such that
+$u_i < u_k < u_\ell < u_j$ or  $u_k < u_i < u_j < u_\ell$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
