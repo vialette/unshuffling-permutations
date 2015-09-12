@@ -1305,7 +1305,7 @@ Proposition~\ref{proposition:hardness}.
   \end{claim}
 
   \begin{proof}[of Claim~\ref{claim:no (nu_2, nu_2)-edge}]
-  Combine Claim~\ref{claim:one (nu_1, nu'_1)-edge} together with
+  Combine Claim~\ref{claim:one (nu_1, nu'_1)-edge} with
   the fact that $\mathcal{M}$ is containment-free.
   \qed
   \end{proof}
@@ -1412,11 +1412,11 @@ Proposition~\ref{proposition:hardness}.
   \end{proof}
 
   \begin{claim}
-    \label{claim:one (nu_1, nu'_2)-edge}
+    \label{claim:no (nu_1, nu'_2)-edge}
     There is no $(\nu_1, \nu'_2)$-edge in $\mathcal{M}$.
   \end{claim}
 
-  \begin{proof}[of Claim~\ref{claim:one (nu_1, nu'_2)-edge}]
+  \begin{proof}[of Claim~\ref{claim:no (nu_1, nu'_2)-edge}]
     Suppose, aiming at a contradiction that there is a
     $(\nu_1, \nu'_2)$-edge $(a, a')$ in $\mathcal{M}$.
     According to Claim~\ref{claim:one (nu_1, nu'_1)-edge},
@@ -1430,11 +1430,11 @@ Proposition~\ref{proposition:hardness}.
   \end{proof}
 
   \begin{claim}
-    \label{claim:one (nu'_1, nu'_2)-edge}
+    \label{claim:no (nu'_1, nu'_2)-edge}
     There is no $(\nu'_1, \nu'_2)$-edge in $\mathcal{M}$.
   \end{claim}
 
-  \begin{proof}[of Claim~\ref{claim:one (nu'_1, nu'_2)-edge}]
+  \begin{proof}[of Claim~\ref{claim:no (nu'_1, nu'_2)-edge}]
     Suppose, aiming at a contradiction that there is a
     $(\nu'_1, \nu'_2)$-edge $(a, a')$ in $\mathcal{M}$.
     According to Claim~\ref{claim:one (nu_1, nu'_1)-edge},
@@ -1574,10 +1574,10 @@ Proposition~\ref{proposition:hardness}.
     Suppose, aiming at a contradiction, that
     $\mathcal{M}$ does not contain $N_1$ $(\nu_1, \nu'_1)$-edge.
     Combing Claim~\ref{claim:no (nu_2, nu'_1)-edge} and
-    Claim~\ref{claim:no edge below one (nu_2, nu_2)-edge},
+    Claim~\ref{claim:no edge below one (nu_2, nu'_2)-edge},
     we conclude that there exists a position $a$ in $\nu'_1$ that is
     involded in an edge $(a, a')$ in $\mathcal{M}$ that is
-    neither a $\nu_1, \nu'_1)$-edge,
+    neither a $(\nu_1, \nu'_1)$-edge,
     nor a $(\nu_2, \nu'_1)$-edge,
     nor a $(\nu'_1, \nu'_1)$-edge.
     (In other words, $a' > 2N_1 + N_2$.)
@@ -1603,46 +1603,16 @@ Proposition~\ref{proposition:hardness}.
   \end{proof}
 
   \begin{claim}
-    \label{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge}
+    \label{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge no (nu_1, nu_4)-edge}
     There is neither a $(\nu_1, \nu_3)$-edge nor a $(\nu'_1, \nu_3)$-edge
+    nor a $(\nu_1, \nu_4)$-edge
     in $\mathcal{M}$.
   \end{claim}
 
-  \begin{proof}[of Claim~\ref{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge}]
-    Suppose, aiming at a contradiction, that there exists a
-    $(\nu_1, \nu_3)$-edge $(a, a')$ in $\mathcal{M}$.
-    According to Claim~\ref{claim:one (nu_1, nu'_1)-edge} there exists
-    $(\nu_1, \nu'_1)$-edge $(x, x')$ in $\mathcal{M}$,
-    and since $\mathcal{M}$ is containment-free we have $x < a$.
-    Therefore, we have
-    $\mu(x) < \mu(a)$ (since $\nu_1$ is increasing)
-    and
-    $\mu(x') > \mu(a')$ (since $\nu'_1$ is above $\nu_3$),
-    which contradicts our hypothesis.
-    See Fig.~\ref{fig:subfig:no (nu_3, nu'_2)-edge}.
-
-    The same argument shows that there is no
-    $(\nu'_1, \nu_3)$-edge in $\mathcal{M}$.
-    \qed
-  \end{proof}
-
-
-  \begin{claim}
-    \label{claim:no (nu_1, nu_4)-edge}
-    There is no $(\nu_1, \nu_4)$-edge in $\mathcal{M}$.
-  \end{claim}
-
-  \begin{proof}[of Claim~\ref{claim:no (nu_1, nu_4)-edge}]
-    Suppose, aiming at a contradiction, that there exists
-    a $(\nu_1, \nu_4)$-edge $(a, b)$ in $\mathcal{M}$.
-    According to Claim~\ref{claim:one (nu_1, nu'_1)-edge},
-    there exists a $(\nu_1, \nu'_1)$-edge $(x, x')$
-    in $\mathcal{M}$.
-    Since $\mathcal{M}$ is containment-free, we must have $x < a$.
-    Therefore, we have
-    $\mu(x) < \mu(a)$ (since $\nu_1$ is incresing)
-    and $\mu(x') > \mu(a')$ since $\nu'_1$ is above $\nu_4$),
-    which contradicts our hypothesis.
+  \begin{proof}[of Claim~\ref{claim:no (nu_1, nu_3)-edge no (nu'_1, nu_3)-edge no (nu_1, nu_4)-edge}]
+    According to Claim~\ref{claim: all (nu_1, nu'_1)-edges},
+    all positions in $\nu_1$ and $\nu'_1$ are involved in
+    $(\nu_1, \nu'_1)$-edges in $\mathcal{M}$.
     \qed
   \end{proof}
 
@@ -1672,17 +1642,9 @@ Proposition~\ref{proposition:hardness}.
   \end{claim}
 
   \begin{proof}[of Claim~\ref{claim:no (nu_2, nu_4)-edge}]
-    Suppose, aiming at a contradiction, that there exists
-    a $(\nu_2, \nu_4)$-edge $(a, a')$ in $\mathcal{M}$.
-    According to Claim~\ref{claim:one (nu_3, nu'_3)-edge},
-    there exists a $(\nu_3, \nu'_3)$-edge $(x, x')$
-    in $\mathcal{M}$.
-    Since $\mathcal{M}$ is containment-free, we must have
-    $x' < a'$.
-    Therefore,
-    we have $\mu(x) > \mu(a)$ (since $\nu_3$ is above $\nu_4$) and
-    $\mu(x') < \nu(a')$ (since $\nu'_3$ is increasing),
-    which contradicts our hypothesis.
+    According to Claim~\ref{claim: all (nu_2, nu'_2)-edges},
+    all positions in $\nu_2$ and $\nu'_2$ are involved in
+    $(\nu_2, \nu'_2)$-edges in $\mathcal{M}$.
     \qed
   \end{proof}
 
@@ -1702,45 +1664,26 @@ Proposition~\ref{proposition:hardness}.
   \end{proof}
 
   \begin{claim}
-    \label{claim:no (nu_4, pi')-edge}
-    There is no $(\nu_4, \pi')$-edge in $\mathcal{M}$.
+    \label{claim:no (pi', pi)-edge no (sigma', pi'')-edge no (sigma',sigma'')-edge}
+    There is
+    neither a $(\pi', \pi')$-edge
+    nor a $(\sigma', \pi'')$-edge
+    nor a $(\sigma', \sigma'')$-edge
+    in $\mathcal{M}$.
   \end{claim}
 
-  \begin{proof}[of Claim~\ref{claim:no (nu_4, pi')-edge}]
-    \qed
-  \end{proof}
-
-
-  \begin{claim}
-    \label{claim:no (pi', pi)-edge}
-    There is no $(\pi', \pi')$-edge in $\mathcal{M}$.
-  \end{claim}
-
-  \begin{proof}[of Claim~\ref{claim:no (pi', pi')-edge}]
-    Combine Claim~\ref{claim:one (nu_4, nu'_4)-edge} together with the
+  \begin{proof}[of Claim~\ref{claim:no (pi', pi)-edge no (sigma', pi'')-edge no (sigma',sigma'')-edge}]
+    Combine Claim~\ref{claim:one (nu_4, nu'_4)-edge} with the
     fact that $\mathcal{M}$ is containment-free.
     \qed
   \end{proof}
 
-  \begin{claim}
-    \label{claim:no (nu'_3, pi')-edge}
-    There is no $(\nu'_3, \pi')$-edge in $\mathcal{M}$.
-  \end{claim}
-
-  \begin{proof}[of Claim~\ref{claim:no (nu'_3, pi')-edge}]
-    Suppose aiming at a contradiction that there exists
-    a $(\nu'_3, \pi')$-edge $(a, a')$ in $\mathcal{M}$.
-    Accordint to Claim~\ref{claim:one (nu_3, nu'_3)-edge},
-    there exists a $(\nu_3, \nu'_3)$-edge $(b, b')$ in $\mathcal{M}$.
-    Then it follows that we have
-    $\mu(b) < \mu(a)$ (since $\nu_3$ is below $\nu'_3$) and
-    $\mu(b') > \mu(a')$ (since $\nu'_3$ is above $\pi'$),
-    which contradicts our hypothesis.
-    \qed
-  \end{proof}
-
-  Combinf the above claims
-\qed
+  Then it follows that that every position in $\sigma$ is involved in
+  either a $(\sigma', \nu'_3)$-edge
+  or a $(\sigma', \pi')$-edge
+  or a $(\sigma', \nu'_4)$-edge
+  in $\mathcal{M}$.
+  \qed
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
