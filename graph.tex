@@ -1,0 +1,189 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{xspace}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% alphabets
+%
+
+\DeclareMathAlphabet{\mathscr}{OT1}{pzc}{m}{it}
+\DeclareMathAlphabet{\mathfrit}{OT1}{cmfr}{m}{it}
+\DeclareMathAlphabet{\mathccmit}{OT1}{ccm}{m}{it}
+\DeclareMathAlphabet{\mathdj}{U}{msb}{m}{n} 
+\DeclareMathAlphabet{\mathib}{OT1}{cmr}{bx}{it} 
+\DeclareMathAlphabet{\mathbfit}{OT1}{cmr}{bx}{it}
+\DeclareMathAlphabet{\mathbfss}{OT1}{cmss}{bx}{n}
+\DeclareMathAlphabet{\mathsfm}{OT1}{cmss}{m}{n}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 
+% vertices and edges
+%
+
+\newcommand{\VertexSet}{\mathbf{V}}
+\newcommand{\VS}[1]{\VertexSet(#1)}
+\newcommand{\EdgeSet}{\mathbf{E}}
+\newcommand{\ES}[1]{\EdgeSet(#1)}
+\newcommand{\ArcSet}{\mathbf{A}}
+\newcommand{\AS}[1]{\ArcSet(#1)}
+\newcommand{\CardVS}[1]{|\VS{#1}|}
+\newcommand{\CardES}[1]{|\ES{#1}|}
+\newcommand{\NbVertex}{\mathbf{n}}
+\newcommand{\NbEdge}{\mathbf{m}}
+\newcommand{\NbVS}[1]{\NbVertex(#1)}
+\newcommand{\NbES}[1]{\NbEdge(#1)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% set of graphs
+\newcommand{\Gcal}{{\mathcal{G}}}%
+\newcommand{\Hcal}{{\mathcal{H}}}%
+\newcommand{\G}{{\Gcal}}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% graph Solution
+\newcommand{\AbstractGraph}[2]{{#1}_{#2}}%
+\newcommand{\AbstractGraphSolution}[1]{\AbstractGraph{#1}{\text{sol}}}%
+\newcommand{\Gsol}{\AbstractGraphSolution{G}}%
+\newcommand{\Gpsol}{\AbstractGraphSolution{G'}}%
+\newcommand{\Gppsol}{\AbstractGraphSolution{G''}}%
+\newcommand{\Hsol}{\AbstractGraphSolution{H}}%
+\newcommand{\Hpsol}{\AbstractGraphSolution{H'}}%
+\newcommand{\Hppsol}{\AbstractGraphSolution{H''}}%
+
+
+% graph Opt
+\newcommand{\AbstractGraphOpt}[1]{\AbstractGraph{#1}{\text{opt}}}%
+\newcommand{\Gopt}{\AbstractGraphOpt{G}}%
+\newcommand{\Gpopt}{\AbstractGraphOpt{G'}}%
+\newcommand{\Gppopt}{\AbstractGraphOpt{G''}}%
+\newcommand{\Hopt}{\AbstractGraphOpt{H}}%
+\newcommand{\Hpopt}{\AbstractGraphOpt{H'}}%
+\newcommand{\Hppopt}{\AbstractGraphOpt{H''}}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Standard graph operations
+%
+
+% Cartesian product
+\DeclareMathOperator{\CartesianProduct}{\square}
+\DeclareMathOperator{\CP}{\CartesianProduct}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Standard graph parameters
+%
+
+% connected components
+\DeclareMathOperator{\CC}{CC}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Interval related parameters
+%
+
+% Tags
+\newcommand{\BalancedTag}{b}
+\newcommand{\UnitTag}{u}
+
+% multiple intervals
+\DeclareMathOperator{\IntervalNumber}{i}%
+\DeclareMathOperator{\BalancedIntervalNumber}{\IntervalNumber_{\BalancedTag}}%
+\DeclareMathOperator{\UnitIntervalNumber}{\IntervalNumber_{\UnitTag}}%
+
+% track intervals
+\DeclareMathOperator{\TrackIntervalNumber}{t}%
+\DeclareMathOperator{\BalancedTrackIntervalNumber}{\TrackIntervalNumber_{\BalancedTag}}%
+\DeclareMathOperator{\UnitTrackIntervalNumber}{\TrackIntervalNumber_{\UnitTag}}%
+
+% box intervals
+\DeclareMathOperator{\Boxicity}{box}%
+\DeclareMathOperator{\BalancedBoxicity}{\Boxicity_{\BalancedTag}}%
+\DeclareMathOperator{\UnitBoxicity}{cub}%
+\DeclareMathOperator{\Cubicity}{\UnitBoxicity}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Linear graphs
+%
+
+\DeclareMathOperator{\DEPTH}{depth}
+\DeclareMathOperator{\HEIGHT}{height}
+\DeclareMathOperator{\WIDTH}{width}
+%\newcommand{\LG}{linear graph\xspace}   % a enlever ...
+%\newcommand{\LGs}{linear graphs\xspace} % a enlever ...
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Arboricity
+%
+
+% Linear arboricity
+\DeclareMathOperator{\LinearArboricity}{la}
+
+% caterpillar arboricity
+\DeclareMathOperator{\CaterpillarArboricity}{ca}
+
+% star arboricity
+\DeclareMathOperator{\StarArboricity}{sa}
+
+% interval arboricity
+\DeclareMathOperator{\IntervalArboricity}{ia}
+\DeclareMathOperator{\UnitIntervalArboricity}{uia}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Treewidth
+%
+
+\DeclareMathOperator{\TreeWidth}{tw}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Pathidth
+%
+
+\DeclareMathOperator{\PathWidth}{pw}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%
+% Graph class
+%
+
+\newcommand{\GCLASS}[1]{{\textbf{\textsc{\scriptsize #1}}}}
+
+%
+% Colouring
+%
+\DeclareMathOperator{\COLOR}{col}
+\newcommand{\COLORS}{\COLOR}
+\DeclareMathOperator{\Multiplicity}{mult}
+
+%
+% Matching
+%
+\usepackage{mathrsfs}
+\newcommand{\MATCHING}{\ensuremath{\mathcal{M}}}
+
+%
+% Graph motif
+%
+\newcommand{\GMOTIF}{\ensuremath{\mathcal{M}}}
+
+
+
+
+
