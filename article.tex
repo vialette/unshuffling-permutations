@@ -103,6 +103,74 @@ Unshuffling Permutations}%
 \section{Introduction}
 \label{section:Introduction}
 
+Given three words $u$, $v$ and $w$, $u$ is said to a
+\emph{shuffle} of $v$ and $w$ if it
+can be formed by interleaving the letters from $v$ and $w$ in a way
+that maintains the left-to-right ordering of the letters from each word
+(it is a classical textbook exercice to
+design an efficient dynamic programming algorithm that determines
+whether $u$ is a shuffle of $v$ and $w$).
+A word $u$ is said to be a \emph{square} (w.r.t. the shuffle) if there exists
+a word $v$ such that $u$ is a shuffle of $v$ with itself.
+
+This paper is intended to study a natural generalisation of the shuffle
+to permutations.
+Given permutations $\pi$, $\mu$ and $\nu$, $\pi$ is said to be a shuffle of
+$\mu$ and $\nu$ if $\pi$ (viewed as a word) is a shuffle of two words that
+are order-isomorphic to $\mu$ and $\nu$.
+For example, $\pi$ is the shuffle
+of $\mu=$ and $\nu=$ as
+$\pi$.
+A permutation $\pi$ is said to be a square (w.r.t. the shuffle) if there exists
+a permutation $\mu$ such that $\pi$ is a shuffle of $\mu$ with itself.
+For example, $\pi = 241356$ is a square as it is the shuffle of $213$ with itself
+(\emph{e.g.},
+$\pi = \dot{2}\ddot{4}\dot{1}\ddot{3}\ddot{5}\dot{6}$, where
+$\dot{i}$ and $\ddot{i}$),
+whereas $\pi = 4123$ is not.
+
+
+
+Formally, the shuffle of two words $u$ and $v$ of $A^*$ is the language
+$u \shuffle v$ consisting of all words
+$u_1 v_1 u_2 v_2 \ldots u_k v_k$, where $k \geq 0$ and
+the $u_i$ and the $v_i$ are the words  of $A^*$
+such that $u = u_1 u_2 \ldots u_k$ and
+$v = v_1 v_2 \ldots v_k$.
+We first briefly review the key results for words
+that arise in our context.
+Given words $u$, $v_1$ and $v_2$, it can be tested in
+$O\left(|u|^2 / \log(|u|)\right)$ time whether or not
+$u \in v_1 \shuffle v_2$~\cite{Leeuwen:Nivat:IPL:1982}.
+(To the best of our knowledge, the first
+$O(|u|^2)$ time algorithm appeared in~\cite{Mansfield:DAM:1983}.
+This algorithm can easily be extended to check in polynomial-time
+whether or not a word is the shuffle of any fixed number of given words.)
+The shuffle $u \shuffle v$ of words $u$ and $v$ can be computed in
+$O\left((|u|+|v|) \; \binom{|u|+|v|}{|u|}\right)$
+time~\cite{Spehner:TCS:1986}.
+An improvement and generalization has been proposed in
+\cite{Allauzen:IGM:2000}, where it is proved that,
+given words $u_1, u_2, \ldots, u_k$, the shuffle
+$\shuffle_{i=1}^{k} u_i$ can be computed in
+$O\left(\binom{|u_1|+|u_2|+\ldots+|u_k|}{|u_1|,|u_2|,\ldots,|u_k|}\right)$ time.
+Given words $u, v_1, v_2, \ldots, v_n \in A^*$, it is however \NPC to
+decide whether or not
+$u \in \shuffle_{i=1}^{k} v_i$.
+\cite{Mansfield:DAM:1983,Warmuth:Haussler:JCSS:1984}.
+This remains true even if the alphabet has size $3$~\cite{Warmuth:Haussler:JCSS:1984}.
+Of particular interest,
+it is shown in~\cite{Warmuth:Haussler:JCSS:1984} that this problem remains
+\NPC even if all
+words $v_1, v_2, \ldots, v_n$ are identical,
+thereby proving that,
+for two words $u$ and $v$, it is \NPC to decide whether or not $u$
+is in the iterated shuffle of $v$.
+Again, this remains true even if the alphabet has size $3$.
+As for squares, given a word $z$ it is \NPC to determine whether
+there exists a word $x$ such that $z$ is the shuffle of $x$ with itself
+\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}.
+
 $123$-avoiding (resp. $321$-avoiding) permutations are the union of two decreasing
 (resp. incresing) patterns.
 
