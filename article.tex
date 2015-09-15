@@ -82,16 +82,15 @@ Unshuffling Permutations}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{abstract}
-  A permutation is said to be a square if it is the union of two order-isomorphic
-  patterns.
-  The definition is intended to be the natural counterpart to the ordinary shuffle
-  of words and languages.
-  In this paper, we tackle the problem of recognising square permutations from both
-  the point of view of algebra and algorithmic.
-  On the one hand, we present some algebraic properties of the shuffle product of
-  permutations and exhibit a bijection between square $(213,231)$-avoiding permutations
-  and square binary words.
-  On the other hand, we prove that recognising square permutations is \NPC.
+    A permutation is said to be a square if it is the union of two
+    order-isomorphic patterns. The definition is intended to be the
+    natural counterpart to the ordinary shuffle of words and languages.
+    In this paper, we tackle the problem of recognizing square
+    permutations from both the point of view of algebra and algorithmic.
+    On the one hand, we present some algebraic properties of the shuffle
+    product of permutations and exhibit a bijection between square
+    $(213,231)$-avoiding permutations and square binary words. On the
+    other hand, we prove that recognizing square permutations is \NPC.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -103,60 +102,59 @@ Unshuffling Permutations}%
 \section{Introduction}
 \label{section:Introduction}
 
-Given three words $u$, $v$ and $w$, $u$ is said to a
-\emph{shuffle} of $v$ and $w$ if it
-can be formed by interleaving the letters from $v$ and $w$ in a way
-that maintains the left-to-right ordering of the letters from each word
-(it is a classical textbook exercice to
-design an efficient dynamic programming algorithm that determines
-whether $u$ is a shuffle of $v$ and $w$).
-A word $u$ is said to be a \emph{square} (w.r.t. the shuffle) if there exists
-a word $v$ such that $u$ is a shuffle of $v$ with itself.
+Given three words $u$, $v$ and $w$, $u$ is said to a \emph{shuffle} of
+$v$ and $w$ if it can be formed by interleaving the letters from $v$ and
+$w$ in a way that maintains the left-to-right ordering of the letters
+from each word (it is a classical textbook exercise to design an
+efficient dynamic programming algorithm that determines whether $u$ is a
+shuffle of $v$ and $w$). A word $u$ is said to be a \emph{square} (w.r.t.
+the shuffle) if there exists a word $v$ such that $u$ is a shuffle of $v$
+with itself.
+\smallskip
 
-This paper is intended to study a natural generalisation of the shuffle
-to permutations.
-Given permutations $\pi$, $\mu$ and $\nu$, $\pi$ is said to be a shuffle of
-$\mu$ and $\nu$ if $\pi$ (viewed as a word) is a shuffle of two words that
-are order-isomorphic to $\mu$ and $\nu$.
-For example, $\pi$ is the shuffle
-of $\mu=$ and $\nu=$ as
-$\pi$.
-A permutation $\pi$ is said to be a square (w.r.t. the shuffle) if there exists
-a permutation $\mu$ such that $\pi$ is a shuffle of $\mu$ with itself.
-For example, $\pi = 241356$ is a square as it is the shuffle of $213$ with itself
-(\emph{e.g.},
-$\pi = \dot{2}\ddot{4}\dot{1}\ddot{3}\ddot{5}\dot{6}$, where
-$\dot{i}$ and $\ddot{i}$),
-whereas $\pi = 4123$ is not.
-
-
+This paper is intended to study a natural generalization of the shuffle
+to permutations. Given permutations $\pi$, $\mu$ and $\nu$, $\pi$ is
+said to be a shuffle of $\mu$ and $\nu$ if $\pi$ (viewed as a word) is
+a shuffle of two words that are order-isomorphic to $\mu$ and $\nu$. For
+example, $\pi$ is the shuffle of $\mu=$ and $\nu=$ as $\pi$. A
+permutation $\pi$ is said to be a square (w.r.t. the shuffle) if there
+exists a permutation $\mu$ such that $\pi$ is a shuffle of $\mu$ with
+itself. For example, $\pi = 241356$ is a square as it is the shuffle of
+$213$ with itself (\emph{e.g.},
+$\pi = \dot{2}\ddot{4}\dot{1}\ddot{3}\ddot{5}\dot{6}$, where $\dot{i}$
+and $\ddot{i}$), whereas $\pi = 4123$ is not.
+The shuffle product defined and considered in this paper is different
+from other existing and well-known shuffle products on permutations.
+For instance, in~\cite{DHT:IJAC:2002}, the authors defined the
+{\em shifted shuffle product}. In this product $\pi$ is a shuffle of
+$\mu$ and $\nu$ if $\pi$ is the shuffle, as words, of $\mu$ and the
+word obtained by incrementing all letters of $\nu$ by the size of $\mu$.
+It is a simple exercise to prove that, give a permutation $\pi$, the
+decision problem to test if $\pi$ is a square for the shifted shuffle
+product is linear.
+\smallskip
 
 Formally, the shuffle of two words $u$ and $v$ of $A^*$ is the language
-$u \shuffle v$ consisting of all words
-$u_1 v_1 u_2 v_2 \ldots u_k v_k$, where $k \geq 0$ and
-the $u_i$ and the $v_i$ are the words  of $A^*$
-such that $u = u_1 u_2 \ldots u_k$ and
-$v = v_1 v_2 \ldots v_k$.
-We first briefly review the key results for words
-that arise in our context.
+$u \shuffle v$ consisting of all words $u_1 v_1 u_2 v_2 \ldots u_k v_k$,
+where $k \geq 0$ and the $u_i$ and the $v_i$ are the words  of $A^*$
+such that $u = u_1 u_2 \ldots u_k$ and $v = v_1 v_2 \ldots v_k$. We
+first briefly review the key results for words that arise in our context.
 Given words $u$, $v_1$ and $v_2$, it can be tested in
 $O\left(|u|^2 / \log(|u|)\right)$ time whether or not
 $u \in v_1 \shuffle v_2$~\cite{Leeuwen:Nivat:IPL:1982}.
-(To the best of our knowledge, the first
-$O(|u|^2)$ time algorithm appeared in~\cite{Mansfield:DAM:1983}.
-This algorithm can easily be extended to check in polynomial-time
-whether or not a word is the shuffle of any fixed number of given words.)
-The shuffle $u \shuffle v$ of words $u$ and $v$ can be computed in
-$O\left((|u|+|v|) \; \binom{|u|+|v|}{|u|}\right)$
-time~\cite{Spehner:TCS:1986}.
+(To the best of our knowledge, the first $O(|u|^2)$ time algorithm a
+ppeared in~\cite{Mansfield:DAM:1983}. This algorithm can easily be
+extended to check in polynomial-time whether or not a word is the
+shuffle of any fixed number of given words.) The shuffle $u \shuffle v$
+of words $u$ and $v$ can be computed in
+$O\left((|u|+|v|) \; \binom{|u|+|v|}{|u|}\right)$ time~\cite{Spehner:TCS:1986}.
 An improvement and generalization has been proposed in
-\cite{Allauzen:IGM:2000}, where it is proved that,
-given words $u_1, u_2, \ldots, u_k$, the shuffle
-$\shuffle_{i=1}^{k} u_i$ can be computed in
-$O\left(\binom{|u_1|+|u_2|+\ldots+|u_k|}{|u_1|,|u_2|,\ldots,|u_k|}\right)$ time.
-Given words $u, v_1, v_2, \ldots, v_n \in A^*$, it is however \NPC to
-decide whether or not
-$u \in \shuffle_{i=1}^{k} v_i$.
+\cite{Allauzen:IGM:2000}, where it is proved that, given words
+$u_1, u_2, \ldots, u_k$, the shuffle $\shuffle_{i=1}^{k} u_i$ can be
+computed in
+$O\left(\binom{|u_1|+|u_2|+\ldots+|u_k|}{|u_1|,|u_2|,\ldots,|u_k|}\right)$
+time. Given words $u, v_1, v_2, \ldots, v_n \in A^*$, it is however \NPC
+to decide whether or not $u \in \shuffle_{i=1}^{k} v_i$.
 \cite{Mansfield:DAM:1983,Warmuth:Haussler:JCSS:1984}.
 This remains true even if the alphabet has size $3$~\cite{Warmuth:Haussler:JCSS:1984}.
 Of particular interest,
@@ -170,9 +168,10 @@ Again, this remains true even if the alphabet has size $3$.
 As for squares, given a word $z$ it is \NPC to determine whether
 there exists a word $x$ such that $z$ is the shuffle of $x$ with itself
 \cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}.
+\smallskip
 
 $123$-avoiding (resp. $321$-avoiding) permutations are the union of two decreasing
-(resp. incresing) patterns.
+(resp. increasing) patterns.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1992,17 +1991,27 @@ Proposition~\ref{proposition:hardness}.
 \section{Conclusion}
 \label{section:Conclusion}
 
-There are a number of further directions of investigation in this general subject.
-We mention several -~not necessarily new~- open problems that are, in our opinion,
-the most interesting.
-How many permutations of $S_{2n}$ are squares?
-How many $(213,231)$-avoiding permutations of $S_{2n}$ are squares?
-(Equivalentely, how many binary strings of length $2n$ are squares;
-see Problem~4 in \cite{Henshall:Rampersad:Shallit:2011})?
-How hard is the problem of deciding whether a $(213,231)$-avoiding permutation
-is a square (see Problem~4 in \cite{Henshall:Rampersad:Shallit:2011})?)
-Given two permutations $\pi$ and $\sigma$, how hard is the problem of deciding
+There are a number of further directions of investigation in this
+general subject. We mention several -~not necessarily new~- open
+problems that are, in our opinion, the most interesting. How many
+permutations of $S_{2n}$ are squares? How many $(213,231)$-avoiding
+permutations of $S_{2n}$ are squares? (Equivalently, how many binary
+strings of length $2n$ are squares; see Problem~4
+in \cite{Henshall:Rampersad:Shallit:2011})? How hard is the problem of
+deciding whether a $(213,231)$-avoiding permutation is a square
+(see Problem~4 in \cite{Henshall:Rampersad:Shallit:2011})?) Given two
+permutations $\pi$ and $\sigma$, how hard is the problem of deciding
 whether $\pi$ is the union of two patterns order-isomorphic to $\sigma$?
+\smallskip
+
+Besides, in this work, we investigate some algebraic properties of the
+shuffle of permutations which have direct combinatorial consequences.
+However, this work raises several additional classical algebraic
+questions. Among these, one can ask for a complete algebraic study of
+$\QQ[S]$ as a graded associative algebra for the shuffle  product
+$\SHUFFLE$. Describing a generating family for $\QQ[S]$, defining
+multiplicative bases of $\QQ[S]$, and determining whether $\QQ[S]$ is
+free as an associative algebra are worthwhile questions.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
