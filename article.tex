@@ -211,6 +211,11 @@ permutations. Two words $u$ and $v$ having the same standarized are
 set $P$ of indexes of letters of $\pi$ such that $\sigma$ and $\pi_{|P}$
 are order-isomorphic. When $\pi$ does not admit any occurrence of
 $\sigma$, $\pi$ {\em avoids} $\sigma$.
+We write $\nearrow_{n}$ (resp. $\searrow_{n}$)
+for the permutation $1 2 \ldots n$ (resp. $n (n-1) \ldots 1$).
+we write seqeunce of integers $s = s_1 s_2 \ldots s_n$, we
+we let $s\;[k]$ stand for the lifted sequence
+$(s_1+k) s_2+k) \ldots (s_n+k)$.
 
 For a graph $G$, we denote $\VS{G}$ as the set of vertices and
 $\ES{G}$ as the set of edges.
@@ -773,6 +778,19 @@ It reads as follows.
     \qed
 \end{proof}
 
+Let $\pi$ be a permutation.
+For the sake of clarity, we will say that a bunch of consecutive positions $P$
+of $\pi$ is \emph{above} (resp. \emph{below}) above another bunch of consecutive
+positions $P'$ in permutation $\pi$
+if $\pi(i) > \pi(j))$ (resp. $\pi(i) < \pi(j)$) for every
+$i \in P$ and every $j \in P'$.
+For exemple, $\sigma_1$ is above $\sigma_2$
+(in an equivalent manner, $\sigma_2$ is below $\sigma_1$)
+in Fig.~\ref{subfig:increasing before and aboce decreasing},
+whereas $\sigma_1$ is below $\sigma_2$
+(in an equivalent manner, $\sigma_2$ is above $\sigma_1$)
+in Fig.~\ref{subfig:decreasing before and below increasing}.
+
 Before proving hardness, we give an easy lemma that will prove extremely
 useful for simplifying the proof of upcoming
 Proposition~\ref{proposition:hardness}.
@@ -792,7 +810,7 @@ Proposition~\ref{proposition:hardness}.
     \item
     If $\sigma_1$ is decreasing, $\sigma_2$ is increasing and
     $\sigma_1$ is below $\sigma_2$
-    (see Fig.~\ref{subfig:decresing before and below increasing}),
+    (see Fig.~\ref{subfig:decreasing before and below increasing}),
     then $\mathcal{M}$ sontains at most one $(\sigma_1, \sigma_2)$-edge.
   \end{enumerate}
 \end{lemma}
@@ -865,7 +883,7 @@ Proposition~\ref{proposition:hardness}.
       \draw [line width=1pt]
       (4,1) .. controls +(0,10) and +(0,12) .. (10,10);
       \end{tikzpicture}
-      \label{subfig:decresing before and below increasing}
+      \label{subfig:decreasing before and below increasing}
     }% end subfigure
     \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
       Lemma~\ref{lemma:at most one edge monotone}:
@@ -905,13 +923,6 @@ Proposition~\ref{proposition:hardness}.
   Given permutation $\pi$ and $\sigma$, decide whether $\sigma$
   occurs in $\pi$ (as an order-isomorphic pattern).
 
-  For the sake of clarity, we will that a bunch of positions $P$
-  is \emph{above} (resp. \emph{below}) above another bunch of positions $P'$
-  in permutation $\mu$
-  if $\mu(x) > \mu(y)$ (resp. $\mu(x) < \mu(y)$) for every $x \in P$
-  and every $y \in P'$.
-  For exemple, $\nu_1$ is above $\nu_2$ but below $\nu'_1$ in permutation $\mu$.
-
   \begin{figure}[t!]
     \centering
     \begin{tikzpicture}[
@@ -935,17 +946,17 @@ Proposition~\ref{proposition:hardness}.
       \node (claim edge 1) at (1.5,13) {Claim~\ref{claim:all (nu_1, nu'_1)-edges}};
       % 2
       \draw [structure link] (1.5,2) .. controls +(0,1) and +(0,3) .. (6.5,1);
-      \node (claim edge 2) at (4,4) {Claim\ref{claim:(nu_2, nu'_2)-edge}};
-      \node (claim edge 2) at (4,3.5) {Claim\ref{claim:all (nu_2, nu'_2)-edges}};
+      \node (claim edge 2) at (4,4) {Claim~\ref{claim:(nu_2, nu'_2)-edge}};
+      \node (claim edge 2) at (4,3.5) {Claim~\ref{claim:all (nu_2, nu'_2)-edges}};
       % 3
       \draw [structure link] (3.5,9) .. controls +(0,3) and +(0,1.5) .. (7.5,10);
-      \node (claim edge 1) at (5.5,11.5) {Claim\ref{claim:(nu_3, nu'_3)-edge}};
+      \node (claim edge 1) at (5.5,11.5) {Claim~\ref{claim:(nu_3, nu'_3)-edge}};
       % 4
       \draw [structure link] (5.5,8) .. controls +(0,1) and +(0,7) .. (9.5,3);
-      \node (claim edge 1) at (8.5,8.5) {Claim\ref{}};
+      \node (claim edge 1) at (8.5,8.5) {Claim~\ref{}};
       % sigma 1 - pi 1
       \draw [structure link] (4.5,6) .. controls +(0,-2) and +(0,-1) .. (8.5,5);
-      \node (claim edge 1) at (6.5,4) {Claim\ref{}};
+      \node (claim edge 1) at (6.5,4) {Claim~\ref{}};
       % nodes
       % 1
       \draw [cell] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
@@ -1026,7 +1037,8 @@ Proposition~\ref{proposition:hardness}.
   \nu_4    &= \searrow_{N_4} \; [2N_2 + N_4 + 2n + 2k + 4] \\
   \nu'_4   &= \searrow_{N_4} \; [2N_2]\text{.}
   \end{align*}
-  We are now in position to define our target permutation $\mu$:
+  We are now in position to define our target permutation $\mu$
+  (see Fig.~\ref{fig:reduction} for an illustration):
   $$
   \mu
   =
@@ -1035,14 +1047,14 @@ Proposition~\ref{proposition:hardness}.
   $$
 
   It is immediate that H can be constructed in polynomial-time in $n$ and $k$.
-  We claim that $\sigma$ occurs as a pattern in $\pi$ if and only if
+  We claim that $\sigma$ occurs in $\pi$ if and only if
   there exists a containment-free perfect matching
   $\mathcal{M}$ in $G_\mu$ such that
   for any two disctinct edges
   $(a, b)$ and $(a', b')$ in $\mathcal{M}$
   we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
 
-  Suppose first that $\sigma$ occurs in $\pi$ as a pattern.
+  Suppose first that $\sigma$ occurs in $\pi$.
   We show how to construct a containment-free perfect matching
   $\mathcal{M}$ in $G_\mu$ such that
   for any two disctinct edges
