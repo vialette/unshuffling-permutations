@@ -775,7 +775,79 @@ It reads as follows.
 \end{lemma}
 
 \begin{proof}[of Lemma~\ref{lemma:matching}]
-    \qed
+  The proof is, naturally enough, a slight extension of
+  Lemma~1 in \cite{Rizzi:Vialette:CSR:2013} and
+  is added here in full for the sake of completeness.
+
+  (\emph{1} $\Rightarrow$ \emph{2}).
+  Let $\sigma$ be a permutation such that $\pi$ is the union of two
+  patterns that are order-isomorphic to $\sigma$.
+  Let $2n = |\pi|$ (and hence $|\sigma| = n$).
+  Fix the occurrences in $\pi$ of the two disjoint patterns that
+  are order-isomorphic to $\sigma$ and
+  write
+  $I^1 = \{i^1_1, i^1_2, \ldots, i^1_n\}$,
+  $i^1_1 < i^1_2 < \ldots < i^1_n$, for the positions in $\pi$
+  of the first pattern order-ismorphic to $\sigma$ and
+  $I^2 = \{i^2_1, i^2_2, \ldots, i^2_n\}$,
+  $i^2_1 < i^2_2 < \ldots < i^2_n$, for the positions in $\pi$
+  of the second pattern order-ismorphic to $\sigma$.
+  Let $G_\pi$ the linear clique associated to $\pi$ with
+  vertices $\VS{G_\pi} =
+  \{i^1_j : 1 \leq j \leq n\} \cup \{i^2_j : 1 \leq j \leq n\}$.
+  It is easily seen that
+  $\mathcal{M} = \{\{i^1_j, i^2_j\} : 1 \leq j \leq n\}$
+  is a subset of $\ES{G_\pi}$.
+  Furthermore, $\mathcal{M}$ is a perfect matching since
+  $I^1 \cap I^2 = \emptyset$,
+  and $I^1 \cup I^2 = \{1, 2,  \ldots 2n\}$.
+  It is also containment-free.
+  Indeed, if it were not the case then there would exist two edges
+  $e = \{i^1_j, i^2_j\}$ and
+  $e' = \{i^1_k, i^2_k\}$, $j < k$,
+  in $\mathcal{M}$ such that
+  $i^1_j < i^1_k < i^2_k < i^2_j$ or
+  $i^1_j < i^2_k < i^1_k < i^2_j$.
+  This is a contradiction since
+  $i^2_k > i^2_j$ if $k > j$.
+  Finally, for any two distinct edges
+  $e = \{\i^1_j, i^2_j\}$ and
+  $e' = \{i^1_k, i^2_k\}$ of $\mathcal{M}$,
+  we have $\pi(i^1_j) < \pi(i^2_j)$ if and only if
+  $\pi(i^1_k) < \pi(i^2_k)$ since we are comparing
+  in both cases two elements (at position $j$ and $k$)
+  in two patterns that are order-isomorphic to $\sigma$.
+
+  (\emph{2} $\Rightarrow$ \emph{1}).
+  Let $I^1 = \{i^1_j : \exists \{i_j, i_k\} \in \mathcal{M}
+  \;\text{with}\; j < k\}$, and
+  $I^2 = \{i^2_k : \exists \{i_j, i_k\} \in \mathcal{M}
+  \;\text{with}\; j < k\}$.
+  Informally, $I^1$ (resp. $I^2$) is the set of the left (resp. right) endpoints
+  of the edges in $\mathcal{M}$ assuming the positions $1, 2, \ldots, 2$
+  are drawn along an horizontal line.
+  Without loss of generality,
+  assume $i^1_1 < i^1_2 < \ldots < i^1_n$.
+  % and
+  % $I^2 = \{i^2_1, i^2_2, \ldots, i^2_n\}$.
+  Let
+  $p^1 = \pi(i^1_1) \pi(i^1_2) \ldots \pi(i^1_n)$ and
+  $p^2 = \pi(i^2_1) \pi(i^2_2) \ldots \pi(i^2_n)$ be the two patterns
+  from $\pi$ induced by $I^1$ and $I^2$, respectivelly.
+  Clearly $p^1$ and $p^2$ are disjoint in $\pi$ (since $\mathcal{M}$ is
+  a matching) and cover $\pi$ (since $\mathcal{M}$ is perfect).
+  We also claim that $p^1$ and $p^2$ are order-isomorphic.
+  Suppose, aiming at a contradiction, that this is not the case.
+  Therefore, there exist two positions $j$ and $k$, say $j < k$, such that
+  $\pi(i^1_j) < \pi(i^2_j)$ and $\pi(i^1_k) > \pi(i^2_k)$, or
+  $\pi(i^1_j) < \pi(i^2_j)$ and $\pi(i^1_k) > \pi(i^2_k)$.
+  But since $\mathcal{M}$ is containment-free, it follows that
+  both $\{i^1_j, i^2_j\}$ and $\{i^1_k, i^2_k\}$.
+  This is a contradiction since
+  for any two disctinct edges
+  $(a, b)$ and $(a', b')$ in $\mathcal{M}$
+  we have $\pi(a) < \pi(a')$ if and only if $\pi(b) < \pi(b')$.
+  \qed
 \end{proof}
 
 Let $\pi$ be a permutation.
@@ -886,8 +958,7 @@ Proposition~\ref{proposition:hardness}.
       \label{subfig:decreasing before and below increasing}
     }% end subfigure
     \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
-      Lemma~\ref{lemma:at most one edge monotone}:
-      Assuming a $(\nu_1,\nu_2)$-edge $(a, b)$ in $\mathcal{M}$.
+      Illustration of Lemma~\ref{lemma:at most one edge monotone}.
     }
   \end{figure}
   We first prove \emph{1}.
@@ -2053,12 +2124,14 @@ general subject. We mention several -~not necessarily new~- open
 problems that are, in our opinion, the most interesting. How many
 permutations of $S_{2n}$ are squares? How many $(213,231)$-avoiding
 permutations of $S_{2n}$ are squares? (Equivalently, how many binary
-strings of length $2n$ are squares; see Problem~4
+strings of length $2n$ are squares; Problem~4
 in \cite{Henshall:Rampersad:Shallit:2011})? How hard is the problem of
 deciding whether a $(213,231)$-avoiding permutation is a square
-(see Problem~4 in \cite{Henshall:Rampersad:Shallit:2011})?) Given two
-permutations $\pi$ and $\sigma$, how hard is the problem of deciding
-whether $\pi$ is the union of two patterns order-isomorphic to $\sigma$?
+(Problem~4 in \cite{Henshall:Rampersad:Shallit:2011},
+see also \cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013})?)
+% Given two
+% permutations $\pi$ and $\sigma$, how hard is the problem of deciding
+% whether $\pi$ is the union of two patterns order-isomorphic to $\sigma$?
 \smallskip
 
 Besides, in this work, we investigate some algebraic properties of the
