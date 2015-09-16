@@ -748,27 +748,41 @@ inverse. The sequence enumerating these sets begins by
 \section{Algorithmic issues}
 \label{section:Algorithmic issues}
 
+This section is devoted to proving hardness of recognizing square permutations.
+In the same way as happens with words, we shall use a linear graph framework
+where deciding whether a permutation is a square reduces to computing some
+specific matching in the associated linear graph \cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}.
+It reads as follows.
 
-\begin{proposition}
-  \label{proposition:matching}
-  Let $\pi \in S_{2n}$.
-  Then,
-  $\pi$ is the union of two order-isomorphic patterns
-  if and only if
-  there exists a perfect containment-free mathing
-  $\mathcal{M}$ of $G_\pi$ such that
-  $\LEFT(\mathcal{M}) \simeq \RIGHT(\mathcal{M})$.
-\end{proposition}
+\begin{lemma}
+  \label{lemma:matching}
+  Let $\pi$ be a permutation. The following statements are equivalent:
+  \begin{enumerate}
+    \item
+    $\pi$ is a square.
+    \item
+    There exists a perfect containment-free mathing
+    $\mathcal{M}$ of $G_\pi$ such that
+    for any two disctinct edges
+    $(a, b)$ and $(a', b')$ in $\mathcal{M}$
+    we have $\pi(a) < \pi(a')$ if and only if $\pi(b) < \pi(b')$.
+  \end{enumerate}
+\end{lemma}
 
-The following easy lemma will prove extremely useful for simplifying the proof of
+\begin{proof}[of Lemma~\ref{lemma:matching}]
+    \qed
+\end{proof}
+
+Before proving hardness, we give an easy lemma that will prove extremely
+useful for simplifying the proof of upcoming
 Proposition~\ref{proposition:hardness}.
 
 \begin{lemma}
   \label{lemma:at most one edge monotone}
   Let $\pi = \pi_1 \, \sigma_1 \, \pi_2 \, \sigma_2 \, \pi_3$
-  be a permutation with $n_1 = |\sigma_1| \geq 2$ and $n_2 = |\sigma_2| \geq 2$,
+  be a permutation with $|\sigma_1| \geq 2$ and $|\sigma_2| \geq 2$,
   and $\mathcal{M}$ be a containment-free perfect matching of $G_\pi$.
-  The following assertions hold.
+  The following assertions hold:
   \begin{enumerate}
     \item
     If $\sigma_1$ is increasing, $\sigma_2$ is decreasing and
@@ -885,6 +899,12 @@ Proposition~\ref{proposition:hardness}.
 \end{proposition}
 
 \begin{proof}
+  The problem is certainly in $\NPclass$.
+  We propose a reduction from the pattern involvement problem which is
+  known to be \NPC~\cite{Bose:Buss:Lubiw:1998}:
+  Given permutation $\pi$ and $\sigma$, decide whether $\sigma$
+  occurs in $\pi$ (as an order-isomorphic pattern).
+
   For the sake of clarity, we will that a bunch of positions $P$
   is \emph{above} (resp. \emph{below}) above another bunch of positions $P'$
   in permutation $\mu$
@@ -975,7 +995,8 @@ Proposition~\ref{proposition:hardness}.
     \caption{\label{fig:reduction}}
   \end{figure}
 
-
+  Let $\pi \in S_n$ and $\sigma \in S_k$ be two arbitrary permutations.
+  Define
   \begin{align*}
   N_4 &= 2(2n + k + 2) + 1  = 4n + 2k + 5 \\
   N_3 &= 2(2N_4 + 2n + 2k + 4) + 1 = 20n + 12k + 9 \\
@@ -990,7 +1011,7 @@ Proposition~\ref{proposition:hardness}.
   for every $1 \leq i \leq 4$.
 
   We now turn to defining various gadgets (sequences of integers)
-  that act as building blocks in our construction:
+  that act as building blocks in our construction of a new permutation $\mu$:
   \begin{align*}
   \sigma'  &= ((k+1) \; \sigma \; (k+2)) \; [2N_2 + N_4 + 2n + k + 2] \\
   \pi'     &= ((n+1) \; \pi \; (n+2)) \; [2N_2 + N_4 + n + k + 2] \\
@@ -1012,6 +1033,8 @@ Proposition~\ref{proposition:hardness}.
   \nu_1 \; \nu_2 \; \nu'_1 \; \nu_3 \; \sigma' \; \nu_4 \; \nu'_3 \; \pi' \; \nu'_4 \; \pi'' \; \sigma''
   \text{.}
   $$
+
+  It is immediate that H can be constructed in polynomial-time in $n$ and $k$.
   We claim that $\sigma$ occurs as a pattern in $\pi$ if and only if
   there exists a containment-free perfect matching
   $\mathcal{M}$ in $G_\mu$ such that
