@@ -181,13 +181,22 @@ $123$-avoiding (resp. $321$-avoiding) permutations are the union of two decreasi
 \section{Notations}
 \label{section:Notations}
 
-For any nonnegative integer $n$, $[n]$ is the set $\{1, \dots, n\}$.
+If $S$ is a finite set, the cardinality of $S$ is denoted by $|S|$,
+and if $P$ and $Q$ are two disjoint sets, $P \sqcup Q$ denotes the
+disjoint union of $P$ and $Q$. For any nonnegative integer $n$, $[n]$
+is the set $\{1, \dots, n\}$.
+
 We follow the usual terminology on words~\cite{ChoffrutKarhumaki1997}.
-Let us recall here the most important ones. The {\em empty word} is
-denoted by $\epsilon$. If $u$ is a word, we denote by $\widetilde{u}$
-the {\em mirror image} of $u$. If $P$ is a subset of $[|u|]$, $u_{|P}$
+Let us recall here the most important ones. Let $u$ be a word. The
+length of $u$ is denoted by $|u|$. The {\em empty word}, the only word
+of null length, is denoted by $\epsilon$. We denote by $\widetilde{u}$
+the {\em mirror image} of $u$ that is the word
+$u_{|u|} u_{|u| - 1} \dots u_1$. If $P$ is a subset of $[|u|]$, $u_{|P}$
 is the subword of $u$ consisting in the letters of $u$ at the positions
-specified by the elements of $P$. The {\em shuffle} of two words $u$ and
+specified by the elements of $P$.
+If $u$ is a word of integers and $k$ is an integer, we denote by
+$u[k]$ the word obtained by incrementing by $k$ all letters of $u$.
+The {\em shuffle} of two words $u$ and
 $v$ is the set recursively defined by
 $u \shuffle \epsilon = u = \epsilon \shuffle u$ and
 $ua \shuffle vb = (u \shuffle vb)a \cup (ua \shuffle v)b$, were $a$ and
@@ -198,9 +207,16 @@ We denote by $S_n$ the set of permutations of size $n$ and by $S$ the
 set of all permutations. In this paper, permutations of a size $n$
 are specified by words of length $n$ on the alphabet $[n]$ and without
 multiple occurrence of a letter, so that all above definitions about
-words remain valid on permutations. If $\pi$ is a permutation, we denote
-by $\bar \pi$ (resp.~$\pi^{-1}$) the {\em complementary} (resp.
-{\em inverse}) of $\pi$. If $u$ is a word of integers without multiple
+words remain valid on permutations.
+For any nonnegative integer $n$, we write $\nearrow_{n}$
+(resp. $\searrow_{n}$)
+for the permutation $1 2 \ldots n$ (resp. $n (n-1) \ldots 1$).
+If $\pi$ is a permutation of $S_n$,
+we denote by $\bar \pi$ the {\em complementary} of $\pi$ that is the
+permutation satisfying $\bar \pi(i) = n - \pi(i) + 1$ for all
+$i \in [n]$. The {\em inverse} of $\pi$ is denoted by $\pi^{-1}$.
+
+If $u$ is a word of integers without multiple
 occurrences of a same letter, $\STD(u)$ is the {\em standarized} of $u$,
 that is the unique permutation of the same size as $u$ such that for all
 $i, j \in [|u|]$, $u_i < u_j$ if and only if $\STD(u)_i < \STD(u)_j$. In
@@ -211,11 +227,6 @@ permutations. Two words $u$ and $v$ having the same standarized are
 set $P$ of indexes of letters of $\pi$ such that $\sigma$ and $\pi_{|P}$
 are order-isomorphic. When $\pi$ does not admit any occurrence of
 $\sigma$, $\pi$ {\em avoids} $\sigma$.
-We write $\nearrow_{n}$ (resp. $\searrow_{n}$)
-for the permutation $1 2 \ldots n$ (resp. $n (n-1) \ldots 1$).
-we write seqeunce of integers $s = s_1 s_2 \ldots s_n$, we
-we let $s\;[k]$ stand for the lifted sequence
-$(s_1+k) s_2+k) \ldots (s_n+k)$.
 
 For a graph $G$, we denote $\VS{G}$ as the set of vertices and
 $\ES{G}$ as the set of edges.
@@ -622,7 +633,7 @@ commutative algebra.
 
     Next, since by definition of the complementation operation on
     permutations, for any permutation $\tau$ and any indexes $i$ and $k$,
-    we have $\tau_i < \tau_k$ if and only if $\bar \tau_i > \bar \tau_k$,
+    we have $\tau(i) < \tau(k)$ if and only if $\bar \tau(i) > \bar \tau(k)$,
     we have
     \begin{equation} \begin{split}
         \Delta(\phi_2(\pi))
@@ -643,7 +654,7 @@ commutative algebra.
 
     Finally, for any permutation $\tau$, if $P$ is a set of indexes of
     letters of $\tau$, we denote by $P_\tau^{-1}$ the set
-    $\{\tau_i : i \in P\}$. Since the map sending a subset $P$ of
+    $\{\tau(i) : i \in P\}$. Since the map sending a subset $P$ of
     $[|\pi|]$ to $P_\pi^{-1}$ is a bijection, and since
     $\STD\left(\pi_{|P}\right)^{-1} = \STD\left(\pi^{-1}_{|P_\pi^{-1}}\right)$,
     we have
@@ -764,7 +775,7 @@ It reads as follows.
   Let $\pi$ be a permutation. The following statements are equivalent:
   \begin{enumerate}
     \item
-    $\pi$ is a square.
+    The permutation $\pi$ is a square.
     \item
     There exists a perfect containment-free mathing
     $\mathcal{M}$ of $G_\pi$ such that
@@ -780,19 +791,25 @@ It reads as follows.
   is added here in full for the sake of completeness.
 
   (\emph{1} $\Rightarrow$ \emph{2}).
-  Let $\sigma$ be a permutation such that $\pi$ is the union of two
-  patterns that are order-isomorphic to $\sigma$.
+  Since $\pi$ is a quare, it admits a square root $\sigma$. Then, by
+  definition, there
+  are two sets $I^1 = \{i^1_1 < i^1_2 < \dots < i^1_n\}$ and
+  $I^2 = \{i^2_1 < i^2_2 < \dots < i^2_n\}$ of disjoint indexes of
+  letters of $\pi$ such that $\pi_{|I^1}$ and $\pi_{|I^2}$ are both
+  order-isomorphic to $\sigma$.
+  %Let $\sigma$ be a permutation such that $\pi$ is the union of two
+  %patterns that are order-isomorphic to $\sigma$.
   Let $2n = |\pi|$ (and hence $|\sigma| = n$).
-  Fix the occurrences in $\pi$ of the two disjoint patterns that
-  are order-isomorphic to $\sigma$ and
-  write
-  $I^1 = \{i^1_1, i^1_2, \ldots, i^1_n\}$,
-  $i^1_1 < i^1_2 < \ldots < i^1_n$, for the positions in $\pi$
-  of the first pattern order-ismorphic to $\sigma$ and
-  $I^2 = \{i^2_1, i^2_2, \ldots, i^2_n\}$,
-  $i^2_1 < i^2_2 < \ldots < i^2_n$, for the positions in $\pi$
-  of the second pattern order-ismorphic to $\sigma$.
-  Let $G_\pi$ the linear clique associated to $\pi$ with
+  %Fix the occurrences in $\pi$ of the two disjoint patterns that
+  %are order-isomorphic to $\sigma$ and
+  %write
+  %$I^1 = \{i^1_1, i^1_2, \ldots, i^1_n\}$,
+  %$i^1_1 < i^1_2 < \ldots < i^1_n$, for the positions in $\pi$
+  %of the first pattern order-ismorphic to $\sigma$ and
+  %$I^2 = \{i^2_1, i^2_2, \ldots, i^2_n\}$,
+  %$i^2_1 < i^2_2 < \ldots < i^2_n$, for the positions in $\pi$
+  %of the second pattern order-ismorphic to $\sigma$.
+  Let $G_\pi$ be the linear clique associated to $\pi$ with
   vertices $\VS{G_\pi} =
   \{i^1_j : 1 \leq j \leq n\} \cup \{i^2_j : 1 \leq j \leq n\}$.
   It is easily seen that
@@ -802,7 +819,7 @@ It reads as follows.
   $I^1 \cap I^2 = \emptyset$,
   and $I^1 \cup I^2 = \{1, 2,  \ldots 2n\}$.
   It is also containment-free.
-  Indeed, if it were not the case then there would exist two edges
+  Indeed, if it is not the case then there would exist two edges
   $e = \{i^1_j, i^2_j\}$ and
   $e' = \{i^1_k, i^2_k\}$, $j < k$,
   in $\mathcal{M}$ such that
@@ -991,7 +1008,7 @@ Proposition~\ref{proposition:hardness}.
   The problem is certainly in $\NPclass$.
   We propose a reduction from the pattern involvement problem which is
   known to be \NPC~\cite{Bose:Buss:Lubiw:1998}:
-  Given permutation $\pi$ and $\sigma$, decide whether $\sigma$
+  Given two permutations $\pi$ and $\sigma$, decide whether $\sigma$
   occurs in $\pi$ (as an order-isomorphic pattern).
 
   \begin{figure}[t!]
@@ -2124,8 +2141,9 @@ There are a number of further directions of investigation in this
 general subject. We mention several -~not necessarily new~- open
 problems that are, in our opinion, the most interesting. How many
 permutations of $S_{2n}$ are squares? How many $(213,231)$-avoiding
-permutations of $S_{2n}$ are squares? (Equivalently, how many binary
-strings of length $2n$ are squares; Problem~4
+permutations of $S_{2n}$ are squares? (Equivalently, by
+Proposition~\ref{prop:bijection_binary_to_permutations_squares},
+how many binary strings of length $2n$ are squares; Problem~4
 in \cite{Henshall:Rampersad:Shallit:2011})? How hard is the problem of
 deciding whether a $(213,231)$-avoiding permutation is a square
 (Problem~4 in \cite{Henshall:Rampersad:Shallit:2011},
