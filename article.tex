@@ -121,8 +121,8 @@ permutation $\pi$ is said to be a square (w.r.t. the shuffle) if there
 exists a permutation $\mu$ such that $\pi$ is a shuffle of $\mu$ with
 itself. For example, $\pi = 241356$ is a square as it is the shuffle of
 $213$ with itself (\emph{e.g.},
-$\pi = \dot{2}\ddot{4}\dot{1}\ddot{3}\ddot{5}\dot{6}$, where $\dot{i}$
-and $\ddot{i}$), whereas $\pi = 4123$ is not.
+$\pi = \dot{2}{4}\dot{1}{3}{5}\dot{6}$, where the $\dot{x}$'s
+denote the second occurrence), whereas $\pi = 4123$ is not.
 The shuffle product defined and considered in this paper is different
 from other existing and well-known shuffle products on permutations.
 For instance, in~\cite{DHT:IJAC:2002}, the authors defined the
@@ -782,7 +782,7 @@ Let $\pi$ be a permutation.
 For the sake of clarity, we will say that a bunch of consecutive positions $P$
 of $\pi$ is \emph{above} (resp. \emph{below}) above another bunch of consecutive
 positions $P'$ in permutation $\pi$
-if $\pi(i) > \pi(j))$ (resp. $\pi(i) < \pi(j)$) for every
+if $\pi(i) > \pi(j)$ (resp. $\pi(i) < \pi(j)$) for every
 $i \in P$ and every $j \in P'$.
 For exemple, $\sigma_1$ is above $\sigma_2$
 (in an equivalent manner, $\sigma_2$ is below $\sigma_1$)
@@ -823,7 +823,7 @@ Proposition~\ref{proposition:hardness}.
     ]{%
       \begin{tikzpicture}
         [
-          scale=0.45,
+          scale=0.325,
           label/.style={anchor=base}
         ]
         % increasing pattern
@@ -851,13 +851,13 @@ Proposition~\ref{proposition:hardness}.
       \end{tikzpicture}
       \label{subfig:increasing before and aboce decreasing}
     }% end subfigure
-    \qquad
+    \qquad\qquad\qquad
     \subfigure[%
       A decreasing pattern before and below an increasing pattern.
     ]{%
     \begin{tikzpicture}
       [
-        scale=0.45,
+        scale=0.325,
         label/.style={anchor=base}
       ]
       % decreasing pattern
@@ -912,8 +912,7 @@ Proposition~\ref{proposition:hardness}.
 
 \begin{proposition}
   \label{proposition:hardness}
-  Deciding whether a permutation is the union of two
-  order-isomorphic patterns is \NPC.
+  Deciding whether a permutation is a square is \NPC.
 \end{proposition}
 
 \begin{proof}
@@ -926,7 +925,7 @@ Proposition~\ref{proposition:hardness}.
   \begin{figure}[t!]
     \centering
     \begin{tikzpicture}[
-      scale=.95,
+      scale=.9,
       >=stealth',
       shorten >=1pt,
       main node/.style={align=center},
@@ -1003,7 +1002,14 @@ Proposition~\ref{proposition:hardness}.
           \node at (\x,-0.5) (C\x) {$\N$};
       }
     \end{tikzpicture}
-    \caption{\label{fig:reduction}}
+    \caption{\label{fig:reduction}%
+      Schematic representation of the permutation $\mu$ used
+      in Proposition~\ref{proposition:hardness}.
+      Black edges denote the presence of at least one edge between two bunches of
+      positions in $\mu$.
+      Grey edges denote edges that are  only considered in the forward direction of the
+      proof.
+    }%
   \end{figure}
 
   Let $\pi \in S_n$ and $\sigma \in S_k$ be two arbitrary permutations.
@@ -1054,12 +1060,8 @@ Proposition~\ref{proposition:hardness}.
   $(a, b)$ and $(a', b')$ in $\mathcal{M}$
   we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
 
-  Suppose first that $\sigma$ occurs in $\pi$.
-  We show how to construct a containment-free perfect matching
-  $\mathcal{M}$ in $G_\mu$ such that
-  for any two disctinct edges
-  $(a, b)$ and $(a', b')$ in $\mathcal{M}$
-  we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
+  Suppose first that $\sigma$ occurs in $\pi$ and fix an occurrence.
+  Construct a matching $\mathcal{M}$ as follows:
   \begin{itemize}
     \item $\mathcal{M}$ contains $N_1$ pairwise crossing
     $(\nu_1, \nu'_1)$-edges.
@@ -1070,16 +1072,40 @@ Proposition~\ref{proposition:hardness}.
     \item $\mathcal{M}$ contains $N_4$ pairwise crossing
     $(\nu_4, \nu'_4)$-edges.
     \item $\mathcal{M}$ contains $k+2$ pairwise crossing
-    $(\sigma', \pi')$-edges as depicted in Figure~\ref{}.
-    (Notice that we use here the fact that $\sigma$ occurs as a pattern in $\pi$).
+    $(\sigma', \pi')$-edges as depicted in
+    Figure~\ref{fig:subfig:sigma' - pi' - pi'' - sigma''}.
+    More precisely,
+    (i) the first position of $\sigma'$
+    (\emph{i.e.}, $(2N_1+N_2+N_3) + 1$) is linked
+    to the first position of $\pi'$
+    (\emph{i.e.}, $(2N_1 + 2N_2 + 2N_3 + N_4 + k + 2) + 1$),
+    (ii) the last position of $\sigma'$
+    (\emph{i.e.}, $(2N_1+N_2+N_3) + k+2$) is linked
+    to the last position of $\pi'$
+    (\emph{i.e.}, $(2N_1 + 2N_2 + 2N_3 + N_4 + k + 2) + n+2$),
+    and all other positions in $\sigma'$ are linked by means of $k$ pairwise
+    crossing edges to the positions in
+    $\pi'$ that correspond to the fixed occurence of $\sigma$ in $\pi$.
+    (Notice that we use here the fact that $\sigma$ occurs in $\pi$).
     \item $\mathcal{M}$ contains $n-k$ pairwise crossing
-    $(\pi', \pi'')$-edges as depicted in Figure~\ref{}.
+    $(\pi', \pi'')$-edges as depicted in
+    Figure~\ref{fig:subfig:sigma' - pi' - pi'' - sigma''}.
+    More precisely,
+    all positions in $\pi'$ that do not correspond to the fixed occurence of
+    $\sigma$ in $\pi$ are linked by means of $n-k$ pairwise crossing edges
+    to the positions in $\pi''$ that do not correspond to the fixed
+    occurrence of $\sigma$ in $\pi$.
     \item $\mathcal{M}$ contains $k$ pairwise crossing
-    $(\pi'', \sigma'')$-edges as depicted in Figure~\ref{}.
-    (Notice that we use here again the fact that $\sigma$ occurs as a pattern in $\pi$).
+    $(\pi'', \sigma'')$-edges as depicted in
+    Figure~\ref{fig:subfig:sigma' - pi' - pi'' - sigma''}.
+    More precisely, the positions in $\pi''$ that correspond to
+    the fixed occurrence of $\sigma$ in $\pi$ are llinked
+    linked by means of $k$ pairwise crossing edges to all positions in
+    $\sigma''$.
+    (Notice that we use here the fact that $\sigma$ occurs in $\pi$).
   \end{itemize}
-  It can be easily checked (probably referring to Figure~\ref{}) that
-  $\mathcal{M}$ is perfect and that
+  It can be easily checked (probably referring to Figure~\ref{fig:reduction}) that
+  $\mathcal{M}$ is perfect, containment-free and that
   for any two disctinct edges
   $(a, b)$ and $(a', b')$ in $\mathcal{M}$
   we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
@@ -1089,7 +1115,7 @@ Proposition~\ref{proposition:hardness}.
       \centering
         \begin{tikzpicture}
           [
-            scale=0.45,
+            scale=0.35,
             label/.style={anchor=base},
             cell/.style={draw,thick,fill=black!5}
           ]
@@ -1103,7 +1129,7 @@ Proposition~\ref{proposition:hardness}.
           \node[%
             draw,
             text width=5.5cm,text justified,color=black!50,rounded corners,
-            rectangle callout,callout relative pointer={(0.0cm,-1.5cm)}
+            rectangle callout,callout relative pointer={(0.0cm,-1cm)}
           ] at (3,26)
           {%
             $((k+1) \; \sigma \; (k+2)) \; [2N_2 + N_4 + 2n + k + 2]$
@@ -1121,8 +1147,8 @@ Proposition~\ref{proposition:hardness}.
           \node[%
             draw,
             text width=5.5cm,text justified,color=black!50,rounded corners,
-            rectangle callout,callout relative pointer={(0.0cm,3cm)}
-          ] at (9.5,0)
+            rectangle callout,callout relative pointer={(0.0cm,3.5cm)}
+          ] at (9.5,-3.5)
           {%
             $((n+1) \; \pi \; (n+2)) \; [2N_2 + N_4 + n + k + 2]$
           };%
@@ -1139,7 +1165,7 @@ Proposition~\ref{proposition:hardness}.
           \node[%
             draw,
             text width=2.25cm,text justified,color=black!50,rounded corners,
-            rectangle callout,callout relative pointer={(0.0cm,-4cm)}
+            rectangle callout,callout relative pointer={(0.0cm,-3cm)}
           ] at (16.5,19)
           {%
             $\pi [2N_2 + N_4 + k]$
@@ -1155,7 +1181,7 @@ Proposition~\ref{proposition:hardness}.
           \node[%
             draw,
             text width=1.75cm,text justified,color=black!50,rounded corners,
-            rectangle callout,callout relative pointer={(0.0cm,1.25cm)}
+            rectangle callout,callout relative pointer={(0.0cm,0.75cm)}
           ] at (21,-4.5)
           {%
             $\sigma [2N_2 + N_4]$
@@ -1229,17 +1255,12 @@ Proposition~\ref{proposition:hardness}.
           % };%
         \end{tikzpicture}
         \caption{\label{fig:subfig:sigma' - pi' - pi'' - sigma''}%
-        $\sigma = 312$ and $\pi = 4\mathbf{5}\mathbf{2}1\mathbf{3}6$
+        Illustration of the containment-free perfect matching $\mathcal{M}$
+        between gadgets $\sigma'$, $\pi'$, $\pi''$ and $\sigma''$ assuming two
+        input permutation $\sigma = 312$ and $\pi = 4\mathbf{5}\mathbf{2}1\mathbf{3}6$
         (where a specific occurrence of $\sigma$ in $\pi$ is depicted in bold).
         }
       \end{figure}
-
-  More precisely,
-  (i) the first integer of $\sigma'$
-  (\emph{i.e.}, $(k+1) + (2N_2 + N_4 + 2n + k + 2)$) is linked
-  to the first integer of $\pi'$
-  ((\emph{i.e.}, $(n+1) + (2N_2 + N_4 + n + k + 2)$)),
-  (ii)
 
   Conversely, suppose that there exists a containment-free perfect matching
   $\mathcal{M}$ in $G_\mu$ such that for any two disctinct edges
@@ -1248,7 +1269,8 @@ Proposition~\ref{proposition:hardness}.
   We show that $\sigma$ occurs as a pattern in $\pi$.
   Whereas the matching $\mathcal{M}$ may not be as regular as in the forward
   direction, the main idea is to prove that $\mathcal{M}$ contains enough structure
-  (more precisely, enough $(\sigma', \pi')$-edges) so that we can conclude.
+  (more precisely, $k+2$ $(\sigma', \pi')$-edges) so that we can conclude
+  that $\sigma$ occurs in $\pi$.
   We have divided the reverse direction into a serie of basic claims that
   progressively defines the overall structure of $\mathcal{M}$.
 
