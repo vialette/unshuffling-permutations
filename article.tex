@@ -102,10 +102,10 @@ Unshuffling Permutations}%
 \section{Introduction}
 \label{section:Introduction}
 The {\em shuffle product} $\shuffle$ is a very famous operation on words
-first defined by Eilenberg and MacLane~\cite{Eilenberg:MacLane:1953}.
-Given three words $u$, $v$, and $w$, $u$ is said to be a \emph{shuffle}
-of $v$ and $w$ if it can be formed by interleaving the letters from $v$
-and $w$ in a way that maintains the left-to-right ordering of the
+first defined by Eilenberg and Mac Lane~\cite{Eilenberg:MacLane:1953}.
+Given three words $u$, $v_1$, and $v_2$, $u$ is said to be a \emph{shuffle}
+of $v_1$ and $v_2$ if it can be formed by interleaving the letters from
+$v_1$ and $v_2$ in a way that maintains the left-to-right ordering of the
 letters from each word. In addition to purely combinatorial questions,
 the shuffle product of words leads to the following computational ones:
 \begin{enumerate}
@@ -162,51 +162,55 @@ problem implies that Problem~\ref{item:problem_4} is \NPC.
 
 This paper is intended to study a natural generalization of $\shuffle$,
 denoted by $\SHUFFLE$, as a shuffle of permutations. Roughly speaking,
-given three permutations $\pi$, $\mu$, and $\nu$, $\pi$ is said to be a
-{\em shuffle} of $\mu$ and $\nu$ if $\pi$ (viewed as a word) is a
-shuffle of two words that are order-isomorphic to $\mu$ and $\nu$.
-Our intention in this paper is to study this shuffle product of
-permutations $\SHUFFLE$ both from a combinatorial and from a
-computational point of view by focusing on {\em square} permutations,
-that are permutations $\pi$ being in the shuffle of a permutation $\mu$
-with itself. The shuffle product defined and considered in this paper
-is different from other existing and well-known shuffle products on
-permutations. For instance, in~\cite{DHT:IJAC:2002}, the authors define
-the {\em shifted shuffle product}. For this product, $\pi$ is a shuffle
-of $\mu$ and $\nu$ if $\pi$ is in the shuffle, as words, of $\mu$ and
-the word obtained by incrementing all the letters of $\nu$ by the size
-of $\mu$. It is a simple exercise to prove that, given three
-permutations $\pi$, $\mu$, and $\nu$, deciding if $\pi$ is a in the
-shifted shuffle of $\mu$ and $\nu$ is in~\Pclass.
+given three permutations $\pi$, $\sigma_1$, and $\sigma_2$, $\pi$ is
+said to be a {\em shuffle} of $\sigma_1$ and $\sigma_2$ if $\pi$ (viewed
+as a word) is a shuffle of two words that are order-isomorphic to
+$\sigma_1$ and $\sigma_2$. Our intention in this paper is to study this
+shuffle product of permutations $\SHUFFLE$ both from a combinatorial and
+from a computational point of view by focusing on {\em square}
+permutations, that are permutations $\pi$ being in the shuffle of a
+permutation $\sigma$ with itself. The shuffle product defined and
+considered in this paper is different from other existing and well-known
+shuffle products on permutations. For instance, in~\cite{DHT:IJAC:2002},
+the authors define the {\em shifted shuffle product}. For this product,
+$\pi$ is a shuffle of $\sigma_1$ and $\sigma_2$ if $\pi$ is in the
+shuffle, as words, of $\sigma_1$ and the word obtained by incrementing
+all the letters of $\sigma_2$ by the size of $\sigma_1$. It is a simple
+exercise to prove that, given three permutations $\pi$, $\sigma_1$, and
+$\sigma_2$, deciding if $\pi$ is a in the shifted shuffle of $\sigma_1$
+and $\sigma_2$ is in~\Pclass.
 \smallskip
 
 This paper is organized as follows. In
 Section~\ref{section:Shuffle product on permutations} we provide a
 precise definition of $\SHUFFLE$. This definition passes through the
-preliminary definition of an operator $\Delta$ to unshuffle permutations.
-This operator is in fact a coproduct, endowing the space of all
-permutations with a coalgebra structure. By duality, the unshuffling
+preliminary definition of an operator~$\Delta$, allowing to
+{\em unshuffle} permutations. This operator is in fact a coproduct,
+endowing the space of all permutations with a coalgebra structure
+(see~\cite{Joni:Rota:1979} or~\cite{Grinberg:Reiner:2014} for the
+definition of these algebraic structures). By duality, the unshuffling
 operator $\Delta$ leads to the definition of our shuffle operation on
 permutations. This approach has many advantages. First, some
 combinatorial properties of $\SHUFFLE$ depend on properties of $\Delta$
 and are more easy to prove on the coproduct side. Second, this way of
 doing allows to obtain a clear description of the multiplicities of the
 elements appearing in the shuffle of two permutations, which are worthy
-of interest. Section~\ref{section:Binary square words and permutations}
-is devoted to show that the problems related to the shuffle of words has
-links with the shuffle of permutations. In particular, we show that
-binary words that are square are in one-to-one bijection with square
-permutations
+of interest from a combinatorial point of view.
+Section~\ref{section:Binary square words and permutations} is devoted to
+show that the problems related to the shuffle of words has links with
+the shuffle of permutations. In particular, we show that binary words
+that are square are in one-to-one bijection with square permutations
+avoiding some patterns
 (Proposition~\ref{prop:bijection_binary_to_permutations_squares}). Next,
 Section~\ref{section:Algebraic issues} presents some algebraic and
-combinatorial properties of~$\SHUFFLE$. In particular, we show that
-$\SHUFFLE$ is associative and commutative
-(Proposition~\ref{prop:shuffle_associative_commutative}), and that
-if a permutation if a square, its mirror, complement, and inverse also
-are square (Proposition~\ref{prop:square_stability}). Finally,
-Section~\ref{section:Algorithmic issues} presents
-the most import result of this paper: the fact that deciding if a
-permutation is a square is \NPC (Proposition~\ref{proposition:hardness}).
+combinatorial properties of~$\SHUFFLE$. We show that $\SHUFFLE$ is
+associative and commutative
+(Proposition~\ref{prop:shuffle_associative_commutative}), and that if a
+permutation is a square, its mirror, complement, and inverse are also
+squares (Proposition~\ref{prop:square_stability}). Finally,
+Section~\ref{section:Algorithmic issues} presents the most import result
+of this paper: the fact that deciding if a permutation is a square is
+\NPC (Proposition~\ref{proposition:hardness}).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -614,7 +618,7 @@ $\QQ[S]$ endowed with the shuffle product $\SHUFFLE$ is an associative
 commutative algebra.
 \medskip
 
-\begin{proposition} \label{prop:endomorphisms}
+\begin{lemma} \label{lem:endomorphisms}
     The three linear maps
     \begin{equation}
         \phi_1, \phi_2, \phi_3 : \QQ[S] \to \QQ[S]
@@ -622,8 +626,8 @@ commutative algebra.
     linearly sending a permutation $\pi$ to, respectively,
     $\widetilde{\pi}$, $\bar \pi$, and $\pi^{-1}$ are endomorphims of
     associative algebras.
-\end{proposition}
-\begin{proof}[of Proposition~\ref{prop:endomorphisms}]
+\end{lemma}
+\begin{proof}[of Lemma~\ref{lem:endomorphisms}]
     To prove, for $j = 1, 2, 3$, that $\phi_j$ is a morphism of
     associative algebras, we have to prove that for all permutations
     $\sigma$ and $\nu$,
@@ -722,7 +726,7 @@ commutative algebra.
 \medskip
 
 We now use the algebraic properties of $\SHUFFLE$ exhibited by
-Proposition~\ref{prop:endomorphisms} to obtain combinatorial properties
+Lemma~\ref{lem:endomorphisms} to obtain combinatorial properties
 of square permutations.
 \medskip
 
@@ -744,10 +748,10 @@ of square permutations.
 \begin{proof}[of Proposition~\ref{prop:square_stability}]
     All statements~\ref{item:square_stability_1},
     \ref{item:square_stability_2}, and~\ref{item:square_stability_3} are
-    consequences of Proposition~\ref{prop:endomorphisms}. Indeed,
+    consequences of Lemma~\ref{lem:endomorphisms}. Indeed,
     since $\pi$ is a square permutation and $\rho$ is a square root of
     $\pi$, by definition, $\pi$ appears in the product
-    $\rho \SHUFFLE \rho$. Now, by Proposition~\ref{prop:endomorphisms},
+    $\rho \SHUFFLE \rho$. Now, by Lemma~\ref{lem:endomorphisms},
     for any $j = 1, 2, 3$, since $\phi_j$ is a morphism of associative
     algebras from $\QQ[S]$ to $\QQ[S]$, $\phi_j$ commutes with the
     shuffle product of permutations $\SHUFFLE$. Hence, in particular,
