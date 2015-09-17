@@ -101,134 +101,113 @@ Unshuffling Permutations}%
 %%
 \section{Introduction}
 \label{section:Introduction}
-
-Given three words $u$, $v$, and $w$, $u$ is said to a \emph{shuffle} of
-$v$ and $w$ if it can be formed by interleaving the letters from $v$ and
-$w$ in a way that maintains the left-to-right ordering of the letters
-from each word. In addition to purely combinatorial questions, the
-shuffle product of words leads to the following computational questions:
+The {\em shuffle product} $\shuffle$ is a very famous operation on words
+first defined by Eilenberg and MacLane~\cite{Eilenberg:MacLane:1953}.
+Given three words $u$, $v$, and $w$, $u$ is said to be a \emph{shuffle}
+of $v$ and $w$ if it can be formed by interleaving the letters from $v$
+and $w$ in a way that maintains the left-to-right ordering of the
+letters from each word. In addition to purely combinatorial questions,
+the shuffle product of words leads to the following computational ones:
 \begin{enumerate}
     \item \label{item:problem_1}
-    Given three words $u$, $v$, and $w$, decide if $u$ is a shuffle of
-    $v$ and $w$.
+    Given two words $v_1$ and $v_2$, compute the set $v_1 \shuffle v_2$.
     \item \label{item:problem_2}
-    Given a word $u$, decide if there exist two words $v$ and $w$ such
-    that $u$ is a shuffle of $v$ and $w$.
+    Given three words $u$, $v_1$, and $v_2$, decide if $u$ is a shuffle
+    of $v_1$ and $v_2$.
+    \item \label{item:problem_3}
+    Given words $u$, $v_1$, \dots, $v_k$, decide if $u$ is in
+    $v_1 \shuffle \dots \shuffle v_k$.
+    \item \label{item:problem_4}
+    Given a word $u$, decide if there exist two words $v_1$ and $v_2$
+    such that $u$ is a shuffle of $v_1$ and $v_2$.
 \end{enumerate}
-Problem~\ref{item:problem_1} is in $\Pclass$ (it is a classical
-textbook exercise to design an efficient dynamic programming algorithm
-that determines whether $u$ is a shuffle of $v$ and $w$), while
-Problem~\ref{item:problem_2} is $\NPclass$-complete as shown
-in~\cite{Rizzi:Vialette:CSR:2013}. Analogous questions can be stated to
+Even if these problems seem similar, they are very different in terms
+of complexity. Let us now review some facts about these. In what follows,
+$n$ denotes the size of $u$ and $m_i$ denotes the size of each $v_i$.
+A solution to Problem~\ref{item:problem_1} can be computed in
+\begin{equation}
+    O\left((m_1 + m_2) \; \binom{m_1 + m_2}{m_1}\right)
+\end{equation}
+time~\cite{Spehner:TCS:1986}. An improvement and a generalization
+of~Problem~\ref{item:problem_1} has been proposed
+in~\cite{Allauzen:IGM:2000}, where it is proved that, given words
+$v_1$, \dots, $v_k$, the iterated shuffle
+$v_1 \shuffle \dots \shuffle v_k$ can be computed in
+\begin{equation}
+    O\left(\binom{m_1 + \dots + m_k}{m_1, \dots, m_k}\right)
+\end{equation}
+time. Problem~\ref{item:problem_2} is in \Pclass; it is indeed a
+classical textbook exercise to design an efficient dynamic programming
+algorithm solving it. It can be tested in $O\left(n^2 / \log(n)\right)$
+time~\cite{Leeuwen:Nivat:IPL:1982}. To the best of our knowledge, the
+first $O(n^2)$ time algorithm for this problem appeared
+in~\cite{Mansfield:DAM:1983}. This algorithm can easily be extended to
+check in polynomial-time whether or not a word is in the shuffle of any
+fixed number of given words. Nevertheless, Problem~\ref{item:problem_3}
+is \NPC~\cite{Mansfield:DAM:1983,Warmuth:Haussler:JCSS:1984}. This
+remains true even if the ground alphabet has size
+$3$~\cite{Warmuth:Haussler:JCSS:1984}. Of particular interest,
+it is shown in~\cite{Warmuth:Haussler:JCSS:1984} that
+Problem~\ref{item:problem_3} remains \NPC even if all the words $v_i$,
+$i \in [k]$, are identical, thereby proving that, for two words $u$ and
+$v$, it is \NPC to decide whether or not $u$ is in the iterated shuffle
+of $v$. Again, this remains true even if the ground alphabet has size $3$.
+Let us now focus on Problem~\ref{item:problem_4}. It is shown
+in~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013} that it is \NPC to
 decide if a word $u$ is a \emph{square} (w.r.t. the shuffle), that is
-a word $u$ with the property that there exists a word $v$ such that
-$u$ is a shuffle of $v$ with itself.
+a word $u$ with the property that there exists a word $v$ such that $u$
+is a shuffle of $v$ with itself. The hardness of this last particular
+problem implies that Problem~\ref{item:problem_4} is \NPC.
 \smallskip
 
-This paper is intended to study a natural generalization $\SHUFFLE$
-of the shuffle
-of permutations. Roughly speaking, given three permutations $\pi$, $\mu$,
-and $\nu$, $\pi$ is said to be a {\em shuffle} of $\mu$ and $\nu$ if $\pi$
-(viewed as a word) is a shuffle of two words that are order-isomorphic
-to $\mu$ and $\nu$.
-%For
-%example, $\pi$ is the shuffle of $\mu=$ and $\nu=$ as $\pi$. A
-%permutation $\pi$ is said to be a square (w.r.t. the shuffle) if there
-%exists a permutation $\mu$ such that $\pi$ is a shuffle of $\mu$ with
-%itself. For example, $\pi = 241356$ is a square as it is the shuffle of
-%$213$ with itself (\emph{e.g.},
-%$\pi = \dot{2}{4}\dot{1}{3}{5}\dot{6}$, where the $\dot{x}$'s
-%denote the second occurrence), whereas $\pi = 4123$ is not.
+This paper is intended to study a natural generalization of $\shuffle$,
+denoted by $\SHUFFLE$, as a shuffle of permutations. Roughly speaking,
+given three permutations $\pi$, $\mu$, and $\nu$, $\pi$ is said to be a
+{\em shuffle} of $\mu$ and $\nu$ if $\pi$ (viewed as a word) is a
+shuffle of two words that are order-isomorphic to $\mu$ and $\nu$.
 Our intention in this paper is to study this shuffle product of
-permutations both from a combinatorial and from a computational point of
-view by focusing on {\em square} permutations, that are permutations
-$\pi$ being in the shuffle of a permutation $\mu$ with itself. The
-shuffle product defined and considered in this paper is different from
-other existing and well-known shuffle products on permutations. For
-instance, in~\cite{DHT:IJAC:2002}, the authors define the
-{\em shifted shuffle product}. For this product, $\pi$ is a shuffle of
-$\mu$ and $\nu$ if $\pi$ is in the shuffle, as words, of $\mu$ and the
-word obtained by incrementing all the letters of $\nu$ by the size of $\mu$.
-It is a simple exercise to prove that, given three permutations $\pi$,
-$\mu$, and $\nu$, deciding if $\pi$ is a in the shifted shuffle of
-$\mu$ and $\nu$ is in $\Pclass$.
-\smallskip
-
-Let us now  briefly review the key results for words that arise in our context.
-%Formally, the shuffle of two words $u$ and $v$ of $A^*$ is the language
-%$u \shuffle v$ consisting of all words $u_1 v_1 u_2 v_2 \ldots u_k v_k$,
-%where $k \geq 0$ and the $u_i$ and the $v_i$ are the words  of $A^*$
-%such that $u = u_1 u_2 \ldots u_k$ and $v = v_1 v_2 \ldots v_k$. We
-%first briefly review the key results for words that arise in our context.
-Given three words $u$, $v_1$, and $v_2$, it can be tested in
-$O\left(|u|^2 / \log(|u|)\right)$ time whether or not
-$u$ is in the shuffle $v_1 \shuffle v_2$ of $v_1$ and
-$v_2$~\cite{Leeuwen:Nivat:IPL:1982}.
-To the best of our knowledge, the first $O(|u|^2)$ time algorithm
-appeared in~\cite{Mansfield:DAM:1983}. This algorithm can easily be
-extended to check in polynomial-time whether or not a word is the
-shuffle of any fixed number of given words. The shuffle $u \shuffle v$
-of words $u$ and $v$ can be computed in
-\begin{equation}
-    O\left((|u|+|v|) \; \binom{|u|+|v|}{|u|}\right)
-\end{equation}
-time~\cite{Spehner:TCS:1986}.
-An improvement and generalization has been proposed in
-\cite{Allauzen:IGM:2000}, where it is proved that, given words
-$u_1$, $u_2$, \dots, $u_k$, the shuffle $\shuffle_{i=1}^{k} u_i$ can be
-computed in
-\begin{equation}
-    O\left(\binom{|u_1|+|u_2|+\ldots+|u_k|}{|u_1|,|u_2|,\ldots,|u_k|}\right)
-\end{equation}
-time. Given words $u$, $v_1$, $v_2$, \dots, $v_n$, it is however \NPC
-to decide whether or not $u$ is in $\shuffle_{i=1}^{k} v_i$.
-\cite{Mansfield:DAM:1983,Warmuth:Haussler:JCSS:1984}.
-This remains true even if the ground alphabet has size $3$~\cite{Warmuth:Haussler:JCSS:1984}.
-Of particular interest,
-it is shown in~\cite{Warmuth:Haussler:JCSS:1984} that this problem remains
-\NPC even if all
-words $v_1, v_2, \ldots, v_n$ are identical,
-thereby proving that,
-for two words $u$ and $v$, it is \NPC to decide whether or not $u$
-is in the iterated shuffle of $v$.
-Again, this remains true even if the ground alphabet has size $3$.
-As for squares, given a word $z$ it is \NPC to determine whether
-there exists a word $x$ such that $z$ is the shuffle of $x$ with itself
-\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}.
+permutations $\SHUFFLE$ both from a combinatorial and from a
+computational point of view by focusing on {\em square} permutations,
+that are permutations $\pi$ being in the shuffle of a permutation $\mu$
+with itself. The shuffle product defined and considered in this paper
+is different from other existing and well-known shuffle products on
+permutations. For instance, in~\cite{DHT:IJAC:2002}, the authors define
+the {\em shifted shuffle product}. For this product, $\pi$ is a shuffle
+of $\mu$ and $\nu$ if $\pi$ is in the shuffle, as words, of $\mu$ and
+the word obtained by incrementing all the letters of $\nu$ by the size
+of $\mu$. It is a simple exercise to prove that, given three
+permutations $\pi$, $\mu$, and $\nu$, deciding if $\pi$ is a in the
+shifted shuffle of $\mu$ and $\nu$ is in~\Pclass.
 \smallskip
 
 This paper is organized as follows. In
-Section~\ref{section:Shuffle product on permutations} we provide a precise
-definition of $\SHUFFLE$. This definition passes
-through the preliminary definition of an operator $\Delta$ to unshuffle
-permutations. This operator is in fact a coproduct, endowing the space
-of all permutations with a coalgebra structure. By duality, the
-unshuffling operator $\Delta$ leads to the definition of our shuffle operation on
-permutations. This approach has many advantages. First, some combinatorial
-properties of $\SHUFFLE$ depend on properties of $\Delta$
-and are more easy to prove on the coproduct
-side. Second, this way of doing allows to obtain a clear description of
-the multiplicities of the elements appearing in the shuffle of two
-permutations, which are worthy of interest.
-Section~\ref{section:Binary square words and permutations}
+Section~\ref{section:Shuffle product on permutations} we provide a
+precise definition of $\SHUFFLE$. This definition passes through the
+preliminary definition of an operator $\Delta$ to unshuffle permutations.
+This operator is in fact a coproduct, endowing the space of all
+permutations with a coalgebra structure. By duality, the unshuffling
+operator $\Delta$ leads to the definition of our shuffle operation on
+permutations. This approach has many advantages. First, some
+combinatorial properties of $\SHUFFLE$ depend on properties of $\Delta$
+and are more easy to prove on the coproduct side. Second, this way of
+doing allows to obtain a clear description of the multiplicities of the
+elements appearing in the shuffle of two permutations, which are worthy
+of interest. Section~\ref{section:Binary square words and permutations}
 is devoted to show that the problems related to the shuffle of words has
 links with the shuffle of permutations. In particular, we show that
 binary words that are square are in one-to-one bijection with square
-permutations (Proposition~\ref{prop:bijection_binary_to_permutations_squares}).
-Next, Section~\ref{section:Algebraic issues} presents some algebraic
-and combinatorial properties of~$\SHUFFLE$. In particular, we show that
+permutations
+(Proposition~\ref{prop:bijection_binary_to_permutations_squares}). Next,
+Section~\ref{section:Algebraic issues} presents some algebraic and
+combinatorial properties of~$\SHUFFLE$. In particular, we show that
 $\SHUFFLE$ is associative and commutative
 (Proposition~\ref{prop:shuffle_associative_commutative}), and that
 if a permutation if a square, its mirror, complement, and inverse also
 are square (Proposition~\ref{prop:square_stability}). Finally,
 Section~\ref{section:Algorithmic issues} presents
-the most import result of this paper: the fact that deciding if
-a permutation is a square is $\NPclass$-complete
-(Proposition~\ref{proposition:hardness}).
+the most import result of this paper: the fact that deciding if a
+permutation is a square is \NPC (Proposition~\ref{proposition:hardness}).
 
-
-$123$-avoiding (resp. $321$-avoiding) permutations are the union of two decreasing
-(resp. increasing) patterns.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
