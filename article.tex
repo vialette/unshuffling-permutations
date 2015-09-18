@@ -233,62 +233,58 @@ of null length, is denoted by $\epsilon$. We denote by $\widetilde{u}$
 the {\em mirror image} of $u$ that is the word
 $u_{|u|} u_{|u| - 1} \dots u_1$. If $P$ is a subset of $[|u|]$, $u_{|P}$
 is the subword of $u$ consisting in the letters of $u$ at the positions
-specified by the elements of $P$.
-If $u$ is a word of integers and $k$ is an integer, we denote by
-$u[k]$ the word obtained by incrementing by $k$ all letters of $u$.
-The {\em shuffle} of two words $u$ and
-$v$ is the set recursively defined by
+specified by the elements of $P$. If $u$ is a word of integers and $k$
+is an integer, we denote by $u[k]$ the word obtained by incrementing by
+$k$ all letters of $u$. The {\em shuffle} of two words $u$ and $v$ is
+the set recursively defined by
 $u \shuffle \epsilon = u = \epsilon \shuffle u$ and
 $ua \shuffle vb = (u \shuffle vb)a \cup (ua \shuffle v)b$, were $a$ and
 $b$ are letters. A word $u$ is a {\em square} if there exists a word $v$
 such that $u$ belongs to $v \shuffle v$.
 
 We denote by $S_n$ the set of permutations of size $n$ and by $S$ the
-set of all permutations. In this paper, permutations of a size $n$
-are specified by words of length $n$ on the alphabet $[n]$ and without
+set of all permutations. In this paper, permutations of a size $n$ are
+specified by words of length $n$ on the alphabet $[n]$ and without
 multiple occurrence of a letter, so that all above definitions about
 words remain valid on permutations. The only difference lies on the
-fact that we shall denote by $\pi(i)$ (instead of $\pi_i$) the
-$i$-th letter of any permutation $\pi$.
-For any nonnegative integer $n$, we write $\nearrow_{n}$
-(resp. $\searrow_{n}$)
-for the permutation $1 2 \ldots n$ (resp. $n (n-1) \ldots 1$).
-If $\pi$ is a permutation of $S_n$,
-we denote by $\bar \pi$ the {\em complementary} of $\pi$ that is the
-permutation satisfying $\bar \pi(i) = n - \pi(i) + 1$ for all
+fact that we shall denote by $\pi(i)$ (instead of $\pi_i$) the $i$-th
+letter of any permutation $\pi$. For any nonnegative integer $n$, we
+write $\nearrow_{n}$ (resp. $\searrow_{n}$) for the permutation
+$1 2 \dots n$ (resp. $n (n-1) \dots 1$). If $\pi$ is a permutation of
+$S_n$, we denote by $\bar \pi$ the {\em complementary} of $\pi$ that is
+the permutation satisfying $\bar \pi(i) = n - \pi(i) + 1$ for all
 $i \in [n]$. The {\em inverse} of $\pi$ is denoted by $\pi^{-1}$.
 
-If $u$ is a word of integers without multiple
-occurrences of a same letter, $\STD(u)$ is the {\em standarized} of $u$,
-that is the unique permutation of the same size as $u$ such that for all
-$i, j \in [|u|]$, $u_i < u_j$ if and only if $\STD(u)_i < \STD(u)_j$. In
-particular, the image of the map $\STD$ is the set $S$ of all
-permutations. Two words $u$ and $v$ having the same standarized are
-{\em order-isomorphic}. If $\sigma$ is a permutation, there is an
-{\em occurrence} of (the {\em pattern}) $\sigma$ in $\pi$ if there is a
-set $P$ of indexes of letters of $\pi$ such that $\sigma$ and $\pi_{|P}$
-are order-isomorphic. When $\pi$ does not admit any occurrence of
-$\sigma$, $\pi$ {\em avoids} $\sigma$.
+If $u$ is a word of integers without multiple occurrences of a same
+letter, $\STD(u)$ is the {\em standarized} of $u$, that is the unique
+permutation of the same size as $u$ such that for all $i, j \in [|u|]$,
+$u_i < u_j$ if and only if $\STD(u)(i) < \STD(u)(j)$. In particular, the
+image of the map $\STD$ is the set $S$ of all permutations. Two words $u$
+and $v$ having the same standarized are {\em order-isomorphic}. If
+$\sigma$ is a permutation, there is an {\em occurrence} of (the
+{\em pattern}) $\sigma$ in $\pi$ if there is a set $P$ of indexes of
+letters of $\pi$ such that $\sigma$ and $\pi_{|P}$ are order-isomorphic.
+When $\pi$ does not admit any occurrence of $\sigma$, $\pi$ {\em avoids}
+$\sigma$.
 
-For a graph $G$, we denote $\VS{G}$ as the set of vertices and
-$\ES{G}$ as the set of edges.
-Let $u = u_1 \, u_2 \,\ldots\, u_n$ be a word.
-The \emph{clique graph associated to $u$}, denoted $K_u$,
-is the complete graph on $\VS{K_u} = \{u_1, u_2, \ldots, u_n\}$.
-The structure of this underlying graph is linear,
-\emph{i.e.}, the set of vertices is equipped with a natural total order
-$<$ defined by $u_i < u_j$ if and only if $i < j$.
-For a linear graph, we write $(u_i, u_j)$ instead of $\{u_i, u_j\}$
-for an edge if it is clear from the context that $i < j$.
-Recall that two edges of a graph are \emph{independent} if they do not share
-a common vertex, and that a \emph{matching} $\mathcal{M}$ in $G$ is a set of
-pairwise independent edges.
-A matching is \emph{perfect} if it covers all the vertices of the graph.
-In case the set of vertices is equipped with a total order,
-a matching $\mathcal{M}$ is said to be \emph{containment-free}
-if there do not exist (independent) edges $(u_i, u_j)$ and
-$(u_k, u_\ell)$ in $\mathcal{M}$ such that
-$u_i < u_k < u_\ell < u_j$ or  $u_k < u_i < u_j < u_\ell$.
+Let us now provide some definitions about graphs and matching, used in
+the sequel. For a graph $G$, we denote $\VS{G}$ as the set of vertices
+and $\ES{G}$ as the set of edges of $G$. Let $u = u_1 u_2 \dots u_n$ be
+a word. The \emph{clique graph associated to $u$}, denoted by $K_u$, is
+the complete graph on $\VS{K_u} = \{u_1, u_2, \ldots, u_n\}$. The
+structure of this underlying graph is linear, \emph{i.e.}, the set of
+its vertices is equipped with a natural total order $<$ defined by
+$u_i < u_j$ if and only if $i < j$. For a linear graph, we write
+$(u_i, u_j)$ instead of $\{u_i, u_j\}$ for an edge if it is clear from
+the context that $i < j$. Recall that two edges of a graph are
+\emph{independent} if they do not share a common vertex, and that a
+\emph{matching} $\mathcal{M}$ in $G$ is a set of pairwise independent
+edges. A matching is \emph{perfect} if it covers all the vertices of the
+graph. In case the set of vertices is equipped with a total order, a
+matching $\mathcal{M}$ is said to be \emph{containment-free} if there do
+not exist (independent) edges $(u_i, u_j)$ and $(u_k, u_\ell)$ in
+$\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$ or
+$u_k < u_i < u_j < u_\ell$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -510,10 +506,10 @@ such that $|ua|_0$ and $|ua|_1$ are both even, where $a \in \{0, 1\}$.
         sets $P$ and $Q$ of positions of letters of $u$ such that
         $u_{|P} = v = u_{|Q}$. Now, by definition of $\BINTOPERM$, the
         words $\BINTOPERM(u)_{|P}$ and $\BINTOPERM(u)_{|Q}$ have the
-        same standarized $\rho$. Hence, and by definition of the shuffle
-        product of permutations, $\BINTOPERM(u)$ appears in
-        $\rho \SHUFFLE \rho$, showing that $\BINTOPERM(u)$ is a square
-        permutation.
+        same standarized $\sigma$. Hence, and by definition of
+        the shuffle product of permutations, $\BINTOPERM(u)$ appears in
+        $\sigma \SHUFFLE \sigma$, showing that $\BINTOPERM(u)$ is a
+        square permutation.
         \qed
     \end{proof}
     \begin{claim} \label{claim:square_permutation_to_square_binary}
@@ -731,17 +727,17 @@ of square permutations.
 \medskip
 
 \begin{proposition} \label{prop:square_stability}
-    Let $\pi$ be a square permutation and $\rho$ be a square root of
+    Let $\pi$ be a square permutation and $\sigma$ be a square root of
     $\pi$. Then,
     \begin{enumerate}[label={\it (\roman*)},fullwidth]
         \item \label{item:square_stability_1}
         the permutation $\widetilde{\pi}$ is a square and
-        $\widetilde{\rho}$ is one of its square roots;
+        $\widetilde{\sigma}$ is one of its square roots;
         \item \label{item:square_stability_2}
-        the permutation $\bar \pi$ is a square and $\bar \rho$ is one of
+        the permutation $\bar \pi$ is a square and $\bar \sigma$ is one of
         its square roots;
         \item \label{item:square_stability_3}
-        the permutation $\pi^{-1}$ is a square and $\rho^{-1}$ is one of
+        the permutation $\pi^{-1}$ is a square and $\sigma^{-1}$ is one of
         its square roots.
     \end{enumerate}
 \end{proposition}
@@ -749,21 +745,21 @@ of square permutations.
     All statements~\ref{item:square_stability_1},
     \ref{item:square_stability_2}, and~\ref{item:square_stability_3} are
     consequences of Lemma~\ref{lem:endomorphisms}. Indeed,
-    since $\pi$ is a square permutation and $\rho$ is a square root of
+    since $\pi$ is a square permutation and $\sigma$ is a square root of
     $\pi$, by definition, $\pi$ appears in the product
-    $\rho \SHUFFLE \rho$. Now, by Lemma~\ref{lem:endomorphisms},
+    $\sigma \SHUFFLE \sigma$. Now, by Lemma~\ref{lem:endomorphisms},
     for any $j = 1, 2, 3$, since $\phi_j$ is a morphism of associative
     algebras from $\QQ[S]$ to $\QQ[S]$, $\phi_j$ commutes with the
     shuffle product of permutations $\SHUFFLE$. Hence, in particular,
     one has
     \begin{equation}
-        \phi_j(\rho \SHUFFLE \rho) =
-        \phi_j(\rho) \SHUFFLE \phi_j(\rho).
+        \phi_j(\sigma \SHUFFLE \sigma) =
+        \phi_j(\sigma) \SHUFFLE \phi_j(\sigma).
     \end{equation}
-    Then, since $\pi$ appears in $\rho \SHUFFLE \rho$, $\phi_j(\pi)$
-    appears in $\phi_j(\rho \SHUFFLE \rho)$ and appears also in
-    $\phi_j(\rho) \SHUFFLE \phi_j(\rho)$. This shows that
-    $\phi_j(\rho)$ is a square root of $\phi_j(\pi)$ and
+    Then, since $\pi$ appears in $\sigma \SHUFFLE \sigma$, $\phi_j(\pi)$
+    appears in $\phi_j(\sigma \SHUFFLE \sigma)$ and appears also in
+    $\phi_j(\sigma) \SHUFFLE \phi_j(\sigma)$. This shows that
+    $\phi_j(\sigma)$ is a square root of $\phi_j(\pi)$ and
     implies~\ref{item:square_stability_1}, \ref{item:square_stability_2},
     and~\ref{item:square_stability_3}.
     \qed
@@ -806,122 +802,92 @@ inverse. The sequence enumerating these sets begins by
 \section{Algorithmic issues}
 \label{section:Algorithmic issues}
 
-This section is devoted to proving hardness of recognizing square permutations.
-In the same way as happens with words, we shall use a linear graph framework
-where deciding whether a permutation is a square reduces to computing some
-specific matching in the associated linear graph \cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}.
-It reads as follows.
+This section is devoted to proving hardness of recognizing square
+permutations. In the same way as happens with words, we shall use a
+linear graph framework where deciding whether a permutation is a square
+reduces to computing some specific matching in the associated linear
+graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
 
 \begin{lemma}
   \label{lemma:matching}
   Let $\pi$ be a permutation. The following statements are equivalent:
   \begin{enumerate}
-    \item
-    The permutation $\pi$ is a square.
-    \item
-    There exists a perfect containment-free mathing
-    $\mathcal{M}$ of $G_\pi$ such that
-    for any two disctinct edges
-    $(a, b)$ and $(a', b')$ in $\mathcal{M}$
-    we have $\pi(a) < \pi(a')$ if and only if $\pi(b) < \pi(b')$.
+    \item The permutation $\pi$ is a square.
+    \item There exists a perfect containment-free matching $\mathcal{M}$
+    of $G_\pi$ such that for any two distinct edges $(a, b)$ and
+    $(a', b')$ in $\mathcal{M}$ we have $\pi(a) < \pi(a')$ if and only
+    if $\pi(b) < \pi(b')$.
   \end{enumerate}
 \end{lemma}
 
 \begin{proof}[of Lemma~\ref{lemma:matching}]
-  The proof is, naturally enough, a slight extension of
-  Lemma~1 in \cite{Rizzi:Vialette:CSR:2013} and
-  is added here in full for the sake of completeness.
+    The proof is, naturally enough, a slight extension of
+    Lemma~1 in \cite{Rizzi:Vialette:CSR:2013} and is added here in full
+    for the sake of completeness.
 
-  (\emph{1} $\Rightarrow$ \emph{2}).
-  Since $\pi$ is a quare, it admits a square root $\sigma$. Then, by
-  definition, there
-  are two sets $I^1 = \{i^1_1 < i^1_2 < \dots < i^1_n\}$ and
-  $I^2 = \{i^2_1 < i^2_2 < \dots < i^2_n\}$ of disjoint indexes of
-  letters of $\pi$ such that $\pi_{|I^1}$ and $\pi_{|I^2}$ are both
-  order-isomorphic to $\sigma$.
-  %Let $\sigma$ be a permutation such that $\pi$ is the union of two
-  %patterns that are order-isomorphic to $\sigma$.
-  Let $2n = |\pi|$ (and hence $|\sigma| = n$).
-  %Fix the occurrences in $\pi$ of the two disjoint patterns that
-  %are order-isomorphic to $\sigma$ and
-  %write
-  %$I^1 = \{i^1_1, i^1_2, \ldots, i^1_n\}$,
-  %$i^1_1 < i^1_2 < \ldots < i^1_n$, for the positions in $\pi$
-  %of the first pattern order-ismorphic to $\sigma$ and
-  %$I^2 = \{i^2_1, i^2_2, \ldots, i^2_n\}$,
-  %$i^2_1 < i^2_2 < \ldots < i^2_n$, for the positions in $\pi$
-  %of the second pattern order-ismorphic to $\sigma$.
-  Let $G_\pi$ be the linear clique associated to $\pi$ with
-  vertices $\VS{G_\pi} =
-  \{i^1_j : 1 \leq j \leq n\} \cup \{i^2_j : 1 \leq j \leq n\}$.
-  It is easily seen that
-  $\mathcal{M} = \{\{i^1_j, i^2_j\} : 1 \leq j \leq n\}$
-  is a subset of $\ES{G_\pi}$.
-  Furthermore, $\mathcal{M}$ is a perfect matching since
-  $I^1 \cap I^2 = \emptyset$,
-  and $I^1 \cup I^2 = \{1, 2,  \ldots 2n\}$.
-  It is also containment-free.
-  Indeed, if it is not the case then there would exist two edges
-  $e = \{i^1_j, i^2_j\}$ and
-  $e' = \{i^1_k, i^2_k\}$, $j < k$,
-  in $\mathcal{M}$ such that
-  $i^1_j < i^1_k < i^2_k < i^2_j$ or
-  $i^1_j < i^2_k < i^1_k < i^2_j$.
-  This is a contradiction since
-  $i^2_k > i^2_j$ if $k > j$.
-  Finally, for any two distinct edges
-  $e = \{\i^1_j, i^2_j\}$ and
-  $e' = \{i^1_k, i^2_k\}$ of $\mathcal{M}$,
-  we have $\pi(i^1_j) < \pi(i^2_j)$ if and only if
-  $\pi(i^1_k) < \pi(i^2_k)$ since we are comparing
-  in both cases two elements (at position $j$ and $k$)
-  in two patterns that are order-isomorphic to $\sigma$.
+    (\emph{1} $\Rightarrow$ \emph{2}).
+    Since $\pi$ is a square, it admits a square root $\sigma$. Then, by
+    definition, there are two sets $I^1 = \{i^1_1 < i^1_2 < \dots < i^1_n\}$
+    and $I^2 = \{i^2_1 < i^2_2 < \dots < i^2_n\}$ of disjoint indexes of
+    letters of $\pi$ such that $\pi_{|I^1}$ and $\pi_{|I^2}$ are both
+    order-isomorphic to $\sigma$. Let $2n = |\pi|$ (and hence
+    $|\sigma| = n$). Let $G_\pi$ be the linear clique associated to $\pi$
+    with vertices
+    $\VS{G_\pi} = \{i^1_j : j \in [n]\} \cup \{i^2_j : j \in [n]\}$. It
+    is easily seen that $\mathcal{M} = \{\{i^1_j, i^2_j\} : j \in [n]\}$
+    is a subset of $\ES{G_\pi}$. Furthermore, $\mathcal{M}$ is a perfect
+    matching since $I^1 \cap I^2 = \emptyset$, and
+    $I^1 \cup I^2 = \{1, 2,  \dots 2n\}$. It is also containment-free.
+    Indeed, if it is not the case then there would exist two edges
+    $e = \{i^1_j, i^2_j\}$ and $e' = \{i^1_k, i^2_k\}$, $j < k$, in
+    $\mathcal{M}$ such that $i^1_j < i^1_k < i^2_k < i^2_j$ or
+    $i^1_j < i^2_k < i^1_k < i^2_j$. This is a contradiction since
+    $i^2_k > i^2_j$ if $k > j$. Finally, for any two distinct edges
+    $e = \{\i^1_j, i^2_j\}$ and $e' = \{i^1_k, i^2_k\}$ of $\mathcal{M}$,
+    we have $\pi(i^1_j) < \pi(i^2_j)$ if and only if
+    $\pi(i^1_k) < \pi(i^2_k)$ since we are comparing in both cases two
+    elements (at position $j$ and $k$) in two patterns that are
+    order-isomorphic to $\sigma$.
 
-  (\emph{2} $\Rightarrow$ \emph{1}).
-  Let $I^1 = \{i^1_j : \exists \{i_j, i_k\} \in \mathcal{M}
-  \;\text{with}\; j < k\}$, and
-  $I^2 = \{i^2_k : \exists \{i_j, i_k\} \in \mathcal{M}
-  \;\text{with}\; j < k\}$.
-  Informally, $I^1$ (resp. $I^2$) is the set of the left (resp. right) endpoints
-  of the edges in $\mathcal{M}$ assuming the positions $1, 2, \ldots, 2$
-  are drawn along an horizontal line.
-  Without loss of generality,
-  assume $i^1_1 < i^1_2 < \ldots < i^1_n$.
-  % and
-  % $I^2 = \{i^2_1, i^2_2, \ldots, i^2_n\}$.
-  Let
-  $p^1 = \pi(i^1_1) \pi(i^1_2) \ldots \pi(i^1_n)$ and
-  $p^2 = \pi(i^2_1) \pi(i^2_2) \ldots \pi(i^2_n)$ be the two patterns
-  from $\pi$ induced by $I^1$ and $I^2$, respectivelly.
-  Clearly $p^1$ and $p^2$ are disjoint in $\pi$ (since $\mathcal{M}$ is
-  a matching) and cover $\pi$ (since $\mathcal{M}$ is perfect).
-  We also claim that $p^1$ and $p^2$ are order-isomorphic.
-  Suppose, aiming at a contradiction, that this is not the case.
-  Therefore, there exist two positions $j$ and $k$, say $j < k$, such that
-  $\pi(i^1_j) < \pi(i^2_j)$ and $\pi(i^1_k) > \pi(i^2_k)$, or
-  $\pi(i^1_j) < \pi(i^2_j)$ and $\pi(i^1_k) > \pi(i^2_k)$.
-  But since $\mathcal{M}$ is containment-free, it follows that
-  both $\{i^1_j, i^2_j\}$, $i^1_j < i^2_j$, and
-  $\{i^1_k, i^2_k\}$, $i^1_k, i^2_k$, belong to $\mathcal{M}$.
-  This is a contradiction since
-  for any two disctinct edges
-  $(a, b)$ and $(a', b')$ in $\mathcal{M}$
-  we have $\pi(a) < \pi(a')$ if and only if $\pi(b) < \pi(b')$.
-  \qed
+    (\emph{2} $\Rightarrow$ \emph{1}).
+    Let $I^1 = \{i^1_j : \exists \{i_j, i_k\} \in \mathcal{M}
+    \;\text{with}\; j < k\}$, and
+    $I^2 = \{i^2_k : \exists \{i_j, i_k\} \in \mathcal{M}
+    \;\text{with}\; j < k\}$.
+    Informally, $I^1$ (resp. $I^2$) is the set of the left (resp. right)
+    endpoints of the edges in $\mathcal{M}$ assuming the positions
+    $1, 2, \dots, 2$ are drawn along an horizontal line.
+    Without loss of generality, assume $i^1_1 < i^1_2 < \dots < i^1_n$.
+    % and $I^2 = \{i^2_1, i^2_2, \dots, i^2_n\}$.
+    Let $p^1 = \pi(i^1_1) \pi(i^1_2) \dots \pi(i^1_n)$ and
+    $p^2 = \pi(i^2_1) \pi(i^2_2) \dots \pi(i^2_n)$ be the two patterns
+    from $\pi$ induced by $I^1$ and $I^2$, respectively. Clearly $p^1$
+    and $p^2$ are disjoint in $\pi$ (since $\mathcal{M}$ is a matching)
+    and cover $\pi$ (since $\mathcal{M}$ is perfect). We also claim that
+    $p^1$ and $p^2$ are order-isomorphic. Suppose, aiming at a
+    contradiction, that this is not the case. Therefore, there exist two
+    positions $j$ and $k$, say $j < k$, such that
+    $\pi(i^1_j) < \pi(i^2_j)$ and $\pi(i^1_k) > \pi(i^2_k)$, or
+    $\pi(i^1_j) < \pi(i^2_j)$ and $\pi(i^1_k) > \pi(i^2_k)$.
+    But since $\mathcal{M}$ is containment-free, it follows that both
+    $\{i^1_j, i^2_j\}$, $i^1_j < i^2_j$, and $\{i^1_k, i^2_k\}$,
+    $i^1_k, i^2_k$, belong to $\mathcal{M}$. This is a contradiction
+    since for any two distinct edges $(a, b)$ and $(a', b')$ in
+    $\mathcal{M}$ we have $\pi(a) < \pi(a')$ if and only if
+    $\pi(b) < \pi(b')$.
+    \qed
 \end{proof}
 
-Let $\pi$ be a permutation.
-For the sake of clarity, we will say that a bunch of consecutive positions $P$
-of $\pi$ is \emph{above} (resp. \emph{below}) above another bunch of consecutive
-positions $P'$ in permutation $\pi$
-if $\pi(i) > \pi(j)$ (resp. $\pi(i) < \pi(j)$) for every
-$i \in P$ and every $j \in P'$.
-For exemple, $\sigma_1$ is above $\sigma_2$
-(in an equivalent manner, $\sigma_2$ is below $\sigma_1$)
-in Fig.~\ref{subfig:increasing before and aboce decreasing},
-whereas $\sigma_1$ is below $\sigma_2$
-(in an equivalent manner, $\sigma_2$ is above $\sigma_1$)
-in Fig.~\ref{subfig:decreasing before and below increasing}.
+Let $\pi$ be a permutation. For the sake of clarity, we will say that a
+bunch of consecutive positions $P$ of $\pi$ is \emph{above} (resp.
+\emph{below}) above another bunch of consecutive positions $P'$ in $\pi$
+if $\pi(i) > \pi(j)$ (resp. $\pi(i) < \pi(j)$) for every $i \in P$ and
+every $j \in P'$. For example, $\sigma_1$ is above $\sigma_2$ (in an
+equivalent manner, $\sigma_2$ is below $\sigma_1$) in
+Fig.~\ref{subfig:increasing before and above decreasing}, whereas
+$\sigma_1$ is below $\sigma_2$ (in an equivalent manner, $\sigma_2$ is
+above $\sigma_1$) in Fig.~\ref{subfig:decreasing before and below
+increasing}.
 
 Before proving hardness, we give an easy lemma that will prove extremely
 useful for simplifying the proof of upcoming
@@ -935,15 +901,15 @@ Proposition~\ref{proposition:hardness}.
   The following assertions hold:
   \begin{enumerate}
     \item
-    If $\sigma_1$ is increasing, $\sigma_2$ is decreasing and
-    $\sigma_1$ is above $\sigma_2$
-    (see Fig.~\ref{subfig:increasing before and aboce decreasing}),
-    then $\mathcal{M}$ sontains at most one $(\sigma_1, \sigma_2)$-edge.
+    If $\sigma_1$ is increasing, $\sigma_2$ is decreasing, and
+    $\sigma_1$ is above $\sigma_2$ (see Fig.~\ref{subfig:increasing before
+    and above decreasing}), then $\mathcal{M}$ contains at most one
+    $(\sigma_1, \sigma_2)$-edge.
     \item
-    If $\sigma_1$ is decreasing, $\sigma_2$ is increasing and
-    $\sigma_1$ is below $\sigma_2$
-    (see Fig.~\ref{subfig:decreasing before and below increasing}),
-    then $\mathcal{M}$ sontains at most one $(\sigma_1, \sigma_2)$-edge.
+    If $\sigma_1$ is decreasing, $\sigma_2$ is increasing, and $\sigma_1$
+    is below $\sigma_2$ (see Fig.~\ref{subfig:decreasing before and below
+    increasing}), then $\mathcal{M}$ contains at most one
+    $(\sigma_1, \sigma_2)$-edge.
   \end{enumerate}
 \end{lemma}
 
@@ -981,7 +947,7 @@ Proposition~\ref{proposition:hardness}.
         \draw [line width=1pt]
         (4,10) .. controls +(0,12) and +(0,10) .. (10,1);
       \end{tikzpicture}
-      \label{subfig:increasing before and aboce decreasing}
+      \label{subfig:increasing before and above decreasing}
     }% end subfigure
     \qquad\qquad\qquad
     \subfigure[%
@@ -1021,23 +987,20 @@ Proposition~\ref{proposition:hardness}.
       Illustration of Lemma~\ref{lemma:at most one edge monotone}.
     }
   \end{figure}
-  We first prove \emph{1}.
-  Suppose, aiming at a contradiction, that there exist two
-  $(\sigma_1, \sigma_2)$-edges $(a, a')$ and $(b, b')$ in $\mathcal{M}$.
-  Since $\mathcal{M}$ is containment-free, we may assume $a < b$ and $a' < b'$.
-  Therefore, we have
-  $\pi(a) < \pi(b)$ (since $\sigma_1$ is increasing) and
-  $\pi(a') > \pi(b')$ (since $\sigma_2$ is decreasing),
-  which contradicts our hypothesis about $\mathcal{M}$.
+  We first prove \emph{1}. Suppose, aiming at a contradiction, that
+  there exist two $(\sigma_1, \sigma_2)$-edges $(a, a')$ and $(b, b')$
+  in $\mathcal{M}$. Since $\mathcal{M}$ is containment-free, we may
+  assume $a < b$ and $a' < b'$. Therefore, we have $\pi(a) < \pi(b)$
+  (since $\sigma_1$ is increasing) and $\pi(a') > \pi(b')$ (since
+  $\sigma_2$ is decreasing), which contradicts our hypothesis about
+  $\mathcal{M}$.
 
-  As for \emph{2}, suppose, still aiming at a contradiction,
-  that there exist two
-  $(\sigma_1, \sigma_2)$-edges $(a, a')$ and $(b, b')$ in $\mathcal{M}$.
-  Since $\mathcal{M}$ is containment-free, we may assume $a < b$ and $a' < b'$.
-  Therefore, we have
-  $\pi(a) > \pi(b)$ (since $\sigma_1$ is decreasing) and
-  $\pi(a') < \pi(b')$ (since $\sigma_2$ is increasing),
-  which contradicts our hypothesis about $\mathcal{M}$.
+  As for \emph{2}, suppose, still aiming at a contradiction, that there
+  exist two $(\sigma_1, \sigma_2)$-edges $(a, a')$ and $(b, b')$ in
+  $\mathcal{M}$. Since $\mathcal{M}$ is containment-free, we may assume
+  $a < b$ and $a' < b'$. Therefore, we have $\pi(a) > \pi(b)$ (since
+  $\sigma_1$ is decreasing) and $\pi(a') < \pi(b')$ (since $\sigma_2$ is
+  increasing), which contradicts our hypothesis about~$\mathcal{M}$.
   \qed
 \end{proof}
 
@@ -1046,12 +1009,12 @@ Proposition~\ref{proposition:hardness}.
   Deciding whether a permutation is a square is \NPC.
 \end{proposition}
 
-\begin{proof}
-  The problem is certainly in $\NPclass$.
-  We propose a reduction from the pattern involvement problem which is
-  known to be \NPC~\cite{Bose:Buss:Lubiw:1998}:
-  Given two permutations $\pi$ and $\sigma$, decide whether $\sigma$
-  occurs in $\pi$ (as an order-isomorphic pattern).
+\begin{proof}[of Proposition~\ref{proposition:hardness}]
+  The problem is certainly in $\NPclass$. We propose a reduction from
+  the pattern involvement problem which is known to be
+  \NPC~\cite{Bose:Buss:Lubiw:1998}: Given two permutations $\pi$ and
+  $\sigma$, decide whether $\sigma$ occurs in $\pi$ (as an
+  order-isomorphic pattern).
 
   \begin{figure}[t!]
     \centering
@@ -1962,7 +1925,7 @@ Proposition~\ref{proposition:hardness}.
   \end{claim}
 
   \begin{proof}[of Claim~\ref{claim:no (nu_2, nu_4)-edge}]
-    According to Claim~\ref{claim: all (nu_2, nu'_2)-edges},
+    According to Claim~\ref{claim:all (nu_2, nu'_2)-edges},
     all positions in $\nu_2$ and $\nu'_2$ are involved in
     $(\nu_2, \nu'_2)$-edges in $\mathcal{M}$.
     \qed
@@ -2190,9 +2153,8 @@ in \cite{Henshall:Rampersad:Shallit:2011})? How hard is the problem of
 deciding whether a $(213,231)$-avoiding permutation is a square
 (Problem~4 in \cite{Henshall:Rampersad:Shallit:2011},
 see also \cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013})?
-% Given two
-% permutations $\pi$ and $\sigma$, how hard is the problem of deciding
-% whether $\pi$ is the union of two patterns order-isomorphic to $\sigma$?
+Given two permutations $\pi$ and $\sigma$, how hard is the problem of
+deciding whether $\sigma$ is a square root of $\pi$?
 \smallskip
 
 Besides, in this work, we investigate some algebraic properties of the
