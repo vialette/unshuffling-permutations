@@ -126,8 +126,8 @@ the shuffle product of words leads to the following computational ones:
     Given words $u$, $v_1$, \dots, $v_k$, decide if $u$ is in
     $v_1 \shuffle \dots \shuffle v_k$.
     \item \label{item:problem_4}
-    Given a word $u$, decide if there exist two words $v_1$ and $v_2$
-    such that $u$ is a shuffle of $v_1$ and $v_2$.
+    Given a word $u$, decide if there is a word $v$ such that $u$ is
+    in $v \shuffle v$.
 \end{enumerate}
 Even if these problems seem similar, they are very different in terms
 of complexity. Let us now review some facts about these. In what follows,
@@ -138,7 +138,7 @@ A solution to Problem~\ref{item:problem_1} can be computed in
 \end{equation}
 time~\cite{Spehner:TCS:1986}. An improvement and a generalization
 of~Problem~\ref{item:problem_1} has been proposed
-in~\cite{Allauzen:IGM:2000}, where it is proved that, given words
+in~\cite{Allauzen:IGM:2000}, where it is proved that given words
 $v_1$, \dots, $v_k$, the iterated shuffle
 $v_1 \shuffle \dots \shuffle v_k$ can be computed in
 \begin{equation}
@@ -160,12 +160,12 @@ Problem~\ref{item:problem_3} remains \NPC even if all the words $v_i$,
 $i \in [k]$, are identical, thereby proving that, for two words $u$ and
 $v$, it is \NPC to decide whether or not $u$ is in the iterated shuffle
 of $v$. Again, this remains true even if the ground alphabet has size $3$.
-Let us now focus on Problem~\ref{item:problem_4}. It is shown
+Let us now finally focus on Problem~\ref{item:problem_4}. It is shown
 in~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013} that it is \NPC to
 decide if a word $u$ is a \emph{square} (w.r.t. the shuffle), that is
 a word $u$ with the property that there exists a word $v$ such that $u$
-is a shuffle of $v$ with itself. The hardness of this last particular
-problem implies that Problem~\ref{item:problem_4} is \NPC.
+is a shuffle of $v$ with itself. Hence, Problem~\ref{item:problem_4}
+is \NPC.
 \smallskip
 
 This paper is intended to study a natural generalization of $\shuffle$,
@@ -194,7 +194,7 @@ Section~\ref{section:Shuffle product on permutations} we provide a
 precise definition of $\SHUFFLE$. This definition passes through the
 preliminary definition of an operator~$\Delta$, allowing to
 {\em unshuffle} permutations. This operator is in fact a coproduct,
-endowing the space of all permutations with a coalgebra structure
+endowing the linear span of all permutations with a coalgebra structure
 (see~\cite{Joni:Rota:1979} or~\cite{Grinberg:Reiner:2014} for the
 definition of these algebraic structures). By duality, the unshuffling
 operator $\Delta$ leads to the definition of our shuffle operation on
@@ -207,8 +207,8 @@ of interest from a combinatorial point of view.
 Section~\ref{section:Binary square words and permutations} is devoted to
 show that the problems related to the shuffle of words has links with
 the shuffle of permutations. In particular, we show that binary words
-that are square are in one-to-one bijection with square permutations
-avoiding some patterns
+that are square are in one-to-one correspondence with square
+permutations avoiding some patterns
 (Proposition~\ref{prop:bijection_binary_to_permutations_squares}). Next,
 Section~\ref{section:Algebraic issues} presents some algebraic and
 combinatorial properties of~$\SHUFFLE$. We show that $\SHUFFLE$ is
@@ -218,8 +218,9 @@ permutation is a square, its mirror, complement, and inverse are also
 squares (Proposition~\ref{prop:square_stability}). Finally,
 Section~\ref{section:Algorithmic issues} presents the most import result
 of this paper: the fact that deciding if a permutation is a square is
-\NPC (Proposition~\ref{proposition:hardness}).
-
+\NPC (Proposition~\ref{proposition:hardness}). This result is obtained
+by exhibiting a reduction from the pattern involvement
+problem~\cite{Bose:Buss:Lubiw:1998} which is \NPC.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -385,7 +386,7 @@ letters of the permutations. As first and easy properties of $\SHUFFLE$,
 one can observe that the empty permutation $\epsilon$ is a unit for
 $\SHUFFLE$ and that this product is graded by the sizes of the
 permutations ({\em i.e.}, the product of a permutation of size $n$ with
-a permutation of size $m$ produces a sum of permutations of size $n + m$.
+a permutation of size $m$ produces a sum of permutations of size $n + m$).
 Notice that there are other shuffle products on
 permutations~\cite{DHT:IJAC:2002}: the {\em shifted shuffle} and the
 {\em convolution product}. Our shuffle product is different from these
@@ -417,7 +418,9 @@ are, from size $0$ to $10$,
 \begin{equation}
     1, 0, 2, 0, 20, 0, 504, 0, 21032, 0, 1293418.
 \end{equation}
-For instance, the square permutations of sizes $0$ to $4$ are
+This sequence (and its subsequence obtained by removing the $0$s) is for
+the time being not listed in~\cite{Slo}. The square permutations of
+sizes $0$ to $4$ are
 \smallskip
 
 \begin{tabular}{c|c|c}
@@ -537,6 +540,16 @@ such that $|ua|_0$ and $|ua|_1$ are both even, where $a \in \{0, 1\}$.
         \qed
     \end{proof}
 \end{proof}
+\medskip
+
+The number of square binary words is Sequence A191755 of~\cite{Slo}
+beginning by
+\begin{equation}
+1, 0, 2, 0, 6, 0, 22, 0, 82, 0, 320, 0, 1268, 0, 5102, 0, 020632.
+\end{equation}
+By Proposition~\ref{prop:bijection_binary_to_permutations_squares}, this
+is also the sequence enumerating square permutations avoiding $213$
+and $231$.
 \medskip
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -784,11 +797,11 @@ $132$, $213$, $231$, and $312$ are in the same Wilf-equivalence class of
 square permutations. Computer experiments show us that there are two
 Wilf-equivalence classes of square permutations of size $3$. Indeed, the
 number of square permutations avoiding $123$ begins by
-\begin{equation}
+\begin{equation} \label{equ:sequence_square_123}
     1, 0, 2, 0, 12, 0, 118, 0, 1218, 0, 14272,
 \end{equation}
 while the number of square permutations avoiding $132$ begins by
-\begin{equation}
+\begin{equation} \label{equ:sequence_square_132}
     1, 0, 2, 0, 11, 0, 84, 0, 743, 0, 7108.
 \end{equation}
 \medskip
@@ -797,9 +810,14 @@ Besides, an other consequence of Proposition~\ref{prop:square_stability}
 is that its makes sense to enumerate the sets of square permutations
 quotiented by the operations of mirror image, complementary, and
 inverse. The sequence enumerating these sets begins by
-\begin{equation}
+\begin{equation} \label{equ:sequence_square_classes}
     1, 0, 1, 0, 6, 0, 81, 0, 2774, 0, 162945.
 \end{equation}
+\medskip
+
+All Sequences~\eqref{equ:sequence_square_123}, \eqref{equ:sequence_square_132},
+and~\eqref{equ:sequence_square_classes} (and their subsequences obtained
+by removing the $0$s) are for the time being not listed in~\cite{Slo}.
 \medskip
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
