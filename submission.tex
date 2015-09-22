@@ -33,7 +33,7 @@
 % \renewcommand{\floatpagefraction}{.9}
 % \renewcommand{\textfraction}{.1}
 \renewcommand{\arraystretch}{1.2}
-
+\newcommand{\rt}{\textcolor{red}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -44,6 +44,20 @@
 \DeclareMathOperator{\SHUFFLE}{\bullet}
 \DeclareMathOperator{\BINTOPERM}{\mathrm{btp}}
 \DeclareMathOperator{\PERMTOBIN}{\mathrm{ptb}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% 1 2 2 1
+\newcommand{\MWithContainment}{%
+\begin{tikzpicture}[scale=0.1,inner sep=.8pt,node distance=.25cm]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw (U2.north) .. controls ($ (U2.north) + (0,1.75) $) and ($ (U3.north) + (0,1.75) $) .. (U3.north);
+\draw (U1.north) .. controls ($ (U1.north) + (0,2.5) $) and ($ (U4.north) + (0,2.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \MWithContainment
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -97,7 +111,7 @@ Unshuffling Permutations}%
     words.
     On the other hand,
     using a containment-free perfect matching criterion,
-    we prove that recognizing square permutations is \NPC. 
+    we prove that recognizing square permutations is \NPC.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -108,12 +122,13 @@ Unshuffling Permutations}%
 %%
 \section{Introduction}
 \label{section:Introduction}
-The {\em shuffle product} $\shuffle$ is a very famous operation on words
+The {\em shuffle product}, denoted $\shuffle$, is a very famous operation on words
 first defined by Eilenberg and Mac Lane~\cite{Eilenberg:MacLane:1953}.
 Given three words $u$, $v_1$, and $v_2$, $u$ is said to be a \emph{shuffle}
 of $v_1$ and $v_2$ if it can be formed by interleaving the letters from
 $v_1$ and $v_2$ in a way that maintains the left-to-right ordering of the
-letters from each word. In addition to purely combinatorial questions,
+letters from each word.
+Besides purely combinatorial questions,
 the shuffle product of words leads to the following computational ones:
 \begin{enumerate}
     \item \label{item:problem_1}
@@ -275,7 +290,7 @@ letters of $\pi$ such that $\sigma$ and $\pi_{|P}$ are order-isomorphic.
 When $\pi$ does not admit any occurrence of $\sigma$, $\pi$ {\em avoids}
 $\sigma$.
 
-Let us now provide some definitions about graphs and matching, used in
+Let us now provide some definitions about graphs and matching that are used in
 the sequel. For a graph $G$, we denote $\VS{G}$ as the set of vertices
 and $\ES{G}$ as the set of edges of $G$. Let $u = u_1 u_2 \dots u_n$ be
 a word. The \emph{clique graph associated to $u$}, denoted by $K_u$, is
@@ -288,11 +303,15 @@ the context that $i < j$. Recall that two edges of a graph are
 \emph{independent} if they do not share a common vertex, and that a
 \emph{matching} $\mathcal{M}$ in $G$ is a set of pairwise independent
 edges. A matching is \emph{perfect} if it covers all the vertices of the
-graph. In case the set of vertices is equipped with a total order, a
+graph.
+For an edge $e = \{u,v\}$, we shall occasionally say that $u$ and $v$
+are \emph{involved} in $e$.
+In case the set of vertices is equipped with a total order, a
 matching $\mathcal{M}$ is said to be \emph{containment-free} if there do
 not exist (independent) edges $(u_i, u_j)$ and $(u_k, u_\ell)$ in
 $\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$ or
-$u_k < u_i < u_j < u_\ell$.
+$u_k < u_i < u_j < u_\ell$
+(\emph{i.e.}, $\mathcal{M}$ avoids \MWithContainment).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -308,7 +327,7 @@ a coproduct denoted by $\Delta$, enabling to unshuffle permutations.
 By duality, $\Delta$ implies the definition of $\SHUFFLE$. The reason
 why we need to pass by the definition of $\Delta$ to define $\SHUFFLE$
 is justified by the fact that a lot of properties of $\SHUFFLE$ depend
-of properties of $\Delta$ and that this strategy allows to write concise
+of properties of $\Delta$, and that this strategy allows to write concise
 and clear proofs of them. We invite the reader unfamiliar with the
 concepts of coproduct and duality to consult~\cite{Joni:Rota:1979}
 or~\cite{Grinberg:Reiner:2014}.
@@ -480,6 +499,7 @@ such that $|ua|_0$ and $|ua|_1$ are both even, where $a \in \{0, 1\}$.
         If $\pi$ is a square permutation avoiding $213$ and $231$,
         $\PERMTOBIN(\pi)$ is a square binary word.
     \end{claim}
+    \qed
 \end{proof}
 
 The number of square binary words is Sequence A191755 of~\cite{Slo}
@@ -666,7 +686,8 @@ This section is devoted to proving hardness of recognizing square
 permutations. In the same way as happens with words, we shall use a
 linear graph framework where deciding whether a permutation is a square
 reduces to computing some specific matching in the associated linear
-graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
+graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows
+(see Fig.\ref{fig:example containment-free matching}).
 
 \begin{lemma}
   \label{lemma:matching}
@@ -674,11 +695,49 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
   \begin{enumerate}
     \item The permutation $\pi$ is a square.
     \item There exists a perfect containment-free matching $\mathcal{M}$
-    of $G_\pi$ such that for any two distinct edges $(a, b)$ and
+    of $K_\pi$ such that for any two distinct edges $(a, b)$ and
     $(a', b')$ in $\mathcal{M}$ we have $\pi(a) < \pi(a')$ if and only
     if $\pi(b) < \pi(b')$.
   \end{enumerate}
 \end{lemma}
+
+\begin{figure}[ht!]
+  \centering
+  \begin{tikzpicture}[scale=0.5,inner sep=2pt,node distance=1cm]
+    \draw node (K) {$K_\pi$};
+    \draw node [draw, circle, minimum size=.55cm, fill=black!10] [right of=K]   (U01) {$2$};
+    \draw node [draw, circle, minimum size=.55cm, fill=black!10] [right of=U01] (U02) {$A$};
+    \draw node [draw, circle, minimum size=.55cm] [right of=U02] (U03) {$4$};
+    \draw node [draw, circle, minimum size=.55cm, fill=black!10] [right of=U03] (U04) {$7$};
+    \draw node [draw, circle, minimum size=.55cm, fill=black!10] [right of=U04] (U05) {$1$};
+    \draw node [draw, circle, minimum size=.55cm] [right of=U05] (U06) {$9$};
+    \draw node [draw, circle, minimum size=.55cm] [right of=U06] (U07) {$5$};
+    \draw node [draw, circle, minimum size=.55cm] [right of=U07] (U08) {$3$};
+    \draw node [draw, circle, minimum size=.55cm, fill=black!10] [right of=U08] (U09) {$8$};
+    \draw node [draw, circle, minimum size=.55cm] [right of=U09] (U10) {$6$};
+    \draw [thick]
+      (U01.north) .. controls ($ (U01.north) + (0,2.25) $) and ($ (U03.north) + (0,2.25) $) .. (U03.north);
+    \draw [thick]
+      (U02.north) .. controls ($ (U02.north) + (0,2.25) $) and ($ (U06.north) + (0,2.25) $) .. (U06.north);
+    \draw [thick]
+      (U04.north) .. controls ($ (U04.north) + (0,2.5) $) and ($ (U07.north) + (0,2.5) $) .. (U07.north);
+    \draw [thick]
+      (U05.north) .. controls ($ (U05.north) + (0,2.5) $) and ($ (U08.north) + (0,2.5) $) .. (U08.north);
+    \draw [thick]
+      (U09.north) .. controls ($ (U09.north) + (0,2.5) $) and ($ (U10.north) + (0,2.5) $) .. (U10.north);
+  \end{tikzpicture}
+  \caption{\label{fig:example containment-free matching}%
+    The linear graph $K_\pi$ associated to the permutation
+    $\pi = 2A47195386$ together with
+    a containment-free perfect matching $\mathcal{M}$
+    such that for any two distinct edges $(a, b)$ and
+    $(a', b')$ in $\mathcal{M}$ we have $\pi(a) < \pi(a')$ if and only
+    if $\pi(b) < \pi(b')$.
+    From $\mathcal{M}$, it follows that $\pi$ is square as it is
+    the shuffle of $2A718$ and $49536$ that are both
+    order-isomorphic to $25314$.
+  }% end caption
+\end{figure}
 
 Let $\pi$ be a permutation. For the sake of clarity, we will say that a
 bunch of consecutive positions $P$ of $\pi$ is \emph{above} (resp.
