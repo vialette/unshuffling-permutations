@@ -147,17 +147,19 @@ Even if these problems seem similar, they are very different in terms
 of complexity. Let us now review some facts about these. In what follows,
 $n$ denotes the size of $u$ and $m_i$ denotes the size of each $v_i$.
 A solution to Problem~\ref{item:problem_1} can be computed in
-\begin{equation}
-    O\left((m_1 + m_2) \; \binom{m_1 + m_2}{m_1}\right)
-\end{equation}
+% \begin{equation}
+%     O\left((m_1 + m_2) \; \binom{m_1 + m_2}{m_1}\right)
+% \end{equation}
+$O\left((m_1 + m_2) \; \binom{m_1 + m_2}{m_1}\right)$
 time~\cite{Spehner:TCS:1986}. An improvement and a generalization
 of~Problem~\ref{item:problem_1} has been proposed
 in~\cite{Allauzen:IGM:2000}, where it is proved that given words
 $v_1$, \dots, $v_k$, the iterated shuffle
 $v_1 \shuffle \dots \shuffle v_k$ can be computed in
-\begin{equation}
-    O\left(\binom{m_1 + \dots + m_k}{m_1, \dots, m_k}\right)
-\end{equation}
+% \begin{equation}
+%     O\left(\binom{m_1 + \dots + m_k}{m_1, \dots, m_k}\right)
+% \end{equation}
+$O\left(\binom{m_1 + \dots + m_k}{m_1, \dots, m_k}\right)$
 time. Problem~\ref{item:problem_2} is in \Pclass; it is indeed a
 classical textbook exercise to design an efficient dynamic programming
 algorithm solving it. It can be tested in $O\left(n^2 / \log(n)\right)$
