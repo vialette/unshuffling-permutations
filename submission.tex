@@ -262,7 +262,7 @@ specified by the elements of $P$. If $u$ is a word of integers and $k$
 is an integer, we denote by $u[k]$ the word obtained by incrementing by
 $k$ all letters of $u$. The {\em shuffle} of two words $u$ and $v$ is
 the set recursively defined by
-$u \shuffle \epsilon = u = \epsilon \shuffle u$ and
+$u \shuffle \epsilon = \{u\} = \epsilon \shuffle u$ and
 $ua \shuffle vb = (u \shuffle vb)a \cup (ua \shuffle v)b$, were $a$ and
 $b$ are letters. A word $u$ is a {\em square} if there exists a word $v$
 such that $u$ belongs to $v \shuffle v$.
@@ -313,7 +313,7 @@ matching $\mathcal{M}$ is said to be \emph{containment-free} if there do
 not exist (independent) edges $(u_i, u_j)$ and $(u_k, u_\ell)$ in
 $\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$ or
 $u_k < u_i < u_j < u_\ell$
-(\emph{i.e.}, $\mathcal{M}$ avoids \MWithContainment).
+(\emph{i.e.}, $\mathcal{M}$ avoids~\MWithContainment).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -690,19 +690,6 @@ linear graph framework where deciding whether a permutation is a square
 reduces to computing some specific matching in the associated linear
 graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows
 (see Fig.\ref{fig:example containment-free matching}).
-
-\begin{lemma}
-  \label{lemma:matching}
-  Let $\pi$ be a permutation. The following statements are equivalent:
-  \begin{enumerate}
-    \item The permutation $\pi$ is a square.
-    \item There exists a perfect containment-free matching $\mathcal{M}$
-    of $K_\pi$ such that for any two distinct edges $(a, b)$ and
-    $(a', b')$ in $\mathcal{M}$ we have $\pi(a) < \pi(a')$ if and only
-    if $\pi(b) < \pi(b')$.
-  \end{enumerate}
-\end{lemma}
-
 \begin{figure}[ht!]
   \centering
   \begin{tikzpicture}[scale=0.5,inner sep=2pt,node distance=1cm]
@@ -740,6 +727,18 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows
     order-isomorphic to $25314$.
   }% end caption
 \end{figure}
+
+\begin{lemma}
+  \label{lemma:matching}
+  Let $\pi$ be a permutation. The following statements are equivalent:
+  \begin{enumerate}
+    \item The permutation $\pi$ is a square.
+    \item There exists a perfect containment-free matching $\mathcal{M}$
+    of $K_\pi$ such that for any two distinct edges $(a, b)$ and
+    $(a', b')$ in $\mathcal{M}$ we have $\pi(a) < \pi(a')$ if and only
+    if $\pi(b) < \pi(b')$.
+  \end{enumerate}
+\end{lemma}
 
 Let $\pi$ be a permutation. For the sake of clarity, we will say that a
 bunch of consecutive positions $P$ of $\pi$ is \emph{above} (resp.
@@ -1998,8 +1997,8 @@ in \cite{Henshall:Rampersad:Shallit:2011})? How hard is the problem of
 deciding whether a $(213,231)$-avoiding permutation is a square
 (Problem~4 in \cite{Henshall:Rampersad:Shallit:2011},
 see also \cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013})?
-Given two permutations $\pi$ and $\sigma$, how hard is the problem of
-deciding whether $\sigma$ is a square root of $\pi$?
+Given two permutations $\pi$ and~$\sigma$, how hard is the problem of
+deciding whether $\sigma$ is a square root of~$\pi$?
 
 Besides, in this work, we investigate some algebraic properties of the
 shuffle of permutations which have direct combinatorial consequences.
