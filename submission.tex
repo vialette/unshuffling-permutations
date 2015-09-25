@@ -1000,14 +1000,20 @@ Proposition~\ref{proposition:hardness}.
   $$
 
   It is immediate that H can be constructed in polynomial-time in $n$ and $k$.
-  We claim that $\sigma$ occurs in $\pi$ if and only if
+  % We claim that $\sigma$ occurs in $\pi$ if and only if
+  % there exists a containment-free perfect matching
+  % $\mathcal{M}$ in $G_\mu$ such that
+  % for any two disctinct edges
+  % $(a, b)$ and $(a', b')$ in $\mathcal{M}$
+  % we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
+  It can be shown (see Appendix) that
+  that $\sigma$ occurs in $\pi$ if and only if
   there exists a containment-free perfect matching
   $\mathcal{M}$ in $G_\mu$ such that
   for any two disctinct edges
   $(a, b)$ and $(a', b')$ in $\mathcal{M}$
   we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
-
-
+  \qed
 \end{proof}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
