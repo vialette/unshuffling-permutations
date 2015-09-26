@@ -129,7 +129,7 @@ of $v_1$ and $v_2$ if it can be formed by interleaving the letters from
 $v_1$ and $v_2$ in a way that maintains the left-to-right ordering of the
 letters from each word.
 Besides purely combinatorial questions,
-the shuffle product of words leads to the following computational ones:
+the shuffle product of words leads to the following algorithmic ones:
 \begin{enumerate}
     \item \label{item:problem_1}
     Given two words $v_1$ and $v_2$, compute the set $v_1 \shuffle v_2$.
@@ -191,7 +191,7 @@ said to be a {\em shuffle} of $\sigma_1$ and $\sigma_2$ if $\pi$ (viewed
 as a word) is a shuffle of two words that are order-isomorphic to
 $\sigma_1$ and $\sigma_2$. Our intention in this paper is to study this
 shuffle product of permutations $\SHUFFLE$ both from a combinatorial and
-from a computational point of view by focusing on {\em square}
+from an algorithmic point of view by focusing on {\em square}
 permutations, that are permutations $\pi$ being in the shuffle of a
 permutation $\sigma$ with itself. The shuffle product defined and
 considered in this paper is different from other existing and well-known
@@ -292,7 +292,7 @@ letters of $\pi$ such that $\sigma$ and $\pi_{|P}$ are order-isomorphic.
 When $\pi$ does not admit any occurrence of $\sigma$, $\pi$ {\em avoids}
 $\sigma$.
 
-Let us now provide some definitions about graphs and matching that are used in
+Let us now provide some definitions about graphs and matchings that are used in
 the sequel. For a graph $G$, we denote $\VS{G}$ as the set of vertices
 and $\ES{G}$ as the set of edges of $G$. Let $u = u_1 u_2 \dots u_n$ be
 a word. The \emph{clique graph associated to $u$}, denoted by $K_u$, is
@@ -442,9 +442,9 @@ sizes $0$ to $4$ are
     Size $0$ \, & Size $2$ & Size $4$ \\ \hline
     \multirow{2}{*}{\, $\epsilon$} &
     \multirow{2}{*}{\, $12$, $21$ \,} &
-    $1234$, $1243$, $1423$, $1324$, $1342$, $4132$, $3124$, $3142$,
+    \, $1234$, $1243$, $1423$, $1324$, $1342$, $4132$, $3124$, $3142$,
     $3412$, $4312$, \\
-    & & $2134$, $2143$, $2413$, $4213$, $2314$, $2431$, $4231$, $3241$,
+    & & \, $2134$, $2143$, $2413$, $4213$, $2314$, $2431$, $4231$, $3241$,
     $3421$, $4321$
 \end{tabular}
 
@@ -674,7 +674,7 @@ inverse. The sequence enumerating these sets begins by
 
 All Sequences~\eqref{equ:sequence_square_123}, \eqref{equ:sequence_square_132},
 and~\eqref{equ:sequence_square_classes} (and their subsequences obtained
-by removing the $0$s) are for the time being not listed in~\cite{Slo}.
+by removing the $0$'s) are for the time being not listed in~\cite{Slo}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -833,7 +833,7 @@ Proposition~\ref{proposition:hardness}.
   \label{lemma:at most one edge monotone}
   Let $\pi = \pi_1 \, \sigma_1 \, \pi_2 \, \sigma_2 \, \pi_3$
   be a permutation with $|\sigma_1| \geq 2$ and $|\sigma_2| \geq 2$,
-  and $\mathcal{M}$ be a containment-free perfect matching of $G_\pi$.
+  and $\mathcal{M}$ be a containment-free perfect matching of $K_\pi$.
   The following assertions hold:
   \begin{enumerate}
     \item
@@ -1007,9 +1007,9 @@ Proposition~\ref{proposition:hardness}.
   % $(a, b)$ and $(a', b')$ in $\mathcal{M}$
   % we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
   It can be shown (see Appendix) that
-  that $\sigma$ occurs in $\pi$ if and only if
+  $\sigma$ occurs in $\pi$ if and only if
   there exists a containment-free perfect matching
-  $\mathcal{M}$ in $G_\mu$ such that
+  $\mathcal{M}$ in $K_\mu$ such that
   for any two disctinct edges
   $(a, b)$ and $(a', b')$ in $\mathcal{M}$
   we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
