@@ -1936,13 +1936,13 @@ free as an associative algebra are worthwhile questions.
             \draw [fill=black] (\x,\y) circle (0.1);
         }
         % labels
-        \node [label] (x) at (2,4.5) {$x$};
+        \node [label] (x) at (2,4.5) {$b$};
         \node [label] (a) at (8,14.5) {$a$};
-        \node [label] (xp) at (14,-1.5) {$x'$};
+        \node [label] (xp) at (14,-1.5) {$b'$};
         \node [label] (ap) at (16,-1.5) {$a'$};
-        \node (nu1) at (2.5,2.5) {$\nu_2$};
-        \node (nu2) at (8.5,12.5) {$\nu_3$};
-        \node (nu1') at (14.5,-3.5) {$\nu'_2$};
+        \node (nu1) at (2.5,3.5) {$\nu_2$};
+        \node (nu2) at (8.5,13.5) {$\nu_3$};
+        \node (nu1') at (14.5,-2.5) {$\nu'_2$};
         % crossings edges
         \draw [line width=1pt]
         (2,9) .. controls +(0,25) and +(0,30) .. (14,3);
@@ -1964,12 +1964,12 @@ free as an associative algebra are worthwhile questions.
     Suppose, aiming at a contradiction, that there exists
     $(\nu_3, \nu'_2)$-edge $(a, a')$ in $\mathcal{M}$.
     According to Claim~\ref{claim:(nu_2, nu'_2)-edge}, there
-    exists at least one $(\nu_2, \nu'_2)$-edge $(x, x')$ in $\mathcal{M}$.
+    exists at least one $(\nu_2, \nu'_2)$-edge $(b, b')$ in $\mathcal{M}$.
     Since $\mathcal{M}$ is containment-free (Lemma~\ref{lemma:matching}),
-    we have $x' < a'$.
+    we have $b' < a'$.
     Therefore,
-    we have $\mu(x) < \mu(a)$ (since $\nu_2$ is below $\nu_3$) and
-    $\mu(x') > \mu(a')$ (since $\nu'_2$ is decreasing),
+    we have $\mu(b) < \mu(a)$ (since $\nu_2$ is below $\nu_3$) and
+    $\mu(b') > \mu(a')$ (since $\nu'_2$ is decreasing),
     which contradicts our hypothesis about $\mathcal{M}$.
     See Fig.~\ref{fig:subfig:no (nu_3, nu'_2)-edge}.
     \qed
