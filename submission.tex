@@ -129,7 +129,7 @@ of $v_1$ and $v_2$ if it can be formed by interleaving the letters from
 $v_1$ and $v_2$ in a way that maintains the left-to-right ordering of the
 letters from each word.
 Besides purely combinatorial questions,
-the shuffle product of words leads to the following algorithmic ones:
+the shuffle product of words leads to the following computational ones:
 \begin{enumerate}
     \item \label{item:problem_1}
     Given two words $v_1$ and $v_2$, compute the set $v_1 \shuffle v_2$.
@@ -191,7 +191,7 @@ said to be a {\em shuffle} of $\sigma_1$ and $\sigma_2$ if $\pi$ (viewed
 as a word) is a shuffle of two words that are order-isomorphic to
 $\sigma_1$ and $\sigma_2$. Our intention in this paper is to study this
 shuffle product of permutations $\SHUFFLE$ both from a combinatorial and
-from an algorithmic point of view by focusing on {\em square}
+from a computational point of view by focusing on {\em square}
 permutations, that are permutations $\pi$ being in the shuffle of a
 permutation $\sigma$ with itself. The shuffle product defined and
 considered in this paper is different from other existing and well-known
@@ -292,7 +292,7 @@ letters of $\pi$ such that $\sigma$ and $\pi_{|P}$ are order-isomorphic.
 When $\pi$ does not admit any occurrence of $\sigma$, $\pi$ {\em avoids}
 $\sigma$.
 
-Let us now provide some definitions about graphs and matchings that are used in
+Let us now provide some definitions about graphs and matching that are used in
 the sequel. For a graph $G$, we denote $\VS{G}$ as the set of vertices
 and $\ES{G}$ as the set of edges of $G$. Let $u = u_1 u_2 \dots u_n$ be
 a word. The \emph{clique graph associated to $u$}, denoted by $K_u$, is
@@ -442,9 +442,9 @@ sizes $0$ to $4$ are
     Size $0$ \, & Size $2$ & Size $4$ \\ \hline
     \multirow{2}{*}{\, $\epsilon$} &
     \multirow{2}{*}{\, $12$, $21$ \,} &
-    \, $1234$, $1243$, $1423$, $1324$, $1342$, $4132$, $3124$, $3142$,
+    $1234$, $1243$, $1423$, $1324$, $1342$, $4132$, $3124$, $3142$,
     $3412$, $4312$, \\
-    & & \, $2134$, $2143$, $2413$, $4213$, $2314$, $2431$, $4231$, $3241$,
+    & & $2134$, $2143$, $2413$, $4213$, $2314$, $2431$, $4231$, $3241$,
     $3421$, $4321$
 \end{tabular}
 
@@ -674,7 +674,7 @@ inverse. The sequence enumerating these sets begins by
 
 All Sequences~\eqref{equ:sequence_square_123}, \eqref{equ:sequence_square_132},
 and~\eqref{equ:sequence_square_classes} (and their subsequences obtained
-by removing the $0$'s) are for the time being not listed in~\cite{Slo}.
+by removing the $0$s) are for the time being not listed in~\cite{Slo}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -833,7 +833,7 @@ Proposition~\ref{proposition:hardness}.
   \label{lemma:at most one edge monotone}
   Let $\pi = \pi_1 \, \sigma_1 \, \pi_2 \, \sigma_2 \, \pi_3$
   be a permutation with $|\sigma_1| \geq 2$ and $|\sigma_2| \geq 2$,
-  and $\mathcal{M}$ be a containment-free perfect matching of $K_\pi$.
+  and $\mathcal{M}$ be a containment-free perfect matching of $G_\pi$.
   The following assertions hold:
   \begin{enumerate}
     \item
@@ -995,21 +995,21 @@ Proposition~\ref{proposition:hardness}.
   $$
   \mu
   =
-  \nu_1 \; \nu_2 \; \nu'_1 \; \nu_3 \; \sigma' \; \nu_4 \; \nu'_3 \; \pi' \; \nu'_4 \; \pi'' \; \sigma''
+  \nu_1 \; \nu_2 \; \nu'_1 \; \nu_3 \; \sigma' \; \nu_4 \; \nu'_2 \; \nu'_3 \; \pi' \; \nu'_4 \; \pi'' \; \sigma''
   \text{.}
   $$
 
   It is immediate that H can be constructed in polynomial-time in $n$ and $k$.
   % We claim that $\sigma$ occurs in $\pi$ if and only if
   % there exists a containment-free perfect matching
-  % $\mathcal{M}$ in $K_\mu$ such that
+  % $\mathcal{M}$ in $G_\mu$ such that
   % for any two disctinct edges
   % $(a, b)$ and $(a', b')$ in $\mathcal{M}$
   % we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
   It can be shown (see Appendix) that
-  $\sigma$ occurs in $\pi$ if and only if
+  that $\sigma$ occurs in $\pi$ if and only if
   there exists a containment-free perfect matching
-  $\mathcal{M}$ in $K_\mu$ such that
+  $\mathcal{M}$ in $G_\mu$ such that
   for any two disctinct edges
   $(a, b)$ and $(a', b')$ in $\mathcal{M}$
   we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
@@ -1123,7 +1123,7 @@ free as an associative algebra are worthwhile questions.
     of~$v$. Now, assume that $\pi$ admits an occurrence of $213$.
     Then, since $v$ is increasing and $w$ is decreasing, there is an
     occurrence of $3$ (resp. $13$, $23$) in $v$ and a relative
-    occurrence of $21$ (resp. $2$, $1$) in $w$. All these three cases
+    occurrence of $21$ (resp. $2$, $1$). All these three cases
     contradict the fact that all letters of $w$ are greater than
     those of $v$. A similar argument shows that $\pi$ avoids~$231$
     as well.
@@ -1279,11 +1279,11 @@ free as an associative algebra are worthwhile questions.
     and $I^2 = \{i^2_1 < i^2_2 < \dots < i^2_n\}$ of disjoint indexes of
     letters of $\pi$ such that $\pi_{|I^1}$ and $\pi_{|I^2}$ are both
     order-isomorphic to $\sigma$. Let $2n = |\pi|$ (and hence
-    $|\sigma| = n$). Let $K_\pi$ be the linear clique associated to $\pi$
+    $|\sigma| = n$). Let $G_\pi$ be the linear clique associated to $\pi$
     with vertices
-    $\VS{K_\pi} = \{i^1_j : j \in [n]\} \cup \{i^2_j : j \in [n]\}$. It
+    $\VS{G_\pi} = \{i^1_j : j \in [n]\} \cup \{i^2_j : j \in [n]\}$. It
     is easily seen that $\mathcal{M} = \{\{i^1_j, i^2_j\} : j \in [n]\}$
-    is a subset of $\ES{K_\pi}$. Furthermore, $\mathcal{M}$ is a perfect
+    is a subset of $\ES{G_\pi}$. Furthermore, $\mathcal{M}$ is a perfect
     matching since $I^1 \cap I^2 = \emptyset$, and
     $I^1 \cup I^2 = \{1, 2,  \dots 2n\}$. It is also containment-free.
     Indeed, if it is not the case then there would exist two edges
@@ -1551,7 +1551,7 @@ free as an associative algebra are worthwhile questions.
       \end{figure}
 
   Conversely, suppose that there exists a containment-free perfect matching
-  $\mathcal{M}$ in $K_\mu$ such that for any two disctinct edges
+  $\mathcal{M}$ in $G_\mu$ such that for any two disctinct edges
   $(a, b)$ and $(a', b')$ in $\mathcal{M}$
   we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
   We show that $\sigma$ occurs as a pattern in $\pi$.
@@ -1560,7 +1560,8 @@ free as an associative algebra are worthwhile questions.
   (more precisely, $k+2$ $(\sigma', \pi')$-edges) so that we can conclude
   that $\sigma$ occurs in $\pi$.
   We have divided the reverse direction into a serie of basic claims that
-  progressively defines the overall structure of $\mathcal{M}$.
+  progressively defines the overall structure of $\mathcal{M}$
+  (refer to Fig.~\ref{fig:reduction}).
 
     \begin{figure}[t!]
       \centering
