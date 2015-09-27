@@ -1593,8 +1593,8 @@ free as an associative algebra are worthwhile questions.
               \draw [fill=black] (\x,\y) circle (0.1);
           }
           % labels
-          \node [label] (y) at (17,14.5) {$y$};
-          \node [label] (yp) at (10,-1.5) {$y'$};
+          \node [label] (y) at (17,14.5) {$b$};
+          \node [label] (yp) at (10,-1.5) {$b'$};
           \node [label] (a) at (0,8.5) {$a$};
           \node [label] (ap) at (8,-1.5) {$a'$};
           \node (nu1) at (2.5,7.7) {$\nu_1$};
@@ -1650,11 +1650,11 @@ free as an associative algebra are worthwhile questions.
             \draw [fill=black] (\x,\y) circle (0.1);
         }
         % labels
-        \node [label] (y) at (17,14.5) {$y$};
-        \node [label] (ypp) at (23,-4.5) {$y''$};
+        \node [label] (y) at (17,14.5) {$b$};
+        \node [label] (ypp) at (23,-4.5) {$b''$};
         \node [label] (a) at (0,8.5) {$a$};
-        \node [label] (a) at (2,8.5) {$x'$};
-        \node [label] (a) at (14,14.5) {$y'$};
+        \node [label] (a) at (2,8.5) {$x$};
+        \node [label] (a) at (14,14.5) {$x'$};
         \node [label] (ap) at (8,-1.5) {$a'$};
         \node (nu1) at (2.5,7.7) {$\nu_1$};
         \node (nu2) at (8.5,-2.5) {$\nu_2$};
@@ -1696,11 +1696,11 @@ free as an associative algebra are worthwhile questions.
     exactly one $(\nu_1, \nu_2)$-edge $e = (a, a')$ in $\mathcal{M}$.
     Under this assumption, we show that $\mathcal{M}$ does not contain any $(\nu_1, \nu_1)$-edge.
     Indeed, suppose, aiming at a contradiction,
-    that there exists a $(\nu_1, \nu_1)$-edge $(x, x')$ in $\mathcal{M}$.
+    that there exists a $(\nu_1, \nu_1)$-edge $(b, b')$ in $\mathcal{M}$.
     Since $\mathcal{M}$ is containment-free,
-    we must have $x < a$.
-    Then it follows that $\mu(x) < \mu(a)$ (since $\nu_1$ is increasing) and
-    $\mu(x') > \mu(a')$ (since $\nu_1$ is above $\nu_2$),
+    we must have $b < a$.
+    Then it follows that $\mu(b) < \mu(a)$ (since $\nu_1$ is increasing) and
+    $\mu(b') > \mu(a')$ (since $\nu_1$ is above $\nu_2$),
     which contradicts our hypothesis about $\mathcal{M}$.
     Hence $\mathcal{M}$ does not contain any $(\nu_1, \nu_1)$-edge.
     Furthermore, since $\nu_1$ is increasing and
@@ -1708,24 +1708,26 @@ free as an associative algebra are worthwhile questions.
     we conclude that
     $\mathcal{M}$ contains $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges.
     But $|\nu_1| = |\nu'_1| = N_1$ and $\mathcal{M}$ is perfect,
-    and hence there exists a position, say $y$, in $\nu'_1$ that is
+    and hence there exists a position, say $b$, in $\nu'_1$ that is
     not involved in a $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
     We rule out this configuration by considering two cases:
     \begin{itemize}
       \item Position $y$ is involved in a $(\nu_2, \nu'_1)$-edge,
-      say $(y', y)$. Then, we have $\mu(a) > \mu(y')$ (since $\nu_1$ is above $\nu_2$)
-      and $\mu(a') < \mu(y)$ (since $\nu_2$ is below $\nu'_1$),
+      say $(b', b)$.
+      Then, we have $\mu(a) > \mu(b')$ (since $\nu_1$ is above $\nu_2$)
+      and $\mu(a') < \mu(b)$ (since $\nu_2$ is below $\nu'_1$),
       which contradicts our hypothesis about $\mathcal{M}$.
       See Fig.~\ref{subfig:no (nu_1, nu_2)-edge - 1}.
-      \item Position $y$ is not involved in a $(\nu_2, \nu'_1)$-edge.
+      \item Position $b$ is not involved in a $(\nu_2, \nu'_1)$-edge.
       Since $\mathcal{M}$ contains $N_1-1$ pairwise crossing $(\nu_1, \nu'_1)$-edges
-      in $\mathcal{M}$ and $|\nu'_1| = N_1$, there exists an edge $(y, y'')$ in $\mathcal{M}$
+      in $\mathcal{M}$ and $|\nu'_1| = N_1$, there exists an edge
+      $(b, b'')$ in $\mathcal{M}$
       that is neither a $(\nu_1, \nu'_1)$-edge nor a $(\nu_2, \nu'_1)$-edge
       nor a $(\nu'_1, \nu'_1)$-edge.
       In other words, $y'' > 2N_1 + N_2$.
       Now, for any $(\nu_1, \nu'_1)$-edge $(x, x')$ in $\mathcal{M}$, we
-      have $\mu(x) < \mu(y)$ (since $\nu_1$ is below $\nu'_1$)
-      and $\mu(x') > \mu(y'')$ (since $\nu'_1$ is above any other gadget),
+      have $\mu(x) < \mu(b)$ (since $\nu_1$ is below $\nu'_1$)
+      and $\mu(x') > \mu(b'')$ (since $\nu'_1$ is above any other gadget),
       which contradicts our hypothesis about $\mathcal{M}$.
       See Fig.~\ref{subfig:no (nu_1, nu_2)-edge - 2}.
     \end{itemize}
