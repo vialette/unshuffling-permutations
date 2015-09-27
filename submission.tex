@@ -834,7 +834,7 @@ Proposition~\ref{proposition:hardness}.
   \label{lemma:at most one edge monotone}
   Let $\pi = \pi_1 \, \sigma_1 \, \pi_2 \, \sigma_2 \, \pi_3$
   be a permutation with $|\sigma_1| \geq 2$ and $|\sigma_2| \geq 2$,
-  and $\mathcal{M}$ be a containment-free perfect matching of $G_\pi$.
+  and $\mathcal{M}$ be a containment-free perfect matching of $K_\pi$.
   The following assertions hold:
   \begin{enumerate}
     \item
@@ -1282,10 +1282,10 @@ free as an associative algebra are worthwhile questions.
     and $I^2 = \{i^2_1 < i^2_2 < \dots < i^2_n\}$ of disjoint indexes of
     $\pi$ such that $\pi_{|I^1}$ and $\pi_{|I^2}$ are both
     order-isomorphic to $\sigma$.
-    Let $G_\pi$ be the linear clique associated to $\pi$ with vertices
-    $\VS{G_\pi} = \{i^1_j : j \in [n]\} \cup \{i^2_j : j \in [n]\}$. It
+    Let $K_\pi$ be the linear clique associated to $\pi$ with vertices
+    $\VS{K_\pi} = \{i^1_j : j \in [n]\} \cup \{i^2_j : j \in [n]\}$. It
     is easily seen that $\mathcal{M} = \{\{i^1_j, i^2_j\} : j \in [n]\}$
-    is a subset of $\ES{G_\pi}$. Furthermore, $\mathcal{M}$ is a perfect
+    is a subset of $\ES{K_\pi}$. Furthermore, $\mathcal{M}$ is a perfect
     matching since $I^1 \cap I^2 = \emptyset$, and
     $I^1 \cup I^2 = \{1, 2,  \dots 2n\}$. It is also containment-free.
     Indeed, if it is not the case then there would exist two edges
@@ -1389,8 +1389,8 @@ free as an associative algebra are worthwhile questions.
     $(\pi'', \sigma'')$-edges as depicted in
     Figure~\ref{fig:subfig:sigma' - pi' - pi'' - sigma''}.
     More precisely, the positions in $\pi''$ that correspond to
-    the fixed occurrence of $\sigma$ in $\pi$ are llinked
-    linked by means of $k$ pairwise crossing edges to all positions in
+    the fixed occurrence of $\sigma$ in $\pi$ are linked
+    by means of $k$ pairwise crossing edges to all positions in
     $\sigma''$.
     (Notice that we use here the fact that $\sigma$ occurs in $\pi$).
   \end{itemize}
@@ -1755,9 +1755,9 @@ free as an associative algebra are worthwhile questions.
     in $\mathcal{M}$.
     Then it follows that every position $y$ of $\nu'_1$
     (\emph{i.e.}, $N_1+N_2 < y \leq 2N_1+N_2$)
-    is involved in an edge $(y, y'$ of $\mathcal{M}$ with $y' \geq 2N_1+N_2$
+    is involved in an edge $(y, y')$ of $\mathcal{M}$ with $y' \geq 2N_1+N_2$
     (otherwise $\mathcal{M}$ would not be containment-free).
-    But $|\nu'_1| = N_1 = 2(2N_2 + 2n_3 + 2N_4 + 2n + 2k + 4) + 1
+    But $|\nu'_1| = N_1 = 2(2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4) + 1
     > 2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4$, and hence at least one
     position in $\nu'_1$ can not be involved in an edge in $\mathcal{M}$.
     Then it follows that $\mathcal{M}$ is not a perfect matching,
