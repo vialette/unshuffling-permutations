@@ -100,7 +100,7 @@ Unshuffling Permutations}%
     shuffling two order-isomorphic patterns. The definition is intended
     to be the natural counterpart to the ordinary shuffle of words and
     languages. In this paper, we tackle the problem of recognizing square
-    permutations from both the point of view of algebra and algorithmic.
+    permutations from both the point of view of algebra and algorithms.
     On the one hand, we present some algebraic and combinatorial
     properties of the shuffle product of permutations. We follow an
     unusual line consisting in defining the shuffle of permutations by
@@ -108,10 +108,8 @@ Unshuffling Permutations}%
     strategy allows to obtain easy proofs for algebraic and combinatorial
     properties of our shuffle product. We besides exhibit a bijection
     between square $(213,231)$-avoiding permutations and square binary
-    words.
-    On the other hand,
-    using a containment-free perfect matching criterion,
-    we prove that recognizing square permutations is \NPC.
+    words. On the other hand, using a containment-free perfect matching 
+    criterion, we prove that recognizing square permutations is \NPC.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -233,7 +231,7 @@ associative and commutative
 (Proposition~\ref{prop:shuffle_associative_commutative}), and that if a
 permutation is a square, its mirror, complement, and inverse are also
 squares (Proposition~\ref{prop:square_stability}). Finally,
-Section~\ref{section:Algorithmic issues} presents the most import result
+Section~\ref{section:Algorithmic issues} presents the most important result
 of this paper: the fact that deciding if a permutation is a square is
 \NPC (Proposition~\ref{proposition:hardness}). This result is obtained
 by exhibiting a reduction from the pattern involvement
@@ -277,7 +275,7 @@ fact that we shall denote by $\pi(i)$ (instead of $\pi_i$) the $i$-th
 letter of any permutation $\pi$. For any nonnegative integer $n$, we
 write $\nearrow_{n}$ (resp. $\searrow_{n}$) for the permutation
 $1 2 \dots n$ (resp. $n (n-1) \dots 1$). If $\pi$ is a permutation of
-$S_n$, we denote by $\bar \pi$ the {\em complementary} of $\pi$, that is
+$S_n$, we denote by $\bar \pi$ the {\em complement} of $\pi$, that is
 the permutation satisfying $\bar \pi(i) = n - \pi(i) + 1$ for all
 $i \in [n]$. The {\em inverse} of $\pi$ is denoted by $\pi^{-1}$.
 
@@ -296,7 +294,7 @@ $\sigma$.
 Let us now provide some definitions about graphs and matching that are used in
 the sequel. For a graph $G$, we denote $\VS{G}$ as the set of vertices
 and $\ES{G}$ as the set of edges of $G$. Let $u = u_1 u_2 \dots u_n$ be
-a word. The \emph{clique graph associated to $u$}, denoted by $K_u$, is
+a word. The \emph{clique graph associated with $u$}, denoted by $K_u$, is
 the complete graph on $\VS{K_u} = \{u_1, u_2, \ldots, u_n\}$. The
 structure of this underlying graph is linear, \emph{i.e.}, the set of
 its vertices is equipped with a natural total order $<$ defined by
@@ -312,8 +310,8 @@ are \emph{involved} in $e$.
 In case the set of vertices is equipped with a total order, a
 matching $\mathcal{M}$ is said to be \emph{containment-free} if there do
 not exist (independent) edges $(u_i, u_j)$ and $(u_k, u_\ell)$ in
-$\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$ or
-$u_k < u_i < u_j < u_\ell$
+$\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$ 
+%or $u_k < u_i < u_j < u_\ell$
 (\emph{i.e.}, $\mathcal{M}$ avoids~\MWithContainment).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -347,19 +345,20 @@ We call $\Delta$ the {\em unshuffling coproduct of permutations}. For
 instance,
 \begin{equation}
     \Delta(213) =
-    \epsilon \otimes 213 + 2. 1 \otimes 12 +
-    1 \otimes 21 + 2. 12 \otimes 1 + 21 \otimes 1 + 213 \otimes \epsilon,
+    \epsilon \otimes 213 + 2 \cdot 1 \otimes 12 +
+    1 \otimes 21 + 2 \cdot 12 \otimes 1 + 21 \otimes 1 
+    + 213 \otimes \epsilon,
 \end{equation}
 \begin{equation}
     \Delta(1234) =
-    \epsilon \otimes 1234 + 4. 1 \otimes 123 + 6. 12 \otimes 12 +
-    4. 123 \otimes 1 + 1234 \otimes \epsilon,
+    \epsilon \otimes 1234 + 4 \cdot 1 \otimes 123 + 6 \cdot 12 \otimes 12 +
+    4 \cdot 123 \otimes 1 + 1234 \otimes \epsilon,
 \end{equation}
 \begin{equation}\begin{split} \label{equ:example_unshuffling_coproduct}
     \Delta(1432) & =
-    \epsilon \otimes 1432 + 3. {\bf 1 \otimes 132} + 1 \otimes 321 +
-    3. 12 \otimes 21 \\ & + 3. 21 \otimes 12 + 3. 132 \otimes 1 +
-    321 \otimes 1 + 1432 \otimes \epsilon.
+    \epsilon \otimes 1432 + 3 \cdot {\bf 1 \otimes 132} + 1 \otimes 321 +
+    3 \cdot 12 \otimes 21 \\ & + 3 \cdot 21 \otimes 12 
+    + 3 \cdot 132 \otimes 1 + 321 \otimes 1 + 1432 \otimes \epsilon.
 \end{split}\end{equation}
 Observe that the coefficient of the tensor $1 \otimes 132$ is $3$
 in~\eqref{equ:example_unshuffling_coproduct} because there are exactly
@@ -419,8 +418,8 @@ satisfying $P_1 \sqcup P_2 = [|\pi|]$ such that the subword $\pi_{|P_1}$
 is order-isomorphic to $\sigma$ and the subword $\pi_{|P_2}$ is
 order-isomorphic to $\nu$.
 
-Besides, a permutation $\pi$ is a {\em square} if there is a
-permutation $\sigma$ such that $\pi$ appears in $\sigma \SHUFFLE \sigma$.
+A permutation $\pi$ is a {\em square} if there is a permutation 
+$\sigma$ such that $\pi$ appears in $\sigma \SHUFFLE \sigma$.
 In this case, we say that $\sigma$ is a {\em square root} of $\pi$.
 Equivalently, $\pi$ is a square with $\sigma$ as square root if and only
 if in the expansion of $\Delta(\pi)$, there is a tensor
@@ -463,10 +462,11 @@ words and our shuffle of permutations and allows to obtain a new
 description of square binary words.
 
 Let $u$ be a binary word of length $n$ with $k$ occurrences of $0$.
-We denote by $\BINTOPERM$ the map sending any such word $u$ to the
-permutation obtained by replacing from left to right each occurrence of
-$0$ in $u$ by $1$, $2$, \dots, $k$, and from right to left each
-occurrence of $1$ in $u$ by $k + 1$, $k + 2$, \dots, $n$. For instance,
+We denote by $\BINTOPERM$ (Binary word To Permutation) the map sending 
+any such word $u$ to the permutation obtained by replacing from left to 
+right each occurrence of $0$ in $u$ by $1$, $2$, \dots, $k$, and from 
+right to left each occurrence of $1$ in $u$ by $k + 1$, $k + 2$, \dots, $n$.
+For instance,
 \begin{equation}
     \BINTOPERM({\bf 1}00{\bf 1}0{\bf 1}{\bf 1}0{\bf 1}000) =
     {\bf C} 12 {\bf B} 3 {\bf A} {\bf 9} 4 {\bf 8} 567.
@@ -474,8 +474,9 @@ occurrence of $1$ in $u$ by $k + 1$, $k + 2$, \dots, $n$. For instance,
 Observe that for any nonempty permutation $\pi$ in the image of
 $\BINTOPERM$, there is exactly one binary word $u$ such that
 $\BINTOPERM(u0) = \BINTOPERM(u1) = \pi$. In support of this observation,
-when $\pi$ has an even size, we denote by $\PERMTOBIN(\pi)$ the word $ua$
-such that $|ua|_0$ and $|ua|_1$ are both even, where $a \in \{0, 1\}$.
+when $\pi$ has an even size, we denote by $\PERMTOBIN(\pi)$ (Permutation
+To Binary word) the word $ua$ such that $|ua|_0$ and $|ua|_1$ are both 
+even, where $a \in \{0, 1\}$.
 
 \begin{proposition} \label{prop:bijection_binary_to_permutations_squares}
     For any $n \geq 0$, the map $\BINTOPERM$ restricted to the set of
@@ -538,7 +539,7 @@ combinatorial properties of $\SHUFFLE$.
     \begin{equation}
         (\Delta \otimes I) \Delta = (I \otimes \Delta) \Delta,
     \end{equation}
-    where $I$ denote the identity map. This strategy relies on the fact
+    where $I$ denotes the identity map. This strategy relies on the fact
     that a product is associative if and only if its dual coproduct is
     coassociative. For any permutation $\pi$, we have
     \begin{equation} \begin{split}
@@ -667,7 +668,7 @@ while the number of square permutations avoiding $132$ begins by
 
 Besides, an other consequence of Proposition~\ref{prop:square_stability}
 is that its makes sense to enumerate the sets of square permutations
-quotiented by the operations of mirror image, complementary, and
+quotiented by the operations of mirror image, complement, and
 inverse. The sequence enumerating these sets begins by
 \begin{equation} \label{equ:sequence_square_classes}
     1, 0, 1, 0, 6, 0, 81, 0, 2774, 0, 162945.
@@ -717,7 +718,7 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows
       (U09.north) .. controls ($ (U09.north) + (0,2.5) $) and ($ (U10.north) + (0,2.5) $) .. (U10.north);
   \end{tikzpicture}
   \caption{\label{fig:example containment-free matching}%
-    The linear graph $K_\pi$ associated to the permutation
+    The linear graph $K_\pi$ associated with the permutation
     $\pi = 2A47195386$ together with
     a containment-free perfect matching $\mathcal{M}$
     such that for any two distinct edges $(a, b)$ and
@@ -1282,7 +1283,7 @@ free as an associative algebra are worthwhile questions.
     and $I^2 = \{i^2_1 < i^2_2 < \dots < i^2_n\}$ of disjoint indexes of
     $\pi$ such that $\pi_{|I^1}$ and $\pi_{|I^2}$ are both
     order-isomorphic to $\sigma$.
-    Let $K_\pi$ be the linear clique associated to $\pi$ with vertices
+    Let $K_\pi$ be the linear clique associated with $\pi$ with vertices
     $\VS{K_\pi} = \{i^1_j : j \in [n]\} \cup \{i^2_j : j \in [n]\}$. It
     is easily seen that $\mathcal{M} = \{\{i^1_j, i^2_j\} : j \in [n]\}$
     is a subset of $\ES{K_\pi}$. Furthermore, $\mathcal{M}$ is a perfect
@@ -1994,7 +1995,7 @@ free as an associative algebra are worthwhile questions.
 
   \begin{claim}
     \label{claim:no (nu_1, nu_3)-edge and no (nu'_1, nu_3)-edge}
-    There is neither a $(\nu_1, \nu_3)$-edge not a $(\nu'_1, \nu_3)$-edge
+    There is neither a $(\nu_1, \nu_3)$-edge nor a $(\nu'_1, \nu_3)$-edge
     in $\mathcal{M}$.
   \end{claim}
 
