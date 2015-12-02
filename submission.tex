@@ -188,20 +188,21 @@ denoted by $\SHUFFLE$, as a shuffle of permutations. Roughly speaking,
 given three permutations $\pi$, $\sigma_1$, and $\sigma_2$, $\pi$ is
 said to be a {\em shuffle} of $\sigma_1$ and $\sigma_2$ if $\pi$ (viewed
 as a word) is a shuffle of two words that are order-isomorphic to
-$\sigma_1$ and $\sigma_2$. Our intention in this paper is to study this
-shuffle product of permutations $\SHUFFLE$ both from a combinatorial and
-from a computational point of view by focusing on {\em square}
-permutations, that are permutations $\pi$ being in the shuffle of a
-permutation $\sigma$ with itself. The shuffle product defined and
-considered in this paper is different from other existing and well-known
-shuffle products on permutations. For instance, in~\cite{DHT:IJAC:2002},
-the authors define the {\em shifted shuffle product}. For this product,
-$\pi$ is a shuffle of $\sigma_1$ and $\sigma_2$ if $\pi$ is in the
-shuffle, as words, of $\sigma_1$ and the word obtained by incrementing
-all the letters of $\sigma_2$ by the size of $\sigma_1$. It is a simple
-exercise to prove that, given three permutations $\pi$, $\sigma_1$, and
-$\sigma_2$, deciding if $\pi$ is a in the shifted shuffle of $\sigma_1$
-and $\sigma_2$ is in~\Pclass.
+$\sigma_1$ and $\sigma_2$. This shuffle product was first introduced by
+Vargas~\cite{Vargas:2014} under the name of {\em supershuffle}. Our 
+intention in this paper is to study this shuffle product of permutations 
+$\SHUFFLE$ both from a combinatorial and from a computational point of 
+view by focusing on {\em square} permutations, that are permutations 
+$\pi$ being in the shuffle of a permutation $\sigma$ with itself. Many 
+other shuffle products on permutations appear in the literature. For 
+instance, in~\cite{DHT:IJAC:2002}, the authors define the {\em convolution 
+product} and the {\em shifted shuffle product}. For this last product, 
+$\pi$ is a shuffle of $\sigma_1$ and $\sigma_2$ if $\pi$ is in the shuffle, 
+as words, of $\sigma_1$ and the word obtained by incrementing all the 
+letters of $\sigma_2$ by the size of $\sigma_1$. It is a simple exercise 
+to prove that, given three permutations $\pi$, $\sigma_1$, and $\sigma_2$,
+deciding if $\pi$ is in the shifted shuffle of $\sigma_1$ and $\sigma_2$ 
+is in~\Pclass.
 \smallskip
 
 This paper is organized as follows. In
@@ -280,16 +281,17 @@ the permutation satisfying $\bar \pi(i) = n - \pi(i) + 1$ for all
 $i \in [n]$. The {\em inverse} of $\pi$ is denoted by $\pi^{-1}$.
 
 If $u$ is a word of integers without multiple occurrences of a same
-letter, $\STD(u)$ is the {\em standarized} of $u$, that is the unique
+letter, $\STD(u)$ is the {\em standardized} of $u$, that is the unique
 permutation of the same size as $u$ such that for all $i, j \in [|u|]$,
 $u_i < u_j$ if and only if $\STD(u)(i) < \STD(u)(j)$. In particular, the
 image of the map $\STD$ is the set $S$ of all permutations. Two words $u$
-and $v$ having the same standarized are {\em order-isomorphic}. If
+and $v$ having the same standardized are {\em order-isomorphic}. If
 $\sigma$ is a permutation, there is an {\em occurrence} of (the
 {\em pattern}) $\sigma$ in $\pi$ if there is a set $P$ of indexes of
 letters of $\pi$ such that $\sigma$ and $\pi_{|P}$ are order-isomorphic.
 When $\pi$ does not admit any occurrence of $\sigma$, $\pi$ {\em avoids}
-$\sigma$.
+$\sigma$. The set of permutations of size $n$ avoiding $\sigma$ is 
+denoted by $S_n(\sigma)$.
 
 Let us now provide some definitions about graphs and matching that are used in
 the sequel. For a graph $G$, we denote $\VS{G}$ as the set of vertices
@@ -323,7 +325,9 @@ $\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$
 \label{section:Shuffle product on permutations}
 
 The purpose of this section is to define a shuffle product $\SHUFFLE$
-on permutations. To define this shuffle product, we shall first define
+on permutations. Recall that a first definition of this product was 
+provided by Vargas~\cite{Vargas:2014}. To present an alternative 
+definition of this product adapted to our study, we shall first define
 a coproduct denoted by $\Delta$, enabling to unshuffle permutations.
 By duality, $\Delta$ implies the definition of $\SHUFFLE$. The reason
 why we need to pass by the definition of $\Delta$ to define $\SHUFFLE$
@@ -333,7 +337,7 @@ and clear proofs of them. We invite the reader unfamiliar with the
 concepts of coproduct and duality to consult~\cite{Joni:Rota:1979}
 or~\cite{Grinberg:Reiner:2014}.
 
-Let use denote by $\QQ[S]$ the linear span of all permutations. We
+Let us denote by $\QQ[S]$ the linear span of all permutations. We
 define a linear coproduct $\Delta$ on $\QQ[S]$ in the following way. For
 any permutation $\pi$, we set
 \begin{equation} \label{equ:unshuffling_coproduct}
@@ -399,15 +403,11 @@ coefficient of the tensor $12 \otimes 21$ is $3$
 in~\eqref{equ:example_unshuffling_coproduct}.
 
 Intuitively, this product shuffles the values and the positions of the
-letters of the permutations. As first and easy properties of $\SHUFFLE$,
-one can observe that the empty permutation $\epsilon$ is a unit for
-$\SHUFFLE$ and that this product is graded by the sizes of the
-permutations ({\em i.e.}, the product of a permutation of size $n$ with
-a permutation of size $m$ produces a sum of permutations of size $n + m$).
-Notice that there are other shuffle products on
-permutations~\cite{DHT:IJAC:2002}: the {\em shifted shuffle} and the
-{\em convolution product}. Our shuffle product is different from these
-last two.
+letters of the permutations. One can observe that the empty permutation 
+$\epsilon$ is a unit for $\SHUFFLE$ and that this product is graded by 
+the sizes of the permutations ({\em i.e.}, the product of a permutation 
+of size $n$ with a permutation of size $m$ produces a sum of permutations 
+of size $n + m$).
 
 We say that a permutation $\pi$ {\em appears} in the shuffle
 $\sigma \SHUFFLE \nu$ of two permutations $\sigma$ and $\nu$ if the
@@ -424,7 +424,7 @@ In this case, we say that $\sigma$ is a {\em square root} of $\pi$.
 Equivalently, $\pi$ is a square with $\sigma$ as square root if and only
 if in the expansion of $\Delta(\pi)$, there is a tensor
 $\sigma \otimes \sigma$ with a nonzero coefficient. In a more
-combinatorial way, this is equivalent to say that there are two sets
+combinatorial way, this is equivalent to saying that there are two sets
 $P_1$ and $P_2$ of disjoints indexes of letters of $\pi$ satisfying
 $P_1 \sqcup P_2 = [|\pi|]$ such that the subwords $\pi_{|P_1}$ and
 $\pi_{|P_2}$ are order-isomorphic. Computer experiments give us the
@@ -469,14 +469,15 @@ right to left each occurrence of $1$ in $u$ by $k + 1$, $k + 2$, \dots, $n$.
 For instance,
 \begin{equation}
     \BINTOPERM({\bf 1}00{\bf 1}0{\bf 1}{\bf 1}0{\bf 1}000) =
-    {\bf C} 12 {\bf B} 3 {\bf A} {\bf 9} 4 {\bf 8} 567.
+    {\bf C} 12 {\bf B} 3 {\bf A} {\bf 9} 4 {\bf 8} 567,
 \end{equation}
-Observe that for any nonempty permutation $\pi$ in the image of
-$\BINTOPERM$, there is exactly one binary word $u$ such that
-$\BINTOPERM(u0) = \BINTOPERM(u1) = \pi$. In support of this observation,
-when $\pi$ has an even size, we denote by $\PERMTOBIN(\pi)$ (Permutation
-To Binary word) the word $ua$ such that $|ua|_0$ and $|ua|_1$ are both 
-even, where $a \in \{0, 1\}$.
+where $\mathrm{A}$, $\mathrm{B}$, and $\mathrm{C}$ respectively stand 
+for $10$, $11$, and $12$. Observe that for any nonempty permutation 
+$\pi$ in the image of $\BINTOPERM$, there is exactly one binary word $u$ 
+such that $\BINTOPERM(u0) = \BINTOPERM(u1) = \pi$. In support of this
+observation, when $\pi$ has an even size, we denote by $\PERMTOBIN(\pi)$
+(Permutation To Binary word) the word $ua$ such that $|ua|_0$ and $|ua|_1$ 
+are both even, where $a \in \{0, 1\}$.
 
 \begin{proposition} \label{prop:bijection_binary_to_permutations_squares}
     For any $n \geq 0$, the map $\BINTOPERM$ restricted to the set of
@@ -648,8 +649,10 @@ of square permutations.
     \qed
 \end{proof}
 
-Let us make an observation about Wilf-equivalence classes of
-permutations restrained on square permutations. The
+Let us make an observation about Wilf-equivalence classes of permutations 
+restrained on square permutations. Recall that two permutations $\sigma$ 
+and $\nu$ of the same size are {\em Wilf equivalent} if 
+$\# S_n(\sigma) = \# S_n(\nu)$ for all $n \geq 0$. The
 well-known~\cite{Simion:Schmidt:EJC:1985} fact that there is a single
 Wilf-equivalence class of permutations of size $3$ together with
 Proposition~\ref{prop:square_stability} imply that $123$ and $321$ are
@@ -1150,7 +1153,7 @@ free as an associative algebra are worthwhile questions.
     sets $P$ and $Q$ of positions of letters of $u$ such that
     $u_{|P} = v = u_{|Q}$. Now, by definition of $\BINTOPERM$, the
     words $\BINTOPERM(u)_{|P}$ and $\BINTOPERM(u)_{|Q}$ have the
-    same standarized $\sigma$. Hence, and by definition of
+    same standardized $\sigma$. Hence, and by definition of
     the shuffle product of permutations, $\BINTOPERM(u)$ appears in
     $\sigma \SHUFFLE \sigma$, showing that $\BINTOPERM(u)$ is a
     square permutation.
