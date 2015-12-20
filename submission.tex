@@ -108,7 +108,7 @@ Unshuffling Permutations}%
     strategy allows to obtain easy proofs for algebraic and combinatorial
     properties of our shuffle product. We besides exhibit a bijection
     between square $(213,231)$-avoiding permutations and square binary
-    words. On the other hand, using a containment-free perfect matching 
+    words. On the other hand, using a containment-free perfect matching
     criterion, we prove that recognizing square permutations is \NPC.
 \end{abstract}
 
@@ -120,7 +120,7 @@ Unshuffling Permutations}%
 %%
 \section{Introduction}
 \label{section:Introduction}
-The {\em shuffle product}, denoted $\shuffle$, is a very famous operation on words
+The {\em shuffle product}, denoted $\shuffle$, is a well-known operation on words
 first defined by Eilenberg and Mac Lane~\cite{Eilenberg:MacLane:1953}.
 Given three words $u$, $v_1$, and $v_2$, $u$ is said to be a \emph{shuffle}
 of $v_1$ and $v_2$ if it can be formed by interleaving the letters from
@@ -142,7 +142,7 @@ problems:
     Given a word $u$, decide if there is a word $v$ such that $u$ is
     in $v \shuffle v$.
 \end{enumerate}
-Even if these problems seem similar, they are very different in terms
+Even if these problems seem similar, they radically differ in terms
 of time complexity. Let us now review some facts about these. In what follows,
 $n$ denotes the size of $u$ and $m_i$ denotes the size of each $v_i$.
 A solution to Problem~\ref{item:problem_1} can be computed in
@@ -189,19 +189,19 @@ given three permutations $\pi$, $\sigma_1$, and $\sigma_2$, $\pi$ is
 said to be a {\em shuffle} of $\sigma_1$ and $\sigma_2$ if $\pi$ (viewed
 as a word) is a shuffle of two words that are order-isomorphic to
 $\sigma_1$ and $\sigma_2$. This shuffle product was first introduced by
-Vargas~\cite{Vargas:2014} under the name of {\em supershuffle}. Our 
-intention in this paper is to study this shuffle product of permutations 
-$\SHUFFLE$ both from a combinatorial and from a computational point of 
-view by focusing on {\em square} permutations, that are permutations 
-$\pi$ being in the shuffle of a permutation $\sigma$ with itself. Many 
-other shuffle products on permutations appear in the literature. For 
-instance, in~\cite{DHT:IJAC:2002}, the authors define the {\em convolution 
-product} and the {\em shifted shuffle product}. For this last product, 
-$\pi$ is a shuffle of $\sigma_1$ and $\sigma_2$ if $\pi$ is in the shuffle, 
-as words, of $\sigma_1$ and the word obtained by incrementing all the 
-letters of $\sigma_2$ by the size of $\sigma_1$. It is a simple exercise 
+Vargas~\cite{Vargas:2014} under the name of {\em supershuffle}. Our
+intention in this paper is to study this shuffle product of permutations
+$\SHUFFLE$ both from a combinatorial and from a computational point of
+view by focusing on {\em square} permutations, that are permutations
+$\pi$ being in the shuffle of a permutation $\sigma$ with itself. Many
+other shuffle products on permutations appear in the literature. For
+instance, in~\cite{DHT:IJAC:2002}, the authors define the {\em convolution
+product} and the {\em shifted shuffle product}. For this last product,
+$\pi$ is a shuffle of $\sigma_1$ and $\sigma_2$ if $\pi$ is in the shuffle,
+as words, of $\sigma_1$ and the word obtained by incrementing all the
+letters of $\sigma_2$ by the size of $\sigma_1$. It is a simple exercise
 to prove that, given three permutations $\pi$, $\sigma_1$, and $\sigma_2$,
-deciding if $\pi$ is in the shifted shuffle of $\sigma_1$ and $\sigma_2$ 
+deciding if $\pi$ is in the shifted shuffle of $\sigma_1$ and $\sigma_2$
 is in~\Pclass.
 \smallskip
 
@@ -221,7 +221,7 @@ doing allows to obtain a clear description of the multiplicities of the
 elements appearing in the shuffle of two permutations, which are worthy
 of interest from a combinatorial point of view.
 Section~\ref{section:Binary square words and permutations} is devoted to
-show that the problems related to the shuffle of words has links with
+showing that the problems related to the shuffle of words has links with
 the shuffle of permutations. In particular, we show that binary words
 that are square are in one-to-one correspondence with square
 permutations avoiding some patterns
@@ -275,7 +275,7 @@ words remain valid on permutations. The only difference lies on the
 fact that we shall denote by $\pi(i)$ (instead of $\pi_i$) the $i$-th
 letter of any permutation $\pi$. For any nonnegative integer $n$, we
 write $\nearrow_{n}$ (resp. $\searrow_{n}$) for the permutation
-$1 2 \dots n$ (resp. $n (n-1) \dots 1$). If $\pi$ is a permutation of
+$1 2 \dots n$ (resp. $n\,(n-1) \dots 1$). If $\pi$ is a permutation of
 $S_n$, we denote by $\bar \pi$ the {\em complement} of $\pi$, that is
 the permutation satisfying $\bar \pi(i) = n - \pi(i) + 1$ for all
 $i \in [n]$. The {\em inverse} of $\pi$ is denoted by $\pi^{-1}$.
@@ -290,7 +290,7 @@ $\sigma$ is a permutation, there is an {\em occurrence} of (the
 {\em pattern}) $\sigma$ in $\pi$ if there is a set $P$ of indexes of
 letters of $\pi$ such that $\sigma$ and $\pi_{|P}$ are order-isomorphic.
 When $\pi$ does not admit any occurrence of $\sigma$, $\pi$ {\em avoids}
-$\sigma$. The set of permutations of size $n$ avoiding $\sigma$ is 
+$\sigma$. The set of permutations of size $n$ avoiding $\sigma$ is
 denoted by $S_n(\sigma)$.
 
 Let us now provide some definitions about graphs and matching that are used in
@@ -312,7 +312,7 @@ are \emph{involved} in $e$.
 In case the set of vertices is equipped with a total order, a
 matching $\mathcal{M}$ is said to be \emph{containment-free} if there do
 not exist (independent) edges $(u_i, u_j)$ and $(u_k, u_\ell)$ in
-$\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$ 
+$\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$
 %or $u_k < u_i < u_j < u_\ell$
 (\emph{i.e.}, $\mathcal{M}$ avoids~\MWithContainment).
 
@@ -325,8 +325,8 @@ $\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$
 \label{section:Shuffle product on permutations}
 
 The purpose of this section is to define a shuffle product $\SHUFFLE$
-on permutations. Recall that a first definition of this product was 
-provided by Vargas~\cite{Vargas:2014}. To present an alternative 
+on permutations. Recall that a first definition of this product was
+provided by Vargas~\cite{Vargas:2014}. To present an alternative
 definition of this product adapted to our study, we shall first define
 a coproduct denoted by $\Delta$, enabling to unshuffle permutations.
 By duality, $\Delta$ implies the definition of $\SHUFFLE$. The reason
@@ -350,7 +350,7 @@ instance,
 \begin{equation}
     \Delta(213) =
     \epsilon \otimes 213 + 2 \cdot 1 \otimes 12 +
-    1 \otimes 21 + 2 \cdot 12 \otimes 1 + 21 \otimes 1 
+    1 \otimes 21 + 2 \cdot 12 \otimes 1 + 21 \otimes 1
     + 213 \otimes \epsilon,
 \end{equation}
 \begin{equation}
@@ -361,7 +361,7 @@ instance,
 \begin{equation}\begin{split} \label{equ:example_unshuffling_coproduct}
     \Delta(1432) & =
     \epsilon \otimes 1432 + 3 \cdot {\bf 1 \otimes 132} + 1 \otimes 321 +
-    3 \cdot 12 \otimes 21 \\ & + 3 \cdot 21 \otimes 12 
+    3 \cdot 12 \otimes 21 \\ & + 3 \cdot 21 \otimes 12
     + 3 \cdot 132 \otimes 1 + 321 \otimes 1 + 1432 \otimes \epsilon.
 \end{split}\end{equation}
 Observe that the coefficient of the tensor $1 \otimes 132$ is $3$
@@ -393,9 +393,9 @@ of~\eqref{equ:schematic_coproduct}. We call $\SHUFFLE$ the
 {\em shuffle product of permutations}. For instance,
 \begin{equation}\begin{split} \label{equ:example_shuffle_product}
     12 \SHUFFLE 21 & =
-    1243 + 1324 + 2 \cdot 1342 + 2 \cdot 1423 + 3 \cdot {\bf 1432} + 
+    1243 + 1324 + 2 \cdot 1342 + 2 \cdot 1423 + 3 \cdot {\bf 1432} +
     2134 + 2 \cdot 2314 \\
-    & + 3 \cdot 2341 + 2413 + 2 \cdot 2431 + 2 \cdot 3124 + 3142 + 
+    & + 3 \cdot 2341 + 2413 + 2 \cdot 2431 + 2 \cdot 3124 + 3142 +
     3 \cdot 3214 + 2 \cdot 3241 \\
     & + 3421 + 3 \cdot 4123 + 2 \cdot 4132 + 2 \cdot 4213 + 4231 + 4312.
 \end{split}\end{equation}
@@ -405,10 +405,10 @@ coefficient of the tensor $12 \otimes 21$ is $3$
 in~\eqref{equ:example_unshuffling_coproduct}.
 
 Intuitively, this product shuffles the values and the positions of the
-letters of the permutations. One can observe that the empty permutation 
-$\epsilon$ is a unit for $\SHUFFLE$ and that this product is graded by 
-the sizes of the permutations ({\em i.e.}, the product of a permutation 
-of size $n$ with a permutation of size $m$ produces a sum of permutations 
+letters of the permutations. One can observe that the empty permutation
+$\epsilon$ is a unit for $\SHUFFLE$ and that this product is graded by
+the sizes of the permutations ({\em i.e.}, the product of a permutation
+of size $n$ with a permutation of size $m$ produces a sum of permutations
 of size $n + m$).
 
 We say that a permutation $\pi$ {\em appears} in the shuffle
@@ -420,7 +420,7 @@ satisfying $P_1 \sqcup P_2 = [|\pi|]$ such that the subword $\pi_{|P_1}$
 is order-isomorphic to $\sigma$ and the subword $\pi_{|P_2}$ is
 order-isomorphic to $\nu$.
 
-A permutation $\pi$ is a {\em square} if there is a permutation 
+A permutation $\pi$ is a {\em square} if there is a permutation
 $\sigma$ such that $\pi$ appears in $\sigma \SHUFFLE \sigma$.
 In this case, we say that $\sigma$ is a {\em square root} of $\pi$.
 Equivalently, $\pi$ is a square with $\sigma$ as square root if and only
@@ -464,21 +464,21 @@ words and our shuffle of permutations and allows to obtain a new
 description of square binary words.
 
 Let $u$ be a binary word of length $n$ with $k$ occurrences of $0$.
-We denote by $\BINTOPERM$ (Binary word To Permutation) the map sending 
-any such word $u$ to the permutation obtained by replacing from left to 
-right each occurrence of $0$ in $u$ by $1$, $2$, \dots, $k$, and from 
+We denote by $\BINTOPERM$ (Binary word To Permutation) the map sending
+any such word $u$ to the permutation obtained by replacing from left to
+right each occurrence of $0$ in $u$ by $1$, $2$, \dots, $k$, and from
 right to left each occurrence of $1$ in $u$ by $k + 1$, $k + 2$, \dots, $n$.
 For instance,
 \begin{equation}
     \BINTOPERM({\bf 1}00{\bf 1}0{\bf 1}{\bf 1}0{\bf 1}000) =
     {\bf C} 12 {\bf B} 3 {\bf A} {\bf 9} 4 {\bf 8} 567,
 \end{equation}
-where $\mathrm{A}$, $\mathrm{B}$, and $\mathrm{C}$ respectively stand 
-for $10$, $11$, and $12$. Observe that for any nonempty permutation 
-$\pi$ in the image of $\BINTOPERM$, there is exactly one binary word $u$ 
+where $\mathrm{A}$, $\mathrm{B}$, and $\mathrm{C}$ respectively stand
+for $10$, $11$, and $12$. Observe that for any nonempty permutation
+$\pi$ in the image of $\BINTOPERM$, there is exactly one binary word $u$
 such that $\BINTOPERM(u0) = \BINTOPERM(u1) = \pi$. In support of this
 observation, when $\pi$ has an even size, we denote by $\PERMTOBIN(\pi)$
-(Permutation To Binary word) the word $ua$ such that $|ua|_0$ and $|ua|_1$ 
+(Permutation To Binary word) the word $ua$ such that $|ua|_0$ and $|ua|_1$
 are both even, where $a \in \{0, 1\}$.
 
 \begin{proposition} \label{prop:bijection_binary_to_permutations_squares}
@@ -566,7 +566,8 @@ beginning by
 \begin{equation}
 1, 0, 2, 0, 6, 0, 22, 0, 82, 0, 320, 0, 1268, 0, 5102, 0, 020632.
 \end{equation}
-By Proposition~\ref{prop:bijection_binary_to_permutations_squares}, this
+According to
+Proposition~\ref{prop:bijection_binary_to_permutations_squares}, this
 is also the sequence enumerating square permutations avoiding $213$
 and $231$.
 
@@ -703,9 +704,9 @@ of square permutations.
     \qed
 \end{proof}
 
-Let us make an observation about Wilf-equivalence classes of permutations 
-restrained on square permutations. Recall that two permutations $\sigma$ 
-and $\nu$ of the same size are {\em Wilf equivalent} if 
+Let us make an observation about Wilf-equivalence classes of permutations
+restrained on square permutations. Recall that two permutations $\sigma$
+and $\nu$ of the same size are {\em Wilf equivalent} if
 $\# S_n(\sigma) = \# S_n(\nu)$ for all $n \geq 0$. The
 well-known~\cite{Simion:Schmidt:EJC:1985} fact that there is a single
 Wilf-equivalence class of permutations of size $3$ together with
@@ -1065,8 +1066,9 @@ Proposition~\ref{proposition:hardness}.
   % for any two disctinct edges
   % $(a, b)$ and $(a', b')$ in $\mathcal{M}$
   % we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
-  It can be shown (see Appendix) that
-  $\sigma$ occurs in $\pi$ if and only if
+  It can be shown
+  %(see Appendix)
+  that $\sigma$ occurs in $\pi$ if and only if
   there exists a containment-free perfect matching
   $\mathcal{M}$ in $K_\mu$ such that
   for any two disctinct edges
@@ -1144,14 +1146,14 @@ problems that are, in our opinion, the most interesting. How many
 permutations of $S_{2n}$ are squares? How many $(213,231)$-avoiding
 permutations of $S_{2n}$ are squares? (Equivalently, by
 Proposition~\ref{prop:bijection_binary_to_permutations_squares},
-how many binary strings of length $2n$ are squares; Problem~4
+how many binary strings of length $2n$ are squares; see also Problem~4
 in \cite{Henshall:Rampersad:Shallit:2011})? How hard is the problem of
 deciding whether a $(213,231)$-avoiding permutation is a square
 (Problem~4 in \cite{Henshall:Rampersad:Shallit:2011},
 see also \cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013})?
 Given two permutations $\pi$ and~$\sigma$, how hard is the problem of
 deciding whether $\sigma$ is a square root of~$\pi$?
-Moreover, one can ask for a complete algebraic study of
+As for algebra, one can ask for a complete algebraic study of
 $\QQ[S]$ as a graded associative algebra for the shuffle  product
 $\SHUFFLE$. Describing a generating family for $\QQ[S]$, defining
 multiplicative bases of $\QQ[S]$, and determining whether $\QQ[S]$ is
