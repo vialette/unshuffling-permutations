@@ -46,6 +46,17 @@
 \DeclareMathOperator{\BINTOPERM}{\mathrm{btp}}
 \DeclareMathOperator{\PERMTOBIN}{\mathrm{ptb}}
 
+\newcommand{\Crossing}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \Crossing
+
 \newcommand{\CrossingLL}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
 \draw node [draw,circle,fill=black] (U1)               {};
@@ -90,6 +101,17 @@
 \end{tikzpicture}
 }% end \CrossingRR
 
+\newcommand{\Inclusion}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \Inclusion
+
 \newcommand{\InclusionLL}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
@@ -133,6 +155,17 @@
 \draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
 \end{tikzpicture}
 }% end \InclusionRR
+
+\newcommand{\Precedence}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \Precedence
 
 \newcommand{\PrecedenceLL}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
@@ -973,8 +1006,9 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
   \begin{enumerate}
     \item The permutation $\pi$ is a square.
     \item There exists an oriented perfect matching $\vv{\mathcal{M}}$
-    of $G_\pi$ that avoids \InclusionLL, \InclusionLR,\InclusionRL,\InclusionRR,
-    \CrossingLR and \CrossingRL such that for any two distinct arcs $(a, a)$ and
+    of the linear graph $G_\pi$ that avoids
+    \InclusionLL,~\InclusionLR,~\InclusionRL,~\InclusionRR,~\CrossingLR
+    and \CrossingRL, and such that for any two distinct arcs $(a, a)$ and
     $(b, b')$ in $\vv{\mathcal{M}}$ we have $\pi(a) < \pi(b)$ if and only
     if $\pi(a') < \pi(b')$.
   \end{enumerate}
