@@ -19,6 +19,7 @@
 \usepackage{enumitem}
 \usepackage{shuffle}
 \usepackage{multirow}
+\usepackage{esvect}
 
 \usepackage{tikz}
 \usetikzlibrary{matrix, calc, arrows, shapes.callouts}
@@ -44,6 +45,138 @@
 \DeclareMathOperator{\SHUFFLE}{\bullet}
 \DeclareMathOperator{\BINTOPERM}{\mathrm{btp}}
 \DeclareMathOperator{\PERMTOBIN}{\mathrm{ptb}}
+
+\newcommand{\CrossingLL}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingLL
+
+\newcommand{\CrossingLR}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingLR
+
+\newcommand{\CrossingRL}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingRL
+
+\newcommand{\CrossingRR}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingRR
+
+\newcommand{\InclusionLL}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \InclusionLL
+
+\newcommand{\InclusionLR}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \InclusionLR
+
+\newcommand{\InclusionRL}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \InclusionRL
+
+\newcommand{\InclusionRR}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \InclusionRR
+
+\newcommand{\PrecedenceLL}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLL
+
+\newcommand{\PrecedenceLR}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLR
+
+\newcommand{\PrecedenceRL}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRL
+
+\newcommand{\PrecedenceRR}{%
+\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRR
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -815,6 +948,19 @@ permutations. In the same way as happens with words, we shall use a
 linear graph framework where deciding whether a permutation is a square
 reduces to computing some specific matching in the associated linear
 graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
+
+\begin{lemma}
+  \label{lemma:matching}
+  Let $\pi$ be a permutation. The following statements are equivalent:
+  \begin{enumerate}
+    \item The permutation $\pi$ is a square.
+    \item There exists an oriented perfect matching $\vv{\mathcal{M}}$
+    of $G_\pi$ that avoids \InclusionLL, \InclusionLR,\InclusionRL,\InclusionRR,
+    \CrossingLR and \CrossingRL such that for any two distinct arcs $(a, a)$ and
+    $(b, b')$ in $\vv{\mathcal{M}}$ we have $\pi(a) < \pi(b)$ if and only
+    if $\pi(a') < \pi(b')$.
+  \end{enumerate}
+\end{lemma}
 
 \begin{lemma}
   \label{lemma:matching}
