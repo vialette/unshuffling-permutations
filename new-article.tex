@@ -112,6 +112,17 @@
 \end{tikzpicture}
 }% end \Inclusion
 
+\newcommand{\LabeledInclusionLL}[4]{%
+\begin{tikzpicture}[scale=0.25,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#1};
+\draw node [] [right of=U1] (U2) {#2};
+\draw node [] [right of=U2] (U3) {#3};
+\draw node [] [right of=U3] (U4) {#4};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionLL
+
 \newcommand{\InclusionLL}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
@@ -122,6 +133,17 @@
 \draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
 \end{tikzpicture}
 }% end \InclusionLL
+
+\newcommand{\LabeledInclusionLR}[4]{%
+\begin{tikzpicture}[scale=0.25,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#1};
+\draw node [] [right of=U1] (U2) {#2};
+\draw node [] [right of=U2] (U3) {#3};
+\draw node [] [right of=U3] (U4) {#4};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionLR
 
 \newcommand{\InclusionLR}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
@@ -134,6 +156,17 @@
 \end{tikzpicture}
 }% end \InclusionLR
 
+\newcommand{\LabeledInclusionRL}[4]{%
+\begin{tikzpicture}[scale=0.25,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#1};
+\draw node [] [right of=U1] (U2) {#2};
+\draw node [] [right of=U2] (U3) {#3};
+\draw node [] [right of=U3] (U4) {#4};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionRL
+
 \newcommand{\InclusionRL}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
@@ -144,6 +177,17 @@
 \draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
 \end{tikzpicture}
 }% end \InclusionRL
+
+\newcommand{\LabeledInclusionRR}[4]{%
+\begin{tikzpicture}[scale=0.25,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#1};
+\draw node [] [right of=U1] (U2) {#2};
+\draw node [] [right of=U2] (U3) {#3};
+\draw node [] [right of=U3] (U4) {#4};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionRR
 
 \newcommand{\InclusionRR}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
@@ -1014,36 +1058,36 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
   \end{enumerate}
 \end{lemma}
 
-\begin{lemma}
-  \label{lemma:matching}
-  Let $\pi$ be a permutation. The following statements are equivalent:
-  \begin{enumerate}
-    \item The permutation $\pi$ is a square.
-    \item There exists a perfect containment-free matching $\mathcal{M}$
-    of $G_\pi$ such that for any two distinct edges $(a, b)$ and
-    $(a', b')$ in $\mathcal{M}$ we have $\pi(a) < \pi(a')$ if and only
-    if $\pi(b) < \pi(b')$.
-  \end{enumerate}
-\end{lemma}
-
 \begin{proof}[of Lemma~\ref{lemma:matching}]
-    The proof is, naturally enough, a slight extension of
-    Lemma~1 in \cite{Rizzi:Vialette:CSR:2013} and is added here in full
-    for the sake of completeness.
-
     (\emph{1} $\Rightarrow$ \emph{2}).
-    Since $\pi$ is a square, it admits a square root $\sigma$. Then, by
-    definition, there are two sets $I^1 = \{i^1_1 < i^1_2 < \dots < i^1_n\}$
+    Since $\pi$ is a square, it admits a square root, say $\sigma$.
+    Let $2n = |\pi|$ (and hence $|\sigma| = n$).
+    Then, by definition, there exist two sets
+    $I^1 = \{i^1_1 < i^1_2 < \dots < i^1_n\}$
     and $I^2 = \{i^2_1 < i^2_2 < \dots < i^2_n\}$ of disjoint indexes of
     letters of $\pi$ such that $\pi_{|I^1}$ and $\pi_{|I^2}$ are both
-    order-isomorphic to $\sigma$. Let $2n = |\pi|$ (and hence
-    $|\sigma| = n$). Let $G_\pi$ be the linear clique associated to $\pi$
-    with vertices
-    $\VS{G_\pi} = \{i^1_j : j \in [n]\} \cup \{i^2_j : j \in [n]\}$. It
-    is easily seen that $\mathcal{M} = \{\{i^1_j, i^2_j\} : j \in [n]\}$
-    is a subset of $\ES{G_\pi}$. Furthermore, $\mathcal{M}$ is a perfect
+    order-isomorphic to $\sigma$.
+    Let $G_\pi$ be the linear clique associated to $\pi$ with vertices
+    $\VS{G_\pi} = \{i^1_j : j \in [n]\} \cup \{i^2_j : j \in [n]\}$.
+    Define $\vv{\mathcal{M}} = \{(i^1_j, i^2_j) : j \in [n]\}$.
+    It is easily seen that $\vv{\mathcal{M}}$ is an oriented perfect
     matching since $I^1 \cap I^2 = \emptyset$, and
-    $I^1 \cup I^2 = \{1, 2,  \dots 2n\}$. It is also containment-free.
+    $I^1 \cup I^2 = \{1, 2,  \dots 2n\}$.
+    It also avoids \InclusionLL,~\InclusionLR,~\InclusionRL and \InclusionRR.
+    Indeed, suppose, aiming at a contradiction, that such a bad configuration exists
+    for arcs $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$
+    with $j < k$.
+    \begin{itemize}
+      \item
+      \LabeledInclusionLL{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
+      \item
+      \LabeledInclusionLL{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
+      \item
+      \LabeledInclusionLL{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
+      \item
+      \LabeledInclusionLL{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
+    \end{itemize}
+
     Indeed, if it is not the case then there would exist two edges
     $e = \{i^1_j, i^2_j\}$ and $e' = \{i^1_k, i^2_k\}$, $j < k$, in
     $\mathcal{M}$ such that $i^1_j < i^1_k < i^2_k < i^2_j$ or
