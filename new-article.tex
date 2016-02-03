@@ -173,8 +173,8 @@
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
 \draw node [draw,circle,fill=black] [right of=U3] (U4) {};
-\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
-\draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\draw [->] (U4.north) .. controls ($ (U4.north) + (0,4) $) and ($ (U1.north) + (0,4) $) .. (U1.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,3) $) and ($ (U2.north) + (0,3) $) .. (U2.north);
 \end{tikzpicture}
 }% end \InclusionLL
 
@@ -1160,12 +1160,13 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
     Define $\vv{\mathcal{M}} = \{(i^1_j, i^2_j) : j \in [n]\}$.
     It is easily seen that $\vv{\mathcal{M}}$ is an oriented perfect
     matching since $I^1 \cap I^2 = \emptyset$, and
-    $I^1 \cup I^2 = \{1, 2,  \dots 2n\}$.
+    $I^1 \cup I^2 = [2n]$.
     We first show that it avoids
     \InclusionLL,~\InclusionLR,~\InclusionRL and \InclusionRR.
     Indeed, suppose, aiming at a contradiction, that such a bad configuration exists
     for, say,  arcs $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$.
-    Assuming $i^1_j < i^1_k$ we are left with the following $4$ configurations:
+    Assuming without loss of generality that $i^1_j < i^1_k$, we are 
+    left with the following four configurations:
     \begin{center}
       \begin{tabular}{cccc}
         \LabeledInclusionLL{.3}{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
@@ -1184,7 +1185,8 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
     \CrossingLR and \CrossingRL.
     Indeed, suppose, aiming at a contradiction, that such a bad configuration exists
     for, say,  arcs $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$.
-    Assuming $i^1_j < i^1_k$ we are left with the following $2$ configurations:
+    Assuming without loss of generality that $i^1_j < i^1_k$, we are 
+    left with the following two configurations:
     \begin{center}
       \begin{tabular}{cccc}
         \LabeledCrossingLR{.3}{$i^1_j$}{$i^2_k$}{$i^2_j$}{$i^1_k$}
@@ -1199,15 +1201,16 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
     $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$,
     we have $\pi(i^1_j) < \pi(i^2_j)$ if and only if
     $\pi(i^1_k) < \pi(i^2_k)$ since we are comparing in both cases two
-    elements (at position $j$ and $k$) in two patterns that are
-    order-isomorphic to $\sigma$.
+    elements (at positions $j$ and $k$) in two patterns that are
+    order-isomorphic to~$\sigma$.
+    \smallskip
 
     (\emph{2} $\Rightarrow$ \emph{1}).
     Let $I^1 = (i^1_1 < i^1_2 < \dots < i^1_n)$
     (resp. $I^2 = (i^2_1 < i^2_2 < \dots < i^2_n)$)
     be the ordered sequence of the origins (resp. sinks) of the arcs of
     the oriented perfect matching $\vv{\mathcal{M}}$.
-    We first show that, for every $1 \leq j \leq n$,
+    We first show that, for every $j \in [n]$,
     $(i^1_j, i^2_j)$ is an arc of $\vv{\mathcal{M}}$.
     The proof is by induction on $n$.
     Since the assertion is certainly valid for $n = 1$,
@@ -1215,7 +1218,7 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
     Suppose, aiming at a contradiction that $(i^1_n, i^2_n)$
     is not an arc of $\vv{\mathcal{M}}$.
     Let $i^2_p$ be the sink of the arc with origin $i^1_n$ in
-    $\vv{\mathcal{M}}$ (\emph{i.e.}, $(i^1_n, i^2_p)$ is an abstractof
+    $\vv{\mathcal{M}}$ (\emph{i.e.}, $(i^1_n, i^2_p)$ is an arc of
     $\vv{\mathcal{M}}$).
     We need to consider two cases.
     \begin{itemize}
@@ -1225,7 +1228,7 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
         \begin{tabular}{cccc}
           \LabeledInclusionRL{.3}{$i^2_p$}{$i^1_q$}{$i^2_r$}{$i^1_n$}
           &\qquad
-          \LabeledInclusionRR{.3}{$i^1_p$}{$i^2_r$}{$i^1_q$}{$i^1_n$}
+          \LabeledInclusionRR{.3}{$i^2_p$}{$i^2_r$}{$i^1_q$}{$i^1_n$}
           &\qquad
           \LabeledCrossingLR{.3}{$i^1_p$}{$i^2_p$}{$i^2_r$}{$i^1_n$}
           &\qquad
