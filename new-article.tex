@@ -47,7 +47,7 @@
 \DeclareMathOperator{\PERMTOBIN}{\mathrm{ptb}}
 
 \newcommand{\Crossing}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -69,7 +69,7 @@
 }% end \LabeledCrossingLL
 
 \newcommand{\CrossingLL}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -91,7 +91,7 @@
 }% end \LabeledCrossingLR
 
 \newcommand{\CrossingLR}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -113,7 +113,7 @@
 }% end \LabeledCrossingRL
 
 \newcommand{\CrossingRL}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -135,7 +135,7 @@
 }% end \LabeledCrossingRR
 
 \newcommand{\CrossingRR}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -146,7 +146,7 @@
 }% end \CrossingRR
 
 \newcommand{\Inclusion}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -168,13 +168,13 @@
 }% end \LabeledInclusionLL
 
 \newcommand{\InclusionLL}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
 \draw node [draw,circle,fill=black] [right of=U3] (U4) {};
-\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
-\draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
++\draw [->] (U4.north) .. controls ($ (U4.north) + (0,4) $) and ($ (U1.north) + (0,4) $) .. (U1.north);
++\draw [->] (U3.north) .. controls ($ (U3.north) + (0,3) $) and ($ (U2.north) + (0,3) $) .. (U2.north);
 \end{tikzpicture}
 }% end \InclusionLL
 
@@ -190,7 +190,7 @@
 }% end \LabeledInclusionLR
 
 \newcommand{\InclusionLR}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -212,7 +212,7 @@
 }% end \LabeledInclusionRL
 
 \newcommand{\InclusionRL}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -234,7 +234,7 @@
 }% end \LabeledInclusionRR
 
 \newcommand{\InclusionRR}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -245,7 +245,7 @@
 }% end \InclusionRR
 
 \newcommand{\Precedence}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -267,7 +267,7 @@
 }% end \PrecedenceLL
 
 \newcommand{\PrecedenceLL}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -289,7 +289,7 @@
 }% end \PrecedenceLR
 
 \newcommand{\PrecedenceLR}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -311,7 +311,7 @@
 }% end \PrecedenceRL
 
 \newcommand{\PrecedenceRL}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -333,7 +333,7 @@
 }% end \PrecedenceRR
 
 \newcommand{\PrecedenceRR}{%
-\begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
@@ -1148,24 +1148,23 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
 
 \begin{proof}[of Lemma~\ref{lemma:matching}]
     (\emph{1} $\Rightarrow$ \emph{2}).
-    Since $\pi$ is a square, it admits a square root, say $\sigma$.
-    Let $2n = |\pi|$ (and hence $|\sigma| = n$).
-    Then, by definition, there exist two sets
-    $I^1 = (i^1_1 < i^1_2 < \dots < i^1_n)$
-    and $I^2 = (i^2_1 < i^2_2 < \dots < i^2_n)$ of disjoint indexes of
+    Since $\pi$ is a square, it admits a square root, say~$\sigma$.
+    Let $2n = |\pi|$ (and hence $|\sigma| = n$). Then, by definition, 
+    there exist two sets $I^1 = (i^1_1 < i^1_2 < \dots < i^1_n)$ and 
+    $I^2 = (i^2_1 < i^2_2 < \dots < i^2_n)$ of disjoint indexes of
     letters of $\pi$ such that $\pi_{|I^1}$ and $\pi_{|I^2}$ are both
-    order-isomorphic to $\sigma$.
-    Let $G_\pi$ be the linear clique associated to $\pi$ with vertices
+    order-isomorphic to $\sigma$. Let $G_\pi$ be the linear clique 
+    associated with $\pi$ with vertices
     $\VS{G_\pi} = \{i^1_j : j \in [n]\} \cup \{i^2_j : j \in [n]\}$.
-    Define $\vv{\mathcal{M}} = \{(i^1_j, i^2_j) : j \in [n]\}$.
-    It is easily seen that $\vv{\mathcal{M}}$ is an oriented perfect
-    matching since $I^1 \cap I^2 = \emptyset$, and
-    $I^1 \cup I^2 = \{1, 2,  \dots 2n\}$.
-    We first show that it avoids
-    \InclusionLL,~\InclusionLR,~\InclusionRL and \InclusionRR.
-    Indeed, suppose, aiming at a contradiction, that such a bad configuration exists
-    for, say,  arcs $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$.
-    Assuming $i^1_j < i^1_k$ we are left with the following $4$ configurations:
+    Define $\vv{\mathcal{M}} = \{(i^1_j, i^2_j) : j \in [n]\}$. It is 
+    easily seen that $\vv{\mathcal{M}}$ is an oriented perfect matching 
+    since $I^1 \cap I^2 = \emptyset$, and $I^1 \cup I^2 = [2n]$. We 
+    first show that it avoids \InclusionLL, \InclusionLR, \InclusionRL, 
+    and \InclusionRR. Indeed, suppose, aiming at a contradiction, that 
+    such a configuration exists for, say, arcs $(i^1_j, i^2_j)$ and 
+    $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$. Assuming without loss of 
+    generality $i^1_j < i^1_k$, we are left with the following four 
+    configurations:
     \begin{center}
       \begin{tabular}{cccc}
         \LabeledInclusionLL{.3}{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
@@ -1177,14 +1176,14 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
         \LabeledInclusionRR{.3}{$i^2_k$}{$i^2_j$}{$i^1_j$}{$i^1_k$}
       \end{tabular}
     \end{center}
-    Then it follows that $i^2_j > i^2_k$.
-    This is a contradiction since
-    $i^1_j < i^1_k \Rightarrow j < k \Rightarrow i^2_j < i^2_k$.
-    We now turn to proving that $\vv{\mathcal{M}}$ also avoids
-    \CrossingLR and \CrossingRL.
-    Indeed, suppose, aiming at a contradiction, that such a bad configuration exists
-    for, say,  arcs $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$.
-    Assuming $i^1_j < i^1_k$ we are left with the following $2$ configurations:
+    Then it follows that $i^2_j > i^2_k$. This is a contradiction since
+    $i^1_j < i^1_k$ implies $j < k$, and hence, $i^2_j < i^2_k$. We now 
+    turn to proving that $\vv{\mathcal{M}}$ also avoids \CrossingLR and 
+    \CrossingRL. Indeed, suppose, aiming at a contradiction, that such a 
+    configuration exists for, say,  arcs $(i^1_j, i^2_j)$ and 
+    $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$. Assuming without loss of 
+    generality $i^1_j < i^1_k$, we are left with the following two 
+    configurations:
     \begin{center}
       \begin{tabular}{cccc}
         \LabeledCrossingLR{.3}{$i^1_j$}{$i^2_k$}{$i^2_j$}{$i^1_k$}
@@ -1192,78 +1191,98 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
         \LabeledCrossingRL{.3}{$i^2_k$}{$i^1_j$}{$i^1_k$}{$i^2_j$}
       \end{tabular}
     \end{center}
-    Then it follows that $i^2_j > i^2_k$.
-    Again, this is a contradiction since
-    $i^1_j < i^1_k \Rightarrow j < k \Rightarrow i^2_j < i^2_k$.
-    Finally, for any two distinct arcs
-    $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$,
+    Then it follows that $i^2_j > i^2_k$. Again, this is a contradiction 
+    since $i^1_j < i^1_k$ implies $j < k$, and hence, $i^2_j < i^2_k$.
+    Finally, for any two distinct arcs $(i^1_j, i^2_j)$ and 
+    $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$,
     we have $\pi(i^1_j) < \pi(i^2_j)$ if and only if
     $\pi(i^1_k) < \pi(i^2_k)$ since we are comparing in both cases two
-    elements (at position $j$ and $k$) in two patterns that are
-    order-isomorphic to $\sigma$.
-
+    elements (at positions $j$ and $k$) in two patterns that are
+    order-isomorphic to~$\sigma$.
+    \smallskip
+    
     (\emph{2} $\Rightarrow$ \emph{1}).
-    Let $I^1 = (i^1_1 < i^1_2 < \dots < i^1_n)$
-    (resp. $I^2 = (i^2_1 < i^2_2 < \dots < i^2_n)$)
+    Let $I^1 = (i^1_1 < i^1_2 < \dots < i^1_n)$ (resp. 
+    $I^2 = (i^2_1 < i^2_2 < \dots < i^2_n)$)
     be the ordered sequence of the origins (resp. sinks) of the arcs of
-    the oriented perfect matching $\vv{\mathcal{M}}$.
-    We first show that, for every $1 \leq j \leq n$,
-    $(i^1_j, i^2_j)$ is an arc of $\vv{\mathcal{M}}$.
-    The proof is by induction on $n$.
-    Since the assertion is certainly valid for $n = 1$,
-    it is enough to show that $(i^1_n, i^2_n)$ is an arc of $\vv{\mathcal{M}}$.
-    Suppose, aiming at a contradiction that $(i^1_n, i^2_n)$
-    is not an arc of $\vv{\mathcal{M}}$.
-    Let $i^2_p$ be the sink of the arc with origin $i^1_n$ in
-    $\vv{\mathcal{M}}$ (\emph{i.e.}, $(i^1_n, i^2_p)$ is an arc of
-    $\vv{\mathcal{M}}$).
-    We need to consider two cases.
-    \begin{itemize}
-      \item If $i^1_n > i^2_p$ then there exist $i^1_q$ and $i^2_r$ such
-      that
-      \begin{center}
+    the oriented perfect matching $\vv{\mathcal{M}}$. Let us first show 
+    that, for every $j \in [n]$, $(i^1_j, i^2_j)$ is an arc of 
+    $\vv{\mathcal{M}}$. For that, we show that $(i^1_n, i^2_n)$ is an 
+    arc of $\vv{\mathcal{M}}$. Suppose, aiming at a contradiction that 
+    $(i^1_n, i^2_n)$ is not an arc of $\vv{\mathcal{M}}$. Then, there 
+    exist $i^2_p, i^1_q \in \VS{\vv{\mathcal{M}}}$ such that 
+    $(i^1_n, i^2_p)$ and $(i^1_q, i^2_n)$ are arcs of $\vv{\mathcal{M}}$.
+    Since $p < n$ and $q < n$, there is in $\vv{\mathcal{M}}$ one 
+    of the following configurations:
+    \begin{center}
         \begin{tabular}{cccc}
-          \LabeledInclusionRL{.3}{$i^2_p$}{$i^1_q$}{$i^2_r$}{$i^1_n$}
+          \LabeledInclusionLR{.3}{$i^1_q$}{$i^2_p$}{$i^1_n$}{$i^2_n$}
           &\qquad
-          \LabeledInclusionRR{.3}{$i^1_p$}{$i^2_r$}{$i^1_q$}{$i^1_n$}
+          \LabeledCrossingRL{.3}{$i^2_p$}{$i^1_q$}{$i^1_n$}{$i^2_n$}
+          & \qquad
+          \LabeledCrossingLR{.3}{$i^1_q$}{$i^2_p$}{$i^2_n$}{$i^1_n$}
           &\qquad
-          \LabeledCrossingLR{.3}{$i^1_p$}{$i^2_p$}{$i^2_r$}{$i^1_n$}
-          &\qquad
-          \LabeledCrossingRL{.3}{$i^2_p$}{$i^1_q$}{$i^1_n$}{$i^2_r$}
+          \LabeledInclusionRL{.3}{$i^2_p$}{$i^1_q$}{$i^2_n$}{$i^1_n$}
         \end{tabular}
       \end{center}
-      This is a contradiction since
-      $\vv{\mathcal{M}}$ avoids
-      \InclusionLL,~\InclusionLR,~\InclusionRL,~\InclusionRR,~\CrossingLR and
-      \CrossingRL.
-      \item
-      If $i^1_n < i^2_p$ then there exist $i^1_q$ and $i^2_r$ such
-      that
-      \begin{center}
-        \begin{tabular}{cc}
-          \LabeledInclusionLL{.3}{$i^1_q$}{$i^1_n$}{$i^2_p$}{$i^2_r$}
-          &\qquad
-          \LabeledInclusionRL{.3}{$i^2_r$}{$i^1_n$}{$i^2_p$}{$i^1_q$}
-        \end{tabular}
-      \end{center}
-      This is a contradiction since
-      $\vv{\mathcal{M}}$ avoids
-      \InclusionLL,~\InclusionLR,~\InclusionRL,~\InclusionRR,~\CrossingLR and
-      \CrossingRL.
-    \end{itemize}
-    Then it follows that $(i^1_n, i^2_n)$ is an arc
-    of $\vv{\mathcal{M}}$.
+    This is a contradiction since $\vv{\mathcal{M}}$ avoids \InclusionLR,
+    \CrossingRL, \CrossingLR, and \InclusionRL. Therefore, 
+    $(i^1_n, i^2_n)$ is an arc of $\vv{\mathcal{M}}$. By iteratively
+    applying the same reasoning, this also shows that all 
+    $(i^1_j, i^2_j)$, $j \in [n - 1]$, are arcs of $\vv{\mathcal{M}}$.
+%     The proof is by induction on $n$.
+%     Since the assertion is certainly valid for $n = 1$,
+%     it is enough to show that $(i^1_n, i^2_n)$ is an arc of $\vv{\mathcal{M}}$.
+%     Suppose, aiming at a contradiction that $(i^1_n, i^2_n)$
+%     is not an arc of $\vv{\mathcal{M}}$.
+%     Let $i^2_p$ be the sink of the arc with origin $i^1_n$ in
+%     $\vv{\mathcal{M}}$ (\emph{i.e.}, $(i^1_n, i^2_p)$ is an arc of
+%     $\vv{\mathcal{M}}$).
+%     We need to consider two cases.
+%     \begin{itemize}
+%       \item If $i^1_n > i^2_p$ then there exist $i^1_q$ and $i^2_r$ such
+%       that
+%       \begin{center}
+%         \begin{tabular}{cccc}
+%           \LabeledInclusionRL{.3}{$i^2_p$}{$i^1_q$}{$i^2_r$}{$i^1_n$}
+%           &\qquad
+%           \LabeledInclusionRR{.3}{$i^2_p$}{$i^2_r$}{$i^1_q$}{$i^1_n$}
+%           &\qquad
+%           \LabeledCrossingLR{.3}{$i^1_p$}{$i^2_p$}{$i^2_r$}{$i^1_n$}
+%           &\qquad
+%           \LabeledCrossingRL{.3}{$i^2_p$}{$i^1_q$}{$i^1_n$}{$i^2_r$}
+%         \end{tabular}
+%       \end{center}
+%       This is a contradiction since
+%       $\vv{\mathcal{M}}$ avoids
+%       \InclusionLL,~\InclusionLR,~\InclusionRL,~\InclusionRR,~\CrossingLR and
+%       \CrossingRL.
+%       \item
+%       If $i^1_n < i^2_p$ then there exist $i^1_q$ and $i^2_r$ such
+%       that
+%       \begin{center}
+%         \begin{tabular}{cc}
+%           \LabeledInclusionLL{.3}{$i^1_q$}{$i^1_n$}{$i^2_p$}{$i^2_r$}
+%           &\qquad
+%           \LabeledInclusionRL{.3}{$i^2_r$}{$i^1_n$}{$i^2_p$}{$i^1_q$}
+%         \end{tabular}
+%       \end{center}
+%       This is a contradiction since
+%       $\vv{\mathcal{M}}$ avoids
+%       \InclusionLL,~\InclusionLR,~\InclusionRL,~\InclusionRR,~\CrossingLR and
+%       \CrossingRL.
+%     \end{itemize}
+%     Then it follows that $(i^1_n, i^2_n)$ is an arc
+%     of $\vv{\mathcal{M}}$.
     Now, let $p^1 = \pi(i^1_1) \pi(i^1_2) \dots \pi(i^1_n)$ and
     $p^2 = \pi(j^2_1) \pi(^2_2) \dots \pi(i^2_n)$ be the two patterns
-    from $\pi$ induced by $I^1$ and $I^2$, respectively.
-    Clearly $p^1$ and $p^2$ are disjoint in $\pi$
-    (since $\vv{\mathcal{M}}$ is a matching)
-    and cover $\pi$ (since $\vv{\mathcal{M}}$ is perfect).
-    We claim that $p^1$ and $p^2$ are order-isomorphic.
-    Indeed, this is a direct consequence of th fact that,
-    for any two distinct edges $(a, b)$ and $(a', b')$ in
-    $\vv{\mathcal{M}}$ we have $\pi(a) < \pi(a')$ if and only if
-    $\pi(b) < \pi(b')$.
+    from $\pi$ induced by $I^1$ and $I^2$, respectively. Clearly $p^1$ 
+    and $p^2$ are disjoint in $\pi$ (since $\vv{\mathcal{M}}$ is a 
+    matching) and cover $\pi$ (since $\vv{\mathcal{M}}$ is perfect). We 
+    claim that $p^1$ and $p^2$ are order-isomorphic. Indeed, this is a 
+    direct consequence of th fact that, for any two distinct edges 
+    $(a, b)$ and $(a', b')$ in $\vv{\mathcal{M}}$ we have $\pi(a) < \pi(a')$ 
+    if and only if $\pi(b) < \pi(b')$.
     \qed
 \end{proof}
 
