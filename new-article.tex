@@ -173,8 +173,8 @@
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
 \draw node [draw,circle,fill=black] [right of=U3] (U4) {};
-\draw [->] (U4.north) .. controls ($ (U4.north) + (0,4) $) and ($ (U1.north) + (0,4) $) .. (U1.north);
-\draw [->] (U3.north) .. controls ($ (U3.north) + (0,3) $) and ($ (U2.north) + (0,3) $) .. (U2.north);
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
 \end{tikzpicture}
 }% end \InclusionLL
 
@@ -1140,7 +1140,7 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
     \item There exists an oriented perfect matching $\vv{\mathcal{M}}$
     of the linear graph $G_\pi$ that avoids
     \InclusionLL,~\InclusionLR,~\InclusionRL,~\InclusionRR,~\CrossingLR
-    and \CrossingRL, and such that for any two distinct arcs $(a, a)$ and
+    and \CrossingRL, and such that for any two distinct arcs $(a, a')$ and
     $(b, b')$ in $\vv{\mathcal{M}}$ we have $\pi(a) < \pi(b)$ if and only
     if $\pi(a') < \pi(b')$.
   \end{enumerate}
@@ -1160,13 +1160,12 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
     Define $\vv{\mathcal{M}} = \{(i^1_j, i^2_j) : j \in [n]\}$.
     It is easily seen that $\vv{\mathcal{M}}$ is an oriented perfect
     matching since $I^1 \cap I^2 = \emptyset$, and
-    $I^1 \cup I^2 = [2n]$.
+    $I^1 \cup I^2 = \{1, 2,  \dots 2n\}$.
     We first show that it avoids
     \InclusionLL,~\InclusionLR,~\InclusionRL and \InclusionRR.
     Indeed, suppose, aiming at a contradiction, that such a bad configuration exists
     for, say,  arcs $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$.
-    Assuming without loss of generality that $i^1_j < i^1_k$, we are 
-    left with the following four configurations:
+    Assuming $i^1_j < i^1_k$ we are left with the following $4$ configurations:
     \begin{center}
       \begin{tabular}{cccc}
         \LabeledInclusionLL{.3}{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
@@ -1185,8 +1184,7 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
     \CrossingLR and \CrossingRL.
     Indeed, suppose, aiming at a contradiction, that such a bad configuration exists
     for, say,  arcs $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$.
-    Assuming without loss of generality that $i^1_j < i^1_k$, we are 
-    left with the following two configurations:
+    Assuming $i^1_j < i^1_k$ we are left with the following $2$ configurations:
     \begin{center}
       \begin{tabular}{cccc}
         \LabeledCrossingLR{.3}{$i^1_j$}{$i^2_k$}{$i^2_j$}{$i^1_k$}
@@ -1201,16 +1199,15 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
     $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$,
     we have $\pi(i^1_j) < \pi(i^2_j)$ if and only if
     $\pi(i^1_k) < \pi(i^2_k)$ since we are comparing in both cases two
-    elements (at positions $j$ and $k$) in two patterns that are
-    order-isomorphic to~$\sigma$.
-    \smallskip
+    elements (at position $j$ and $k$) in two patterns that are
+    order-isomorphic to $\sigma$.
 
     (\emph{2} $\Rightarrow$ \emph{1}).
     Let $I^1 = (i^1_1 < i^1_2 < \dots < i^1_n)$
     (resp. $I^2 = (i^2_1 < i^2_2 < \dots < i^2_n)$)
     be the ordered sequence of the origins (resp. sinks) of the arcs of
     the oriented perfect matching $\vv{\mathcal{M}}$.
-    We first show that, for every $j \in [n]$,
+    We first show that, for every $1 \leq j \leq n$,
     $(i^1_j, i^2_j)$ is an arc of $\vv{\mathcal{M}}$.
     The proof is by induction on $n$.
     Since the assertion is certainly valid for $n = 1$,
@@ -1228,7 +1225,7 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
         \begin{tabular}{cccc}
           \LabeledInclusionRL{.3}{$i^2_p$}{$i^1_q$}{$i^2_r$}{$i^1_n$}
           &\qquad
-          \LabeledInclusionRR{.3}{$i^2_p$}{$i^2_r$}{$i^1_q$}{$i^1_n$}
+          \LabeledInclusionRR{.3}{$i^1_p$}{$i^2_r$}{$i^1_q$}{$i^1_n$}
           &\qquad
           \LabeledCrossingLR{.3}{$i^1_p$}{$i^2_p$}{$i^2_r$}{$i^1_n$}
           &\qquad
@@ -1282,72 +1279,108 @@ above $\sigma_1$) in Fig.~\ref{subfig:decreasing before and below
 increasing}.
 
 Before proving hardness, we give an easy lemma that will prove extremely
-useful for simplifying the proof of upcoming
-Proposition~\ref{proposition:hardness}.
+useful for simplifying the proof of upcoming Proposition~\ref{proposition:hardness}.
 
-\begin{lemma}
-  \label{lemma:at most one edge monotone}
-  Let $\pi = \pi_1 \, \sigma_1 \, \pi_2 \, \sigma_2 \, \pi_3$
-  be a permutation with $|\sigma_1| \geq 2$ and $|\sigma_2| \geq 2$,
-  and $\mathcal{M}$ be a containment-free perfect matching of $G_\pi$.
-  The following assertions hold:
-  \begin{enumerate}
-    \item
-    If $\sigma_1$ is increasing, $\sigma_2$ is decreasing, and
-    $\sigma_1$ is above $\sigma_2$ (see Fig.~\ref{subfig:increasing before
-    and above decreasing}), then $\mathcal{M}$ contains at most one
-    $(\sigma_1, \sigma_2)$-edge.
-    \item
-    If $\sigma_1$ is decreasing, $\sigma_2$ is increasing, and $\sigma_1$
-    is below $\sigma_2$ (see Fig.~\ref{subfig:decreasing before and below
-    increasing}), then $\mathcal{M}$ contains at most one
-    $(\sigma_1, \sigma_2)$-edge.
-  \end{enumerate}
-\end{lemma}
-
-\begin{proof}[of Lemma~\ref{lemma:at most one edge monotone}]
-  \begin{figure}[t!]
-    \centering
-    \subfigure[%
-      An increasing pattern before and above a decreasing pattern.
-    ]{%
-      \begin{tikzpicture}
-        [
-          scale=0.325,
-          label/.style={anchor=base}
-        ]
-        % increasing pattern
-        \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,5.8) grid (5.2,11.2);
-        \foreach \x/\y in {0/6,1/7,2/8,3/9,4/10,5/11} {
-            \draw [fill=black] (\x,\y) circle (0.1);
-        }
-        % decreasing pattern
-        \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
-        \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
-            \draw [fill=black] (\x,\y) circle (0.1);
-        }
-        % labels
-        \node [label] (a) at (1,5) {$a$};
-        \node [label] (b) at (4,5) {$b$};
-        \node [label] (ap) at (7,-1) {$a'$};
-        \node [label] (bp) at (10,-1) {$b'$};
-        \node (nu1) at (2.5,4) {$\sigma_1$};
-        \node (nu2) at (8.5,-2) {$\sigma_2$};
-        % crossings edges
-        \draw [line width=1pt]
-        (1,7) .. controls +(0,12) and +(0,10) .. (7,4);
-        \draw [line width=1pt]
-        (4,10) .. controls +(0,12) and +(0,10) .. (10,1);
-      \end{tikzpicture}
-      \label{subfig:increasing before and above decreasing}
-    }% end subfigure
-    \qquad\qquad\qquad
-    \subfigure[%
-      A decreasing pattern before and below an increasing pattern.
-    ]{%
+\begin{figure}[t!]
+  \centering
+  \subfigure[%
+    An increasing pattern before and above a decreasing pattern.
+  ]{%
     \begin{tikzpicture}
       [
-        scale=0.325,
+        scale=0.2,
+        label/.style={anchor=base}
+      ]
+      % increasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,5.8) grid (5.2,11.2);
+      \foreach \x/\y in {0/6,1/7,2/8,3/9,4/10,5/11} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % decreasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
+      \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % labels
+      \node [label] (a) at (1,4) {$a$};
+      \node [label] (b) at (4,4) {$b$};
+      \node [label] (ap) at (7,-2) {$a'$};
+      \node [label] (bp) at (10,-2) {$b'$};
+      \node (nu1) at (2.5,3) {$\sigma_1$};
+      \node (nu2) at (8.5,-3) {$\sigma_2$};
+      % crossings edges
+      \draw [line width=1pt,->,>=latex']
+      (1,7) .. controls +(0,12) and +(0,10) .. (7,4);
+      \draw [line width=1pt,->,>=latex']
+      (4,10) .. controls +(0,12) and +(0,10) .. (10,1);
+    \end{tikzpicture}
+    \;
+    \begin{tikzpicture}
+      [
+        scale=0.2,
+        label/.style={anchor=base}
+      ]
+      % increasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,5.8) grid (5.2,11.2);
+      \foreach \x/\y in {0/6,1/7,2/8,3/9,4/10,5/11} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % decreasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
+      \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % labels
+      \node [label] (a) at (1,4) {$a'$};
+      \node [label] (b) at (4,4) {$b'$};
+      \node [label] (ap) at (7,-2) {$a$};
+      \node [label] (bp) at (10,-2) {$b$};
+      \node (nu1) at (2.5,3) {$\sigma_1$};
+      \node (nu2) at (8.5,-3) {$\sigma_2$};
+      % crossings edges
+      \draw [line width=1pt,<-,>=latex']
+      (1,7) .. controls +(0,12) and +(0,10) .. (7,4);
+      \draw [line width=1pt,<-,>=latex']
+      (4,10) .. controls +(0,12) and +(0,10) .. (10,1);
+    \end{tikzpicture}
+    \label{subfig:increasing before and above decreasing}
+  }% end subfigure
+  \qquad
+  \subfigure[%
+    A decreasing pattern before and below an increasing pattern.
+  ]{%
+  \begin{tikzpicture}
+    [
+      scale=0.2,
+      label/.style={anchor=base}
+    ]
+    % decreasing pattern
+    \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,-0.2) grid (5.2,5.2);
+    \foreach \x/\y in {0/5,1/4,2/3,3/2,4/1,5/0} {
+        \draw [fill=black] (\x,\y) circle (0.1);
+    }
+    % decreasing pattern
+    \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,5.8) grid (11.2,11.2);
+    \foreach \x/\y in {6/6,7/7,8/8,9/9,10/10,11/11} {
+        \draw [fill=black] (\x,\y) circle (0.1);
+    }
+    % labels
+    \node [label] (a) at (1,-2) {$a$};
+    \node [label] (b) at (4,-2) {$b$};
+    \node [label] (ap) at (7,4) {$a'$};
+    \node [label] (bp) at (10,4) {$b'$};
+    \node (nu1) at (2.5,-3) {$\sigma_1$};
+    \node (nu2) at (8.5,3) {$\sigma_2$};
+    % crossings edges
+    \draw [line width=1pt,->,>=latex']
+    (1,4) .. controls +(0,10) and +(0,12) .. (7,7);
+    \draw [line width=1pt,->,>=latex']
+    (4,1) .. controls +(0,10) and +(0,12) .. (10,10);
+    \end{tikzpicture}
+    \;
+    \begin{tikzpicture}
+      [
+        scale=0.2,
         label/.style={anchor=base}
       ]
       % decreasing pattern
@@ -1361,38 +1394,75 @@ Proposition~\ref{proposition:hardness}.
           \draw [fill=black] (\x,\y) circle (0.1);
       }
       % labels
-      \node [label] (a) at (1,-1) {$a$};
-      \node [label] (b) at (4,-1) {$b$};
-      \node [label] (ap) at (7,5) {$a'$};
-      \node [label] (bp) at (10,5) {$b'$};
-      \node (nu1) at (2.5,-2) {$\sigma_1$};
-      \node (nu2) at (8.5,4) {$\sigma_2$};
+      \node [label] (a) at (1,-2) {$a'$};
+      \node [label] (b) at (4,-2) {$b'$};
+      \node [label] (ap) at (7,4) {$a$};
+      \node [label] (bp) at (10,4) {$b$};
+      \node (nu1) at (2.5,-3) {$\sigma_1$};
+      \node (nu2) at (8.5,3) {$\sigma_2$};
       % crossings edges
-      \draw [line width=1pt]
+      \draw [line width=1pt,<-,>=latex']
       (1,4) .. controls +(0,10) and +(0,12) .. (7,7);
-      \draw [line width=1pt]
+      \draw [line width=1pt,<-,>=latex']
       (4,1) .. controls +(0,10) and +(0,12) .. (10,10);
       \end{tikzpicture}
-      \label{subfig:decreasing before and below increasing}
-    }% end subfigure
-    \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
-      Illustration of Lemma~\ref{lemma:at most one edge monotone}.
-    }
-  \end{figure}
-  We first prove \emph{1}. Suppose, aiming at a contradiction, that
-  there exist two $(\sigma_1, \sigma_2)$-edges $(a, a')$ and $(b, b')$
-  in $\mathcal{M}$. Since $\mathcal{M}$ is containment-free, we may
-  assume $a < b$ and $a' < b'$. Therefore, we have $\pi(a) < \pi(b)$
-  (since $\sigma_1$ is increasing) and $\pi(a') > \pi(b')$ (since
-  $\sigma_2$ is decreasing), which contradicts our hypothesis about
-  $\mathcal{M}$.
+    \label{subfig:decreasing before and below increasing}
+  }% end subfigure
+  \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
+    Illustration of Lemma~\ref{lemma:at most one edge monotone}.
+  }
+\end{figure}
 
-  As for \emph{2}, suppose, still aiming at a contradiction, that there
-  exist two $(\sigma_1, \sigma_2)$-edges $(a, a')$ and $(b, b')$ in
-  $\mathcal{M}$. Since $\mathcal{M}$ is containment-free, we may assume
-  $a < b$ and $a' < b'$. Therefore, we have $\pi(a) > \pi(b)$ (since
-  $\sigma_1$ is decreasing) and $\pi(a') < \pi(b')$ (since $\sigma_2$ is
-  increasing), which contradicts our hypothesis about~$\mathcal{M}$.
+
+\begin{lemma}
+  \label{lemma:at most one edge monotone}
+  Let $\pi = \pi_1 \, \sigma_1 \, \pi_2 \, \sigma_2 \, \pi_3$
+  be a permutation with $|\sigma_1| \geq 2$ and $|\sigma_2| \geq 2$,
+  and $\vv{\mathcal{M}}$ be an oriented perfect matching of $G_\pi$
+  that avoids
+  \InclusionLL,~\InclusionLR,~\InclusionRL,~\InclusionRR,~\CrossingLR
+  and \CrossingRL, and such that for any two distinct arcs $(a, a')$ and
+  $(b, b')$ in $\vv{\mathcal{M}}$ we have $\pi(a) < \pi(b)$ if and only
+  if $\pi(a') < \pi(b')$.
+  The following assertions hold:
+  \begin{enumerate}
+    \item
+    If $\sigma_1$ is increasing, $\sigma_2$ is decreasing, and
+    $\sigma_1$ is above $\sigma_2$
+    (see Fig.~\ref{subfig:increasing before and above decreasing}),
+    then $\vv{\mathcal{M}}$ contains either at most one
+    $(\sigma_1, \sigma_2)$-arc or at most one
+    $(\sigma_2, \sigma_1)$-arc.
+    \item
+    If $\sigma_1$ is decreasing, $\sigma_2$ is increasing, and $\sigma_1$
+    is below $\sigma_2$
+    (see Fig.~\ref{subfig:decreasing before and below increasing}),
+    then $\mathcal{M}$ contains at most one
+    $(\sigma_1, \sigma_2)$-edge.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof}[of Lemma~\ref{lemma:at most one edge monotone}]
+  We only prove the first assertion since the proof for the second one
+  is similar.
+  Suppose, aiming at a contradiction, that the assertion does not hold.
+  Therefore, since $\vv{\mathcal{M}}$ avoids
+  \InclusionLL,~\InclusionLR,~\InclusionRL,~\InclusionRR,~\CrossingLR
+  and \CrossingRL,
+  $\vv{\mathcal{M}}$ contains either two crossing $(\sigma_1, \sigma_2)$-arcs
+  or two crossing $(\sigma_2, \sigma_1)$-arcs.
+  Suppose first that it contains two crossing $(\sigma_1, \sigma_2)$-arcs
+  $(a, a')$ and $(b, b')$ with $a < b$.
+  Therefore, we have $\pi(a) < \pi(b)$ (since $\sigma_1$ is increasing)
+  and $\pi(a') > \pi(b')$ (since
+  $\sigma_2$ is decreasing), which contradicts our hypothesis about
+  $\vv{\mathcal{M}}$.
+  If $\vv{\mathcal{M}}$ contains two crossing $(\sigma_2, \sigma_1)$-arcs
+  $(a, a')$ and $(b, b')$ with $a < b$, then
+  we have $\pi(a) > \pi(b)$ (since $\sigma_2$ is decreasing)
+  and $\pi(a') < \pi(b')$ (since
+  $\sigma_2$ is increasing), which contradicts our hypothesis about
+  $\vv{\mathcal{M}}$.
   \qed
 \end{proof}
 
