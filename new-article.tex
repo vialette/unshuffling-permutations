@@ -57,16 +57,38 @@
 \end{tikzpicture}
 }% end \Crossing
 
+\newcommand{\LabeledCrossingLL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']%,>=stealth',->]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingLL
+
 \newcommand{\CrossingLL}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
 \draw node [draw,circle,fill=black] (U1)               {};
 \draw node [draw,circle,fill=black] [right of=U1] (U2) {};
 \draw node [draw,circle,fill=black] [right of=U2] (U3) {};
 \draw node [draw,circle,fill=black] [right of=U3] (U4) {};
-\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
-\draw [->] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U3.north) + (0,2) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
 \end{tikzpicture}
 }% end \CrossingLL
+
+\newcommand{\LabeledCrossingLR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']%,>=stealth',->]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingLR
 
 \newcommand{\CrossingLR}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
@@ -79,6 +101,17 @@
 \end{tikzpicture}
 }% end \CrossingLR
 
+\newcommand{\LabeledCrossingRL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']%,>=stealth',->]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingRL
+
 \newcommand{\CrossingRL}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
 \draw node [draw,circle,fill=black] (U1)               {};
@@ -89,6 +122,17 @@
 \draw [->] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
 \end{tikzpicture}
 }% end \CrossingRL
+
+\newcommand{\LabeledCrossingRR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']%,>=stealth',->]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingRR
 
 \newcommand{\CrossingRR}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
@@ -112,12 +156,12 @@
 \end{tikzpicture}
 }% end \Inclusion
 
-\newcommand{\LabeledInclusionLL}[4]{%
-\begin{tikzpicture}[scale=0.25,inner sep=.8pt,node distance=.45cm,>=latex']
-\draw node [] (U1)               {#1};
-\draw node [] [right of=U1] (U2) {#2};
-\draw node [] [right of=U2] (U3) {#3};
-\draw node [] [right of=U3] (U4) {#4};
+\newcommand{\LabeledInclusionLL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
 \draw [->] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
 \draw [->] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
 \end{tikzpicture}
@@ -134,12 +178,12 @@
 \end{tikzpicture}
 }% end \InclusionLL
 
-\newcommand{\LabeledInclusionLR}[4]{%
-\begin{tikzpicture}[scale=0.25,inner sep=.8pt,node distance=.45cm,>=latex']
-\draw node [] (U1)               {#1};
-\draw node [] [right of=U1] (U2) {#2};
-\draw node [] [right of=U2] (U3) {#3};
-\draw node [] [right of=U3] (U4) {#4};
+\newcommand{\LabeledInclusionLR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
 \draw [->] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
 \draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
 \end{tikzpicture}
@@ -156,12 +200,12 @@
 \end{tikzpicture}
 }% end \InclusionLR
 
-\newcommand{\LabeledInclusionRL}[4]{%
-\begin{tikzpicture}[scale=0.25,inner sep=.8pt,node distance=.45cm,>=latex']
-\draw node [] (U1)               {#1};
-\draw node [] [right of=U1] (U2) {#2};
-\draw node [] [right of=U2] (U3) {#3};
-\draw node [] [right of=U3] (U4) {#4};
+\newcommand{\LabeledInclusionRL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
 \draw [<-] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
 \draw [->] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
 \end{tikzpicture}
@@ -178,12 +222,12 @@
 \end{tikzpicture}
 }% end \InclusionRL
 
-\newcommand{\LabeledInclusionRR}[4]{%
-\begin{tikzpicture}[scale=0.25,inner sep=.8pt,node distance=.45cm,>=latex']
-\draw node [] (U1)               {#1};
-\draw node [] [right of=U1] (U2) {#2};
-\draw node [] [right of=U2] (U3) {#3};
-\draw node [] [right of=U3] (U4) {#4};
+\newcommand{\LabeledInclusionRR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
 \draw [<-] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
 \draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
 \end{tikzpicture}
@@ -211,6 +255,17 @@
 \end{tikzpicture}
 }% end \Precedence
 
+\newcommand{\LabeledPrecedenceLL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLL
+
 \newcommand{\PrecedenceLL}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
@@ -221,6 +276,17 @@
 \draw [->] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
 \end{tikzpicture}
 }% end \PrecedenceLL
+
+\newcommand{\LabeledPrecedenceLR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLR
 
 \newcommand{\PrecedenceLR}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
@@ -233,6 +299,17 @@
 \end{tikzpicture}
 }% end \PrecedenceLR
 
+\newcommand{\LabeledPrecedenceRL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRL
+
 \newcommand{\PrecedenceRL}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
 \draw node [draw,circle,fill=black] (U1)               {};
@@ -243,6 +320,17 @@
 \draw [->] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
 \end{tikzpicture}
 }% end \PrecedenceRL
+
+\newcommand{\LabeledPrecedenceRR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex']
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRR
 
 \newcommand{\PrecedenceRR}{%
 \begin{tikzpicture}[scale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
@@ -1063,8 +1151,8 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
     Since $\pi$ is a square, it admits a square root, say $\sigma$.
     Let $2n = |\pi|$ (and hence $|\sigma| = n$).
     Then, by definition, there exist two sets
-    $I^1 = \{i^1_1 < i^1_2 < \dots < i^1_n\}$
-    and $I^2 = \{i^2_1 < i^2_2 < \dots < i^2_n\}$ of disjoint indexes of
+    $I^1 = (i^1_1 < i^1_2 < \dots < i^1_n)$
+    and $I^2 = (i^2_1 < i^2_2 < \dots < i^2_n)$ of disjoint indexes of
     letters of $\pi$ such that $\pi_{|I^1}$ and $\pi_{|I^2}$ are both
     order-isomorphic to $\sigma$.
     Let $G_\pi$ be the linear clique associated to $\pi$ with vertices
@@ -1073,57 +1161,108 @@ graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows.
     It is easily seen that $\vv{\mathcal{M}}$ is an oriented perfect
     matching since $I^1 \cap I^2 = \emptyset$, and
     $I^1 \cup I^2 = \{1, 2,  \dots 2n\}$.
-    It also avoids \InclusionLL,~\InclusionLR,~\InclusionRL and \InclusionRR.
+    We first show that it avoids
+    \InclusionLL,~\InclusionLR,~\InclusionRL and \InclusionRR.
     Indeed, suppose, aiming at a contradiction, that such a bad configuration exists
-    for arcs $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$
-    with $j < k$.
-    \begin{itemize}
-      \item
-      \LabeledInclusionLL{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
-      \item
-      \LabeledInclusionLL{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
-      \item
-      \LabeledInclusionLL{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
-      \item
-      \LabeledInclusionLL{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
-    \end{itemize}
-
-    Indeed, if it is not the case then there would exist two edges
-    $e = \{i^1_j, i^2_j\}$ and $e' = \{i^1_k, i^2_k\}$, $j < k$, in
-    $\mathcal{M}$ such that $i^1_j < i^1_k < i^2_k < i^2_j$ or
-    $i^1_j < i^2_k < i^1_k < i^2_j$. This is a contradiction since
-    $i^2_k > i^2_j$ if $k > j$. Finally, for any two distinct edges
-    $e = \{\i^1_j, i^2_j\}$ and $e' = \{i^1_k, i^2_k\}$ of $\mathcal{M}$,
+    for, say,  arcs $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$.
+    Assuming $i^1_j < i^1_k$ we are left with the following $4$ configurations:
+    \begin{center}
+      \begin{tabular}{cccc}
+        \LabeledInclusionLL{.3}{$i^1_j$}{$i^1_k$}{$i^2_k$}{$i^2_j$}
+        &\qquad
+        \LabeledInclusionLR{.3}{$i^1_j$}{$i^2_k$}{$i^1_k$}{$i^2_j$}
+        &\qquad
+        \LabeledInclusionRL{.3}{$i^2_k$}{$i^1_j$}{$i^2_j$}{$i^1_k$}
+        &\qquad
+        \LabeledInclusionRR{.3}{$i^2_k$}{$i^2_j$}{$i^1_j$}{$i^1_k$}
+      \end{tabular}
+    \end{center}
+    Then it follows that $i^2_j > i^2_k$.
+    This is a contradiction since
+    $i^1_j < i^1_k \Rightarrow j < k \Rightarrow i^2_j < i^2_k$.
+    We now turn to proving that $\vv{\mathcal{M}}$ also avoids
+    \CrossingLR and \CrossingRL.
+    Indeed, suppose, aiming at a contradiction, that such a bad configuration exists
+    for, say,  arcs $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$.
+    Assuming $i^1_j < i^1_k$ we are left with the following $2$ configurations:
+    \begin{center}
+      \begin{tabular}{cccc}
+        \LabeledCrossingLR{.3}{$i^1_j$}{$i^2_k$}{$i^2_j$}{$i^1_k$}
+        &\qquad
+        \LabeledCrossingRL{.3}{$i^2_k$}{$i^1_j$}{$i^1_k$}{$i^2_j$}
+      \end{tabular}
+    \end{center}
+    Then it follows that $i^2_j > i^2_k$.
+    Again, this is a contradiction since
+    $i^1_j < i^1_k \Rightarrow j < k \Rightarrow i^2_j < i^2_k$.
+    Finally, for any two distinct arcs
+    $(i^1_j, i^2_j)$ and $(i^1_k, i^2_k)$ of $\vv{\mathcal{M}}$,
     we have $\pi(i^1_j) < \pi(i^2_j)$ if and only if
     $\pi(i^1_k) < \pi(i^2_k)$ since we are comparing in both cases two
     elements (at position $j$ and $k$) in two patterns that are
     order-isomorphic to $\sigma$.
 
     (\emph{2} $\Rightarrow$ \emph{1}).
-    Let $I^1 = \{i^1_j : \exists \{i_j, i_k\} \in \mathcal{M}
-    \;\text{with}\; j < k\}$, and
-    $I^2 = \{i^2_k : \exists \{i_j, i_k\} \in \mathcal{M}
-    \;\text{with}\; j < k\}$.
-    Informally, $I^1$ (resp. $I^2$) is the set of the left (resp. right)
-    endpoints of the edges in $\mathcal{M}$ assuming the positions
-    $1, 2, \dots, 2$ are drawn along an horizontal line.
-    Without loss of generality, assume $i^1_1 < i^1_2 < \dots < i^1_n$.
-    % and $I^2 = \{i^2_1, i^2_2, \dots, i^2_n\}$.
-    Let $p^1 = \pi(i^1_1) \pi(i^1_2) \dots \pi(i^1_n)$ and
-    $p^2 = \pi(i^2_1) \pi(i^2_2) \dots \pi(i^2_n)$ be the two patterns
-    from $\pi$ induced by $I^1$ and $I^2$, respectively. Clearly $p^1$
-    and $p^2$ are disjoint in $\pi$ (since $\mathcal{M}$ is a matching)
-    and cover $\pi$ (since $\mathcal{M}$ is perfect). We also claim that
-    $p^1$ and $p^2$ are order-isomorphic. Suppose, aiming at a
-    contradiction, that this is not the case. Therefore, there exist two
-    positions $j$ and $k$, say $j < k$, such that
-    $\pi(i^1_j) < \pi(i^2_j)$ and $\pi(i^1_k) > \pi(i^2_k)$, or
-    $\pi(i^1_j) < \pi(i^2_j)$ and $\pi(i^1_k) > \pi(i^2_k)$.
-    But since $\mathcal{M}$ is containment-free, it follows that both
-    $\{i^1_j, i^2_j\}$, $i^1_j < i^2_j$, and $\{i^1_k, i^2_k\}$,
-    $i^1_k, i^2_k$, belong to $\mathcal{M}$. This is a contradiction
-    since for any two distinct edges $(a, b)$ and $(a', b')$ in
-    $\mathcal{M}$ we have $\pi(a) < \pi(a')$ if and only if
+    Let $I^1 = (i^1_1 < i^1_2 < \dots < i^1_n)$
+    (resp. $I^2 = (i^2_1 < i^2_2 < \dots < i^2_n)$)
+    be the ordered sequence of the origins (resp. sinks) of the arcs of
+    the oriented perfect matching $\vv{\mathcal{M}}$.
+    We first show that, for every $1 \leq j \leq n$,
+    $(i^1_j, i^2_j)$ is an arc of $\vv{\mathcal{M}}$.
+    The proof is by induction on $n$.
+    Since the assertion is certainly valid for $n = 1$,
+    it is enough to show that $(i^1_n, i^2_n)$ is an arc of $\vv{\mathcal{M}}$.
+    Suppose, aiming at a contradiction that $(i^1_n, i^2_n)$
+    is not an arc of $\vv{\mathcal{M}}$.
+    Let $i^2_p$ be the sink of the arc with origin $i^1_n$ in
+    $\vv{\mathcal{M}}$ (\emph{i.e.}, $(i^1_n, i^2_p)$ is an abstractof
+    $\vv{\mathcal{M}}$).
+    We need to consider two cases.
+    \begin{itemize}
+      \item If $i^1_n > i^2_p$ then there exist $i^1_q$ and $i^2_r$ such
+      that
+      \begin{center}
+        \begin{tabular}{ccc}
+          \LabeledInclusionRL{.3}{$i^2_p$}{$i^1_q$}{$i^2_r$}{$i^1_n$}
+          &\qquad
+          \LabeledInclusionRR{.3}{$i^1_p$}{$i^2_r$}{$i^1_q$}{$i^1_n$}
+          &\qquad
+          \LabeledCrossingLR{.3}{$i^1_p$}{$i^2_p$}{$i^2_r$}{$i^1_n$}
+        \end{tabular}
+      \end{center}
+      This is a contradiction since
+      $\vv{\mathcal{M}}$ avoids
+      \InclusionLL,~\InclusionLR,~\InclusionRL,~\InclusionRR,~\CrossingLR and
+      \CrossingRL.
+      \item
+      If $i^1_n < i^2_p$ then there exist $i^1_q$ and $i^2_r$ such
+      that
+      \begin{center}
+        \begin{tabular}{ccc}
+          \LabeledInclusionLL{.3}{$i^1_q$}{$i^1_n$}{$i^2_p$}{$i^2_r$}
+          &\qquad
+          \LabeledInclusionRL{.3}{$i^2_r$}{$i^1_n$}{$i^2_p$}{$i^1_q$}
+          &\qquad
+          \LabeledCrossingRL{.3}{$i^2_p$}{$i^1_q$}{$i^1_n$}{$i^2_r$}
+        \end{tabular}
+      \end{center}
+      This is a contradiction since
+      $\vv{\mathcal{M}}$ avoids
+      \InclusionLL,~\InclusionLR,~\InclusionRL,~\InclusionRR,~\CrossingLR and
+      \CrossingRL.
+    \end{itemize}
+    Then it follows that $(i^1_n, i^2_n)$ is an arc
+    of $\vv{\mathcal{M}}$.
+    Now, let $p^1 = \pi(i^1_1) \pi(i^1_2) \dots \pi(i^1_n)$ and
+    $p^2 = \pi(j^2_1) \pi(^2_2) \dots \pi(i^2_n)$ be the two patterns
+    from $\pi$ induced by $I^1$ and $I^2$, respectively.
+    Clearly $p^1$ and $p^2$ are disjoint in $\pi$
+    (since $\vv{\mathcal{M}}$ is a matching)
+    and cover $\pi$ (since $\vv{\mathcal{M}}$ is perfect).
+    We claim that $p^1$ and $p^2$ are order-isomorphic.
+    Indeed, this is a direct consequence of th fact that,
+    for any two distinct edges $(a, b)$ and $(a', b')$ in
+    $\vv{\mathcal{M}}$ we have $\pi(a) < \pi(a')$ if and only if
     $\pi(b) < \pi(b')$.
     \qed
 \end{proof}
