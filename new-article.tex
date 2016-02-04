@@ -20,6 +20,8 @@
 \usepackage{shuffle}
 \usepackage{multirow}
 \usepackage{esvect}
+\usepackage{todonotes}
+\usepackage[normalem]{ulem}
 
 \usepackage{tikz}
 \usetikzlibrary{matrix, calc, arrows, shapes.callouts}
@@ -393,10 +395,14 @@ Unshuffling Permutations}%
     properties of our shuffle product. We besides exhibit a bijection
     between square $(213,231)$-avoiding permutations and square binary
     words. On the other hand, we prove that recognizing square
-    permutations is \NPC. This property is proved by establishing a
+    permutations is \NPC. \sout{This property is proved by establishing a
     reduction from the pattern involvement problem and by using a
     containment-free perfect matching criterion to decide if a
-    permutation is a square.
+    permutation is a square.}
+    \uline{This property is proved by establishing a
+    reduction from the pattern involvement problem and by using a
+    contrained oriented perfect matching criterion to decide if a
+    permutation is a square.}
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -407,7 +413,7 @@ Unshuffling Permutations}%
 %%
 \section{Introduction}
 \label{section:Introduction}
-The {\em shuffle product} $\shuffle$ is a very famous operation on words
+The \emph{shuffle product} $\shuffle$ is a very famous operation on words
 first defined by Eilenberg and Mac Lane~\cite{Eilenberg:MacLane:1953}.
 Given three words $u$, $v_1$, and $v_2$, $u$ is said to be a \emph{shuffle}
 of $v_1$ and $v_2$ if it can be formed by interleaving the letters from
@@ -469,16 +475,16 @@ is \NPC.
 This paper is intended to study a natural generalization of $\shuffle$,
 denoted by $\SHUFFLE$, as a shuffle of permutations. Roughly speaking,
 given three permutations $\pi$, $\sigma_1$, and $\sigma_2$, $\pi$ is
-said to be a {\em shuffle} of $\sigma_1$ and $\sigma_2$ if $\pi$ (viewed
+said to be a \emph{shuffle} of $\sigma_1$ and $\sigma_2$ if $\pi$ (viewed
 as a word) is a shuffle of two words that are order-isomorphic to
 $\sigma_1$ and $\sigma_2$. Our intention in this paper is to study this
 shuffle product of permutations $\SHUFFLE$ both from a combinatorial and
-from a computational point of view by focusing on {\em square}
+from a computational point of view by focusing on \emph{square}
 permutations, that are permutations $\pi$ being in the shuffle of a
 permutation $\sigma$ with itself. The shuffle product defined and
 considered in this paper is different from other existing and well-known
 shuffle products on permutations. For instance, in~\cite{DHT:IJAC:2002},
-the authors define the {\em shifted shuffle product}. For this product,
+the authors define the \emph{shifted shuffle product}. For this product,
 $\pi$ is a shuffle of $\sigma_1$ and $\sigma_2$ if $\pi$ is in the
 shuffle, as words, of $\sigma_1$ and the word obtained by incrementing
 all the letters of $\sigma_2$ by the size of $\sigma_1$. It is a simple
@@ -491,7 +497,7 @@ This paper is organized as follows. In
 Section~\ref{section:Shuffle product on permutations} we provide a
 precise definition of $\SHUFFLE$. This definition passes through the
 preliminary definition of an operator~$\Delta$, allowing to
-{\em unshuffle} permutations. This operator is in fact a coproduct,
+\emph{unshuffle} permutations. This operator is in fact a coproduct,
 endowing the linear span of all permutations with a coalgebra structure
 (see~\cite{Joni:Rota:1979} or~\cite{Grinberg:Reiner:2014} for the
 definition of these algebraic structures). By duality, the unshuffling
@@ -535,18 +541,18 @@ is the set $\{1, \dots, n\}$.
 
 We follow the usual terminology on words~\cite{ChoffrutKarhumaki1997}.
 Let us recall here the most important ones. Let $u$ be a word. The
-length of $u$ is denoted by $|u|$. The {\em empty word}, the only word
+length of $u$ is denoted by $|u|$. The \emph{empty word}, the only word
 of null length, is denoted by $\epsilon$. We denote by $\widetilde{u}$
-the {\em mirror image} of $u$ that is the word
+the \emph{mirror image} of $u$ that is the word
 $u_{|u|} u_{|u| - 1} \dots u_1$. If $P$ is a subset of $[|u|]$, $u_{|P}$
 is the subword of $u$ consisting in the letters of $u$ at the positions
 specified by the elements of $P$. If $u$ is a word of integers and $k$
 is an integer, we denote by $u[k]$ the word obtained by incrementing by
-$k$ all letters of $u$. The {\em shuffle} of two words $u$ and $v$ is
+$k$ all letters of $u$. The \emph{shuffle} of two words $u$ and $v$ is
 the set recursively defined by
 $u \shuffle \epsilon = u = \epsilon \shuffle u$ and
 $ua \shuffle vb = (u \shuffle vb)a \cup (ua \shuffle v)b$, were $a$ and
-$b$ are letters. A word $u$ is a {\em square} if there exists a word $v$
+$b$ are letters. A word $u$ is a \emph{square} if there exists a word $v$
 such that $u$ belongs to $v \shuffle v$.
 
 We denote by $S_n$ the set of permutations of size $n$ and by $S$ the
@@ -558,24 +564,25 @@ fact that we shall denote by $\pi(i)$ (instead of $\pi_i$) the $i$-th
 letter of any permutation $\pi$. For any nonnegative integer $n$, we
 write $\nearrow_{n}$ (resp. $\searrow_{n}$) for the permutation
 $1 2 \dots n$ (resp. $n (n-1) \dots 1$). If $\pi$ is a permutation of
-$S_n$, we denote by $\bar \pi$ the {\em complementary} of $\pi$ that is
+$S_n$, we denote by $\bar \pi$ the \emph{complementary} of $\pi$ that is
 the permutation satisfying $\bar \pi(i) = n - \pi(i) + 1$ for all
-$i \in [n]$. The {\em inverse} of $\pi$ is denoted by $\pi^{-1}$.
+$i \in [n]$. The \emph{inverse} of $\pi$ is denoted by $\pi^{-1}$.
 
 If $u$ is a word of integers without multiple occurrences of a same
-letter, $\STD(u)$ is the {\em standarized} of $u$, that is the unique
+letter, $\STD(u)$ is the \emph{standarized} of $u$, that is the unique
 permutation of the same size as $u$ such that for all $i, j \in [|u|]$,
 $u_i < u_j$ if and only if $\STD(u)(i) < \STD(u)(j)$. In particular, the
 image of the map $\STD$ is the set $S$ of all permutations. Two words $u$
-and $v$ having the same standarized are {\em order-isomorphic}. If
-$\sigma$ is a permutation, there is an {\em occurrence} of (the
-{\em pattern}) $\sigma$ in $\pi$ if there is a set $P$ of indexes of
+and $v$ having the same standarized are \emph{order-isomorphic}. If
+$\sigma$ is a permutation, there is an \emph{occurrence} of (the
+\emph{pattern}) $\sigma$ in $\pi$ if there is a set $P$ of indexes of
 letters of $\pi$ such that $\sigma$ and $\pi_{|P}$ are order-isomorphic.
-When $\pi$ does not admit any occurrence of $\sigma$, $\pi$ {\em avoids}
+When $\pi$ does not admit any occurrence of $\sigma$, $\pi$ \emph{avoids}
 $\sigma$.
 
-Let us now provide some definitions about graphs and matching, used in
-the sequel. For a graph $G$, we denote $\VS{G}$ as the set of vertices
+Let us now provide some definitions about graphs and \uline{oriented}
+matching, used in the sequel.
+For a graph $G$, we denote $\VS{G}$ as the set of vertices
 and $\ES{G}$ as the set of edges of $G$. Let $u = u_1 u_2 \dots u_n$ be
 a word. The \emph{clique graph associated to $u$}, denoted by $K_u$, is
 the complete graph on $\VS{K_u} = \{u_1, u_2, \ldots, u_n\}$. The
@@ -587,11 +594,18 @@ the context that $i < j$. Recall that two edges of a graph are
 \emph{independent} if they do not share a common vertex, and that a
 \emph{matching} $\mathcal{M}$ in $G$ is a set of pairwise independent
 edges. A matching is \emph{perfect} if it covers all the vertices of the
-graph. In case the set of vertices is equipped with a total order, a
+graph.
+\sout{In case the set of vertices is equipped with a total order, a
 matching $\mathcal{M}$ is said to be \emph{containment-free} if there do
 not exist (independent) edges $(u_i, u_j)$ and $(u_k, u_\ell)$ in
 $\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$ or
-$u_k < u_i < u_j < u_\ell$.
+$u_k < u_i < u_j < u_\ell$.}
+An \emph{oriented matching}
+$\vv{\mathcal{M}}$ of $\mathcal{M}$ is a directed matching obtained
+from $\mathcal{M}$ by orienting its edges.
+\textbf{D\'efinir l'inclusion de motifs. En fait, je pense même qu'il ne faudrait
+parler que de graphes orientés. Qu'en penses-tu?}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -621,7 +635,7 @@ any permutation $\pi$, we set
     \sum_{P_1 \sqcup P_2 = [|\pi|]}
     \STD\left(\pi_{|P_1}\right) \otimes \STD\left(\pi_{|P_2}\right).
 \end{equation}
-We call $\Delta$ the {\em unshuffling coproduct of permutations}. For
+We call $\Delta$ the \emph{unshuffling coproduct of permutations}. For
 instance,
 \begin{equation}
     \Delta(213) =
@@ -666,7 +680,7 @@ any permutations $\sigma$ and $\nu$,
 \end{equation}
 where the coefficients $\lambda_{\sigma, \nu}^\pi$ are the ones
 of~\eqref{equ:schematic_coproduct}. We call $\SHUFFLE$ the
-{\em shuffle product of permutations}. For instance,
+\emph{shuffle product of permutations}. For instance,
 \begin{equation}\begin{split} \label{equ:example_shuffle_product}
     12 \SHUFFLE 21 & =
     1243 + 1324 + 2.1342 + 2.1423 + 3. {\bf 1432} + 2134 + 2.2314 \\
@@ -683,15 +697,15 @@ Intuitively, this product shuffles the values and the positions of the
 letters of the permutations. As first and easy properties of $\SHUFFLE$,
 one can observe that the empty permutation $\epsilon$ is a unit for
 $\SHUFFLE$ and that this product is graded by the sizes of the
-permutations ({\em i.e.}, the product of a permutation of size $n$ with
+permutations (\emph{i.e.}, the product of a permutation of size $n$ with
 a permutation of size $m$ produces a sum of permutations of size $n + m$).
 Notice that there are other shuffle products on
-permutations~\cite{DHT:IJAC:2002}: the {\em shifted shuffle} and the
-{\em convolution product}. Our shuffle product is different from these
+permutations~\cite{DHT:IJAC:2002}: the \emph{shifted shuffle} and the
+\emph{convolution product}. Our shuffle product is different from these
 last two.
 \medskip
 
-We say that a permutation $\pi$ {\em appears} in the shuffle
+We say that a permutation $\pi$ \emph{appears} in the shuffle
 $\sigma \SHUFFLE \nu$ of two permutations $\sigma$ and $\nu$ if the
 coefficient $\lambda_{\sigma, \nu}^\pi$ defined above is different from
 zero. In a more combinatorial way, this is equivalent to say that there
@@ -701,9 +715,9 @@ is order-isomorphic to $\sigma$ and the subword $\pi_{|P_2}$ is
 order-isomorphic to $\nu$.
 \medskip
 
-Besides, a permutation $\pi$ is a {\em square} if there is a
+Besides, a permutation $\pi$ is a \emph{square} if there is a
 permutation $\sigma$ such that $\pi$ appears in $\sigma \SHUFFLE \sigma$.
-In this case, we say that $\sigma$ is a {\em square root} of $\pi$.
+In this case, we say that $\sigma$ is a \emph{square root} of $\pi$.
 Equivalently, $\pi$ is a square with $\sigma$ as square root if and only
 if in the expansion of $\Delta(\pi)$, there is a tensor
 $\sigma \otimes \sigma$ with a nonzero coefficient. In a more
