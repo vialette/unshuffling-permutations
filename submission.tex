@@ -19,6 +19,7 @@
 \usepackage{enumitem}
 \usepackage{shuffle}
 \usepackage{multirow}
+\usepackage{esvect}
 
 \usepackage{tikz}
 \usetikzlibrary{matrix, calc, arrows, shapes.callouts}
@@ -58,6 +59,315 @@
 \draw (U1.north) .. controls ($ (U1.north) + (0,2.5) $) and ($ (U4.north) + (0,2.5) $) .. (U4.north);
 \end{tikzpicture}
 }% end \MWithContainment
+
+\newcommand{\Crossing}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \Crossing
+
+\newcommand{\LabeledCrossingLL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingLL
+
+\newcommand{\CrossingLL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U3.north) + (0,2) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingLL
+
+\newcommand{\LabeledCrossingLR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingLR
+
+\newcommand{\CrossingLR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingLR
+
+\newcommand{\LabeledCrossingRL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingRL
+
+\newcommand{\CrossingRL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingRL
+
+\newcommand{\LabeledCrossingRR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingRR
+
+\newcommand{\CrossingRR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingRR
+
+\newcommand{\Inclusion}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \Inclusion
+
+\newcommand{\LabeledInclusionLL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionLL
+
+\newcommand{\InclusionLL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
++\draw [->] (U4.north) .. controls ($ (U4.north) + (0,4) $) and ($ (U1.north) + (0,4) $) .. (U1.north);
++\draw [->] (U3.north) .. controls ($ (U3.north) + (0,3) $) and ($ (U2.north) + (0,3) $) .. (U2.north);
+\end{tikzpicture}
+}% end \InclusionLL
+
+\newcommand{\LabeledInclusionLR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionLR
+
+\newcommand{\InclusionLR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \InclusionLR
+
+\newcommand{\LabeledInclusionRL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionRL
+
+\newcommand{\InclusionRL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \InclusionRL
+
+\newcommand{\LabeledInclusionRR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionRR
+
+\newcommand{\InclusionRR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \InclusionRR
+
+\newcommand{\Precedence}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \Precedence
+
+\newcommand{\LabeledPrecedenceLL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLL
+
+\newcommand{\PrecedenceLL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLL
+
+\newcommand{\LabeledPrecedenceLR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLR
+
+\newcommand{\PrecedenceLR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLR
+
+\newcommand{\LabeledPrecedenceRL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRL
+
+\newcommand{\PrecedenceRL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRL
+
+\newcommand{\LabeledPrecedenceRR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRR
+
+\newcommand{\PrecedenceRR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRR
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -108,8 +418,9 @@ Unshuffling Permutations}%
     strategy allows to obtain easy proofs for algebraic and combinatorial
     properties of our shuffle product. We besides exhibit a bijection
     between square $(213,231)$-avoiding permutations and square binary
-    words. On the other hand, using a containment-free perfect matching
-    criterion, we prove that recognizing square permutations is \NPC.
+    words. On the other hand, by using a pattern avoidance criterion on
+    oriented perfect matchings, we prove that recognizing square 
+    permutations is \NPC.
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -236,7 +547,7 @@ Section~\ref{section:Algorithmic issues} presents the most important result
 of this paper: the fact that deciding if a permutation is a square is
 \NPC (Proposition~\ref{proposition:hardness}). This result is obtained
 by exhibiting a reduction from the pattern involvement
-problem~\cite{Bose:Buss:Lubiw:1998} which is \NPC.
+problem~\cite{Bose:Buss:Lubiw:1998} which is \NPC. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -293,28 +604,46 @@ When $\pi$ does not admit any occurrence of $\sigma$, $\pi$ {\em avoids}
 $\sigma$. The set of permutations of size $n$ avoiding $\sigma$ is
 denoted by $S_n(\sigma)$.
 
-Let us now provide some definitions about graphs and matching that are used in
-the sequel. For a graph $G$, we denote $\VS{G}$ as the set of vertices
-and $\ES{G}$ as the set of edges of $G$. Let $u = u_1 u_2 \dots u_n$ be
-a word. The \emph{clique graph associated with $u$}, denoted by $K_u$, is
-the complete graph on $\VS{K_u} = \{u_1, u_2, \ldots, u_n\}$. The
-structure of this underlying graph is linear, \emph{i.e.}, the set of
-its vertices is equipped with a natural total order $<$ defined by
-$u_i < u_j$ if and only if $i < j$. For a linear graph, we write
-$(u_i, u_j)$ instead of $\{u_i, u_j\}$ for an edge if it is clear from
-the context that $i < j$. Recall that two edges of a graph are
-\emph{independent} if they do not share a common vertex, and that a
-\emph{matching} $\mathcal{M}$ in $G$ is a set of pairwise independent
-edges. A matching is \emph{perfect} if it covers all the vertices of the
-graph.
-For an edge $e = \{u,v\}$, we shall occasionally say that $u$ and $v$
-are \emph{involved} in $e$.
-In case the set of vertices is equipped with a total order, a
-matching $\mathcal{M}$ is said to be \emph{containment-free} if there do
-not exist (independent) edges $(u_i, u_j)$ and $(u_k, u_\ell)$ in
-$\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$
-%or $u_k < u_i < u_j < u_\ell$
-(\emph{i.e.}, $\mathcal{M}$ avoids~\MWithContainment).
+Let us now provide some definitions about graphs and oriented perfect 
+matchings that are used in the sequel. If $G$ is an oriented graph 
+without loops, two different edges of $G$ are {\em independent} if they 
+do not share any common vertex. We say that $G$ is an 
+{\em oriented matching} if all edges of $G$ are pairwise independent. 
+Moreover, $G$ is {\em perfect} if all vertices of $G$ belong to at least 
+one arc. For any word $u = u_1 u_2 \dots u_n$, an 
+{\em oriented perfect matching on $u$} is an oriented perfect matching 
+$\mathcal{M}$ on the set of vertices $\{u_1, u_2, \dots, u_n\}$. In the 
+sequel, we shall consider a natural notion of pattern avoidance in 
+oriented perfect matchings on words. For instance, an oriented perfect
+matching $\mathcal{M}$ of a word $u$ {\em admits an occurrence} of the 
+pattern $\CrossingRL$ if there are four positions $i < j < k < \ell$ in 
+$u$ such that $(u_k, u_i)$ and $(u_j, u_\ell)$ are arcs of $\mathcal{M}$. 
+When $\mathcal{M}$ does not admit any occurrence of a pattern 
+$\mathcal{P}$, we say that $\mathcal{M}$ {\em avoids}~$\mathcal{P}$.
+
+% Let us now provide some definitions about graphs and oriented matching 
+% that are used in the sequel. For a graph $G$, we denote $\VS{G}$ as the 
+% set of vertices and $\ES{G}$ as the set of edges of $G$. Let 
+% $u = u_1 u_2 \dots u_n$ be a word. The \emph{clique graph associated with $u$},
+% denoted by $K_u$, is the complete graph on 
+% $\VS{K_u} = \{u_1, u_2, \ldots, u_n\}$. The structure of this underlying 
+% graph is linear, \emph{i.e.}, the set of
+% its vertices is equipped with a natural total order $<$ defined by
+% $u_i < u_j$ if and only if $i < j$. For a linear graph, we write
+% $(u_i, u_j)$ instead of $\{u_i, u_j\}$ for an edge if it is clear from
+% the context that $i < j$. Recall that two edges of a graph are
+% \emph{independent} if they do not share a common vertex, and that a
+% \emph{matching} $\mathcal{M}$ in $G$ is a set of pairwise independent
+% edges. A matching is \emph{perfect} if it covers all the vertices of the
+% graph.
+% For an edge $e = \{u,v\}$, we shall occasionally say that $u$ and $v$
+% are \emph{involved} in $e$.
+% In case the set of vertices is equipped with a total order, a
+% matching $\mathcal{M}$ is said to be \emph{containment-free} if there do
+% not exist (independent) edges $(u_i, u_j)$ and $(u_k, u_\ell)$ in
+% $\mathcal{M}$ such that $u_i < u_k < u_\ell < u_j$
+% %or $u_k < u_i < u_j < u_\ell$
+% (\emph{i.e.}, $\mathcal{M}$ avoids~\MWithContainment).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -748,129 +1077,83 @@ This section is devoted to proving hardness of recognizing square
 permutations. In the same way as happens with words, we shall use a
 linear graph framework where deciding whether a permutation is a square
 reduces to computing some specific matching in the associated linear
-graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. It reads as follows
-(see Fig.\ref{fig:example containment-free matching}).
+graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. We have, however, 
+to deal with oriented perfect matchings. The needed properties read 
+as follows (see Fig.~\ref{fig:example containment-free matching}).
 \begin{figure}[ht!]
-  \centering
-  \begin{tikzpicture}[scale=0.5,inner sep=2pt,node distance=1cm]
-    \draw node (K) {$K_\pi$};
-    \draw node [draw, circle, minimum size=.55cm, fill=black!10] [right of=K]   (U01) {$2$};
-    \draw node [draw, circle, minimum size=.55cm, fill=black!10] [right of=U01] (U02) {$A$};
-    \draw node [draw, circle, minimum size=.55cm] [right of=U02] (U03) {$4$};
-    \draw node [draw, circle, minimum size=.55cm, fill=black!10] [right of=U03] (U04) {$7$};
-    \draw node [draw, circle, minimum size=.55cm, fill=black!10] [right of=U04] (U05) {$1$};
-    \draw node [draw, circle, minimum size=.55cm] [right of=U05] (U06) {$9$};
-    \draw node [draw, circle, minimum size=.55cm] [right of=U06] (U07) {$5$};
-    \draw node [draw, circle, minimum size=.55cm] [right of=U07] (U08) {$3$};
-    \draw node [draw, circle, minimum size=.55cm, fill=black!10] [right of=U08] (U09) {$8$};
-    \draw node [draw, circle, minimum size=.55cm] [right of=U09] (U10) {$6$};
-    \draw [thick]
-      (U01.north) .. controls ($ (U01.north) + (0,2.25) $) and ($ (U03.north) + (0,2.25) $) .. (U03.north);
-    \draw [thick]
-      (U02.north) .. controls ($ (U02.north) + (0,2.25) $) and ($ (U06.north) + (0,2.25) $) .. (U06.north);
-    \draw [thick]
-      (U04.north) .. controls ($ (U04.north) + (0,2.5) $) and ($ (U07.north) + (0,2.5) $) .. (U07.north);
-    \draw [thick]
-      (U05.north) .. controls ($ (U05.north) + (0,2.5) $) and ($ (U08.north) + (0,2.5) $) .. (U08.north);
-    \draw [thick]
-      (U09.north) .. controls ($ (U09.north) + (0,2.5) $) and ($ (U10.north) + (0,2.5) $) .. (U10.north);
-  \end{tikzpicture}
-  \caption{\label{fig:example containment-free matching}%
-    The linear graph $K_\pi$ associated with the permutation
-    $\pi = 2A47195386$ together with
-    a containment-free perfect matching $\mathcal{M}$
-    such that for any two distinct edges $(a, b)$ and
-    $(a', b')$ in $\mathcal{M}$ we have $\pi(a) < \pi(a')$ if and only
-    if $\pi(b) < \pi(b')$.
-    From $\mathcal{M}$, it follows that $\pi$ is square as it is in
-    the shuffle of $2A718$ and $49536$, both being
-    order-isomorphic to $25314$.
-  }% end caption
+    \centering
+    \begin{tikzpicture}[scale=0.5,inner sep=2pt,node distance=1cm]
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10](U01){$1$};
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U01]          
+            (U02) {$8$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U02](U03){$3$};
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U03] 
+            (U04) {$9$};
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U04]
+            (U05) {$2$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U05](U06){$7$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U06](U07){$B$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U07](U08){$5$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U08](U09){$C$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U09](U10){$6$};
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U10]
+            (U11) {$A$};
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U11]
+            (U12) {$4$};
+        \draw [thick,->]
+        (U01.north) .. controls ($ (U01.north) + (0,2.25) $) 
+            and ($ (U03.north) + (0,2.25) $) .. (U03.north);
+        \draw [thick,->]
+        (U02.north) .. controls ($ (U02.north) + (0,2.25) $) 
+            and ($ (U06.north) + (0,2.25) $) .. (U06.north);
+        \draw [thick,->]
+        (U04.north) .. controls ($ (U04.north) + (0,2.5) $) 
+            and ($ (U07.north) + (0,2.5) $) .. (U07.north);
+        \draw [thick,->]
+        (U05.north) .. controls ($ (U05.north) + (0,2.5) $) 
+            and ($ (U08.north) + (0,2.5) $) .. (U08.north);
+        \draw [thick,->]
+        (U11.north) .. controls ($ (U11.north) + (0,2.5) $) 
+            and ($ (U09.north) + (0,2.5) $) .. (U09.north);
+        \draw [thick,->]
+        (U12.north) .. controls ($ (U12.north) + (0,2.5) $) 
+            and ($ (U10.north) + (0,2.5) $) .. (U10.north);
+    \end{tikzpicture}
+    \caption{\label{fig:example containment-free matching}%
+        An oriented perfect matching $\mathcal{M}$ on the permutation
+        $\pi = 183927B5C6A4$ satisfying the properties $\mathbf{P_1}$ 
+        and $\mathbf{P_2}$. From $\mathcal{M}$, it follows that $\pi$ is 
+        a square as it appears in the shuffle of $1892A4$ and $37B5C6$, 
+        both being order-isomorphic to $145263$.
+    }% end caption
 \end{figure}
 
-\begin{figure}[t!]
-  \centering
-  \subfigure[%
-    An increasing pattern before and above a decreasing pattern.
-  ]{%
-    \begin{tikzpicture}
-      [
-        scale=0.325,
-        label/.style={anchor=base}
-      ]
-      % increasing pattern
-      \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,5.8) grid (5.2,11.2);
-      \foreach \x/\y in {0/6,1/7,2/8,3/9,4/10,5/11} {
-          \draw [fill=black] (\x,\y) circle (0.1);
-      }
-      % decreasing pattern
-      \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
-      \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
-          \draw [fill=black] (\x,\y) circle (0.1);
-      }
-      % labels
-      \node [label] (a) at (1,5) {$a$};
-      \node [label] (b) at (4,5) {$b$};
-      \node [label] (ap) at (7,-1) {$a'$};
-      \node [label] (bp) at (10,-1) {$b'$};
-      \node (nu1) at (2.5,4) {$\sigma_1$};
-      \node (nu2) at (8.5,-2) {$\sigma_2$};
-      % crossings edges
-      \draw [line width=1pt]
-      (1,7) .. controls +(0,12) and +(0,10) .. (7,4);
-      \draw [line width=1pt]
-      (4,10) .. controls +(0,12) and +(0,10) .. (10,1);
-    \end{tikzpicture}
-    \label{subfig:increasing before and above decreasing}
-  }% end subfigure
-  \qquad\qquad\qquad
-  \subfigure[%
-    A decreasing pattern before and below an increasing pattern.
-  ]{%
-  \begin{tikzpicture}
-    [
-      scale=0.325,
-      label/.style={anchor=base}
-    ]
-    % decreasing pattern
-    \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,-0.2) grid (5.2,5.2);
-    \foreach \x/\y in {0/5,1/4,2/3,3/2,4/1,5/0} {
-        \draw [fill=black] (\x,\y) circle (0.1);
-    }
-    % decreasing pattern
-    \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,5.8) grid (11.2,11.2);
-    \foreach \x/\y in {6/6,7/7,8/8,9/9,10/10,11/11} {
-        \draw [fill=black] (\x,\y) circle (0.1);
-    }
-    % labels
-    \node [label] (a) at (1,-1) {$a$};
-    \node [label] (b) at (4,-1) {$b$};
-    \node [label] (ap) at (7,5) {$a'$};
-    \node [label] (bp) at (10,5) {$b'$};
-    \node (nu1) at (2.5,-2) {$\sigma_1$};
-    \node (nu2) at (8.5,4) {$\sigma_2$};
-    % crossings edges
-    \draw [line width=1pt]
-    (1,4) .. controls +(0,10) and +(0,12) .. (7,7);
-    \draw [line width=1pt]
-    (4,1) .. controls +(0,10) and +(0,12) .. (10,10);
-    \end{tikzpicture}
-    \label{subfig:decreasing before and below increasing}
-  }% end subfigure
-  \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
-    Illustration of Lemma~\ref{lemma:at most one edge monotone}.
-  }
-\end{figure}
+\begin{definition}[Property $\mathbf{P_1}$]
+  \label{definition:Property P_1}
+  Let $\pi$ be a permutation. An oriented perfect matching $\mathcal{M}$
+  on $\pi$ is said to have property $\mathbf{P_1}$ if it avoids the 
+  patterns \InclusionLL, \InclusionLR, \InclusionRL, 
+  \InclusionRR, \CrossingLR, and \CrossingRL.
+\end{definition}
+
+\begin{definition}[Property $\mathbf{P_2}$]
+  \label{definition:Property P_2}
+  Let $\pi$ be a permutation. An oriented perfect matching $\mathcal{M}$
+  on $\pi$ is said to have property $\mathbf{P_2}$ if, for any two 
+  distinct arcs $(a, a')$ and $(b, b')$ in $\mathcal{M}$,
+  we have $\pi(a) < \pi(b)$ if and only if $\pi(a') < \pi(b')$.
+\end{definition}
+
+The rationale for introducing properties $\mathbf{P_1}$ and $\mathbf{P_2}$
+stems from the following lemma.
 
 \begin{lemma}
   \label{lemma:matching}
   Let $\pi$ be a permutation. The following statements are equivalent:
   \begin{enumerate}
     \item The permutation $\pi$ is a square.
-    \item There exists a perfect containment-free matching $\mathcal{M}$
-    of $K_\pi$ such that for any two distinct edges $(a, b)$ and
-    $(a', b')$ in $\mathcal{M}$ we have $\pi(a) < \pi(a')$ if and only
-    if $\pi(b) < \pi(b')$.
+    \item There exists an oriented perfect matching $\mathcal{M}$
+    on $\pi$ satisfying~$\mathbf{P_1}$ and~$\mathbf{P_2}$.
   \end{enumerate}
 \end{lemma}
 
@@ -884,6 +1167,137 @@ Fig.~\ref{subfig:increasing before and above decreasing}, whereas
 $\sigma_1$ is below $\sigma_2$ (in an equivalent manner, $\sigma_2$ is
 above $\sigma_1$) in Fig.~\ref{subfig:decreasing before and below
 increasing}.
+\begin{figure}[t!]
+  \centering
+  \subfigure[%
+    An increasing pattern before and above a decreasing pattern.
+  ]{%
+    \begin{tikzpicture}
+      [
+        scale=0.2,
+        label/.style={anchor=base}
+      ]
+      % increasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,5.8) grid (5.2,11.2);
+      \foreach \x/\y in {0/6,1/7,2/8,3/9,4/10,5/11} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % decreasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
+      \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % labels
+      \node [label] (a) at (1,4) {$a$};
+      \node [label] (b) at (4,4) {$b$};
+      \node [label] (ap) at (7,-2) {$a'$};
+      \node [label] (bp) at (10,-2) {$b'$};
+      \node (nu1) at (2.5,3) {$\sigma_1$};
+      \node (nu2) at (8.5,-3) {$\sigma_2$};
+      % crossings edges
+      \draw [line width=1pt,->,>=latex']
+      (1,7) .. controls +(0,12) and +(0,10) .. (7,4);
+      \draw [line width=1pt,->,>=latex']
+      (4,10) .. controls +(0,12) and +(0,10) .. (10,1);
+    \end{tikzpicture}
+    \;
+    \begin{tikzpicture}
+      [
+        scale=0.2,
+        label/.style={anchor=base}
+      ]
+      % increasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,5.8) grid (5.2,11.2);
+      \foreach \x/\y in {0/6,1/7,2/8,3/9,4/10,5/11} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % decreasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,-0.2) grid (11.2,5.2);
+      \foreach \x/\y in {6/5,7/4,8/3,9/2,10/1,11/0} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % labels
+      \node [label] (a) at (1,4) {$a'$};
+      \node [label] (b) at (4,4) {$b'$};
+      \node [label] (ap) at (7,-2) {$a$};
+      \node [label] (bp) at (10,-2) {$b$};
+      \node (nu1) at (2.5,3) {$\sigma_1$};
+      \node (nu2) at (8.5,-3) {$\sigma_2$};
+      % crossings edges
+      \draw [line width=1pt,<-,>=latex']
+      (1,7) .. controls +(0,12) and +(0,10) .. (7,4);
+      \draw [line width=1pt,<-,>=latex']
+      (4,10) .. controls +(0,12) and +(0,10) .. (10,1);
+    \end{tikzpicture}
+    \label{subfig:increasing before and above decreasing}
+  }% end subfigure
+  \qquad
+  \subfigure[%
+    A decreasing pattern before and below an increasing pattern.
+  ]{%
+  \begin{tikzpicture}
+    [
+      scale=0.2,
+      label/.style={anchor=base}
+    ]
+    % decreasing pattern
+    \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,-0.2) grid (5.2,5.2);
+    \foreach \x/\y in {0/5,1/4,2/3,3/2,4/1,5/0} {
+        \draw [fill=black] (\x,\y) circle (0.1);
+    }
+    % decreasing pattern
+    \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,5.8) grid (11.2,11.2);
+    \foreach \x/\y in {6/6,7/7,8/8,9/9,10/10,11/11} {
+        \draw [fill=black] (\x,\y) circle (0.1);
+    }
+    % labels
+    \node [label] (a) at (1,-2) {$a$};
+    \node [label] (b) at (4,-2) {$b$};
+    \node [label] (ap) at (7,4) {$a'$};
+    \node [label] (bp) at (10,4) {$b'$};
+    \node (nu1) at (2.5,-3) {$\sigma_1$};
+    \node (nu2) at (8.5,3) {$\sigma_2$};
+    % crossings edges
+    \draw [line width=1pt,->,>=latex']
+    (1,4) .. controls +(0,10) and +(0,12) .. (7,7);
+    \draw [line width=1pt,->,>=latex']
+    (4,1) .. controls +(0,10) and +(0,12) .. (10,10);
+    \end{tikzpicture}
+    \;
+    \begin{tikzpicture}
+      [
+        scale=0.2,
+        label/.style={anchor=base}
+      ]
+      % decreasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (-0.2,-0.2) grid (5.2,5.2);
+      \foreach \x/\y in {0/5,1/4,2/3,3/2,4/1,5/0} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % decreasing pattern
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (5.8,5.8) grid (11.2,11.2);
+      \foreach \x/\y in {6/6,7/7,8/8,9/9,10/10,11/11} {
+          \draw [fill=black] (\x,\y) circle (0.1);
+      }
+      % labels
+      \node [label] (a) at (1,-2) {$a'$};
+      \node [label] (b) at (4,-2) {$b'$};
+      \node [label] (ap) at (7,4) {$a$};
+      \node [label] (bp) at (10,4) {$b$};
+      \node (nu1) at (2.5,-3) {$\sigma_1$};
+      \node (nu2) at (8.5,3) {$\sigma_2$};
+      % crossings edges
+      \draw [line width=1pt,<-,>=latex']
+      (1,4) .. controls +(0,10) and +(0,12) .. (7,7);
+      \draw [line width=1pt,<-,>=latex']
+      (4,1) .. controls +(0,10) and +(0,12) .. (10,10);
+      \end{tikzpicture}
+    \label{subfig:decreasing before and below increasing}
+  }% end subfigure
+  \caption{\label{fig:subfig:no (nu_1, nu_2)-edge}%
+    Illustration of Lemma~\ref{lemma:at most one edge monotone}.
+  }
+\end{figure}
 
 Before proving hardness, we give an easy lemma that will prove extremely
 useful for simplifying the proof of upcoming
@@ -893,19 +1307,24 @@ Proposition~\ref{proposition:hardness}.
   \label{lemma:at most one edge monotone}
   Let $\pi = \pi_1 \, \sigma_1 \, \pi_2 \, \sigma_2 \, \pi_3$
   be a permutation with $|\sigma_1| \geq 2$ and $|\sigma_2| \geq 2$,
-  and $\mathcal{M}$ be a containment-free perfect matching of $K_\pi$.
+  and $\mathcal{M}$ be an oriented perfect matching on $\pi$
+  satisfying~$\mathbf{P_1}$ and $\mathbf{P_2}$.
   The following assertions hold:
   \begin{enumerate}
     \item
     If $\sigma_1$ is increasing, $\sigma_2$ is decreasing, and
-    $\sigma_1$ is above $\sigma_2$ (see Fig.~\ref{subfig:increasing before
-    and above decreasing}), then $\mathcal{M}$ contains at most one
-    $(\sigma_1, \sigma_2)$-edge.
+    $\sigma_1$ is above $\sigma_2$
+    (see Fig.~\ref{subfig:increasing before and above decreasing}),
+    then there is at most one arc between $\sigma_1$ and
+    $\sigma_2$ in $\mathcal{M}$ (this arc can be a
+    $(\sigma_1, \sigma_2)$-arc or a $(\sigma_2, \sigma_1)$-arc).
     \item
     If $\sigma_1$ is decreasing, $\sigma_2$ is increasing, and $\sigma_1$
-    is below $\sigma_2$ (see Fig.~\ref{subfig:decreasing before and below
-    increasing}), then $\mathcal{M}$ contains at most one
-    $(\sigma_1, \sigma_2)$-edge.
+    is below $\sigma_2$
+    (see Fig.~\ref{subfig:decreasing before and below increasing}),
+    then there is at most one arc between $\sigma_1$ and
+    $\sigma_2$ in $\mathcal{M}$ (this arc can be a
+    $(\sigma_1, \sigma_2)$-arc or a $(\sigma_2, \sigma_1)$-arc).
   \end{enumerate}
 \end{lemma}
 
@@ -921,10 +1340,10 @@ Proposition~\ref{proposition:hardness}.
   $\sigma$, decide whether $\sigma$ occurs in $\pi$ (as an
   order-isomorphic pattern).
 
-  \begin{figure}[t!]
+    \begin{figure}[t!]
     \centering
     \begin{tikzpicture}[
-      scale=.8,
+      scale=.9,
       >=stealth',
       shorten >=1pt,
       main node/.style={align=center},
@@ -933,31 +1352,27 @@ Proposition~\ref{proposition:hardness}.
       pattern link/.style={line width=1.5pt,black!20},
       monotone/.style={->,thick}
       ]
-      % edges
+      % arcs
       % pi 1 - pi 2
-      \draw [pattern link] (8.5,6) .. controls +(0,1) and +(0,2) .. (10.5,5);
+      \draw [pattern link,->,>=latex'] (8.5,6) .. controls +(0,1) and +(0,2) .. (10.4,5);
       % pi 2 - sigma 2
-      \draw [pattern link] (10.5,5) .. controls +(0,1) and +(0,3) .. (11.5,4);
+      \draw [pattern link,->,>=latex'] (10.6,5) .. controls +(0,1) and +(0,3) .. (11.5,4);
       % 1
-      \draw [structure link] (0.5,11) .. controls +(0,2) and +(0,1) .. (2.5,12);
-      % SUPPRIMER COMMENTAIRE POUR VERSION LONGUE
-      % \node (claim edge 1) at (1.5,13.5) {Claim~\ref{claim:(nu_1, nu'_1)-edge}};
-      % \node (claim edge 1) at (1.5,13) {Claim~\ref{claim:all (nu_1, nu'_1)-edges}};
+      \draw [structure link,->,>=latex'] (0.5,11) .. controls +(0,2) and +(0,1) .. (2.5,12);
+%       \node (claim edge 1) at (1.5,13.5) {Claim~\ref{claim:(nu_1, nu'_1)-edge}};
+%       \node (claim edge 1) at (1.5,13) {Claim~\ref{claim:all (nu_1, nu'_1)-edges}};
       % 2
-      \draw [structure link] (1.5,2) .. controls +(0,1) and +(0,3) .. (6.5,1);
-      % SUPPRIMER COMMENTAIRE POUR VERSION LONGUE
-      % \node (claim edge 2) at (4,4) {Claim~\ref{claim:(nu_2, nu'_2)-edge}};
-      % \node (claim edge 2) at (4,3.5) {Claim~\ref{claim:all (nu_2, nu'_2)-edges}};
+      \draw [structure link,->,>=latex'] (1.5,2) .. controls +(0,1) and +(0,3) .. (6.5,1);
+%       \node (claim edge 2) at (4,4) {Claim~\ref{claim:(nu_2, nu'_2)-edge}};
+%       \node (claim edge 2) at (4,3.5) {Claim~\ref{claim:all (nu_2, nu'_2)-edges}};
       % 3
-      \draw [structure link] (3.5,9) .. controls +(0,3) and +(0,1.5) .. (7.5,10);
-      % SUPPRIMER COMMENTAIRE POUR VERSION LONGUE
-      % \node (claim edge 1) at (5.5,11.5) {Claim~\ref{claim:(nu_3, nu'_3)-edge}};
+      \draw [structure link,->,>=latex'] (3.5,9) .. controls +(0,3) and +(0,1.5) .. (7.5,10);
+%       \node (claim edge 1) at (5.5,11.5) {Claim~\ref{claim:(nu_3, nu'_3)-edge}};
       % 4
-      \draw [structure link] (5.5,8) .. controls +(0,1) and +(0,7) .. (9.5,3);
-      % SUPPRIMER COMMENTAIRE POUR VERSION LONGUE
-      % \node (claim edge 1) at (8.5,8.5) {Claim~\ref{claim:(nu_4, nu'_4)-edge}};
+      \draw [structure link,->,>=latex'] (5.5,8) .. controls +(0,1) and +(0,7) .. (9.5,3);
+%       \node (claim edge 1) at (8.5,8.5) {Claim~\ref{claim:(nu_4, nu'_4)-edge}};
       % sigma 1 - pi 1
-      \draw [structure link] (4.5,6) .. controls +(0,-2) and +(0,-1) .. (8.5,5);
+      \draw [structure link,->,>=latex'] (4.5,6) .. controls +(0,-2) and +(0,-1) .. (8.5,5);
       % \node (claim edge 1) at (6.5,4) {Claim~\ref{}};
       % nodes
       % 1
@@ -994,7 +1409,7 @@ Proposition~\ref{proposition:hardness}.
       \draw [cell] (11,3) -- (12,3) -- (12,4) -- (11,4) -- cycle;
       \node [main node] (pi2) at (11.5,3.5) {$\sigma''$};
       % grid
-      \draw[step=1cm,black!30,thin,fill=black!10] (0,0) grid (12,12);
+      \draw[step=1cm,black!30,ultra thin,fill=black!10] (0,0) grid (12,12);
       % row size
       \foreach \y/\N in {0.5/N_2,1.5/N_2,2.5/N_4,3.5/k,4.5/n,5.5/n+2,6.5/k+2,7.5/N_4,8.5/N_3,9.5/N_3,10.5/N_1,11.4/N_1} {
           \node at (-0.5,\y) (R\y) {$\N$};
@@ -1008,25 +1423,25 @@ Proposition~\ref{proposition:hardness}.
     \caption{\label{fig:reduction}%
       Schematic representation of the permutation $\mu$ used
       in Proposition~\ref{proposition:hardness}.
-      Black edges denote the presence of at least one edge between two bunches of
-      vertices in $K_\mu$.
-      Grey edges denote edges that are only considered in the forward direction of the
+      Black arcs denote the presence of at least one arc between two bunches of
+      positions in $\mu$.
+      Grey arcs denote edges that are only considered in the forward direction of the
       proof.
     }%
   \end{figure}
 
   Let $\pi \in S_n$ and $\sigma \in S_k$ be two arbitrary permutations.
   Define
-  % \begin{align*}
-  % N_4 &= 2(2n + 2k + 4) + 1  = 4n + 4k + 9 \\
-  % N_3 &= 2(2N_4 + 2n + 2k + 4) + 1 = 20n + 20k + 45 \\
-  % N_2 &= 2(2N_3 + 2N_4 + 2n + 2k + 4) + 1 = 100n + 100k + 225 \\
-  % N_1 &= 2(2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4) + 1 = 1000n + 1000k  + 1325\text{.}
-  % \end{align*}
-  $N_4 = 2(2n + 2k + 4) + 1  = 4n + 4k + 9$,
-  $N_3 = 2(2N_4 + 2n + 2k + 4) + 1 = 20n + 20k + 45$,
-  $N_2 = 2(2N_3 + 2N_4 + 2n + 2k + 4) + 1 = 100n + 100k + 225$ and
-  $N_1 = 2(2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4) + 1 = 1000n + 1000k  + 1325$.
+  \begin{align*}
+  N_4 &= 2(2n + 2k + 4) + 1  = 4n + 4k + 9 \\
+  N_3 &= 2(2N_4 + 2n + 2k + 4) + 1 = 20n + 20k + 45 \\
+  N_2 &= 2(2N_3 + 2N_4 + 2n + 2k + 4) + 1 = 100n + 100k + 225 \\
+  N_1 &= 2(2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4) + 1 = 1000n + 1000k  + 1325\text{.}
+  \end{align*}
+%   $N_4 = 2(2n + 2k + 4) + 1  = 4n + 4k + 9$,
+%   $N_3 = 2(2N_4 + 2n + 2k + 4) + 1 = 20n + 20k + 45$,
+%   $N_2 = 2(2N_3 + 2N_4 + 2n + 2k + 4) + 1 = 100n + 100k + 225$ and
+%   $N_1 = 2(2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4) + 1 = 1000n + 1000k  + 1325$.
   Notice that $N_1, N_2, N_3$ and $N_4$ are polynomial in $n$.
   The crucial properties are that
   (i) $N_1, N_2, N_3$ and $N_4$ are odd integers
@@ -1069,11 +1484,8 @@ Proposition~\ref{proposition:hardness}.
   It can be shown
   %(see Appendix)
   that $\sigma$ occurs in $\pi$ if and only if
-  there exists a containment-free perfect matching
-  $\mathcal{M}$ in $K_\mu$ such that
-  for any two disctinct edges
-  $(a, b)$ and $(a', b')$ in $\mathcal{M}$
-  we have $\mu(a) < \mu(a')$ if and only if $\mu(b) < \mu(b')$.
+  there exists an oriented perfect matching $\mathcal{M}$ on $\mu$
+  satisfying $\mathbf{P_1}$ and $\mathbf{P_2}$.
   \qed
 \end{proof}
 
