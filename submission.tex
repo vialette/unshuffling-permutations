@@ -419,7 +419,7 @@ Unshuffling Permutations}%
     properties of our shuffle product. We besides exhibit a bijection
     between square $(213,231)$-avoiding permutations and square binary
     words. On the other hand, by using a pattern avoidance criterion on
-    oriented perfect matchings, we prove that recognizing square 
+    oriented perfect matchings, we prove that recognizing square
     permutations is \NPC.
 \end{abstract}
 
@@ -547,7 +547,7 @@ Section~\ref{section:Algorithmic issues} presents the most important result
 of this paper: the fact that deciding if a permutation is a square is
 \NPC (Proposition~\ref{proposition:hardness}). This result is obtained
 by exhibiting a reduction from the pattern involvement
-problem~\cite{Bose:Buss:Lubiw:1998} which is \NPC. 
+problem~\cite{Bose:Buss:Lubiw:1998} which is \NPC.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -604,29 +604,30 @@ When $\pi$ does not admit any occurrence of $\sigma$, $\pi$ {\em avoids}
 $\sigma$. The set of permutations of size $n$ avoiding $\sigma$ is
 denoted by $S_n(\sigma)$.
 
-Let us now provide some definitions about graphs and oriented perfect 
-matchings that are used in the sequel. If $G$ is an oriented graph 
-without loops, two different edges of $G$ are {\em independent} if they 
-do not share any common vertex. We say that $G$ is an 
-{\em oriented matching} if all edges of $G$ are pairwise independent. 
-Moreover, $G$ is {\em perfect} if any vertex of $G$ belongs to at least 
-one arc. For any permutation $\pi$ of $S_n$, an 
-{\em oriented perfect matching on $\pi$} is an oriented perfect matching 
-$\mathcal{M}$ on the set of vertices $[n]$. In the sequel, we shall 
-consider a natural notion of pattern avoidance in oriented perfect 
-matchings on permutations. For instance, an oriented perfect matching 
-$\mathcal{M}$ on a permutation $\pi$ {\em admits an occurrence} of the 
-pattern $\CrossingRL$ if there are four positions $i < j < k < \ell$ in 
-$\pi$ such that $(\pi(k), \pi(i))$ and $(\pi(j), \pi(\ell))$ are arcs of 
-$\mathcal{M}$. When $\mathcal{M}$ does not admit any occurrence of a 
-pattern $\mathcal{P}$, we say that $\mathcal{M}$ {\em avoids}~$\mathcal{P}$.
+Let us now provide some definitions about graphs and oriented perfect
+matchings that are used in the sequel. If $G$ is an oriented graph
+without loops, two different edges of $G$ are {\em independent} if they
+do not share any common vertex. We say that $G$ is an
+{\em oriented matching} if all edges of $G$ are pairwise independent.
+Moreover, $G$ is {\em perfect} if any vertex of $G$ belongs to at least
+one arc. For any permutation $\pi$ of $S_n$, an
+{\em oriented perfect matching on $\pi$} is an oriented perfect matching
+$\vv{\mathcal{M}}$ on the set of vertices $[n]$. In the sequel, we shall
+consider a natural notion of pattern avoidance in oriented perfect
+matchings on permutations. For instance, an oriented perfect matching
+$\vv{\mathcal{M}}$ on a permutation $\pi$ {\em admits an occurrence} of the
+pattern $\CrossingRL$ if there are four positions $i < j < k < \ell$ in
+$\pi$ such that $(\pi(k), \pi(i))$ and $(\pi(j), \pi(\ell))$ are arcs of
+$\vv{\mathcal{M}}$. When $\mathcal{M}$ does not admit any occurrence of a
+pattern $\mathcal{P}$,
+we say that $\vv{\mathcal{M}}$ {\em avoids}~$\mathcal{P}$.
 
-% Let us now provide some definitions about graphs and oriented matching 
-% that are used in the sequel. For a graph $G$, we denote $\VS{G}$ as the 
-% set of vertices and $\ES{G}$ as the set of edges of $G$. Let 
+% Let us now provide some definitions about graphs and oriented matching
+% that are used in the sequel. For a graph $G$, we denote $\VS{G}$ as the
+% set of vertices and $\ES{G}$ as the set of edges of $G$. Let
 % $u = u_1 u_2 \dots u_n$ be a word. The \emph{clique graph associated with $u$},
-% denoted by $K_u$, is the complete graph on 
-% $\VS{K_u} = \{u_1, u_2, \ldots, u_n\}$. The structure of this underlying 
+% denoted by $K_u$, is the complete graph on
+% $\VS{K_u} = \{u_1, u_2, \ldots, u_n\}$. The structure of this underlying
 % graph is linear, \emph{i.e.}, the set of
 % its vertices is equipped with a natural total order $<$ defined by
 % $u_i < u_j$ if and only if $i < j$. For a linear graph, we write
@@ -1077,17 +1078,17 @@ This section is devoted to proving hardness of recognizing square
 permutations. In the same way as happens with words, we shall use a
 linear graph framework where deciding whether a permutation is a square
 reduces to computing some specific matching in the associated linear
-graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. We have, however, 
-to deal with oriented perfect matchings. The needed properties read 
+graph~\cite{Buss:Soltys:2014,Rizzi:Vialette:CSR:2013}. We have, however,
+to deal with oriented perfect matchings. The needed properties read
 as follows (see Fig.~\ref{fig:example containment-free matching}).
 \begin{figure}[ht!]
     \centering
     \begin{tikzpicture}[scale=0.5,inner sep=2pt,node distance=1cm]
         \draw node [draw,circle,minimum size=.55cm,fill=black!10](U01){$1$};
-        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U01]          
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U01]
             (U02) {$8$};
         \draw node [draw,circle,minimum size=.55cm,right of=U02](U03){$3$};
-        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U03] 
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U03]
             (U04) {$9$};
         \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U04]
             (U05) {$2$};
@@ -1101,29 +1102,29 @@ as follows (see Fig.~\ref{fig:example containment-free matching}).
         \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U11]
             (U12) {$4$};
         \draw [thick,->]
-        (U01.north) .. controls ($ (U01.north) + (0,2.25) $) 
+        (U01.north) .. controls ($ (U01.north) + (0,2.25) $)
             and ($ (U03.north) + (0,2.25) $) .. (U03.north);
         \draw [thick,->]
-        (U02.north) .. controls ($ (U02.north) + (0,2.25) $) 
+        (U02.north) .. controls ($ (U02.north) + (0,2.25) $)
             and ($ (U06.north) + (0,2.25) $) .. (U06.north);
         \draw [thick,->]
-        (U04.north) .. controls ($ (U04.north) + (0,2.5) $) 
+        (U04.north) .. controls ($ (U04.north) + (0,2.5) $)
             and ($ (U07.north) + (0,2.5) $) .. (U07.north);
         \draw [thick,->]
-        (U05.north) .. controls ($ (U05.north) + (0,2.5) $) 
+        (U05.north) .. controls ($ (U05.north) + (0,2.5) $)
             and ($ (U08.north) + (0,2.5) $) .. (U08.north);
         \draw [thick,->]
-        (U11.north) .. controls ($ (U11.north) + (0,2.5) $) 
+        (U11.north) .. controls ($ (U11.north) + (0,2.5) $)
             and ($ (U09.north) + (0,2.5) $) .. (U09.north);
         \draw [thick,->]
-        (U12.north) .. controls ($ (U12.north) + (0,2.5) $) 
+        (U12.north) .. controls ($ (U12.north) + (0,2.5) $)
             and ($ (U10.north) + (0,2.5) $) .. (U10.north);
     \end{tikzpicture}
     \caption{\label{fig:example containment-free matching}%
         An oriented perfect matching $\mathcal{M}$ on the permutation
-        $\pi = 183927B5C6A4$ satisfying the properties $\mathbf{P_1}$ 
-        and $\mathbf{P_2}$. From $\mathcal{M}$, it follows that $\pi$ is 
-        a square as it appears in the shuffle of $1892A4$ and $37B5C6$, 
+        $\pi = 183927B5C6A4$ satisfying the properties $\mathbf{P_1}$
+        and $\mathbf{P_2}$. From $\mathcal{M}$, it follows that $\pi$ is
+        a square as it appears in the shuffle of $1892A4$ and $37B5C6$,
         both being order-isomorphic to $145263$.
     }% end caption
 \end{figure}
@@ -1131,15 +1132,15 @@ as follows (see Fig.~\ref{fig:example containment-free matching}).
 \begin{definition}[Property $\mathbf{P_1}$]
   \label{definition:Property P_1}
   Let $\pi$ be a permutation. An oriented perfect matching $\mathcal{M}$
-  on $\pi$ is said to have property $\mathbf{P_1}$ if it avoids all the 
-  six patterns \InclusionLL, \InclusionLR, \InclusionRL, 
+  on $\pi$ is said to have property $\mathbf{P_1}$ if it avoids all the
+  six patterns \InclusionLL, \InclusionLR, \InclusionRL,
   \InclusionRR, \CrossingLR, and \CrossingRL.
 \end{definition}
 
 \begin{definition}[Property $\mathbf{P_2}$]
   \label{definition:Property P_2}
   Let $\pi$ be a permutation. An oriented perfect matching $\mathcal{M}$
-  on $\pi$ is said to have property $\mathbf{P_2}$ if, for any two 
+  on $\pi$ is said to have property $\mathbf{P_2}$ if, for any two
   distinct arcs $(\pi(a), \pi(a'))$ and $(\pi(b), \pi(b'))$ in $\mathcal{M}$,
   we have $\pi(a) < \pi(b)$ if and only if $\pi(a') < \pi(b')$.
 \end{definition}
