@@ -609,13 +609,13 @@ matchings that are used in the sequel. If $G$ is an oriented graph
 without loops, two different edges of $G$ are {\em independent} if they 
 do not share any common vertex. We say that $G$ is an 
 {\em oriented matching} if all edges of $G$ are pairwise independent. 
-Moreover, $G$ is {\em perfect} if all vertices of $G$ belong to at least 
+Moreover, $G$ is {\em perfect} if any vertex of $G$ belongs to at least 
 one arc. For any word $u = u_1 u_2 \dots u_n$, an 
 {\em oriented perfect matching on $u$} is an oriented perfect matching 
 $\mathcal{M}$ on the set of vertices $\{u_1, u_2, \dots, u_n\}$. In the 
 sequel, we shall consider a natural notion of pattern avoidance in 
 oriented perfect matchings on words. For instance, an oriented perfect
-matching $\mathcal{M}$ of a word $u$ {\em admits an occurrence} of the 
+matching $\mathcal{M}$ on a word $u$ {\em admits an occurrence} of the 
 pattern $\CrossingRL$ if there are four positions $i < j < k < \ell$ in 
 $u$ such that $(u_k, u_i)$ and $(u_j, u_\ell)$ are arcs of $\mathcal{M}$. 
 When $\mathcal{M}$ does not admit any occurrence of a pattern 
@@ -1131,8 +1131,8 @@ as follows (see Fig.~\ref{fig:example containment-free matching}).
 \begin{definition}[Property $\mathbf{P_1}$]
   \label{definition:Property P_1}
   Let $\pi$ be a permutation. An oriented perfect matching $\mathcal{M}$
-  on $\pi$ is said to have property $\mathbf{P_1}$ if it avoids the 
-  patterns \InclusionLL, \InclusionLR, \InclusionRL, 
+  on $\pi$ is said to have property $\mathbf{P_1}$ if it avoids all the 
+  six patterns \InclusionLL, \InclusionLR, \InclusionRL, 
   \InclusionRR, \CrossingLR, and \CrossingRL.
 \end{definition}
 
