@@ -610,16 +610,16 @@ without loops, two different edges of $G$ are {\em independent} if they
 do not share any common vertex. We say that $G$ is an 
 {\em oriented matching} if all edges of $G$ are pairwise independent. 
 Moreover, $G$ is {\em perfect} if any vertex of $G$ belongs to at least 
-one arc. For any word $u = u_1 u_2 \dots u_n$, an 
-{\em oriented perfect matching on $u$} is an oriented perfect matching 
-$\mathcal{M}$ on the set of vertices $\{u_1, u_2, \dots, u_n\}$. In the 
-sequel, we shall consider a natural notion of pattern avoidance in 
-oriented perfect matchings on words. For instance, an oriented perfect
-matching $\mathcal{M}$ on a word $u$ {\em admits an occurrence} of the 
+one arc. For any permutation $\pi$ of $S_n$, an 
+{\em oriented perfect matching on $\pi$} is an oriented perfect matching 
+$\mathcal{M}$ on the set of vertices $[n]$. In the sequel, we shall 
+consider a natural notion of pattern avoidance in oriented perfect 
+matchings on permutations. For instance, an oriented perfect matching 
+$\mathcal{M}$ on a permutation $\pi$ {\em admits an occurrence} of the 
 pattern $\CrossingRL$ if there are four positions $i < j < k < \ell$ in 
-$u$ such that $(u_k, u_i)$ and $(u_j, u_\ell)$ are arcs of $\mathcal{M}$. 
-When $\mathcal{M}$ does not admit any occurrence of a pattern 
-$\mathcal{P}$, we say that $\mathcal{M}$ {\em avoids}~$\mathcal{P}$.
+$\pi$ such that $(\pi(k), \pi(i))$ and $(\pi(j), \pi(\ell))$ are arcs of 
+$\mathcal{M}$. When $\mathcal{M}$ does not admit any occurrence of a 
+pattern $\mathcal{P}$, we say that $\mathcal{M}$ {\em avoids}~$\mathcal{P}$.
 
 % Let us now provide some definitions about graphs and oriented matching 
 % that are used in the sequel. For a graph $G$, we denote $\VS{G}$ as the 
@@ -1140,7 +1140,7 @@ as follows (see Fig.~\ref{fig:example containment-free matching}).
   \label{definition:Property P_2}
   Let $\pi$ be a permutation. An oriented perfect matching $\mathcal{M}$
   on $\pi$ is said to have property $\mathbf{P_2}$ if, for any two 
-  distinct arcs $(a, a')$ and $(b, b')$ in $\mathcal{M}$,
+  distinct arcs $(\pi(a), \pi(a'))$ and $(\pi(b), \pi(b'))$ in $\mathcal{M}$,
   we have $\pi(a) < \pi(b)$ if and only if $\pi(a') < \pi(b')$.
 \end{definition}
 
