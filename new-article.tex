@@ -2318,9 +2318,9 @@ we now turn to proving hardness of the targeted problem.
     (regardless of the orientation).
     Suppose now, aiming at a contradiction, that there exists
     exactly one arc between $\nu_1$ and $\nu_2$ in $\vv{\mathcal{M}}$.
-    According to Corollary~\ref{corollary:reverse oriented matching} there is no
+    According to Corollary~\ref{corollary:reverse oriented matching}, there is no
     loss of generality in assuming that this is a
-    $(\nu_1, \nu'_1)$-arc, say $(a, a')$.
+    $(\nu_1, \nu_2)$-arc and denote it by $(a, a')$.
     Furtheremore, according to Lemma~\ref{lemma:for nu_1 and nu_2},
     there is no $(\nu_1, \nu_1)$-arc in $\vv{\mathcal{M}}$.
     Now, since $\nu_1$ is increasing and there exists
@@ -2347,7 +2347,7 @@ we now turn to proving hardness of the targeted problem.
       According to Lemma~\ref{lemma:value inclusion of arcs},
       $(a, a')$ and $(y, y')$ must be crossing
       (\emph{i.e.}, $y < a'$).
-      But it follows that $\vv{\mathcal{M}}$ contain \CrossingLR
+      But it follows that $\vv{\mathcal{M}}$ contains \CrossingLR
       which contradicts Property~$\mathbf{P_1}$.
       \item
       $(y, y'')$ in an arc of $\vv{\mathcal{M}}$ for some
@@ -2363,30 +2363,42 @@ we now turn to proving hardness of the targeted problem.
 
   \begin{claim}
     \label{claim:(nu_1, nu'_1)-edge}
-    There is at least one $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
+    There is at least one $(\nu_1, \nu'_1)$-arc in $\vv{\mathcal{M}}$.
   \end{claim}
 
   \begin{proof}[of Claim~\ref{claim:(nu_1, nu'_1)-edge}]
-    Suppose, aiming at a contradiction, that there is no
-    $(\nu_1, \nu'_1)$-edge in $\mathcal{M}$.
-    Then it follows that there exists an edge $(x, x')$ in $\mathcal{M}$,
+    Suppose, aiming at a contradiction, that there is no arc between
+    $\nu_1$ and $\nu'_1$ in $\vv{\mathcal{M}}$.
+    Then it follows that there exists an arc $(x, x')$ or
+    $(x', x)$ in $\vv{\mathcal{M}}$,
     $1 \leq x \leq N_1$, that is neither a
-    $(\nu_1, \nu_1)$-edge (since $N_1$ is odd)
-    nor a $(\nu_1, \nu_2)$-edge (Claim~\ref{claim:no (nu_1, nu_2)-edge})
-    nor a $(\nu_1, \nu'_1)$ (by our contradiction hypothesis).
+    $(\nu_1, \nu_1)$-arc (since $N_1$ is odd)
+    nor a $(\nu_1, \nu_2)$-arc or a $(\nu_2, \nu_1)$-arc
+    (Claim~\ref{claim:no (nu_1, nu_2)-edge})
+    nor a $(\nu_1, \nu'_1)$-arc or $(\nu_1, \nu'_1)$-arc
+    (by our contradiction hypothesis).
     (In other words, $x \leq N_1$ and $x' > 2N_1 + N_2$.)
-    Therefore, since $\mathcal{M}$ is containment-free,
-    there is neither a $(\nu_2, \nu_2)$-edge nor a $(\nu'_1, \nu'_1)$-edge
-    in $\mathcal{M}$.
+    Therefore, since $\mathcal{M}$ avoids
+    \InclusionLL,~\InclusionLR,~\InclusionRL and \InclusionRR
+    (part of Property~$\mathbf{P_1}$),
+    there is neither a $(\nu_2, \nu_2)$-arc nor a
+    $(\nu'_1, \nu'_1)$-arc in $\mathcal{M}$.
     Then it follows that every position $y$ of $\nu'_1$
     (\emph{i.e.}, $N_1+N_2 < y \leq 2N_1+N_2$)
-    is involved in an edge $(y, y'$ of $\mathcal{M}$ with $y' \geq 2N_1+N_2$
-    (otherwise $\mathcal{M}$ would not be containment-free).
+    is involved in an arc $(y, y')$ or $(y', y')$ in
+    $\vv{\mathcal{M}}$ with $y' \geq 2N_1+N_2$
+    (otherwise $\mathcal{M}$ would contain
+    \InclusionLL,~\InclusionLR,~\InclusionRL or \InclusionRR).
     But $|\nu'_1| = N_1 = 2(2N_2 + 2n_3 + 2N_4 + 2n + 2k + 4) + 1
     > 2N_2 + 2N_3 + 2N_4 + 2n + 2k + 4$, and hence at least one
-    position in $\nu'_1$ can not be involved in an edge in $\mathcal{M}$.
-    Then it follows that $\mathcal{M}$ is not a perfect matching,
-    which contradicts our hypothesis about $\mathcal{M}$.
+    position in $\nu'_1$ can not be involved in an arc in $\vv{\mathcal{M}}$.
+    Then it follows that $\vv{\mathcal{M}}$ is not a perfect matching,
+    which contradicts our hypothesis about $\vv{\mathcal{M}}$.
+
+    Combining tha aboce contradiction with
+    Corollary~\ref{corollary:reverse oriented matching}, we may assume that
+    $\vv{\mathcal{M}}$ contain at least one $(\nu_1, \nu'_1)$-arc
+    (and hence no $(\nu'_1, \nu_1)$-arc).
     \qed
   \end{proof}
 
