@@ -1,0 +1,572 @@
+%%% 
+%%% complexity.tex
+%%% 
+
+\usepackage{xspace}
+
+%%% ----------------------------------------------------------------------
+%%% complexity classes
+%%% ----------------------------------------------------------------------
+
+% TIME
+\newcommand{\DTIMEX}{{\sf\bf DTIME}}
+\newcommand{\DTIMEclass}{\DTIMEX\xspace}
+\newcommand{\DTIME}{\DTIMEclass}
+% NL class
+\newcommand{\NLclassbase}{{\sf\bf NL}}
+\newcommand{\NLclass}{\NLclassbase\xspace}
+% P class
+\newcommand{\Pclassbase}{{\sf\bf P}}
+\newcommand{\Pclass}{\Pclassbase\xspace}
+% NP class
+\newcommand{\NPclassbase}{{\sf\bf NP}}
+\newcommand{\NPclass}{\NPclassbase\xspace}
+% coNP class
+\newcommand{\coNPclassbase}{{\sf\bf coNP}}
+\newcommand{\coNPclass}{\coNPclassbase\xspace}
+% PSPACE class
+\newcommand{\PSPACEclassbase}{{\sf\bf PSPACE}}
+\newcommand{\PSPACEclass}{\PSPACEclassbase\xspace}
+% MAXSNP class
+\newcommand{\MaxSNPclassbase}{{\sf\bf MaxSNP}}
+\newcommand{\MaxSNPclass}{\MaxSNPclassbase\xspace}
+% MAXNP class
+\newcommand{\MaxNPclassbase}{{\sf\bf MaxNP}}
+\newcommand{\MaxNPclass}{\MaxNPclassbase\xspace}
+% EPTAS class
+\newcommand{\EPTASclassbase}{{\sf\bf EPTAS}}
+\newcommand{\EPTASclass}{\EPTASclassbase\xspace}
+% FPTAS class
+\newcommand{\FPTASclassbase}{{\sf\bf FPTAS}}
+\newcommand{\FPTASclass}{\FPTASclassbase\xspace}
+% PTAS class
+\newcommand{\PTASclassbase}{{\sf\bf PTAS}}
+\newcommand{\PTASclass}{\PTASclassbase\xspace}
+% APX class
+\newcommand{\APXclassbase}{{\sf\bf APX}}
+\newcommand{\APXclass}{\APXclassbase\xspace}
+% log-APX class
+\newcommand{\logAPXclassbase}{{\sf\bf log{\tt -}APX}}
+\newcommand{\logAPXclass}{\logAPXclassbase\xspace}
+% poly-APX class
+\newcommand{\polyAPXclassbase}{{\sf\bf poly{\tt -}APX}}
+\newcommand{\polyAPXclass}{\polyAPXclassbase\xspace}
+% exp-APX class
+\newcommand{\expAPXclassbase}{{\sf\bf exp{\tt -}APX}}
+\newcommand{\expAPXclass}{\expAPXclassbase\xspace}
+% NPO class
+\newcommand{\NPOclassbase}{{\sf\bf NPO}}
+\newcommand{\NPOclass}{\NPOclassbase\xspace}
+% #P class
+\newcommand{\sharpPclassbase}{\#{\sf\bf P}}
+\newcommand{\sharpPclass}{\sharpPclassbase\xspace}
+% FPT class
+\newcommand{\FPTclassbase}{{\sf\bf FPT}}
+\newcommand{\FPTclass}{\FPTclassbase\xspace}
+% W class
+\newcommand{\Wclassbase}[1]{{\sf\bf W[#1]}}
+\newcommand{\Wclass}[1]{\Wclassbase{#1}\xspace}
+% W class
+\newcommand{\XPclassbase}{{\sf\bf XP}}
+\newcommand{\XPclass}{\XPclassbase\xspace}
+% WNL class
+\newcommand{\WNLclassbase}{{\sf\bf WNL}}
+\newcommand{\WNLclass}{\WNLclassbase\xspace}
+% ZPP class
+\newcommand{\ZPPclassbase}{{\sf\bf ZPP}}
+\newcommand{\ZPPclass}{\ZPPclassbase\xspace}
+% NPK class
+\newcommand{\NPKclassbase}{{\sf\bf NPK}}
+\newcommand{\NPKclass}{\NPKclassbase\xspace}
+\newcommand{\NPKandclass}{\text{$\NPKclass_\text{and}$}\xspace}
+\newcommand{\NPKzeroandclass}{\text{$\NPKclass^0_\text{and}$}\xspace}
+\newcommand{\NPKorclass}{\text{$\NPKclass_\text{or}$}\xspace}
+\newcommand{\NPKzeroorclass}{\text{$\NPKclass^0_\text{or}$}\xspace}
+
+%%% ----------------------------------------------------------------------
+%%% complete
+%%% ----------------------------------------------------------------------
+
+% keyword
+\newcommand{\complete}{\text{-complete}}
+% NL-complete
+\newcommand{\NLcomplete}{\NLclassbase\complete\xspace}
+\newcommand{\NLC}{\NLcomplete}
+% P-complete
+\newcommand{\Pcomplete}{\Pclassbase\complete\xspace}
+\newcommand{\PC}{\Pcomplete}
+% NP-complete
+\newcommand{\NPcomplete}{\NPclassbase\complete\xspace}
+\newcommand{\NPC}{\NPcomplete}
+% coNP-complete
+\newcommand{\coNPcomplete}{\coNPclassbase\complete\xspace}
+\newcommand{\coNPC}{\coNPcomplete}
+% PSPACE-complete
+\newcommand{\PSPACEcomplete}{\PSPACEclassbase\complete\xspace}
+\newcommand{\PSPACEC}{\PSPACEcomplete}
+% MAXSNP-complete
+\newcommand{\MaxSNPcomplete}{\MaxSNPclassbase\complete\xspace}
+\newcommand{\MaxSNPC}{\MaxSNPcomplete}
+% APX-complete
+\newcommand{\APXcomplete}{\APXclassbase\complete\xspace}
+\newcommand{\APXC}{\APXcomplete}
+% #P-complete
+\newcommand{\sharpPcomplete}{\sharpPclassbase\complete\xspace}
+\newcommand{\sharpPC}{\sharpPcomplete}
+% W[i]-complete
+\newcommand{\Wcomplete}[1]{\Wclassbase{#1}\complete\xspace}
+\newcommand{\WC}[1]{\Wcomplete{#1}}
+% WNL-complete
+\newcommand{\WNLcomplete}{\WNLclassbase\complete\xspace}
+\newcommand{\WNLC}{\WNLcomplete}
+
+%%% ----------------------------------------------------------------------
+%%% hard
+%%% ----------------------------------------------------------------------
+
+% keyword
+\newcommand{\hard}{\text{-hard}}
+% NL-hard
+\newcommand{\NLhard}{\NLclassbase\hard\xspace}
+\newcommand{\NLH}{\NLhard}
+% P-hard
+\newcommand{\Phard}{\NPclassbase\hard\xspace}
+\newcommand{\PH}{\Phard}
+% NP-hard
+\newcommand{\NPhard}{\NPclassbase\hard\xspace}
+\newcommand{\NPH}{\NPhard}
+% coNP-hard
+\newcommand{\coNPhard}{\coNPclassbase\hard\xspace}
+\newcommand{\coNPH}{\coNPhard}
+% PSPACE-hard
+\newcommand{\PSPACEhard}{\PSPACEclassbase\hard\xspace}
+\newcommand{\PSPACEH}{\PSPACEhard}
+% MAXSNP-hard
+\newcommand{\MaxSNPhard}{\MaxSNPclassbase\hard\xspace}
+\newcommand{\MaxSNPH}{\MaxSNPhard}
+% APX-hard
+\newcommand{\APXhard}{\APXclassbase\hard\xspace}
+\newcommand{\APXH}{\APXhard}
+% WNL-hard
+\newcommand{\WNLhard}{\WNLclassbase\hard\xspace}
+\newcommand{\WNLH}{\WNLhard}
+% #P-hard
+\newcommand{\sharpPhard}{\sharpPclassbase\hard\xspace}
+\newcommand{\sharpPH}{\sharpPhard}
+% W[i]-hard
+\newcommand{\Whard}[1]{\Wclassbase{#1}\hard\xspace}
+\newcommand{\WH}[1]{\Whard{#1}}
+
+%%% ----------------------------------------------------------------------
+%%% hardness
+%%% ----------------------------------------------------------------------
+
+% keyword
+\newcommand{\hardness}{\text{-hardness}}
+% NP-hardness
+\newcommand{\NPhardness}{\NPclassbase\hardness\xspace}
+% APX-hardness
+\newcommand{\APXhardness}{\APXclassbase\hardness\xspace}
+% W[i]-hardness
+\newcommand{\Whardness}[1]{\Wclassbase{#1}\hardness\xspace}
+% WNL-hardness
+\newcommand{\WNLhardness}{\WNLclassbase\hardness\xspace}
+
+%%% ----------------------------------------------------------------------
+%%% completeness
+%%% ----------------------------------------------------------------------
+
+% keyword
+\newcommand{\completeness}{\text{-completeness}}
+% NL-completeness
+\newcommand{\NLcompleteness}{\NLclassbase\completeness\xspace}
+% P-completeness
+\newcommand{\Pcompleteness}{\NPclassbase\completeness\xspace}
+% NP-completeness
+\newcommand{\NPcompleteness}{\NPclassbase\completeness\xspace}
+% APX-completeness
+\newcommand{\APXcompleteness}{\APXclassbase\completeness\xspace}
+% #P-completeness
+\newcommand{\sharpPcompleteness}{\sharpPclassbase\completeness\xspace}
+% W[i]-hard
+\newcommand{\Wcompleteness}[1]{\W{#1}-\completeness\xspace}
+
+%%% ----------------------------------------------------------------------
+%%% reduction
+%%% ----------------------------------------------------------------------
+
+\newcommand{\reduction}{reduction}
+\newcommand{\reductions}{reductions}
+\newcommand{\reductible}{reductible}
+
+\newcommand{\APTypeReduction}{AP}
+\newcommand{\PTASTypeReduction}{PTAS}
+\newcommand{\LTypeReduction}{L}
+\newcommand{\ETypeReduction}{E}
+\newcommand{\fptTypeReduction}{fpt}
+\newcommand{\pptTypeReduction}{ptp}
+
+% AP-reduction
+\newcommand{\APreduction}{\APTypeReduction-\reduction\xspace}
+\newcommand{\APreductions}{\APTypeReduction-\reductions\xspace}
+\newcommand{\APreductible}{\APTypeReduction-\reductible\xspace}
+
+% PTAS-reduction
+\newcommand{\PTASeduction}{\PTASTypeReduction-\reduction\xspace}
+\newcommand{\PTASreductions}{\PTASTypeReduction-\reductions\xspace}
+\newcommand{\PTASreductible}{\PTASTypeReduction-\reductible\xspace}
+
+% L-reduction
+\newcommand{\Lreduction}{\LTypeReduction-\reduction\xspace}
+\newcommand{\Lreductions}{\LTypeReduction-\reductions\xspace}
+\newcommand{\Lreductible}{\LTypeReduction-\reductible\xspace}
+
+% E-reduction
+\newcommand{\Ereduction}{\ETypeReduction-\reduction\xspace}
+\newcommand{\Ereductions}{\ETypeReduction-\reductions\xspace}
+\newcommand{\Ereductible}{\ETypeReduction-\reductible\xspace}
+
+% fpt-reduction
+\newcommand{\fptreduction}{\fptTypeReduction-\reduction\xspace}
+\newcommand{\fptreductions}{\fptTypeReduction-\reductions\xspace}
+\newcommand{\fptreductible}{\fptTypeReduction-\reductible\xspace}
+
+% ptp-reduction
+\newcommand{\ptpreduction}{\ptpTypeReduction-\reduction\xspace}
+\newcommand{\ptpreductions}{\ptpTypeReduction-\reductions\xspace}
+\newcommand{\ptpreductible}{\ptpTypeReduction-\reductible\xspace}
+
+% symbols
+\DeclareMathOperator{\APreduce}{\text{$\leq_{\text{\APTypeReduction}}$}}
+\DeclareMathOperator{\PTASreduce}{\text{$\leq_{\text{\PTASTypeReduction}}$}}
+\DeclareMathOperator{\Lreduce}{\text{$\leq_{\text{\LTypeReduction}}$}}
+\DeclareMathOperator{\Ereduce}{\text{$\leq_{\text{\ETypeReduction}}$}}
+\DeclareMathOperator{\fptreduce}{\text{$\leq_{\text{\fptTypeReduction}}$}}
+\DeclareMathOperator{\ptpreduce}{\text{$\leq_{\text{\fptTypeReduction}}$}}
+
+%% 
+%% Approximation
+%%
+\DeclareMathOperator{\poly}{poly}
+\DeclareMathOperator{\POLY}{poly}
+\DeclareMathOperator{\SIZE}{size}
+\newcommand{\sol}{{\sf sol}\xspace}
+\newcommand{\PB}[1]{\textsf{\scshape{#1}}}
+\newcommand{\OPTname}{opt}
+\newcommand{\OPT}{\text{$\mathsf{\bf \OPTname}$}}
+\newcommand{\OPTpb}[1]{\text{$\mathsf{\OPTname}_{\PB{#1}}$}}
+\newcommand{\ALGO}[1]{\textbf{\ttfamily\sf #1}}
+\newcommand{\Approxname}{Approx}
+\newcommand{\APPROX}[1]{\text{$\ALGO{\Approxname}_{\,\PB{#1}}$}}
+\newcommand{\PCP}{{\sf\bf PCP}\xspace}
+
+%%
+%% Problem Definition
+%%
+\newcommand{\PbDef}[3]{%
+\begin{center}
+  \begin{tabular}{l}%
+    \shadowbox{%
+    \begin{minipage}[c]{.9\textwidth}
+      \smallskip%
+      \par\noindent%
+      {#1}%
+      \smallskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Input}}~: #2% 
+      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Question}}~:
+      #3% 
+      \smallskip%
+      \par\noindent%
+    \end{minipage}
+  }% end shadowbox
+  \end{tabular}%
+\end{center}
+}%
+\newcommand{\PbDefinition}{\PbDef}
+
+%%
+%% Problem (Input + Output) Definition
+%%
+\newcommand{\PbInputOutputDef}[3]{%
+\begin{center}
+  \begin{tabular}{l}%
+    \shadowbox{%
+    \begin{minipage}[c]{.9\textwidth}
+      \smallskip%
+      \par\noindent%
+      \PB{#1}%
+      \medskip%
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Input}}~: #2% 
+      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Output}}~:
+      #3% 
+      \smallskip%
+      \par\noindent%
+    \end{minipage}
+  }% end shadowbox
+  \end{tabular}%
+\end{center}
+}%
+\newcommand{\PbInputOutputDefinition}{\PbInputOutputDef}
+
+
+%%
+%% Optimization Problem Definition
+%%
+
+\newcommand{\OptPbDefinition}[4]{%
+\begin{center}
+  \begin{tabular}{l}%
+    \shadowbox{%
+    \begin{minipage}[c]{.9\textwidth}
+      \par\noindent%
+      \shadowbox{#1}%
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Input}}~: #2% 
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Solution}}~: #3%  
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Measure}}~: #4% 
+      \par\noindent%
+    \end{minipage}
+    }% end shadowbox
+  \end{tabular}%
+\end{center}
+}%
+
+%%
+%% Parameterized Problem Definition
+%%
+\newcommand{\ParamPbDefinition}[4]{%
+\begin{center}
+  \begin{tabular}{l}%
+    %\shadowbox{%
+    \begin{minipage}[c]{.95\textwidth}
+      % \smallskip%
+      \par\noindent%
+      #1%
+      % \smallskip%
+      \par\noindent%
+      \textbf{\textsf{Input}}~: #2% 
+      % \smallskip
+      \par\noindent%
+      \textbf{\textsf{Question}}~: #3%  
+      % \smallskip
+      \par\noindent%
+      \textbf{\textsf{Parameter}}~: #4% 
+      %\smallskip%
+      \par\noindent%
+    \end{minipage}
+  %}% end shadowbox
+  \end{tabular}%
+\end{center}
+}%
+\newcommand{\ParamPbDefinitionTwo}[5]{%
+\begin{center}
+  \begin{tabular}{l}%
+    \shadowbox{%
+    \begin{minipage}[c]{.9\textwidth}
+      \smallskip%
+      \par\noindent%
+      \shadowbox{#1}%
+      \medskip%
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Input}}~: #2% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #3% 
+ %     \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #4% 
+      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Question}}~: #5%  
+      \smallskip%
+      \par\noindent%
+    \end{minipage}
+    }% end shadowbox
+  \end{tabular}%
+\end{center}
+}%
+\newcommand{\ParamPbDefinitionThree}[6]{%
+\begin{center}
+  \begin{tabular}{l}%
+    \shadowbox{%
+    \begin{minipage}[c]{.9\textwidth}
+      \smallskip%
+      \par\noindent%
+      \shadowbox{#1}%
+      \medskip%
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Input}}~: #2% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #3% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #4% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #5%  
+      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Question}}~: #6%  
+      \smallskip%
+      \par\noindent%
+    \end{minipage}
+    }% end shadowbox
+  \end{tabular}%
+\end{center}
+}%
+\newcommand{\ParamPbDefinitionFour}[7]{%
+\begin{center}
+  \begin{tabular}{l}%
+    \shadowbox{%
+    \begin{minipage}[c]{.9\textwidth}
+      \smallskip%
+      \par\noindent%
+      \shadowbox{#1}%
+      \medskip%
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Input}}~: #2% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #3% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #4% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #5%  
+%      \medskip
+      \par\noindent%
+    $\bullet$
+      \textbf{\textsf{Parameter}}~: #6%  
+      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Question}}~: #7%  
+      \smallskip%
+      \par\noindent%
+    \end{minipage}
+    }% end shadowbox
+  \end{tabular}%
+\end{center}
+}%
+\newcommand{\ParamPbDefinitionFive}[8]{%
+\begin{center}
+  \begin{tabular}{l}%
+    \shadowbox{%
+    \begin{minipage}[c]{.9\textwidth}
+      \smallskip%
+      \par\noindent%
+      \shadowbox{#1}%
+      \medskip%
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Input}}~: #2% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #3% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #4% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #5%  
+%      \medskip
+      \par\noindent%
+    $\bullet$
+      \textbf{\textsf{Parameter}}~: #6%  
+%      \medskip
+      \par\noindent%
+    $\bullet$
+      \textbf{\textsf{Parameter}}~: #7%  
+      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Question}}~: #8%  
+      \smallskip%
+      \par\noindent%
+    \end{minipage}
+    }% end shadowbox
+  \end{tabular}%
+\end{center}
+}%
+\newcommand{\ParamPbDefinitionSix}[9]{%
+\begin{center}
+  \begin{tabular}{l}%
+    \shadowbox{%
+    \begin{minipage}[c]{.9\textwidth}
+      \smallskip%
+      \par\noindent%
+      \shadowbox{#1}%
+      \medskip%
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Input}}~: #2% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #3% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #4% 
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #5%  
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #6%  
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #7%  
+%      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Parameter}}~: #8%  
+      \medskip
+      \par\noindent%
+      $\bullet$
+      \textbf{\textsf{Question}}~: #9%  
+      \smallskip%
+      \par\noindent%
+    \end{minipage}
+    }% end shadowbox
+  \end{tabular}%
+\end{center}
+}%
+
+

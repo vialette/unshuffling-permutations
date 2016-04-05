@@ -1,0 +1,127 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[unknownkeysallowed,11pt]{beamer}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usetheme{Boadilla}
+\usefonttheme{serif}
+\usecolortheme{default}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{euler,palatino}
+\usepackage{amsmath,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{xxcolor}
+\usepackage{graphicx}
+\usepackage[ruled]{algorithm2e}
+\usepackage[english]{babel}
+\usepackage{rotate}
+\usepackage{shuffle}
+\usepackage{minted}
+\usepackage{url}
+\usepackage{etoolbox}
+\usepackage{tikz}
+\usepackage{rotating}
+\usetikzlibrary{snakes}
+\usetikzlibrary{trees}
+\usetikzlibrary{arrows}
+\usetikzlibrary{matrix}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{csquotes}
+\usepackage{breakcites}
+\usepackage{hyperref}
+\usepackage[autocite=superscript,
+            sortcites,
+            maxcitenames=3,
+            doi=false,
+            isbn=false,
+            note=false,
+            url=false,
+            bibstyle=authoryear,
+            style=authoryear,
+            backend=bibtex]{biblatex}
+
+\AtEveryCitekey{%
+    \clearfield{title}%
+    \clearfield{note}%
+    \clearfield{pages}%
+    \clearlist{location}%
+    \clearlist{publisher}%
+    \clearname{editor}%
+}% end AtEveryCitekey
+
+\bibliography{biblio.bib}
+\renewcommand*{\multicitedelim}{\\}
+\renewcommand{\footfullcite}[1]{\footnote[frame]{\fullcite{#1}}}
+\def\bibfont{\tiny}
+\beamertemplatenavigationsymbolsempty
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\definecolor{Vert}{RGB}{20,100,20}
+\setbeamercolor{title}{fg=Vert}
+\setbeamercolor{frametitle}{fg=Vert}
+\setbeamercolor{structure}{fg=Vert}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\setbeamercovered{dynamic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{complexity}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title[Unshuffling Permutations]{%
+  \textbf{Unshuffling Permutations}
+}
+
+\subtitle{
+    \textbf{Samuele Giraudo}\quad\textbf{St\'ephane~Vialette}\\
+    Laboratoire d'Informatique Gaspard-Monge\\
+    Université Paris-Est Marne-la-Vallée \\
+    UMR CNRS 8049 \\
+    ~\\
+    \includegraphics[width=1.cm,height=1.25cm,keepaspectratio]{logos/CNRSfr}
+    \qquad
+    \includegraphics[width=1.cm,height=1.25cm,keepaspectratio]{logos/ecole_ponts_RVB300.jpg}
+    \qquad
+    \includegraphics[width=1.5cm,height=2cm,keepaspectratio]{logos/LIGM}
+    \qquad
+    \raisebox{.25cm}{\includegraphics[width=1.cm,height=1.25cm,keepaspectratio]{logos/LogoEsieeParis}}
+    \qquad
+    \raisebox{.25cm}{\includegraphics[width=1.cm,height=1.25cm,keepaspectratio]{logos/UPEM_LOGO_EDITION}}
+}
+
+\date[LATIN 16]{
+    {
+    \scriptsize Latin American Theoretical Informatics Symposium.\\
+    April $11$-$15$ $2016$
+    }
+}% end date
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\frame{\titlepage}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Hardness}
+  \framesubtitle{Oriented perfect matching}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
