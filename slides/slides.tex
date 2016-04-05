@@ -28,6 +28,7 @@
 \usetikzlibrary{trees}
 \usetikzlibrary{arrows}
 \usetikzlibrary{matrix}
+\usetikzlibrary{calc}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -70,6 +71,328 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \setbeamercovered{dynamic}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\MWithContainment}{%
+\begin{tikzpicture}[scale=0.1,inner sep=.8pt,node distance=.25cm]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw (U2.north) .. controls ($ (U2.north) + (0,1.75) $) and ($ (U3.north) + (0,1.75) $) .. (U3.north);
+\draw (U1.north) .. controls ($ (U1.north) + (0,2.5) $) and ($ (U4.north) + (0,2.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \MWithContainment
+
+\newcommand{\Crossing}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \Crossing
+
+\newcommand{\LabeledCrossingLL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingLL
+
+\newcommand{\CrossingLL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U3.north) + (0,2) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingLL
+
+\newcommand{\LabeledCrossingLR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingLR
+
+\newcommand{\CrossingLR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingLR
+
+\newcommand{\LabeledCrossingRL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingRL
+
+\newcommand{\CrossingRL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingRL
+
+\newcommand{\LabeledCrossingRR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U3.north) + (0,1.5) $) .. (U3.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \LabeledCrossingRR
+
+\newcommand{\CrossingRR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']%,>=stealth',->]
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U3.north) + (0,4) $) .. (U3.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \CrossingRR
+
+\newcommand{\Inclusion}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \Inclusion
+
+\newcommand{\LabeledInclusionLL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionLL
+
+\newcommand{\InclusionLL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
++\draw [->] (U4.north) .. controls ($ (U4.north) + (0,4) $) and ($ (U1.north) + (0,4) $) .. (U1.north);
++\draw [->] (U3.north) .. controls ($ (U3.north) + (0,3) $) and ($ (U2.north) + (0,3) $) .. (U2.north);
+\end{tikzpicture}
+}% end \InclusionLL
+
+\newcommand{\LabeledInclusionLR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionLR
+
+\newcommand{\InclusionLR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \InclusionLR
+
+\newcommand{\LabeledInclusionRL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionRL
+
+\newcommand{\InclusionRL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \InclusionRL
+
+\newcommand{\LabeledInclusionRR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,2) $) and ($ (U4.north) + (0,2) $) .. (U4.north);
+\draw [<-] (U2.north) .. controls ($ (U2.north) + (0,1) $) and ($ (U3.north) + (0,1) $) .. (U3.north);
+\end{tikzpicture}
+}% end \LabeledInclusionRR
+
+\newcommand{\InclusionRR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\draw [->] (U2.north) .. controls ($ (U2.north) + (0,3) $) and ($ (U3.north) + (0,3) $) .. (U3.north);
+\end{tikzpicture}
+}% end \InclusionRR
+
+\newcommand{\Precedence}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \Precedence
+
+\newcommand{\LabeledPrecedenceLL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLL
+
+\newcommand{\PrecedenceLL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLL
+
+\newcommand{\LabeledPrecedenceLR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLR
+
+\newcommand{\PrecedenceLR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [->] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceLR
+
+\newcommand{\LabeledPrecedenceRL}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRL
+
+\newcommand{\PrecedenceRL}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [->] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRL
+
+\newcommand{\LabeledPrecedenceRR}[5]{%
+\begin{tikzpicture}[scale=#1,inner sep=.8pt,node distance=.45cm,>=latex',
+                    text height=1.5ex,text depth=.25ex]
+\draw node [] (U1)               {#2};
+\draw node [] [right of=U1] (U2) {#3};
+\draw node [] [right of=U2] (U3) {#4};
+\draw node [] [right of=U3] (U4) {#5};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,1.5) $) and ($ (U2.north) + (0,1.5) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,1.5) $) and ($ (U4.north) + (0,1.5) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRR
+
+\newcommand{\PrecedenceRR}{%
+\begin{tikzpicture}[yscale=0.08,xscale=0.09,inner sep=.8pt,node distance=.25cm,>=latex']
+\draw node [draw,circle,fill=black] (U1)               {};
+\draw node [draw,circle,fill=black] [right of=U1] (U2) {};
+\draw node [draw,circle,fill=black] [right of=U2] (U3) {};
+\draw node [draw,circle,fill=black] [right of=U3] (U4) {};
+\draw [<-] (U1.north) .. controls ($ (U1.north) + (0,4) $) and ($ (U2.north) + (0,4) $) .. (U2.north);
+\draw [<-] (U3.north) .. controls ($ (U3.north) + (0,4) $) and ($ (U4.north) + (0,4) $) .. (U4.north);
+\end{tikzpicture}
+}% end \PrecedenceRR
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -118,6 +441,89 @@
 \begin{frame}
   \frametitle{Hardness}
   \framesubtitle{Oriented perfect matching}
+
+  \begin{definition}[Property $\mathbf{P_1}$]
+    Let $\pi$ be a permutation. An oriented perfect matching $\mathcal{M}$
+    on $\pi$ is said to have property $\mathbf{P_1}$ if it avoids all the
+    six patterns \InclusionLL, \InclusionLR, \InclusionRL,
+    \InclusionRR, \CrossingLR, and \CrossingRL.
+  \end{definition}
+
+  \medskip
+
+  \begin{definition}[Property $\mathbf{P_2}$]
+    Let $\pi$ be a permutation. An oriented perfect matching $\mathcal{M}$
+    on $\pi$ is said to have property $\mathbf{P_2}$ if, for any two
+    distinct arcs $(\pi(a), \pi(a'))$ and $(\pi(b), \pi(b'))$ in $\mathcal{M}$,
+    we have $\pi(a) < \pi(b)$ if and only if $\pi(a') < \pi(b')$.
+  \end{definition}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Hardness}
+  \framesubtitle{Oriented perfect matching}
+
+  \begin{theorem}
+    Let $\pi$ be a permutation. The following statements are equivalent:
+    \begin{enumerate}
+      \item The permutation $\pi$ is a square.
+      \item There exists an oriented perfect matching $\mathcal{M}$
+      on $\pi$ satisfying~$\mathbf{P_1}$ and~$\mathbf{P_2}$.
+    \end{enumerate}
+  \end{theorem}
+
+  \medskip
+
+  \onslide<2->
+  \begin{exampleblock}{Example}
+    \begin{tikzpicture}[scale=0.35,inner sep=2pt,node distance=1cm]
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10](U01){$1$};
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U01]
+            (U02) {$8$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U02](U03){$3$};
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U03]
+            (U04) {$9$};
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U04]
+            (U05) {$2$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U05](U06){$7$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U06](U07){$B$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U07](U08){$5$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U08](U09){$C$};
+        \draw node [draw,circle,minimum size=.55cm,right of=U09](U10){$6$};
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U10]
+            (U11) {$A$};
+        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U11]
+            (U12) {$4$};
+        \draw [thick,->,>=latex']
+        (U01.north) .. controls ($ (U01.north) + (0,2.25) $)
+            and ($ (U03.north) + (0,2.25) $) .. (U03.north);
+        \draw [thick,->,>=latex']
+        (U02.north) .. controls ($ (U02.north) + (0,2.25) $)
+            and ($ (U06.north) + (0,2.25) $) .. (U06.north);
+        \draw [thick,->,>=latex']
+        (U04.north) .. controls ($ (U04.north) + (0,2.5) $)
+            and ($ (U07.north) + (0,2.5) $) .. (U07.north);
+        \draw [thick,->,>=latex']
+        (U05.north) .. controls ($ (U05.north) + (0,2.5) $)
+            and ($ (U08.north) + (0,2.5) $) .. (U08.north);
+        \draw [thick,->,>=latex']
+        (U11.north) .. controls ($ (U11.north) + (0,2.5) $)
+            and ($ (U09.north) + (0,2.5) $) .. (U09.north);
+        \draw [thick,->,>=latex']
+        (U12.north) .. controls ($ (U12.north) + (0,2.5) $)
+            and ($ (U10.north) + (0,2.5) $) .. (U10.north);
+    \end{tikzpicture}
+
+    {\small%
+    An oriented perfect matching $\mathcal{M}$ on the permutation
+    $\pi = 183927B5C6A4$ satisfying the properties $\mathbf{P_1}$
+    and $\mathbf{P_2}$. From $\mathcal{M}$, it follows that $\pi$ is
+    a square as it appears in the shuffle of $1892A4$ and $37B5C6$,
+    both being order-isomorphic to $145263$.
+    }%end small
+  \end{exampleblock}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
