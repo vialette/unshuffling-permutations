@@ -439,6 +439,112 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
+  \frametitle{Permutation pattern}
+
+  \begin{definition}
+    A permutation $\pi$ is said to \emph{contain} the permutation $\sigma$ if there
+    exists a subsequence of (not necessarily consecutive) entries of $\pi$ that
+    has the same relative order as $\sigma$, and in this case $\sigma$ is said
+    to be a pattern of $\pi$, written $\sigma \leq \pi$.
+
+    \medskip
+
+    Otherwise, $\pi$ is said to \emph{avoid} the permutation $\sigma$.
+  \end{definition}
+
+  \medskip
+
+  \begin{exampleblock}{Example}
+    \begin{itemize}
+      \item
+        The permutation $\pi = 391867452$ contains the pattern $\sigma = 51342$,
+        as can be seen in the highlighted subsequence of
+        $\pi = 3\mathbf{91}8\mathbf{674}52$
+        (or $\pi = 3\mathbf{91}8\mathbf{67}4\mathbf{5}2$ or
+        $\pi = 3\mathbf{91}8\mathbf{67}45\mathbf{2}$ or
+        $\pi = 3\mathbf{91}867\mathbf{452}$.)
+
+      \item
+       Since the permutation $\pi = 391867452$ contains no increasing subsequence
+       of length four, $\pi$ avoids $1234$.
+    \end{itemize}
+  \end{exampleblock}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Square permutation}
+
+  \begin{definition}
+    A permutation is said to be a \emph{square} if it can be obtained by
+    shuffling two order-isomorphic patterns
+  \end{definition}
+
+  \medskip
+
+  \begin{exampleblock}{Example}
+    \begin{itemize}
+      \item
+        The permutation $\pi = 25167834$ is a square since it can obtained by
+        shuffling two order-isomorphic (\emph{i.e.} $1342$)
+        patterns $1683$ and $2574$ as can be seen in the highlighted subsequence of
+        $\pi = \mathbf{25}16\mathbf{7}83\mathbf{4}$.
+
+      \medskip
+
+      \item
+       $\pi = 4123$ and $1432$ are not squares.
+    \end{itemize}
+  \end{exampleblock}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Words}
+
+  \begin{definition}
+    The shuffle operator on words is defined inductively as follows:
+    \begin{align*}
+      u \shuffle \epsilon &= \epsilon \shuffle u = \{u\}
+      \\
+      (ua \shuffle vb) &= (ua \shuffle v)b \cup (u \shuffle vb)a
+    \end{align*}
+  \end{definition}
+
+  \medskip
+
+  \begin{block}{Key results}
+    \begin{itemize}
+      \item
+      Given two words $v_1$ and $v_2$, the set $v_1 \shuffle v_2$
+      can be computed in
+      $O\left((m_1 + m_2) \; \binom{m_1 + m_2}{m_1}\right)$
+      time.
+
+      \smallskip
+
+      \item
+      Given three words $u$, $v_1$, and $v_2$, deciding if $u$ is a shuffle
+      of $v_1$ and $v_2$ can be done in
+      $O\left(n^2 / \log(n)\right)$ time.
+
+      \smallskip
+
+      \item
+      Given a word $u$, deciding if there is a word $v$ such that $u$ is
+      in $v \shuffle v$ is \NPC.
+    \end{itemize}
+  \end{block}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
   \frametitle{Hardness}
   \framesubtitle{Oriented perfect matching}
 
@@ -535,15 +641,21 @@
     Deciding whether a permutation is a square is \NPC.
   \end{theorem}
 
+  \medskip
+
   \begin{block}{Remarks}
     \begin{itemize}
       \item
-      We reduce from the problem of deciding wether a pattern occurs in a
-      permutation.
+      We reduce from the problem of deciding wether a pattern $\sigma$ occurs in a
+      permutation $\pi$.
 
       \smallskip
 
       \item
+      Construct a new permutation $\mu$ such that
+      $\sigma$ occurs in $\pi$ if and only if
+      there exists an oriented perfect matching $\mathcal{M}$ on $\mu$
+      satisfying $\mathbf{P_1}$ and $\mathbf{P_2}$.
     \end{itemize}
   \end{block}
 \end{frame}
@@ -571,26 +683,18 @@
     \draw [pattern link,->,>=latex'] (10.6,5) .. controls +(0,1) and +(0,3) .. (11.5,4);
     % 1
     \draw [structure link,->,>=latex'] (0.5,11) .. controls +(0,2.25) and +(0,1.25) .. (2.5,12);
-  %       \node (claim edge 1) at (1.5,13.5) {Claim~\ref{claim:(nu_1, nu'_1)-edge}};
-  %       \node (claim edge 1) at (1.5,13) {Claim~\ref{claim:all (nu_1, nu'_1)-edges}};
     % 2
     \draw [structure link,->,>=latex'] (1.5,2) .. controls +(0,1) and +(0,3) .. (6.5,1);
-  %       \node (claim edge 2) at (4,4) {Claim~\ref{claim:(nu_2, nu'_2)-edge}};
-  %       \node (claim edge 2) at (4,3.5) {Claim~\ref{claim:all (nu_2, nu'_2)-edges}};
     % 3
     \draw [structure link,->,>=latex'] (3.5,9) .. controls +(0,3) and +(0,1.5) .. (7.5,10);
-  %       \node (claim edge 1) at (5.5,11.5) {Claim~\ref{claim:(nu_3, nu'_3)-edge}};
     % 4
     \draw [structure link,->,>=latex'] (5.5,8) .. controls +(0,1) and +(0,7) .. (9.5,3);
-  %       \node (claim edge 1) at (8.5,8.5) {Claim~\ref{claim:(nu_4, nu'_4)-edge}};
     % sigma 1 - pi 1
     \draw [structure link,->,>=latex',red] (4.5,6) .. controls +(0,-3) and +(0,-2) .. (8.5,5);
-    % \node (claim edge 1) at (6.5,4) {Claim~\ref{}};
     % nodes
     % 1
     \draw [cell] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
     \draw [monotone] (0.5,10.5) node {\small  $\nu_1$};
-    %\draw [draw,ultra thick,fill=black!5] (0,10) -- (1,10) -- (1,11) -- (0,11) -- cycle;
     \draw [cell] (2,11) -- (3,11) -- (3,12) -- (2,12) -- cycle;
     \draw [monotone] (2.5,11.5) node {\small  $\nu'_1$};
     % 2
@@ -632,6 +736,36 @@
         \node at (\x,-0.5) (C\x) {\tiny $\N$};
     }
   \end{tikzpicture}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Open problems}
+
+  \begin{block}{Combinatorics}
+    How many permutations of length $2n$ are squares?
+
+    \smallskip
+
+    How many $(213,231)$-avoiding
+    permutations of length $2n$ are squares? (Equivalently,
+    how many binary strings of length $2n$ are squares?)
+  \end{block}
+
+  \medskip
+
+  \begin{block}{Combinatorics}
+    Given two permutations $\pi$ and~$\sigma$, how hard is the problem of
+    deciding whether $\sigma$ is a square root of~$\pi$?
+  \end{block}
+
+  \medskip
+
+  \begin{block}{Algebra}
+    \ldots
+  \end{block}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
