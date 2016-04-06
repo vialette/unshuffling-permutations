@@ -511,107 +511,60 @@ on $\QQ[A^*]$, the $\QQ$-linear span of words defined by
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-  \frametitle{Permutation pattern}
+  \frametitle{Key results}
 
-  \begin{definition}
-    A permutation $\pi$ is said to \emph{contain} the permutation $\sigma$ if there
-    exists a subsequence of (not necessarily consecutive) entries of $\pi$ that
-    has the same relative order as $\sigma$, and in this case $\sigma$ is said
-    to be a pattern of $\pi$, written $\sigma \leq \pi$.
+Given two words $v_1$ and $v_2$, the set $v_1 \shuffle v_2$
+can be computed in
+\begin{equation*}
+    O\left((|v_1| + |v_2|) \; \binom{|v_1| + |v_2|}{|v_1|}\right)
+\end{equation*}
+time \BIB{Spehner}{1986}.
+\bigskip
 
+Given three words $u$, $v_1$, and $v_2$, deciding if $u$ is a
+shuffle of $v_1$ and $v_2$ can be done in
+\begin{equation*}
+O\left(\frac{|u|^2}{\log(|u|)}\right)
+\end{equation*}
+time \BIB{van Leeuwen, Nivat}{1982}.
+\bigskip
+
+Given a word $u$, deciding if there is a word $v$ such that $u$ is
+in $v \shuffle v$ is \NPC{} \BIB{Rizzi, Vialette}{2013}
+\BIB{Buss, Soltys}{2014}.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{???}
+JE PENSE QU'IL FAUDRAIT PARLER ICI DES COUPLAGES PARFAITS POUR LES MOTS.
+\medskip
+
+ÇA PERMET DE FIXER QUELQUES DEFINITIONS POUR PREPARER LE TERRAIN POUR
+NOTRE EXTENSION POUR LES PERMU DANS LA PARTIE ALGO.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%o%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Main motivations}
+Let $S_n$ be the set of permutations of size $n$.
+\medskip
+
+There are several products on permutations, analogs of the shuffle
+product of words. Among these, there are
+\begin{itemize}
+    \item the shifted shuffle product \BIB{Duchamp, Hivert, Thibon}{2002};
     \medskip
 
-    Otherwise, $\pi$ is said to \emph{avoid} the permutation $\sigma$.
-  \end{definition}
+    \item the convolution product \BIB{Duchamp, Hivert, Thibon}{2002};
+    \medskip
 
-  \medskip
+    \item the supershuffle \BIB{Vargas}{2014}.
+\end{itemize}
+\medskip
 
-  \begin{exampleblock}{Example}
-    \begin{itemize}
-      \item
-        The permutation $\pi = 391867452$ contains the pattern $\sigma = 51342$,
-        as can be seen in the highlighted subsequence of
-        $\pi = 3\mathbf{91}8\mathbf{674}52$
-        (or $\pi = 3\mathbf{91}8\mathbf{67}4\mathbf{5}2$ or
-        $\pi = 3\mathbf{91}8\mathbf{67}45\mathbf{2}$ or
-        $\pi = 3\mathbf{91}867\mathbf{452}$.)
-
-      \item
-       Since the permutation $\pi = 391867452$ contains no increasing subsequence
-       of length four, $\pi$ avoids $1234$.
-    \end{itemize}
-  \end{exampleblock}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-  \frametitle{Square permutation}
-
-  \begin{definition}
-    A permutation is said to be a \emph{square} if it can be obtained by
-    shuffling two order-isomorphic patterns
-  \end{definition}
-
-  \medskip
-
-  \begin{exampleblock}{Example}
-    \begin{itemize}
-      \item
-        The permutation $\pi = 25167834$ is a square since it can obtained by
-        shuffling two order-isomorphic (\emph{i.e.} $1342$)
-        patterns $1683$ and $2574$ as can be seen in the highlighted subsequence of
-        $\pi = \mathbf{25}16\mathbf{7}83\mathbf{4}$.
-
-      \medskip
-
-      \item
-       $\pi = 4123$ and $1432$ are not squares.
-    \end{itemize}
-  \end{exampleblock}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-  \frametitle{Words}
-
-  \begin{definition}
-    The shuffle operator on words is defined inductively as follows:
-    \begin{align*}
-      u \shuffle \epsilon &= \epsilon \shuffle u = \{u\}
-      \\
-      (ua \shuffle vb) &= (ua \shuffle v)b \cup (u \shuffle vb)a
-    \end{align*}
-  \end{definition}
-
-  \medskip
-
-  \begin{block}{Key results}
-    \begin{itemize}
-      \item
-      Given two words $v_1$ and $v_2$, the set $v_1 \shuffle v_2$
-      can be computed in
-      $O\left((m_1 + m_2) \; \binom{m_1 + m_2}{m_1}\right)$
-      time.
-
-      \smallskip
-
-      \item
-      Given three words $u$, $v_1$, and $v_2$, deciding if $u$ is a shuffle
-      of $v_1$ and $v_2$ can be done in
-      $O\left(n^2 / \log(n)\right)$ time.
-
-      \smallskip
-
-      \item
-      Given a word $u$, deciding if there is a word $v$ such that $u$ is
-      in $v \shuffle v$ is \NPC.
-    \end{itemize}
-  \end{block}
-
+\begin{block}{Main question}
+    How the previous key results about the shuffle of words translate
+    for the supershuffle of permutations?
+\end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -659,7 +612,7 @@ on $\QQ[C]$ describe a way to \alert{break} one object of $C$ into
 
 In a general way, for any $z \in C$,
 \begin{equation*}
-    \Delta(x) = \sum_{x, y \in C}  \lambda_{x, y}^z \;  x \otimes y.
+    \Delta(z) = \sum_{x, y \in C}  \lambda_{x, y}^z \;  x \otimes y.
 \end{equation*}
 \medskip
 
@@ -670,11 +623,17 @@ $\lambda_{x, y}^z \in \QQ$, $x, y, z \in C$, called
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame} \frametitle{Equivalence between products and coproducts}
-If $\cdot : \QQ[C] \otimes \QQ[C] \to \QQ[C]$ is a product with
+\begin{block}{Key idea}
+    Knowing how to break a combinatorial object is equivalent
+    to knowing how to combine these.
+\end{block}
+\medskip
+
+Indeed, if $\cdot : \QQ[C] \otimes \QQ[C] \to \QQ[C]$ is a product with
 structure coefficients $\lambda_{x, y}^z \in \QQ$, $x, y, z \in C$,
 we can define its \alert{dual coproduct} $\Delta$ by setting
 \begin{equation*}
-    \Delta(x) := \sum_{x, y \in C}  \lambda_{x, y}^z \;  x \otimes y.
+    \Delta(z) := \sum_{x, y \in C}  \lambda_{x, y}^z \;  x \otimes y.
 \end{equation*}
 \medskip
 
@@ -685,12 +644,6 @@ setting
 \begin{equation*}
     x \cdot y := \sum_{z \in C} \lambda_{x, y}^z \; z.
 \end{equation*}
-\medskip
-
-\begin{block}{Idea}
-    Knowing how to break a combinatorial object is equivalent
-    to knowing how to combine these.
-\end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -783,28 +736,29 @@ $S_{|u|}$ order-isomorphic to~$u$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame} \frametitle{Shuffling permutations}
 \begin{block}{Definition}
-    The \alert{shuffling product of permutations} is the product
-    $\SHUFFLE$ on $\QQ[S]$ defined as the dual product of the unshuffling
-    product of permutations.
+    The \alert{shuffling product of permutations} (supershuffle) is the
+    product $\SHUFFLE$ on $\QQ[S]$ defined as the dual product of the
+    unshuffling product of permutations.
 \end{block}
+\medskip
+
+\begin{block}{Proposition}
+The permutations appearing in $\sigma \SHUFFLE \nu$ are exactly the
+one obtained by shuffling two words $u$ and $v$ respectively
+order-isomorphic to $\sigma$ and $\nu$.
+\end{block}
+\medskip
 
 \begin{block}{Example}
 \begin{equation*}\begin{split}
     12 \SHUFFLE 21 & =
     1243 + 1324 + 2 (1342) + 2 (1423) + 3 (1432) +
-    2134 + 2 (2314) \\
+    2134 + 2 (2314) \\[.5em]
     & + 3 (2341) + 2413 + 2 (2431) + 2 (3124) + 3142 +
-    3 (3214) + 2 (3241) \\
+    3 (3214) + 2 (3241) \\[.5em]
     & + 3421 + 3 (4123) + 2 (4132) + 2 (4213) + 4231 + 4312
 \end{split}\end{equation*}
 \end{block}
-\medskip
-
-Product first introduced for the study of some Hopf algebras~\BIB{Vargas}{2014}.
-\medskip
-
-Similar to the convolution product and the shifted
-shuffle product \BIB{Duchamp, Hivert, Thibon}{2002}.
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -845,7 +799,7 @@ The first numbers of square permutations are, size by size,
 \begin{equation*}
     1, 0, 2, 0, 20, 0, 504, 0, 21032, 0, 1293418.
 \end{equation*}
-\medskip
+%\medskip
 
 \begin{block}{Proposition}
     Let $\pi$ be a square permutation and $\sigma$ be a square root of
@@ -853,8 +807,12 @@ The first numbers of square permutations are, size by size,
     \begin{enumerate}
         \item $\widetilde{\pi}$ is a square and
         $\widetilde{\sigma}$ is one of its square roots;
+        \smallskip
+
         \item $\bar \pi$ is a square and $\bar \sigma$ is one of
         its square roots;
+        \smallskip
+
         \item $\pi^{-1}$ is a square and $\sigma^{-1}$ is one of
         its square roots.
     \end{enumerate}
@@ -873,6 +831,71 @@ The first numbers of square permutations are, size by size,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Algorithmic issues}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Permutation pattern}
+
+  \begin{definition}
+    A permutation $\pi$ is said to \emph{contain} the permutation $\sigma$ if there
+    exists a subsequence of (not necessarily consecutive) entries of $\pi$ that
+    has the same relative order as $\sigma$, and in this case $\sigma$ is said
+    to be a pattern of $\pi$, written $\sigma \leq \pi$.
+
+    \medskip
+
+    Otherwise, $\pi$ is said to \emph{avoid} the permutation $\sigma$.
+  \end{definition}
+
+  \medskip
+
+  \begin{exampleblock}{Example}
+    \begin{itemize}
+      \item
+        The permutation $\pi = 391867452$ contains the pattern $\sigma = 51342$,
+        as can be seen in the highlighted subsequence of
+        $\pi = 3\mathbf{91}8\mathbf{674}52$
+        (or $\pi = 3\mathbf{91}8\mathbf{67}4\mathbf{5}2$ or
+        $\pi = 3\mathbf{91}8\mathbf{67}45\mathbf{2}$ or
+        $\pi = 3\mathbf{91}867\mathbf{452}$.)
+
+      \item
+       Since the permutation $\pi = 391867452$ contains no increasing subsequence
+       of length four, $\pi$ avoids $1234$.
+    \end{itemize}
+  \end{exampleblock}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Square permutation}
+
+  \begin{definition}
+    A permutation is said to be a \emph{square} if it can be obtained by
+    shuffling two order-isomorphic patterns
+  \end{definition}
+
+  \medskip
+
+  \begin{exampleblock}{Example}
+    \begin{itemize}
+      \item
+        The permutation $\pi = 25167834$ is a square since it can obtained by
+        shuffling two order-isomorphic (\emph{i.e.} $1342$)
+        patterns $1683$ and $2574$ as can be seen in the highlighted subsequence of
+        $\pi = \mathbf{25}16\mathbf{7}83\mathbf{4}$.
+
+      \medskip
+
+      \item
+       $\pi = 4123$ and $1432$ are not squares.
+    \end{itemize}
+  \end{exampleblock}
+
+\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
