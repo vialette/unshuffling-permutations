@@ -781,7 +781,7 @@
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame} \frametitle{Combinatorial products and structure coefficients}
-Let $C$ be a set of combinatorial objects and let $\QQ[C]$ be the
+Let $C$ be a set of combinatorial objects and $\QQ[C]$ be the
 $\QQ$-linear span of $C$.
 \medskip
 
@@ -797,8 +797,9 @@ In a general way, for any $x, y \in C$,
 \begin{equation*}
     x \cdot y = \sum_{z \in C} \lambda_{x, y}^z \; z.
 \end{equation*}
+\medskip
 
-A product is wholly encoded by the coefficients
+A product is therefore wholly encoded by the coefficients
 $\lambda_{x, y}^z \in \QQ$, $x, y, z \in C$, called
 \alert{structure coefficients}.
 \end{frame}
@@ -817,8 +818,9 @@ In a general way, for any $z \in C$,
 \begin{equation*}
     \Delta(x) = \sum_{x, y \in C}  \lambda_{x, y}^z \;  x \otimes y.
 \end{equation*}
+\medskip
 
-A coproduct is wholly encoded by the coefficients
+A coproduct is therefore wholly encoded by the coefficients
 $\lambda_{x, y}^z \in \QQ$, $x, y, z \in C$, called
 \alert{structure coefficients}.
 \end{frame}
@@ -840,6 +842,7 @@ setting
 \begin{equation*}
     x \cdot y := \sum_{z \in C} \lambda_{x, y}^z \; z.
 \end{equation*}
+\medskip
 
 \begin{block}{Idea}
     Knowing how to break a combinatorial object is equivalent
@@ -872,27 +875,31 @@ on binary words defined by
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%o%%%%%%%%%%%%%%%%%%
 \begin{frame} \frametitle{Example: shuffling binary words}
-\begin{block}{Proposition}
+\begin{block}{Proposition \BIB{Reutenauer}{1993}}
     The shuffle product of binary words is the dual product of the
     unshuffling coproduct of binary words.
-
-        REF ? SCHUTZ ?
 \end{block}
 \medskip
 
 \begin{block}{Example}
+Since
 \begin{equation*}
-    \Delta(100) =
+    \textcolor{RoyalBlue}{\Delta(100)} =
     \epsilon \otimes 100 + 1 \otimes 00
-    + \textcolor{BrickRed}{2 (0 \otimes 10)} + 2 (10 \otimes 0) + 00 \otimes 1
-    + 100 \otimes \epsilon
+    + \textcolor{Orange}{2} (\textcolor{BrickRed}{0 \otimes 10})
+    + 2 (10 \otimes 0) + 00 \otimes 1
+    + 100 \otimes \epsilon,
 \end{equation*}
-\smallskip
+we observe that $\textcolor{BrickRed}{0 \otimes 10} $ has multiplicity
+$\textcolor{Orange}{2}$ in $\textcolor{RoyalBlue}{\Delta(100)}$.
+\medskip
 
-Since $0 \otimes 10$ has multiplicity $2$ in $\Delta(100)$, by duality,
-$100$ has multiplicity $2$ in $0 \shuffle 10$:
+By duality, this implies that $\textcolor{RoyalBlue}{100}$ has
+multiplicity $\textcolor{Orange}{2}$ in
+$\textcolor{BrickRed}{0 \shuffle 10}$. Indeed,
 \begin{equation*}
-    0 \shuffle 10 = 010 + \textcolor{BrickRed}{2 (100)}.
+    \textcolor{BrickRed}{0 \shuffle 10} =
+    010 + \textcolor{Orange}{2} (\textcolor{RoyalBlue}{100}).
 \end{equation*}
 \end{block}
 \end{frame}
@@ -950,12 +957,74 @@ $S_{|u|}$ order-isomorphic to~$u$.
 \end{block}
 \medskip
 
-This shuffle product has been introduced for the study of some
-Hopf algebra \BIB{Vargas}{2014}.
+Product first introduced for the study of some Hopf algebras~\BIB{Vargas}{2014}.
 \medskip
 
-It is a kind of association of the convolution product and the shifted
-shuffle product of permutations \BIB{Duchamp, Hivert, Thibon}{2002}.
+Similar to the convolution product and the shifted
+shuffle product \BIB{Duchamp, Hivert, Thibon}{2002}.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Square permutations}
+\begin{block}{Definition}
+    A permutation $\pi$ is a \alert{square} (w.r.t. the shuffle product
+    $\SHUFFLE$) if there is $\sigma \in S$ such that $\pi$ appears in
+    $\sigma \SHUFFLE \sigma$.
+\end{block}
+\medskip
+
+By duality, $\pi$ is a square if there is $\sigma \in S$ such that
+$\sigma \otimes \sigma$ appears in $\Delta(\pi)$.
+\medskip
+
+\begin{block}{Proposition}
+    A permutation $\pi$ is a square iff $\pi$ can be obtained by
+    shuffling two order-isomorphic words.
+\end{block}
+\medskip
+
+\begin{block}{Example}
+    The permutation
+    \begin{math}
+        \pi :=
+        \textcolor{RoyalBlue}{25}\textcolor{BrickRed}{16}
+        \textcolor{RoyalBlue}{7}\textcolor{BrickRed}{83}
+        \textcolor{RoyalBlue}{4}
+    \end{math}
+    is square since $\pi$ can be obtained by shuffling
+    $\textcolor{BrickRed}{1683}$ and $\textcolor{RoyalBlue}{2574}$.
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Some properties of square permutations}
+The first numbers of square permutations are, size by size,
+\begin{equation*}
+    1, 0, 2, 0, 20, 0, 504, 0, 21032, 0, 1293418.
+\end{equation*}
+\medskip
+
+\begin{block}{Proposition}
+    Let $\pi$ be a square permutation and $\sigma$ be a square root of
+    $\pi$. Then,
+    \begin{enumerate}
+        \item $\widetilde{\pi}$ is a square and
+        $\widetilde{\sigma}$ is one of its square roots;
+        \item $\bar \pi$ is a square and $\bar \sigma$ is one of
+        its square roots;
+        \item $\pi^{-1}$ is a square and $\sigma^{-1}$ is one of
+        its square roots.
+    \end{enumerate}
+\end{block}
+\medskip
+
+\begin{block}{Proposition}
+    The set of binary words of length $n$ that are square w.r.t.
+    $\shuffle$ is in one-to-one correspondence with the set of
+    square permutations of length $n$ avoiding the patterns
+    $213$ and~$231$.
+\end{block}
+
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
