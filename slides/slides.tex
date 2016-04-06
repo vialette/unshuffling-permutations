@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\documentclass[unknownkeysallowed,11pt]{beamer}
+\documentclass[unknownkeysallowed,10pt,xcolor={dvipsnames}]{beamer}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -75,6 +75,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \DeclareMathOperator{\QQ}{\mathbb{Q}}
+\DeclareMathOperator{\STD}{\mathrm{std}}
+\DeclareMathOperator{\SHUFFLE}{\bullet}
+
+\newcommand{\BIB}[2]{{\footnotesize\textcolor{MidnightBlue!85}{[\textbf{#1}, #2]}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand{\MWithContainment}{%
 \begin{tikzpicture}[scale=0.1,inner sep=.8pt,node distance=.25cm]
@@ -841,6 +847,136 @@ setting
 \end{block}
 \end{frame}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Example: unshuffling binary words}
+Let $B$ the set of all binary words and let us consider the coproduct
+\begin{equation*}
+    \Delta : \QQ[B] \to \QQ[B] \otimes \QQ[B]
+\end{equation*}
+on binary words defined by
+\begin{equation*}
+    \Delta(u) :=
+    \sum_{P \sqcup Q = \{1, \dots, |u|\}}
+    u_{|P} \otimes u_{|Q}.
+\end{equation*}
+
+\begin{block}{Example}
+\begin{equation*}
+    \Delta(100) =
+    \epsilon \otimes 100 + 1 \otimes 00
+    + 2 (0 \otimes 10) + 2 (10 \otimes 0) + 00 \otimes 1
+    + 100 \otimes \epsilon
+\end{equation*}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%o%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Example: shuffling binary words}
+\begin{block}{Proposition}
+    The shuffle product of binary words is the dual product of the
+    unshuffling coproduct of binary words.
+
+        REF ? SCHUTZ ?
+\end{block}
+\medskip
+
+\begin{block}{Example}
+\begin{equation*}
+    \Delta(100) =
+    \epsilon \otimes 100 + 1 \otimes 00
+    + \textcolor{BrickRed}{2 (0 \otimes 10)} + 2 (10 \otimes 0) + 00 \otimes 1
+    + 100 \otimes \epsilon
+\end{equation*}
+\smallskip
+
+Since $0 \otimes 10$ has multiplicity $2$ in $\Delta(100)$, by duality,
+$100$ has multiplicity $2$ in $0 \shuffle 10$:
+\begin{equation*}
+    0 \shuffle 10 = 010 + \textcolor{BrickRed}{2 (100)}.
+\end{equation*}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Unshuffling permutations}
+If $u$ is a word of integers without multiple occurrence of a same letter,
+the \alert{standardized} $\STD(u)$ of $u$ is the unique permutation of
+$S_{|u|}$ order-isomorphic to~$u$.
+
+\begin{block}{Example}
+\begin{equation*}
+    \STD(82194) = 42153
+\end{equation*}
+\end{block}
+\medskip
+
+\begin{block}{Definition}
+    The \alert{unshuffling coproduct of permutations} is the
+    coproduct on $\QQ[S]$ defined by
+    \begin{equation*}
+        \Delta(\pi) =
+        \sum_{P \sqcup Q = \{1, \dots, |\pi|\}}
+        \STD\left(u_{|P}\right) \otimes \STD\left(u_{|Q}\right).
+    \end{equation*}
+\end{block}
+
+\begin{block}{Example}
+\begin{equation*}
+    \Delta(213) =
+    \epsilon \otimes 213 + 2 (1 \otimes 12) +
+    1 \otimes 21 + 2 (12 \otimes 1) + 21 \otimes 1
+    + 213 \otimes \epsilon
+\end{equation*}
+\end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{Shuffling permutations}
+\begin{block}{Definition}
+    The \alert{shuffling product of permutations} is the product
+    $\SHUFFLE$ on $\QQ[S]$ defined as the dual product of the unshuffling
+    product of permutations.
+\end{block}
+
+\begin{block}{Example}
+\begin{equation*}\begin{split}
+    12 \SHUFFLE 21 & =
+    1243 + 1324 + 2 (1342) + 2 (1423) + 3 (1432) +
+    2134 + 2 (2314) \\
+    & + 3 (2341) + 2413 + 2 (2431) + 2 (3124) + 3142 +
+    3 (3214) + 2 (3241) \\
+    & + 3421 + 3 (4123) + 2 (4132) + 2 (4213) + 4231 + 4312
+\end{split}\end{equation*}
+\end{block}
+\medskip
+
+This shuffle product has been introduced for the study of some
+Hopf algebra \BIB{Vargas}{2014}.
+\medskip
+
+It is a kind of association of the convolution product and the shifted
+shuffle product of permutations \BIB{Duchamp, Hivert, Thibon}{2002}.
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{}
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame} \frametitle{}
+
+\end{frame}
 
 \end{document}
 
