@@ -578,8 +578,8 @@ The first numbers of square binary words of length $2n$ are
     that
     \begin{itemize}
         \item $V := \{(u_i, i) : i \in \{1, \dots, |u|\}$;
-        \item $(u_i, i) \-- (u_j, j) \in E$ implies $u_i = u_j$;
-        \item every vertex of $V$ belongs to exactly one edge of $E$.
+        \item every vertex of $V$ belongs to exactly one edge of $E$;
+        \item $(u_i, i) \-- (u_j, j) \in E$ implies $u_i = u_j$.
     \end{itemize}
 \end{block}
 
@@ -722,11 +722,11 @@ product of words. Among these, there are
 
 \begin{block}{Main questions}
     \begin{itemize}
-        \item How the previous key results about the shuffle of words
-        translate for the supershuffle of permutations?
+        \item Combinatorial properties of ``square permutations''
+        w.r.t. the supershuffle?
         \medskip
 
-        \item
+        \item Complexity of the recognition of ``square permutations''?
     \end{itemize}
 \end{block}
 \end{frame}
@@ -737,7 +737,7 @@ product of words. Among these, there are
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Algebraic issues}
+\section{Algebraic and combinatorial issues}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame} \frametitle{Combinatorial products and structure coefficients}
@@ -1005,140 +1005,146 @@ The first numbers of square permutations of size $2$ are
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-  \frametitle{Permutation pattern}
+\frametitle{Permutation patterns}
 
   \begin{definition}
-    A permutation $\pi$ is said to \emph{contain} the permutation $\sigma$ if there
-    exists a subsequence of (not necessarily consecutive) entries of $\pi$ that
+    A permutation $\pi$ \alert{contains} a permutation $\sigma$ if there
+    exists a subsequence of (not necessarily consecutive) letters of $\pi$ that
     has the same relative order as $\sigma$, and in this case $\sigma$ is said
-    to be a pattern of $\pi$, written $\sigma \leq \pi$.
+    to be a \alert{pattern} of $\pi$, written $\sigma \leq \pi$.
+    \smallskip
 
+    Otherwise, $\pi$ \alert{avoids} $\sigma$.
+  \end{definition}
+
+  \medskip
+
+  \begin{exampleblock}{Example}
+
+        The permutation
+        $\pi = 3\textcolor{BrickRed}{91}8\textcolor{BrickRed}{674}52$
+        contains the pattern $\sigma := 51342$ since
+        $\STD(\textcolor{BrickRed}{91674}) = 51342$.
+  \end{exampleblock}
+  \medskip
+
+  \begin{block}{Definition}
+    The \alert{pattern involvement problem} is the decision problem
+    consisting in, given $\pi, \sigma \in S$, decide whether $\sigma \leq \pi$.
+  \end{block}
+  \medskip
+
+  \begin{block}{Proposition \BIB{Bose, Buss, Lubiw}{1998}}
+    The pattern involvement problem is $\NPC$.
+  \end{block}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{frame}
+  %\frametitle{Square permutation}
+
+  %\begin{definition}
+    %A permutation is said to be a \emph{square} if it can be obtained by
+    %shuffling two order-isomorphic patterns
+  %\end{definition}
+
+  %\medskip
+
+  %\begin{exampleblock}{Example}
+    %\begin{itemize}
+      %\item
+        %The permutation $\pi = 25167834$ is a square since it can obtained by
+        %shuffling two order-isomorphic (\emph{i.e.} $1342$)
+        %patterns $1683$ and $2574$ as can be seen in the highlighted subsequence of
+        %$\pi = \mathbf{25}16\mathbf{7}83\mathbf{4}$.
+
+      %\medskip
+
+      %\item
+       %$\pi = 4123$ and $1432$ are not squares.
+    %\end{itemize}
+  %\end{exampleblock}
+
+%\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+  \frametitle{Recognizing square permutations}
+
+    \begin{block}{Definition}
+        A \alert{perfect matching} of a permutation $\pi \in S_n$ is a
+        directed graph $(V, A)$ such that
+        \begin{itemize}
+            \item $V := \{(\pi_i, i) : i \in \{1, \dots, n\}\}$;
+            \item every vertex of $V$ belongs to exactly one arc of $A$.
+        \end{itemize}
+    \end{block}
     \medskip
 
-    Otherwise, $\pi$ is said to \emph{avoid} the permutation $\sigma$.
-  \end{definition}
-
-  \medskip
-
-  \begin{exampleblock}{Example}
-    \begin{itemize}
-      \item
-        The permutation $\pi = 391867452$ contains the pattern $\sigma = 51342$,
-        as can be seen in the highlighted subsequence of
-        $\pi = 3\mathbf{91}8\mathbf{674}52$
-        (or $\pi = 3\mathbf{91}8\mathbf{67}4\mathbf{5}2$ or
-        $\pi = 3\mathbf{91}8\mathbf{67}45\mathbf{2}$ or
-        $\pi = 3\mathbf{91}867\mathbf{452}$.)
-
-      \item
-       Since the permutation $\pi = 391867452$ contains no increasing subsequence
-       of length four, $\pi$ avoids $1234$.
-    \end{itemize}
-  \end{exampleblock}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-  \frametitle{Square permutation}
-
-  \begin{definition}
-    A permutation is said to be a \emph{square} if it can be obtained by
-    shuffling two order-isomorphic patterns
-  \end{definition}
-
-  \medskip
-
-  \begin{exampleblock}{Example}
-    \begin{itemize}
-      \item
-        The permutation $\pi = 25167834$ is a square since it can obtained by
-        shuffling two order-isomorphic (\emph{i.e.} $1342$)
-        patterns $1683$ and $2574$ as can be seen in the highlighted subsequence of
-        $\pi = \mathbf{25}16\mathbf{7}83\mathbf{4}$.
-
-      \medskip
-
-      \item
-       $\pi = 4123$ and $1432$ are not squares.
-    \end{itemize}
-  \end{exampleblock}
-
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{frame}
-  \frametitle{Hardness}
-  \framesubtitle{Oriented perfect matching}
-
   \begin{definition}[Property $\mathbf{P_1}$]
-    Let $\pi$ be a permutation. An oriented perfect matching $\mathcal{M}$
-    on $\pi$ is said to have property $\mathbf{P_1}$ if it avoids all the
-    six patterns \InclusionLL, \InclusionLR, \InclusionRL,
+    Let $\pi \in S$. A perfect matching $(V, A)$ of $\pi$ has property
+    $\mathbf{P_1}$ if it avoids all the six patterns
+    \InclusionLL, \InclusionLR, \InclusionRL,
     \InclusionRR, \CrossingLR, and \CrossingRL.
   \end{definition}
 
   \medskip
 
   \begin{definition}[Property $\mathbf{P_2}$]
-    Let $\pi$ be a permutation. An oriented perfect matching $\mathcal{M}$
-    on $\pi$ is said to have property $\mathbf{P_2}$ if, for any two
-    distinct arcs $(\pi(a), \pi(a'))$ and $(\pi(b), \pi(b'))$ in $\mathcal{M}$,
-    we have $\pi(a) < \pi(b)$ if and only if $\pi(a') < \pi(b')$.
+    Let $\pi \in S$. A perfect matching $(V, A)$ of $\pi$ has property
+    $\mathbf{P_2}$ if, for all arcs $(\pi_i, i) \to (\pi_j, j)$ and
+    $(\pi_k, k) \to (\pi_\ell, \ell)$ of $A$, $\pi_i < \pi_k$ iff
+    $\pi_j < \pi_\ell$.
   \end{definition}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-  \frametitle{Hardness}
-  \framesubtitle{Oriented perfect matching}
+  \frametitle{Recognizing square permutations}
 
-  \begin{theorem}
-    Let $\pi$ be a permutation. The following statements are equivalent:
-    \begin{enumerate}
-      \item The permutation $\pi$ is a square.
-      \item There exists an oriented perfect matching $\mathcal{M}$
-      on $\pi$ satisfying~$\mathbf{P_1}$ and~$\mathbf{P_2}$.
-    \end{enumerate}
-  \end{theorem}
+  \begin{block}{Proposition}
+    A permutation $\pi$ is a square (w.r.t. the shuffle product $\SHUFFLE$)
+    iff $\pi$ admits a perfect matching satisfying~$\mathbf{P_1}$
+    and~$\mathbf{P_2}$.
+  \end{block}
 
   \medskip
 
   \onslide<2->
   \begin{exampleblock}{Example}
+    The permutation $\pi := 183927B5C6A4$ is a square since it admits the
+    perfect matching
+    \begin{equation*}
+    \begin{split}
     \begin{tikzpicture}[scale=0.35,inner sep=2pt,node distance=1cm]
-        \draw node [draw,circle,minimum size=.55cm,fill=black!10](U01){$1$};
-        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U01]
-            (U02) {$8$};
-        \draw node [draw,circle,minimum size=.55cm,right of=U02](U03){$3$};
-        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U03]
-            (U04) {$9$};
-        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U04]
-            (U05) {$2$};
-        \draw node [draw,circle,minimum size=.55cm,right of=U05](U06){$7$};
-        \draw node [draw,circle,minimum size=.55cm,right of=U06](U07){$B$};
-        \draw node [draw,circle,minimum size=.55cm,right of=U07](U08){$5$};
-        \draw node [draw,circle,minimum size=.55cm,right of=U08](U09){$C$};
-        \draw node [draw,circle,minimum size=.55cm,right of=U09](U10){$6$};
-        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U10]
-            (U11) {$A$};
-        \draw node [draw,circle,minimum size=.55cm,fill=black!10,right of=U11]
-            (U12) {$4$};
+        \tikzstyle{Vertex}=[draw,circle,minimum size=.45cm,font=\footnotesize]
+        \draw node[Vertex,fill=RoyalBlue!30](U01){$1$};
+        \draw node[Vertex,fill=RoyalBlue!30,right of=U01](U02){$8$};
+        \draw node[Vertex,fill=BrickRed!30,right of=U02](U03){$3$};
+        \draw node[Vertex,fill=RoyalBlue!30,right of=U03](U04){$9$};
+        \draw node[Vertex,fill=RoyalBlue!30,right of=U04](U05){$2$};
+        \draw node [Vertex,fill=BrickRed!30,right of=U05](U06){$7$};
+        \draw node [Vertex,fill=BrickRed!30,right of=U06](U07){$B$};
+        \draw node [Vertex,fill=BrickRed!30,right of=U07](U08){$5$};
+        \draw node [Vertex,fill=BrickRed!30,right of=U08](U09){$C$};
+        \draw node [Vertex,fill=BrickRed!30,right of=U09](U10){$6$};
+        \draw node [Vertex,fill=RoyalBlue!30,right of=U10](U11){$A$};
+        \draw node [Vertex,fill=RoyalBlue!30,right of=U11](U12){$4$};
         \draw [thick,->,>=latex']
         (U01.north) .. controls ($ (U01.north) + (0,2.25) $)
             and ($ (U03.north) + (0,2.25) $) .. (U03.north);
         \draw [thick,->,>=latex']
-        (U02.north) .. controls ($ (U02.north) + (0,2.25) $)
-            and ($ (U06.north) + (0,2.25) $) .. (U06.north);
+        (U02.south) .. controls ($ (U02.south) + (0,-2.25) $)
+            and ($ (U06.south) + (0,-2.25) $) .. (U06.south);
         \draw [thick,->,>=latex']
         (U04.north) .. controls ($ (U04.north) + (0,2.5) $)
             and ($ (U07.north) + (0,2.5) $) .. (U07.north);
         \draw [thick,->,>=latex']
-        (U05.north) .. controls ($ (U05.north) + (0,2.5) $)
-            and ($ (U08.north) + (0,2.5) $) .. (U08.north);
+        (U05.south) .. controls ($ (U05.south) + (0,-2.5) $)
+            and ($ (U08.south) + (0,-2.5) $) .. (U08.south);
         \draw [thick,->,>=latex']
         (U11.north) .. controls ($ (U11.north) + (0,2.5) $)
             and ($ (U09.north) + (0,2.5) $) .. (U09.north);
@@ -1146,41 +1152,45 @@ The first numbers of square permutations of size $2$ are
         (U12.north) .. controls ($ (U12.north) + (0,2.5) $)
             and ($ (U10.north) + (0,2.5) $) .. (U10.north);
     \end{tikzpicture}
+    \end{split}
+    \end{equation*}
+    satisfying $\mathbf{P_1}$ and~$\mathbf{P_2}$.
+    \smallskip
 
-    {\small%
-    An oriented perfect matching $\mathcal{M}$ on the permutation
-    $\pi = 183927B5C6A4$ satisfying the properties $\mathbf{P_1}$
-    and $\mathbf{P_2}$. From $\mathcal{M}$, it follows that $\pi$ is
-    a square as it appears in the shuffle of $1892A4$ and $37B5C6$,
-    both being order-isomorphic to $145263$.
-    }%end small
+    Moreover, this shows that $\pi$ appears in the shuffle of the
+    words $\textcolor{RoyalBlue}{1892A4}$ and
+    $\textcolor{BrickRed}{37B5C6}$, both order isomorphic to
+    $145263$.
   \end{exampleblock}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-  \frametitle{Hardness}
+  \frametitle{Hardness of recognizing square permutations}
 
-  \begin{theorem}
+  \begin{block}{Proposition}
     Deciding whether a permutation is a square is \NPC.
-  \end{theorem}
+  \end{block}
 
   \medskip
 
-  \begin{block}{Remarks}
+  \begin{block}{Main ideas of the proof}
     \begin{itemize}
-      \item
-      We reduce from the problem of deciding wether a pattern $\sigma$ occurs in a
-      permutation $\pi$.
+        \item We show that the pattern involvement problem is reducible
+        in polynomial time to our decision problem.
+        \medskip
 
-      \smallskip
+        \item For this, given two permutations $\sigma$ and $\pi$, we
+        show that $\sigma \leq \pi$ iff $\mu_{\sigma, \pi}$ is a square,
+        where $\mu_{\sigma, \pi}$ is a permutation constructed in polynomial
+        time from $\sigma$ and $\pi$.
+        \medskip
 
-      \item
-      Construct a new permutation $\mu$ such that
-      $\sigma$ occurs in $\pi$ if and only if
-      there exists an oriented perfect matching $\mathcal{M}$ on $\mu$
-      satisfying $\mathbf{P_1}$ and $\mathbf{P_2}$.
+        \item To prove that $\mu_{\sigma, \pi}$ is a square, we show
+        that $\mu_{\sigma, \pi}$ admits a perfect matching satisfying
+        $\mathbf{P_1}$ and~$\mathbf{P_2}$.
+
     \end{itemize}
   \end{block}
 \end{frame}
@@ -1188,7 +1198,7 @@ The first numbers of square permutations of size $2$ are
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
-  \frametitle{Hardness}
+  \frametitle{Hardness of recognizing square permutations}
 
   \centering
   \begin{tikzpicture}[
@@ -1269,26 +1279,26 @@ The first numbers of square permutations of size $2$ are
   \frametitle{Open problems}
 
   \begin{block}{Combinatorics}
-    How many permutations of length $2n$ are squares?
+    \begin{itemize}
+        \item Enumeration of square permutations?
+        \smallskip
 
-    \smallskip
-
-    How many $(213,231)$-avoiding
-    permutations of length $2n$ are squares? (Equivalently,
-    how many binary strings of length $2n$ are squares?)
+        \item Enumeration of square permutations avoiding $213$ and $231$?
+    \end{itemize}
   \end{block}
-
   \medskip
 
-  \begin{block}{Combinatorics}
+  \begin{block}{Algorithms}
+
     Given two permutations $\pi$ and~$\sigma$, how hard is the problem of
     deciding whether $\sigma$ is a square root of~$\pi$?
   \end{block}
-
   \medskip
 
   \begin{block}{Algebra}
-    \ldots
+        How algebraic properties of the associative algebra $(\QQ[S], \SHUFFLE)$
+        or of the coalgebra $(\QQ[S], \Delta)$ are connected to
+        combinatorial and algorithmic properties of square permutations?
   \end{block}
 
 \end{frame}
