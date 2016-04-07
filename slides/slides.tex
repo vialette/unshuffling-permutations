@@ -1115,42 +1115,32 @@ The first numbers of square permutations of size $2$ are
 
   \onslide<2->
   \begin{exampleblock}{Example}
-    The permutation $\pi := 183927B5C6A4$ is a square since it admits the
+    The permutation $\pi := 35867241$ is a square since it admits the
     perfect matching
     \begin{equation*}
     \begin{split}
     \begin{tikzpicture}[scale=0.35,inner sep=2pt,node distance=1cm]
         \tikzstyle{Vertex}=[draw,circle,minimum size=.45cm,font=\footnotesize]
-        \draw node[Vertex,fill=RoyalBlue!30](U01){$1$};
-        \draw node[Vertex,fill=RoyalBlue!30,right of=U01](U02){$8$};
-        \draw node[Vertex,fill=BrickRed!30,right of=U02](U03){$3$};
-        \draw node[Vertex,fill=RoyalBlue!30,right of=U03](U04){$9$};
-        \draw node[Vertex,fill=RoyalBlue!30,right of=U04](U05){$2$};
-        \draw node [Vertex,fill=BrickRed!30,right of=U05](U06){$7$};
-        \draw node [Vertex,fill=BrickRed!30,right of=U06](U07){$B$};
-        \draw node [Vertex,fill=BrickRed!30,right of=U07](U08){$5$};
-        \draw node [Vertex,fill=BrickRed!30,right of=U08](U09){$C$};
-        \draw node [Vertex,fill=BrickRed!30,right of=U09](U10){$6$};
-        \draw node [Vertex,fill=RoyalBlue!30,right of=U10](U11){$A$};
-        \draw node [Vertex,fill=RoyalBlue!30,right of=U11](U12){$4$};
+        \draw node[Vertex,fill=RoyalBlue!30](U01){$(3, 1)$};
+        \draw node[Vertex,fill=BrickRed!30,right of=U01](U02){$(5, 2)$};
+        \draw node[Vertex,fill=BrickRed!30,right of=U02](U03){$(8, 3)$};
+        \draw node[Vertex,fill=RoyalBlue!30,right of=U03](U04){$(6, 4)$};
+        \draw node[Vertex,fill=BrickRed!30,right of=U04](U05){$(7, 5)$};
+        \draw node [Vertex,fill=BrickRed!30,right of=U05](U06){$(2, 6)$};
+        \draw node [Vertex,fill=RoyalBlue!30,right of=U06](U07){$(4, 7)$};
+        \draw node [Vertex,fill=RoyalBlue!30,right of=U07](U08){$(1, 8)$};
         \draw [thick,->,>=latex']
         (U01.north) .. controls ($ (U01.north) + (0,2.25) $)
+            and ($ (U02.north) + (0,2.25) $) .. (U02.north);
+        \draw [thick,->,>=latex']
+        (U04.north) .. controls ($ (U04.north) + (0,2.25) $)
             and ($ (U03.north) + (0,2.25) $) .. (U03.north);
         \draw [thick,->,>=latex']
-        (U02.south) .. controls ($ (U02.south) + (0,-2.25) $)
-            and ($ (U06.south) + (0,-2.25) $) .. (U06.south);
+        (U07.north) .. controls ($ (U07.north) + (0,2.5) $)
+            and ($ (U05.north) + (0,2.5) $) .. (U05.north);
         \draw [thick,->,>=latex']
-        (U04.north) .. controls ($ (U04.north) + (0,2.5) $)
-            and ($ (U07.north) + (0,2.5) $) .. (U07.north);
-        \draw [thick,->,>=latex']
-        (U05.south) .. controls ($ (U05.south) + (0,-2.5) $)
-            and ($ (U08.south) + (0,-2.5) $) .. (U08.south);
-        \draw [thick,->,>=latex']
-        (U11.north) .. controls ($ (U11.north) + (0,2.5) $)
-            and ($ (U09.north) + (0,2.5) $) .. (U09.north);
-        \draw [thick,->,>=latex']
-        (U12.north) .. controls ($ (U12.north) + (0,2.5) $)
-            and ($ (U10.north) + (0,2.5) $) .. (U10.north);
+        (U08.north) .. controls ($ (U08.north) + (0,2.5) $)
+            and ($ (U06.north) + (0,2.5) $) .. (U06.north);
     \end{tikzpicture}
     \end{split}
     \end{equation*}
@@ -1158,9 +1148,9 @@ The first numbers of square permutations of size $2$ are
     \smallskip
 
     Moreover, this shows that $\pi$ appears in the shuffle of the
-    words $\textcolor{RoyalBlue}{1892A4}$ and
-    $\textcolor{BrickRed}{37B5C6}$, both order isomorphic to
-    $145263$.
+    words $\textcolor{RoyalBlue}{3641}$ and
+    $\textcolor{BrickRed}{5872}$, both order-isomorphic to
+    $2431$.
   \end{exampleblock}
 \end{frame}
 
