@@ -485,7 +485,7 @@
 To take into account multiplicities, we consider $\shuffle$ as a linear
 product
 \begin{equation*}
-    \QQ[A^*] \otimes \QQ[A^*] \to \QQ[A^*]
+    \shuffle : \QQ[A^*] \otimes \QQ[A^*] \to \QQ[A^*]
 \end{equation*}
 on $\QQ[A^*]$, the $\QQ$-linear span of words defined by
 \begin{align*}
@@ -752,74 +752,40 @@ product of words. Among these, there are
 \section{Algebraic and combinatorial issues}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame} \frametitle{Combinatorial products and structure coefficients}
+\begin{frame} \frametitle{Combinatorial products and coproducts}
 Let $C$ be a set of combinatorial objects and $\QQ[C]$ be the
 $\QQ$-linear span of $C$.
-\medskip
 
-A binary linear product
-\begin{equation*}
-    \cdot : \QQ[C] \otimes \QQ[C] \to \QQ[C].
-\end{equation*}
-on $\QQ[C]$ describes a way to \alert{combine} two objects of
-$C$ to obtain \alert{bigger} objects.
-\medskip
-
-In a general way, for any $x, y \in C$,
-\begin{equation*}
-    x \cdot y = \sum_{z \in C} \lambda_{x, y}^z \; z.
-\end{equation*}
-\medskip
-
-A product is therefore wholly encoded by the coefficients
-$\lambda_{x, y}^z \in \QQ$, $x, y, z \in C$, called
-\alert{structure coefficients}.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame} \frametitle{Combinatorial coproducts}
-In a dual way, a linear coproduct
-\begin{equation*}
-    \Delta : \QQ[C] \to \QQ[C] \otimes \QQ[C].
-\end{equation*}
-on $\QQ[C]$ describe a way to \alert{break} one object of $C$ into
-\alert{two smaller} pieces.
-\medskip
-
-In a general way, for any $z \in C$,
-\begin{equation*}
-    \Delta(z) = \sum_{x, y \in C}  \lambda_{x, y}^z \;  x \otimes y.
-\end{equation*}
-\medskip
-
-A coproduct is therefore wholly encoded by the coefficients
-$\lambda_{x, y}^z \in \QQ$, $x, y, z \in C$, called
-\alert{structure coefficients}.
-\end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{frame} \frametitle{Equivalence between products and coproducts}
+\uncover<2->{%
 \begin{block}{Key idea}
-    Knowing how to break a combinatorial object is equivalent
-    to knowing how to combine these.
+    Knowing how to \alert{break} combinatorial objects explains
+    how to \alert{combine} these.
 \end{block}
-\medskip
+\medskip}
 
-Indeed, if $\cdot : \QQ[C] \otimes \QQ[C] \to \QQ[C]$ is a product with
-structure coefficients $\lambda_{x, y}^z \in \QQ$, $x, y, z \in C$,
-we can define its \alert{dual coproduct} $\Delta$ by setting
-\begin{equation*}
-    \Delta(z) := \sum_{x, y \in C}  \lambda_{x, y}^z \;  x \otimes y.
-\end{equation*}
-\medskip
+\uncover<3->{%
+To define a product $\cdot : \QQ[C] \otimes \QQ[C] \to \QQ[C]$,
+it is some cases more convenient to start by defining a \alert{coproduct}
+$\Delta : \QQ[C] \to \QQ[C] \otimes \QQ[C]$.
+\medskip}
 
-Conversely, if $\Delta : \QQ[C] \to \QQ[C] \otimes \QQ[C]$ is
-a coproduct with structure coefficients $\lambda_{x, y}^z \in \QQ$,
-$x, y, z \in C$, we can define its \alert{dual product} $\cdot$ by
-setting
+\uncover<4->{%
+Every coproduct fits into the general form
 \begin{equation*}
-    x \cdot y := \sum_{z \in C} \lambda_{x, y}^z \; z.
+    \Delta(z)
+    = \sum_{x, y \in C} \textcolor{RoyalBlue}{\lambda_{x, y}^z} \;
+    (x \otimes y)
 \end{equation*}
+where the $\textcolor{RoyalBlue}{\lambda_{x, y}^z}$ are structure
+coefficients of $\QQ$.
+\medskip}
+
+\uncover<5->{%
+Then, $\Delta$ leads by duality to the definition of $\cdot$ by
+\begin{equation*}
+    x \cdot y
+    := \sum_{z \in C} \textcolor{RoyalBlue}{\lambda_{x, y}^z} \; z.
+\end{equation*}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
