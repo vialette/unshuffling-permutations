@@ -90,6 +90,8 @@
 \DeclareMathOperator{\SHUFFLE}{\bullet}
 \DeclareMathOperator{\La}{\mathtt{a}}
 \DeclareMathOperator{\Lb}{\mathtt{b}}
+\DeclareMathOperator{\Lc}{\mathtt{c}}
+\DeclareMathOperator{\Ld}{\mathtt{d}}
 
 \newcommand{\BIB}[2]{{\footnotesize\textcolor{MidnightBlue!85}{[\textbf{#1}, #2]}}}
 
@@ -422,20 +424,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \title[Unshuffling Permutations]{%
-  \textbf{Unshuffling Permutations}
+  \huge \textbf{Unshuffling Permutations}
+  \vspace{1.5em}
 }
 
 \subtitle{
-    \textbf{Samuele Giraudo}\quad\textbf{St\'ephane~Vialette}\\
-    Laboratoire d'Informatique Gaspard-Monge\\
+    \textbf{\underline{Samuele Giraudo}}\qquad\textbf{St\'ephane~Vialette}\\[1em]
+    {\footnotesize Laboratoire d'Informatique Gaspard-Monge\\
     Université Paris-Est Marne-la-Vallée \\
-    UMR CNRS 8049 \\
-    ~\\
-    \includegraphics[width=1.cm,height=1.25cm,keepaspectratio]{logos/CNRSfr}
+    UMR CNRS 8049 \\[2em]}
+    \includegraphics[scale=.16]{logos/CNRSfr}
     \qquad
-    \includegraphics[width=1.cm,height=1.25cm,keepaspectratio]{logos/ecole_ponts_RVB300.jpg}
+    \includegraphics[scale=.10]{logos/ecole_ponts_RVB300.jpg}
     \qquad
-    \includegraphics[width=1.5cm,height=2cm,keepaspectratio]{logos/LIGM}
+    \includegraphics[scale=.26]{logos/LIGM}
     \qquad
     \raisebox{.25cm}{\includegraphics[width=1.cm,height=1.25cm,keepaspectratio]{logos/LogoEsieeParis}}
     \qquad
@@ -471,10 +473,10 @@
 \begin{frame} \frametitle{Shuffling words}
 \begin{block}{Definition}
     The \alert{shuffle product} $\shuffle$ on words of $A^*$ is defined
-    inductively by
+    recursively by \vspace{-.5em}
     \begin{align*}
-        u \shuffle \epsilon &= \epsilon \shuffle u = \{u\} \\
-        (ua \shuffle vb) &= (ua \shuffle v)b \cup (u \shuffle vb)a
+        u \shuffle \epsilon & := \{u\} =: \epsilon \shuffle u, \\
+        (ua \shuffle vb) & := (ua \shuffle v)b \cup (u \shuffle vb)a.
     \end{align*}
 \end{block}
 \medskip
@@ -487,10 +489,10 @@ product
 \end{equation*}
 on $\QQ[A^*]$, the $\QQ$-linear span of words defined by
 \begin{align*}
-    u \shuffle \epsilon & = \epsilon \shuffle u = u \\
-    (ua \shuffle vb) &= (ua \shuffle v)b + (u \shuffle vb)a
+    u \shuffle \epsilon & := u =: \epsilon \shuffle u, \\
+    (ua \shuffle vb) & := (ua \shuffle v)b + (u \shuffle vb)a.
 \end{align*}}
-
+%
 \uncover<3->{%
 \begin{block}{Example}
     \vspace{-1em}
@@ -528,17 +530,19 @@ can be computed in
 time \BIB{Spehner}{1986}.
 \bigskip
 
-Given three words $u$, $v_1$, and $v_2$, deciding if $u$ is a
-shuffle of $v_1$ and $v_2$ can be done in
+\uncover<2->{%
+Given three words $u$, $v_1$, and $v_2$, deciding if $u$ is in
+$v_1 \shuffle v_2$ can be done in
 \begin{equation*}
 O\left(\frac{|u|^2}{\log(|u|)}\right)
 \end{equation*}
 time \BIB{van Leeuwen, Nivat}{1982}.
-\bigskip
+\bigskip}
 
+\uncover<3->{%
 Given a word $u$, deciding if there is a word $v$ such that $u$ is
 in $v \shuffle v$ is \NPC{} \BIB{Rizzi, Vialette}{2013}
-\BIB{Buss, Soltys}{2014}.
+\BIB{Buss, Soltys}{2014}.}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -550,25 +554,29 @@ in $v \shuffle v$ is \NPC{} \BIB{Rizzi, Vialette}{2013}
 \end{block}
 \medskip
 
+\uncover<2->{%
 \begin{block}{Example}
     The word
     \begin{math}
-        u := \textcolor{RoyalBlue}{3}\textcolor{BrickRed}{3}
-        \textcolor{RoyalBlue}{12}\textcolor{BrickRed}{1}
-        \textcolor{RoyalBlue}{2}\textcolor{BrickRed}{22}
+        u := \textcolor{RoyalBlue}{\Lc}\textcolor{BrickRed}{\Lc}
+        \textcolor{RoyalBlue}{\La\Lb}\textcolor{BrickRed}{\La}
+        \textcolor{RoyalBlue}{\Lb}\textcolor{BrickRed}{\Lb\Lb}
     \end{math}
-    is a square since $u$ can be obtained by shuffling $3122$ with itself.
+    is a square since $u$ can be obtained by shuffling $\Lc\La\Lb\Lb$
+    with itself.
 \end{block}
-\medskip
+\medskip}
 
+\uncover<3->{%
 The first numbers of square binary words of length $2n$ are
 \begin{equation*}
     1, 2, 6, 22, 82, 320, 1268, 5102, 20632, 83972.
-\end{equation*}
+\end{equation*}}
 
+\uncover<4->{%
 \begin{block}{Open problem}
     Enumeration of square (binary) words.
-\end{block}
+\end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -583,20 +591,21 @@ The first numbers of square binary words of length $2n$ are
     \end{itemize}
 \end{block}
 
+\uncover<2->{%
 \begin{block}{Example}
-    The word $21212233$ admits the perfect matching \vspace{-1em}
+    The word $\Lb\La\Lb\La\Lb\Lb\Lc\Lc$ admits the perfect matching \vspace{-1em}
     \begin{equation*}
     \begin{split}
     \begin{tikzpicture}[xscale=.5,yscale=.3,inner sep=1pt,node distance=1.5cm]
         \tikzstyle{Vertex}=[draw,circle,minimum size=.35cm,font=\footnotesize]
-        \draw node[Vertex,fill=RoyalBlue!30](U01){$(2, 1)$};
-        \draw node[Vertex,fill=RoyalBlue!30,right of=U01](U02) {$(1, 2)$};
-        \draw node[Vertex,fill=RoyalBlue!30,right of=U02](U03){$(2, 3)$};
-        \draw node [Vertex,fill=BrickRed!30,right of=U03](U04) {$(1, 4)$};
-        \draw node [Vertex,fill=BrickRed!30,right of=U04](U05) {$(2, 5)$};
-        \draw node [Vertex,fill=BrickRed!30,right of=U05](U06){$(2, 6)$};
-        \draw node [Vertex,fill=RoyalBlue!30,right of=U06](U07){$(3, 7)$};
-        \draw node [Vertex,fill=BrickRed!30,right of=U07](U08){$(3, 8)$};
+        \draw node[Vertex,fill=RoyalBlue!30](U01){$(\Lb, 1)$};
+        \draw node[Vertex,fill=RoyalBlue!30,right of=U01](U02) {$(\La, 2)$};
+        \draw node[Vertex,fill=RoyalBlue!30,right of=U02](U03){$(\Lb, 3)$};
+        \draw node [Vertex,fill=BrickRed!30,right of=U03](U04) {$(\La, 4)$};
+        \draw node [Vertex,fill=BrickRed!30,right of=U04](U05) {$(\Lb, 5)$};
+        \draw node [Vertex,fill=BrickRed!30,right of=U05](U06){$(\Lb, 6)$};
+        \draw node [Vertex,fill=RoyalBlue!30,right of=U06](U07){$(\Lc, 7)$};
+        \draw node [Vertex,fill=BrickRed!30,right of=U07](U08){$(\Lc, 8)$};
         \draw [thick,>=latex']
         (U01.north) .. controls ($ (U01.north) + (0,2.5) $)
             and ($ (U06.north) + (0,2.5) $) .. (U06.north);
@@ -613,13 +622,14 @@ The first numbers of square binary words of length $2n$ are
     \end{split}\,.
     \end{equation*}
     \vspace{-1.5em}
-\end{block}
+\end{block}}
 
+\uncover<3->{%
 \begin{block}{Definition}
     A perfect matching $(V, E)$ of a word $u$ is \alert{inclusion-free}
     if there are no edges $(u_i, i) \-- (u_j, j)$ and
     $(u_k, k) \-- (u_\ell, \ell)$ of $E$ such that $i < k < \ell < j$.
-\end{block}
+\end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -629,28 +639,28 @@ The first numbers of square binary words of length $2n$ are
     A word $u$ is a square iff $u$ admits an inclusion-free perfect
     matching.
 \end{block}
-%\medskip
 
+\uncover<2->{%
 \begin{block}{Example}
-    The square word
+    The word
     \begin{math}
-        \textcolor{RoyalBlue}{3}\textcolor{BrickRed}{3}
-        \textcolor{RoyalBlue}{12}\textcolor{BrickRed}{1}
-        \textcolor{RoyalBlue}{2}\textcolor{BrickRed}{22}
+        \textcolor{RoyalBlue}{\Lc}\textcolor{BrickRed}{\Lc}
+        \textcolor{RoyalBlue}{\La\Lb}\textcolor{BrickRed}{\La}
+        \textcolor{RoyalBlue}{\Lb}\textcolor{BrickRed}{\Lb\Lb}
     \end{math}
-    admits the perfect matching \vspace{-1.5em}
+    admits the perfect matching \vspace{-1.25em}
     \begin{equation*}
         \begin{split}
-        \begin{tikzpicture}[xscale=.5,yscale=.2,inner sep=1pt,node distance=1.5cm]
+        \begin{tikzpicture}[xscale=.5,yscale=.16,inner sep=1pt,node distance=1.5cm]
             \tikzstyle{Vertex}=[draw,circle,minimum size=.35cm,font=\footnotesize]
-            \draw node[Vertex,fill=RoyalBlue!30](U01){$(3, 1)$};
-            \draw node[Vertex,fill=BrickRed!30,right of=U01](U02) {$(3, 2)$};
-            \draw node[Vertex,fill=RoyalBlue!30,right of=U02](U03){$(1, 3)$};
-            \draw node[Vertex,fill=RoyalBlue!30,right of=U03](U04) {$(2, 4)$};
-            \draw node[Vertex,fill=BrickRed!30,right of=U04](U05) {$(1, 5)$};
-            \draw node[Vertex,fill=RoyalBlue!30,right of=U05](U06){$(2, 6)$};
-            \draw node[Vertex,fill=BrickRed!30,right of=U06](U07){$(2, 7)$};
-            \draw node[Vertex,fill=BrickRed!30,right of=U07](U08){$(2, 8)$};
+            \draw node[Vertex,fill=RoyalBlue!30](U01){$(\Lc, 1)$};
+            \draw node[Vertex,fill=BrickRed!30,right of=U01](U02) {$(\Lc, 2)$};
+            \draw node[Vertex,fill=RoyalBlue!30,right of=U02](U03){$(\La, 3)$};
+            \draw node[Vertex,fill=RoyalBlue!30,right of=U03](U04) {$(\Lb, 4)$};
+            \draw node[Vertex,fill=BrickRed!30,right of=U04](U05) {$(\La, 5)$};
+            \draw node[Vertex,fill=RoyalBlue!30,right of=U05](U06){$(\Lb, 6)$};
+            \draw node[Vertex,fill=BrickRed!30,right of=U06](U07){$(\Lb, 7)$};
+            \draw node[Vertex,fill=BrickRed!30,right of=U07](U08){$(\Lb, 8)$};
             \draw [thick,>=latex']
             (U01.north) .. controls ($ (U01.north) + (0,2.25) $)
                 and ($ (U02.north) + (0,2.25) $) .. (U02.north);
@@ -670,21 +680,21 @@ The first numbers of square binary words of length $2n$ are
         \end{split}
     \end{equation*}
 
-    \vspace{-1.5em}
-    which is inclusion-free.
-\end{block}
-%\medskip
+    \vspace{-1.25em}
+    which is inclusion-free and hence is a square.
+\end{block}}
 
+\uncover<3->{%
 \begin{block}{Example}
-    The word $1221$ is not a square. Its only perfect matching\vspace{-1.5em}
+    The word $\La\Lb\Lb\La$ is not a square. Its only perfect matching\vspace{-1.25em}
     \begin{equation*}
         \begin{split}
-        \begin{tikzpicture}[xscale=.5,yscale=.3,inner sep=1pt,node distance=1.5cm]
+        \begin{tikzpicture}[xscale=.5,yscale=.2,inner sep=1pt,node distance=1.5cm]
             \tikzstyle{Vertex}=[draw,circle,minimum size=.35cm,font=\footnotesize]
-            \draw node[Vertex,fill=RoyalBlue!30](U01){$(1, 1)$};
-            \draw node[Vertex,fill=RoyalBlue!30,right of=U01](U02) {$(2, 2)$};
-            \draw node[Vertex,fill=BrickRed!30,right of=U02](U03){$(2, 3)$};
-            \draw node [Vertex,fill=BrickRed!30,right of=U03](U04) {$(1, 4)$};
+            \draw node[Vertex,fill=RoyalBlue!30](U01){$(\La, 1)$};
+            \draw node[Vertex,fill=RoyalBlue!30,right of=U01](U02) {$(\Lb, 2)$};
+            \draw node[Vertex,fill=BrickRed!30,right of=U02](U03){$(\Lb, 3)$};
+            \draw node [Vertex,fill=BrickRed!30,right of=U03](U04) {$(\La, 4)$};
             \draw [thick,>=latex']
             (U01.north) .. controls ($ (U01.north) + (0,2.5) $)
                 and ($ (U04.north) + (0,2.5) $) .. (U04.north);
@@ -695,16 +705,17 @@ The first numbers of square binary words of length $2n$ are
         \end{split}
     \end{equation*}
 
-    \vspace{-1.5em}
+    \vspace{-1.25em}
     is not inclusion-free.
-\end{block}
+\end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%o%%%%%%%%%%%%%%%%%%
 \begin{frame} \frametitle{Main motivations}
 Let $S_n$ be the set of permutations of size $n$.
-\medskip
+\bigskip
 
+\uncover<2->{%
 There are several products on permutations, analogs of the shuffle
 product of words. Among these, there are
 \smallskip
@@ -718,8 +729,9 @@ product of words. Among these, there are
 
     \item the supershuffle \BIB{Vargas}{2014}.
 \end{itemize}
-\medskip
+\bigskip}
 
+\uncover<3->{%
 \begin{block}{Main questions}
     \begin{itemize}
         \item Combinatorial properties of ``square permutations''
@@ -728,7 +740,7 @@ product of words. Among these, there are
 
         \item Complexity of the recognition of ``square permutations''?
     \end{itemize}
-\end{block}
+\end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -812,7 +824,8 @@ setting
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame} \frametitle{Example: unshuffling binary words}
-Let $B$ the set of all binary words and let us consider the coproduct
+Let $B := \{\La, \Lb\}^*$ be the set of all binary words and consider
+the coproduct
 \begin{equation*}
     \Delta : \QQ[B] \to \QQ[B] \otimes \QQ[B]
 \end{equation*}
@@ -823,14 +836,15 @@ on binary words defined by
     u_{|P} \otimes u_{|Q}.
 \end{equation*}
 
-\begin{block}{Example}
+\uncover<2->{%
+\begin{block}{Example}\vspace{-1em}
 \begin{equation*}
-    \Delta(100) =
-    \epsilon \otimes 100 + 1 \otimes 00
-    + 2 (0 \otimes 10) + 2 (10 \otimes 0) + 00 \otimes 1
-    + 100 \otimes \epsilon
+    \Delta(\Lb\La\La) =
+    \epsilon \otimes \Lb\La\La + \Lb \otimes \La\La
+    + 2 (\La \otimes \Lb\La) + 2 (\Lb\La \otimes \La) + \La\La \otimes \Lb
+    + \Lb\La\La \otimes \epsilon
 \end{equation*}
-\end{block}
+\end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%o%%%%%%%%%%%%%%%%%%
@@ -841,27 +855,31 @@ on binary words defined by
 \end{block}
 \medskip
 
+\uncover<2->{%
 \begin{block}{Example}
 Since
 \begin{equation*}
-    \textcolor{RoyalBlue}{\Delta(100)} =
-    \epsilon \otimes 100 + 1 \otimes 00
-    + \textcolor{Orange}{2} (\textcolor{BrickRed}{0 \otimes 10})
-    + 2 (10 \otimes 0) + 00 \otimes 1
-    + 100 \otimes \epsilon,
+    \textcolor{RoyalBlue}{\Delta(\Lb\La\La)} =
+    \epsilon \otimes \Lb\La\La + \Lb \otimes \La\La
+    + \textcolor{Orange}{2} (\textcolor{BrickRed}{\La \otimes \Lb\La})
+    + 2 (\Lb\La \otimes \La) + \La\La \otimes \Lb
+    + \Lb\La\La \otimes \epsilon,
 \end{equation*}
-we observe that $\textcolor{BrickRed}{0 \otimes 10} $ has multiplicity
-$\textcolor{Orange}{2}$ in $\textcolor{RoyalBlue}{\Delta(100)}$.
-\medskip
-
-By duality, this implies that $\textcolor{RoyalBlue}{100}$ has
+we observe that $\textcolor{BrickRed}{\La \otimes \Lb\La}$ has
 multiplicity $\textcolor{Orange}{2}$ in
-$\textcolor{BrickRed}{0 \shuffle 10}$. Indeed,
+$\textcolor{RoyalBlue}{\Delta(\Lb\La\La)}$.
+\bigskip
+
+\uncover<3->{%
+By duality, this implies that $\textcolor{RoyalBlue}{\Lb\La\La}$ has
+multiplicity $\textcolor{Orange}{2}$ in
+$\textcolor{BrickRed}{\La \shuffle \Lb\La}$. Indeed,
 \begin{equation*}
-    \textcolor{BrickRed}{0 \shuffle 10} =
-    010 + \textcolor{Orange}{2} (\textcolor{RoyalBlue}{100}).
-\end{equation*}
-\end{block}
+    \textcolor{BrickRed}{\La \shuffle \Lb\La} =
+    \La\Lb\La + \textcolor{Orange}{2}\, \textcolor{RoyalBlue}{\Lb\La\La}.
+\end{equation*}}
+\vspace{-1.5em}
+\end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -870,23 +888,26 @@ If $u$ is a word of integers without multiple occurrence of a same letter,
 the \alert{standardized} $\STD(u)$ of $u$ is the unique permutation of
 $S_{|u|}$ order-isomorphic to~$u$.
 
+\uncover<2->{%
 \begin{block}{Example}
 \begin{equation*}
     \STD(82194) = 42153
 \end{equation*}
 \end{block}
-\medskip
+\medskip}
 
+\uncover<3->{%
 \begin{block}{Definition}
     The \alert{unshuffling coproduct of permutations} is the
     coproduct on $\QQ[S]$ defined by
     \begin{equation*}
-        \Delta(\pi) =
+        \Delta(\pi) :=
         \sum_{P \sqcup Q = \{1, \dots, |\pi|\}}
         \STD\left(\pi_{|P}\right) \otimes \STD\left(\pi_{|Q}\right).
     \end{equation*}
-\end{block}
+\end{block}}
 
+\uncover<4->{%
 \begin{block}{Example}
 \begin{equation*}
     \Delta(213) =
@@ -894,7 +915,7 @@ $S_{|u|}$ order-isomorphic to~$u$.
     1 \otimes 21 + 2 (12 \otimes 1) + 21 \otimes 1
     + 213 \otimes \epsilon
 \end{equation*}
-\end{block}
+\end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -906,14 +927,16 @@ $S_{|u|}$ order-isomorphic to~$u$.
 \end{block}
 \medskip
 
+\uncover<2->{%
 \begin{block}{Proposition}
-The permutations appearing in $\sigma \SHUFFLE \nu$ are exactly the
-one obtained by shuffling two words $u$ and $v$ respectively
-order-isomorphic to $\sigma$ and $\nu$.
+    The permutations appearing in $\sigma \SHUFFLE \nu$ are exactly the
+    one obtained by shuffling two words $u$ and $v$ respectively
+    order-isomorphic to $\sigma$ and $\nu$.
 \end{block}
-\medskip
+\medskip}
 
-\begin{block}{Example}
+\uncover<3->{%
+\begin{block}{Example}\vspace{-1em}
 \begin{equation*}\begin{split}
     12 \SHUFFLE 21 & =
     1243 + 1324 + 2 (1342) + 2 (1423) + 3 (1432) +
@@ -922,7 +945,7 @@ order-isomorphic to $\sigma$ and $\nu$.
     3 (3214) + 2 (3241) \\[.5em]
     & + 3421 + 3 (4123) + 2 (4132) + 2 (4213) + 4231 + 4312
 \end{split}\end{equation*}
-\end{block}
+\end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -938,12 +961,14 @@ By duality, $\pi$ is a square if there is $\sigma \in S$ such that
 $\sigma \otimes \sigma$ appears in $\Delta(\pi)$.
 \medskip
 
+\uncover<2->{%
 \begin{block}{Proposition}
     A permutation $\pi$ is a square iff $\pi$ can be obtained by
     shuffling two order-isomorphic words.
 \end{block}
-\medskip
+\medskip}
 
+\uncover<3->{%
 \begin{block}{Example}
     The permutation
     \begin{math}
@@ -960,17 +985,17 @@ $\sigma \otimes \sigma$ appears in $\Delta(\pi)$.
         = \STD(\textcolor{RoyalBlue}{2574})
         = 1342
     \end{math}.
-\end{block}
+\end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{frame} \frametitle{Some properties of square permutations}
-The first numbers of square permutations of size $2$ are
+The first numbers of square permutations of size $2n$ are
 \begin{equation*}
     1, 2, 20, 504, 21032, 1293418.
 \end{equation*}
-%\medskip
 
+\uncover<2->{%
 \begin{block}{Proposition}
     Let $\pi$ be a square permutation and $\sigma$ be a square root of
     $\pi$. Then,
@@ -987,14 +1012,15 @@ The first numbers of square permutations of size $2$ are
         its square roots.
     \end{enumerate}
 \end{block}
-\medskip
+\medskip}
 
+\uncover<3->{%
 \begin{block}{Proposition}
     The set of binary words of length $n$ that are square w.r.t.
     $\shuffle$ is in one-to-one correspondence with the set of
     square permutations of length $n$ avoiding the patterns
     $213$ and~$231$.
-\end{block}
+\end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1016,57 +1042,29 @@ The first numbers of square permutations of size $2$ are
 
     Otherwise, $\pi$ \alert{avoids} $\sigma$.
   \end{definition}
-
   \medskip
 
-  \begin{exampleblock}{Example}
-
+\uncover<2->{%
+  \begin{block}{Example}
         The permutation
         $\pi = 3\textcolor{BrickRed}{91}8\textcolor{BrickRed}{674}52$
         contains the pattern $\sigma := 51342$ since
         $\STD(\textcolor{BrickRed}{91674}) = 51342$.
-  \end{exampleblock}
-  \medskip
+  \end{block}
+  \medskip}
 
+\uncover<3->{%
   \begin{block}{Definition}
     The \alert{pattern involvement problem} is the decision problem
     consisting in, given $\pi, \sigma \in S$, decide whether $\sigma \leq \pi$.
   \end{block}
-  \medskip
+  \medskip}
 
+\uncover<4->{%
   \begin{block}{Proposition \BIB{Bose, Buss, Lubiw}{1998}}
     The pattern involvement problem is $\NPC$.
-  \end{block}
+  \end{block}}
 \end{frame}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\begin{frame}
-  %\frametitle{Square permutation}
-
-  %\begin{definition}
-    %A permutation is said to be a \emph{square} if it can be obtained by
-    %shuffling two order-isomorphic patterns
-  %\end{definition}
-
-  %\medskip
-
-  %\begin{exampleblock}{Example}
-    %\begin{itemize}
-      %\item
-        %The permutation $\pi = 25167834$ is a square since it can obtained by
-        %shuffling two order-isomorphic (\emph{i.e.} $1342$)
-        %patterns $1683$ and $2574$ as can be seen in the highlighted subsequence of
-        %$\pi = \mathbf{25}16\mathbf{7}83\mathbf{4}$.
-
-      %\medskip
-
-      %\item
-       %$\pi = 4123$ and $1432$ are not squares.
-    %\end{itemize}
-  %\end{exampleblock}
-
-%\end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -1083,21 +1081,23 @@ The first numbers of square permutations of size $2$ are
     \end{block}
     \medskip
 
+\uncover<2->{%
   \begin{definition}[Property $\mathbf{P_1}$]
     Let $\pi \in S$. A perfect matching $(V, A)$ of $\pi$ has property
     $\mathbf{P_1}$ if it avoids all the six patterns
     \InclusionLL, \InclusionLR, \InclusionRL,
     \InclusionRR, \CrossingLR, and \CrossingRL.
-  \end{definition}
+  \end{definition}}
 
   \medskip
 
+\uncover<3->{%
   \begin{definition}[Property $\mathbf{P_2}$]
     Let $\pi \in S$. A perfect matching $(V, A)$ of $\pi$ has property
     $\mathbf{P_2}$ if, for all arcs $(\pi_i, i) \to (\pi_j, j)$ and
     $(\pi_k, k) \to (\pi_\ell, \ell)$ of $A$, $\pi_i < \pi_k$ iff
     $\pi_j < \pi_\ell$.
-  \end{definition}
+  \end{definition}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1114,7 +1114,7 @@ The first numbers of square permutations of size $2$ are
   \medskip
 
   \onslide<2->
-  \begin{exampleblock}{Example}
+  \begin{block}{Example}
     The permutation $\pi := 35867241$ is a square since it admits the
     perfect matching
     \begin{equation*}
@@ -1151,7 +1151,7 @@ The first numbers of square permutations of size $2$ are
     words $\textcolor{RoyalBlue}{3641}$ and
     $\textcolor{BrickRed}{5872}$, both order-isomorphic to
     $2431$.
-  \end{exampleblock}
+  \end{block}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1165,24 +1165,26 @@ The first numbers of square permutations of size $2$ are
 
   \medskip
 
+\uncover<2->{%
   \begin{block}{Main ideas of the proof}
     \begin{itemize}
         \item We show that the pattern involvement problem is reducible
         in polynomial time to our decision problem.
         \medskip
 
+        \uncover<3->{%
         \item For this, given two permutations $\sigma$ and $\pi$, we
         show that $\sigma \leq \pi$ iff $\mu_{\sigma, \pi}$ is a square,
         where $\mu_{\sigma, \pi}$ is a permutation constructed in polynomial
         time from $\sigma$ and $\pi$.
-        \medskip
+        \medskip}
 
+        \uncover<4->{%
         \item To prove that $\mu_{\sigma, \pi}$ is a square, we show
         that $\mu_{\sigma, \pi}$ admits a perfect matching satisfying
-        $\mathbf{P_1}$ and~$\mathbf{P_2}$.
-
+        $\mathbf{P_1}$ and~$\mathbf{P_2}$.}
     \end{itemize}
-  \end{block}
+  \end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1278,19 +1280,19 @@ The first numbers of square permutations of size $2$ are
   \end{block}
   \medskip
 
+    \uncover<2->{%
   \begin{block}{Algorithms}
-
     Given two permutations $\pi$ and~$\sigma$, how hard is the problem of
     deciding whether $\sigma$ is a square root of~$\pi$?
   \end{block}
-  \medskip
+  \medskip}
 
+    \uncover<3->{%
   \begin{block}{Algebra}
         How algebraic properties of the associative algebra $(\QQ[S], \SHUFFLE)$
         or of the coalgebra $(\QQ[S], \Delta)$ are connected to
         combinatorial and algorithmic properties of square permutations?
-  \end{block}
-
+  \end{block}}
 \end{frame}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
