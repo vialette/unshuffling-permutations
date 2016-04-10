@@ -714,7 +714,8 @@ The first numbers of square binary words of length $2n$ are
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%o%%%%%%%%%%%%%%%%%%
 \begin{frame} \frametitle{Main motivations}
-Let $S_n$ be the set of \alert{permutations} of size $n$.
+Let $S_n$ be the set of \alert{permutations} of size $n$ and $S$ be the
+set of all permutations.
 \bigskip
 
 \uncover<2->{%
@@ -868,8 +869,9 @@ $\textcolor{BrickRed}{\La \shuffle \Lb\La}$:\vspace{-.9em}
 \begin{block}{\bf Example}
 \vspace{-.5em}
 \begin{equation*}
-    \Delta(213) =
-    \epsilon \otimes 213 + 2 (1 \otimes 12) +
+    \Delta(21\textcolor{BrickRed}{3}) =
+    \epsilon \otimes 213 +
+    \textcolor{Orange}{2} (1 \otimes 1\textcolor{BrickRed}{2}) +
     1 \otimes 21 + 2 (12 \otimes 1) + 21 \otimes 1
     + 213 \otimes \epsilon
 \end{equation*}
@@ -914,7 +916,8 @@ $\textcolor{BrickRed}{\La \shuffle \Lb\La}$:\vspace{-.9em}
 \begin{block}{{\bf Definition} (square permutations)}
     A permutation $\pi$ is a \alert{square} (w.r.t. the shuffle product
     $\SHUFFLE$) if there is $\sigma \in S$ such that $\pi$ appears in
-    $\sigma \SHUFFLE \sigma$.
+    $\sigma \SHUFFLE \sigma$. We say that $\sigma$ is a \alert{square root}
+    of~$\pi$.
 \end{block}
 \medskip
 
